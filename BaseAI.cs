@@ -12,19 +12,19 @@ namespace Joueur.cs
         {
         }
 
-        public virtual void ConnectToGameAs(BaseGame baseGame, string playerID)
+        public virtual string GetName()
         {
-            // inheriting class will write this logic via Creer
-        }
-
-        public virtual bool HasPlayer()
-        {
-            return false; // inheriting class will write this logic via Creer
+            throw new NotImplementedException();
         }
 
         public virtual void Start()
         {
 
+        }
+
+        public virtual bool HasPlayer()
+        {
+            return false; // _AI should impliment this
         }
 
         public virtual void Ended(bool won, string reason)
@@ -39,7 +39,7 @@ namespace Joueur.cs
 
         public Object DoOrder(string order, List<JToken> args)
         {
-            var method = this.GetType().GetMethod("CastOrder_" + order);
+            var method = this.GetType().GetMethod("CastOrder_" + order, System.Reflection.BindingFlags.NonPublic);
 
             if (method != null)
             {

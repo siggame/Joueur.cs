@@ -56,6 +56,7 @@
     <Compile Include="Checkers\GameObject.cs" />
     <Compile Include="Checkers\_AI.cs" />
     <Compile Include="Checkers\Player.cs" />
+    <Compile Include="GameManager.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

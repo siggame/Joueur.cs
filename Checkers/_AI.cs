@@ -8,24 +8,24 @@ namespace Joueur.cs.Checkers
 {
     abstract class _AI : Joueur.cs.BaseAI
     {
-        public Joueur.cs.Checkers.Game Game {get; private set; }
-        public Joueur.cs.Checkers.Player Player {get; private set; }
-
-        public override void ConnectToGameAs(BaseGame baseGame, string playerID)
-        {
-            base.ConnectToGameAs(baseGame, playerID);
-
-            this.Game = (Joueur.cs.Checkers.Game)baseGame;
-            this.Player = (Joueur.cs.Checkers.Player)this.Game.GetGameObject(playerID);
-        }
+        private Client Client;
+        public Checkers.Game Game {get; private set; }
+        public Checkers.Player Player {get; private set; }
 
         public override bool HasPlayer()
         {
             return (this.Player != null);
         }
 
+        private void SetInternals(Client client, BaseGame baseGame, string playerID)
+        {
+            this.Client = client;
+            this.Game = (Joueur.cs.Checkers.Game)baseGame;
+            this.Player = (Joueur.cs.Checkers.Player)this.Game.GameObjects[playerID];
+        }
+
         // all of these functions basically cast everything to the "real" function
-        public Object CastOrder_runTurn()
+        private Object CastOrder_runTurn()
         {
             // if there are args then convert them here
             var methodInfo = this.GetType().GetMethod("RunTurn");
@@ -37,7 +37,7 @@ namespace Joueur.cs.Checkers
 
             // if is game object then serialize
 
-            return this.Game.SerializeSafe(returned);
+            return this.Client.GameManager.SerializeSafe(returned);
         }
     }
 }

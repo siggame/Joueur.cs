@@ -10,30 +10,17 @@ namespace Joueur.cs.Checkers
     {
         public List<string> Logs { get; protected set; }
 
+        public GameObject() : base()
+        {
+            this.Logs = new List<string>();
+        }
+
         public void Log(string message)
         {
             this.RunOnServer<Object>("log", new object[]
             {
                 message
             });
-        }
-
-        public override void ApplyDeltaState(JObject delta)
-        {
-            base.ApplyDeltaState(delta);
-
-            foreach (var item in delta)
-            {
-                switch (item.Key)
-                {
-                    case "id":
-                        this.ID = this.Game.GetValueFromJToken<string>(item.Value);
-                        break;
-                    case "logs":
-                        this.Logs = this.Game.DeltaUpdateList<string>(this.Logs, item.Value);
-                        break;
-                }
-            }
         }
     }
 }

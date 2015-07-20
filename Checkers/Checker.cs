@@ -28,29 +28,5 @@ namespace Joueur.cs.Checkers
                 y
             });
         }
-
-        public override void ApplyDeltaState(JObject delta)
-        {
-            base.ApplyDeltaState(delta);
-
-            foreach (var item in delta)
-            {
-                switch (item.Key)
-                {
-                    case "x":
-                        this.X = this.Game.GetValueFromJToken<int>(item.Value);
-                        break;
-                    case "y":
-                        this.X = this.Game.GetValueFromJToken<int>(item.Value);
-                        break;
-                    case "kinged":
-                        this.Kinged = this.Game.GetValueFromJToken<bool>(item.Value);
-                        break;
-                    case "owner":
-                        this.Owner = this.Game.GetValueFromJToken<Checkers.Player>(item.Value);
-                        break;
-                }
-            }
-        }
     }
 }

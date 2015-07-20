@@ -9,68 +9,45 @@ using Newtonsoft.Json.Linq;
 
 namespace Joueur.cs
 {
-    class Client
+    sealed class Client // Client is a singleton
     {
-        const char EOT_CHAR = (char) 4;
-        BaseGame Game;
-        BaseAI AI;
-        TcpClient TCPClient;
+        #region Singleton pattern setup
 
+        private static readonly Client _Instance = new Client();
+
+        private Client()
+        {
+            this.EventsStack = new Stack<ServerMessages.ReceivedEvent<object>>();
+            this.ReceivedBuffer = String.Empty;
+        }
+
+        public static Client Instance
+        {
+            get
+            {
+                return _Instance;
+            }
+        }
+
+        #endregion
+
+        private const char EOT_CHAR = (char) 4;
+        private BaseGame Game;
+        private BaseAI AI;
+        public GameManager GameManager;
+        private TcpClient TCPClient;
         private Stack<ServerMessages.ReceivedEvent<Object>> EventsStack;
         private string ReceivedBuffer;
 
-        public Client(BaseGame game, BaseAI ai, string server = "127.0.0.1", int port = 3000, bool printIO = false)
+        public void ConnectTo(BaseGame game, BaseAI ai, string server = "127.0.0.1", int port = 3000, bool printIO = false)
         {
             this.Game = game;
             this.AI = ai;
-            this.EventsStack = new Stack<ServerMessages.ReceivedEvent<Object>>();
-            this.ReceivedBuffer = String.Empty;
+            this.GameManager = new GameManager(this, game, ai);
 
             try
             {
-                // Create a TcpClient.
-                // Note, for this client to work you need to have a TcpServer
-                // connected to the same address as specified by the server, port
-                // combination
                 this.TCPClient = new TcpClient(server, port);
-
-                /*
-                ServerMessages.SendPlay sendPlay = new ServerMessages.SendPlay();
-
-                sendPlay.gameName = "Checkers";
-
-                string message = JsonConvert.SerializeObject(sendPlay);
-
-                // Translate the passed message into ASCII and store it as a Byte array.
-                Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
-
-                // Get a client stream for reading and writing.
-                //  Stream stream = client.GetStream();
-
-                NetworkStream stream = this.tcpClient.GetStream();
-
-                // Send the message to the connected TcpServer.
-                stream.Write(data, 0, data.Length);
-
-                Console.WriteLine("Sent: {0}", message);
-
-                // Receive the TcpServer.response.
-
-                // Buffer to store the response bytes.
-                data = new Byte[256];
-
-                // String to store the response ASCII representation.
-                String responseData = String.Empty;
-
-                // Read the first batch of the TcpServer response bytes.
-                Int32 bytes = stream.Read(data, 0, data.Length);
-                responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-                Console.WriteLine("Received: {0}", responseData);
-
-                // Close everything.
-                stream.Close();
-                this.tcpClient.Close();
-                 */
             }
             catch (ArgumentNullException e)
             {
@@ -80,6 +57,11 @@ namespace Joueur.cs
             {
                 Console.WriteLine("SocketException: {0}", e);
             }
+        }
+
+        public void SetConstants(Dictionary<string, string> constants)
+        {
+            this.GameManager.SetConstants(constants);
         }
 
         public void Send(string eventName, Object data)
@@ -216,9 +198,9 @@ namespace Joueur.cs
 
         private void AutoHandleDelta(JObject data)
         {
-            this.Game.ReceivedDelta(data);
+            this.GameManager.DeltaUpdate(data);
 
-            if(this.AI.HasPlayer())
+            if (this.AI.HasPlayer())
             {
                 this.AI.GameUpdated();
             }
@@ -241,7 +223,7 @@ namespace Joueur.cs
         {
             this.Send("run", new ServerMessages.RunMessage() 
                 {
-                    caller = this.Game.SerializeGameObject(caller),
+                    caller = this.GameManager.SerializeGameObject(caller),
                     functionName = functionName,
                     args = args
                 }
@@ -249,7 +231,14 @@ namespace Joueur.cs
 
             var runData = (JToken)this.WaitForEvent("ran");
 
-            return this.Game.GetValueFromJToken<T>(runData);
+            return this.GameManager.GetValueFromJToken<T>(runData);
         }
+
+
+        #region Delta Handling
+
+
+
+        #endregion
     }
 }
