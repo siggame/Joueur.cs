@@ -200,7 +200,7 @@ namespace Joueur.cs
         {
             this.GameManager.DeltaUpdate(data);
 
-            if (this.AI.HasPlayer())
+            if (this.AI.GetType().GetField("Player").GetValue(this.AI) != null)
             {
                 this.AI.GameUpdated();
             }

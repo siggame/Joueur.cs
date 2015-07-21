@@ -14,7 +14,7 @@ namespace Joueur.cs
         private Client Client;
         private BaseGame Game;
         private Dictionary<string, string> ServerConstants;
-        private Dictionary<string, BaseGameObject> GameObjects;
+        private IDictionary<string, BaseGameObject> GameObjects;
 
         public GameManager(Client client, BaseGame game, BaseAI ai)
         {

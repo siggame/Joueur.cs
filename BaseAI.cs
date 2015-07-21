@@ -15,27 +15,22 @@ namespace Joueur.cs
 
         public virtual string GetName()
         {
-            throw new NotImplementedException();
+            return "C# Player";
         }
 
         public virtual void Start()
         {
-
-        }
-
-        public virtual bool HasPlayer()
-        {
-            return false; // _AI should impliment this
+            // the inheriting AI can add code to this inherited function
         }
 
         public virtual void Ended(bool won, string reason)
         {
-
+            // the inheriting AI can add code to this inherited function
         }
 
         public virtual void GameUpdated()
         {
-
+            // the inheriting AI can add code to this inherited function
         }
 
         public Object DoOrder(string order, List<JToken> args)
