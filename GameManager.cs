@@ -29,7 +29,7 @@ namespace Joueur.cs
             this.ServerConstants = constants;
         }
 
-        private string CSharpCase(string str)
+        public string CSharpCase(string str)
         {
             return char.ToUpper(str[0]) + str.Substring(1);
         }
@@ -69,7 +69,7 @@ namespace Joueur.cs
 
         private BaseGameObject CreateGameObject(string className)
         {
-            var gameObjectType = Type.GetType("Joueur.cs." + this.Game.Name + "." + className);
+            var gameObjectType = Type.GetType("Joueur.cs.Games." + this.Game.Name + "." + className);
             var baseGameObject = Activator.CreateInstance(gameObjectType) as BaseGameObject;
 
             return baseGameObject;
@@ -266,6 +266,11 @@ namespace Joueur.cs
             }
 
             return obj;
+        }
+
+        public object Unserialize(JToken jtoken)
+        {
+            return this.DeltaMerge(jtoken);
         }
     }
 }

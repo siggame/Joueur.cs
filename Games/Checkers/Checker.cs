@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Joueur.cs.Checkers
+namespace Joueur.cs.Games.Checkers
 {
     class Checker : Checkers.GameObject
     {

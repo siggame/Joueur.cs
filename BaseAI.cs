@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Joueur.cs
@@ -39,19 +40,26 @@ namespace Joueur.cs
 
         public Object DoOrder(string order, List<JToken> args)
         {
-            var method = this.GetType().GetMethod("CastOrder_" + order, System.Reflection.BindingFlags.NonPublic);
+            var gameManager = Client.Instance.GameManager;
+            var method = this.GetType().GetMethod(gameManager.CSharpCase(order));
 
             if (method != null)
             {
-                var returned = method.Invoke(this, args.ToArray<JToken>());
+                var unserializedArgs = new object[args.Count];
+                int i = 0;
+                foreach (var arg in args)
+                {
+                    unserializedArgs[i++] = gameManager.Unserialize(arg);
+                }
+
+                var returned = method.Invoke(this, unserializedArgs);
+
                 return returned;
             }
             else
             {
-                Console.WriteLine("Error: could not find order method for '" + order + "'");
+                throw new Exception("Error: could not find order method for '" + order + "'");
             }
-
-            return default(JToken);
         }
     }
 }

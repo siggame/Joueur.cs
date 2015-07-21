@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Joueur.cs.Checkers
+namespace Joueur.cs.Games.Checkers
 {
     class Game : Joueur.cs.BaseGame
     {
@@ -16,7 +15,7 @@ namespace Joueur.cs.Checkers
         public int MaxTurns { get; private set; }
         public int BoardWidth { get; private set; }
         public int BoardHeight { get; private set; }
-        public Checker CheckerMoved { get; private set; }
+        public Checkers.Checker CheckerMoved { get; private set; }
 
         public Game() : base()
         {

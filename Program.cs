@@ -21,10 +21,10 @@ namespace Joueur.cs
             int port = 3000;
             bool printIO = false;
 
-            Type gameType = Type.GetType("Joueur.cs." + gameName + ".Game");
+            Type gameType = Type.GetType("Joueur.cs.Games." + gameName + ".Game");
             BaseGame game = (BaseGame)Activator.CreateInstance(gameType);
 
-            Type aiType = Type.GetType("Joueur.cs." + gameName + ".AI");
+            Type aiType = Type.GetType("Joueur.cs.Games." + gameName + ".AI");
             BaseAI ai = (BaseAI)Activator.CreateInstance(aiType);
 
             Client client = Client.Instance;
@@ -51,7 +51,9 @@ namespace Joueur.cs
             
             Console.WriteLine("Game starting");
 
-            ai.GetType().BaseType.GetMethod("SetInternals", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Public | BindingFlags.Instance).Invoke(ai, new object[] { client, game, startData.playerID });
+            // set the AI's game and player via reflection
+            ai.GetType().GetField("Game").SetValue(ai, game);
+            ai.GetType().GetField("Player").SetValue(ai, game.GameObjects[startData.playerID]);
 
             ai.Start();
             ai.GameUpdated();
