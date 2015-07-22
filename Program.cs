@@ -14,12 +14,27 @@ namespace Joueur.cs
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World using C#!");
+            var argParser = new ArgParser(args, "Runs the C# client with options. Must a provide a game name to play on the server.", new ArgParser.Argument[] {
+                new ArgParser.Argument(new string[] {"game"}, "game", "the name of the game you want to play on the server", true),
+                new ArgParser.Argument(new string[] {"-s", "--server"}, "server", "the url to the server you want to connect to e.g. locahost:3000", false, "localhost"),
+                new ArgParser.Argument(new string[] {"-p", "--port"}, "port", "the port to connect to on the server. Can be defined on the server arg via server:port", false, 3000),
+                new ArgParser.Argument(new string[] {"-n", "--name"}, "name", "the name you want to use as your AI\'s player name. This over-rides the name you set in your code"),
+                new ArgParser.Argument(new string[] {"-r", "--session"}, "session", "the requested game session you want to play on the server", false, "*"),
+                new ArgParser.Argument(new string[] {"--printIO"}, "printIO", "(debugging) print IO through the TCP socket to the terminal", false, null, ArgParser.Argument.Store.True),
+            });
 
-            string gameName = "Checkers";
-            string server = "127.0.0.1";
-            int port = 3000;
-            bool printIO = false;
+            string gameName = argParser.GetValue<string>("game");
+            string server = argParser.GetValue<string>("server");
+            string playerName = argParser.GetValue<string>("name");
+            int port = argParser.GetValue<int>("port");
+            bool printIO = argParser.GetValue<bool>("printIO");
+
+            if (server.Contains(":"))
+            {
+                var split = server.Split(':');
+                server = split[0];
+                port = Int32.Parse(split[1]);
+            }
 
             Type gameType = Type.GetType("Joueur.cs.Games." + gameName + ".Game");
             BaseGame game = (BaseGame)Activator.CreateInstance(gameType);
@@ -31,10 +46,15 @@ namespace Joueur.cs
 
             client.ConnectTo(game, ai, server, port, printIO);
 
+            if (String.IsNullOrWhiteSpace(playerName))
+            {
+                playerName = ai.GetName();
+            }
+
             // TODO: get game name, requested session, and player name from args
             client.Send("play", new ServerMessages.SendPlay
                 {
-                    playerName = ai.GetName(),
+                    playerName = playerName,
                     gameName = gameName
                 }
             );

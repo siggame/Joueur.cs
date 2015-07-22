@@ -31,6 +31,9 @@ namespace Joueur.cs
 
         #endregion
 
+        public string Server { get; private set; }
+        public int Port { get; private set; }
+        public bool PrintIO { get; private set; }
         private const char EOT_CHAR = (char) 4;
         private BaseGame Game;
         private BaseAI AI;
@@ -39,24 +42,15 @@ namespace Joueur.cs
         private Stack<ServerMessages.ReceivedEvent<Object>> EventsStack;
         private string ReceivedBuffer;
 
-        public void ConnectTo(BaseGame game, BaseAI ai, string server = "127.0.0.1", int port = 3000, bool printIO = false)
+        public void ConnectTo(BaseGame game, BaseAI ai, string server = "localhost", int port = 3000, bool printIO = false)
         {
             this.Game = game;
             this.AI = ai;
+            this.Server = server;
+            this.Port = port;
+            this.PrintIO = printIO;
             this.GameManager = new GameManager(this, game, ai);
-
-            try
-            {
-                this.TCPClient = new TcpClient(server, port);
-            }
-            catch (ArgumentNullException e)
-            {
-                Console.WriteLine("ArgumentNullException: {0}", e);
-            }
-            catch (SocketException e)
-            {
-                Console.WriteLine("SocketException: {0}", e);
-            }
+            this.TCPClient = new TcpClient(server, port);
         }
 
         public void SetConstants(Dictionary<string, string> constants)
@@ -70,25 +64,18 @@ namespace Joueur.cs
 
             string serialized = JsonConvert.SerializeObject(message) + EOT_CHAR;
 
+            if(this.PrintIO)
+            {
+                Console.WriteLine("TO SERVER <-- " + serialized);
+            }
+
             // Translate the passed message into ASCII and store it as a Byte array.
             Byte[] bytes = System.Text.Encoding.ASCII.GetBytes(serialized);
 
-            try
-            {
-                NetworkStream stream = this.TCPClient.GetStream();
+            NetworkStream stream = this.TCPClient.GetStream();
 
-                // Send the message to the connected TcpServer.
-                stream.Write(bytes, 0, bytes.Length);
-                //stream.Close();
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine("NullReferenceException: {0}", e);
-            }
-            catch (SocketException e)
-            {
-                Console.WriteLine("SocketException: {0}", e);
-            }
+            // Send the message to the connected TcpServer.
+            stream.Write(bytes, 0, bytes.Length);
         }
 
         public void Disconnect()
@@ -138,6 +125,11 @@ namespace Joueur.cs
                 // Read the TcpServer response bytes.
                 int bytes = stream.Read(data, 0, data.Length);
                 responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+
+                if (this.PrintIO)
+                {
+                    Console.WriteLine("FROM SERVER --> " + responseData);
+                }
 
                 string total = this.ReceivedBuffer + responseData;
                 string[] split = total.Split(EOT_CHAR);
