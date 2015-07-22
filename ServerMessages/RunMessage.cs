@@ -9,6 +9,6 @@ namespace Joueur.cs.ServerMessages
     {
         public Dictionary<string, string> caller;
         public string functionName;
-        public object[] args;
+        public IDictionary<string, object> args;
     }
 }

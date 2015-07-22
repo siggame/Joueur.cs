@@ -65,7 +65,6 @@ ${merge("        // ", "properties", "        // you can add addtional propertie
 
 % for function_name in obj['function_names']:
 <% function_parms = obj['functions'][function_name]
-arg_names = []
 arg_strings = []
 return_type = None
 %>        /// <summary>
@@ -73,8 +72,7 @@ return_type = None
         /// </summary>
 % if 'arguments' in function_parms:
 % for arg_parms in function_parms['arguments']:
-<% arg_names.append(arg_parms['name'])
-arg_strings.append(shared['c#']['type'](arg_parms['type']) + " " + arg_parms['name'])
+<% arg_strings.append(shared['c#']['type'](arg_parms['type']) + " " + arg_parms['name'])
 %>        /// <param name="${arg_parms['name']}">${arg_parms['description']}</param>
 % endfor
 % endif
@@ -84,7 +82,11 @@ arg_strings.append(shared['c#']['type'](arg_parms['type']) + " " + arg_parms['na
 % endif
         public ${return_type or 'void'} ${upcase_first(function_name)}(${", ".join(arg_strings)})
         {
-            ${"return " if function_parms['returns'] else ""}this.RunOnServer<${return_type or 'object'}>("${function_name}", new object[] { ${', '.join(arg_names)} });
+            ${"return " if function_parms['returns'] else ""}this.RunOnServer<${return_type or 'object'}>("${function_name}", new Dictionary<string, object> {
+% for i, arg_parms in enumerate(function_parms['arguments']):
+                {"${arg_parms['name']}", ${arg_parms['name']}}${"," if (i+1) < len(function_parms['arguments']) else ""}
+% endfor
+            });
         }
 % endfor
 

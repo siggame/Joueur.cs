@@ -74,19 +74,21 @@ ${merge("            // ", "ended", '            base.Ended(won, reason);')}
 
 % for function_name in ai['function_names']:
 <% function_parms = ai["functions"][function_name];
+arg_strings = []
 %>
         /// <summary>
         /// ${function_parms['description']}
         /// </summary>
 % if 'arguments' in function_parms:
 % for arg_parms in function_parms['arguments']:
-        /// <param name="${upcase_first(arg_parms['name'])}">${arg_parms['description']}</param>
+<% arg_strings.append(shared['c#']['type'](arg_parms['type']) + " " + arg_parms['name']) # syntax highlighter freaking out, needs ;
+%>        /// <param name="${arg_parms['name']}">${arg_parms['description']}</param>
 % endfor
 % endif
 % if function_parms['returns'] != None:
         /// <returns>${function_parms['returns']['description']}</returns>
 % endif
-        public ${shared['c#']['type'](function_parms['returns']['type'])} ${upcase_first(function_name)}(${", ".join(function_parms['argument_names'])})
+        public ${shared['c#']['type'](function_parms['returns']['type'])} ${upcase_first(function_name)}(${", ".join(arg_strings)})
         {
 ${merge("            // ", function_name,
 """            // Put your game logic here for {0}

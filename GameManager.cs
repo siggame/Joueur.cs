@@ -164,7 +164,7 @@ namespace Joueur.cs
 
                 int index = Convert.ToInt32(item.Key);
 
-                if (index > listLength) // continue as it's out of bounds and resizing the list above should have handled these entries anyways
+                if (index >= listLength) // continue as it's out of bounds (and should be a delta remove command) and resizing the list above should have handled these entries anyways
                 {
                     continue;
                 }
@@ -202,7 +202,7 @@ namespace Joueur.cs
 
         private bool IsGameObjectReference(JToken jtoken)
         {
-            if (jtoken.Type == JTokenType.Object)
+            if (jtoken != null && jtoken.Type == JTokenType.Object)
             {
                 return this.IsGameObjectReference(jtoken.ToObject<JObject>());
             }
@@ -224,7 +224,7 @@ namespace Joueur.cs
 
         private bool IsDeltaRemoved(object obj)
         {
-            if (obj.GetType() == typeof(JToken) || obj.GetType() == typeof(JObject))
+            if (obj != null && (obj.GetType() == typeof(JToken) || obj.GetType() == typeof(JObject)))
             {
                 var jtoken = obj as JToken;
                 if (jtoken.Type != JTokenType.String)
@@ -250,7 +250,14 @@ namespace Joueur.cs
                 return (T)justObject; // stupid casting :P
             }
 
-            return jtoken.ToObject<T>();
+            if (jtoken != null)
+            {
+                return jtoken.ToObject<T>();
+            }
+            else
+            {
+                return default(T);
+            }
         }
 
         public Dictionary<string, string> SerializeGameObject(BaseGameObject baseGameObject)

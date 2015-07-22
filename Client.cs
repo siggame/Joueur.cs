@@ -219,7 +219,7 @@ namespace Joueur.cs
 
 
 
-        public T RunOnServer<T>(BaseGameObject caller, string functionName, object[] args = null)
+        public T RunOnServer<T>(BaseGameObject caller, string functionName, IDictionary<string, object> args = null)
         {
             this.Send("run", new ServerMessages.RunMessage() 
                 {

@@ -10,7 +10,7 @@ namespace Joueur.cs
     {
         public string Id { get; protected set; }
 
-        protected T RunOnServer<T>(string functionName, object[] args = null)
+        protected T RunOnServer<T>(string functionName, IDictionary<string, object> args = null)
         {
             return Client.Instance.RunOnServer<T>(this, functionName, args);
         }
