@@ -16,7 +16,7 @@ namespace Joueur.cs
         {
             var argParser = new ArgParser(args, "Runs the C# client with options. Must a provide a game name to play on the server.", new ArgParser.Argument[] {
                 new ArgParser.Argument(new string[] {"game"}, "game", "the name of the game you want to play on the server", true),
-                new ArgParser.Argument(new string[] {"-s", "--server"}, "server", "the url to the server you want to connect to e.g. locahost:3000", false, "localhost"),
+                new ArgParser.Argument(new string[] {"-s", "--server"}, "server", "the url to the server you want to connect to e.g. locahost:3000", false, "127.0.0.1"),
                 new ArgParser.Argument(new string[] {"-p", "--port"}, "port", "the port to connect to on the server. Can be defined on the server arg via server:port", false, 3000),
                 new ArgParser.Argument(new string[] {"-n", "--name"}, "name", "the name you want to use as your AI\'s player name. This over-rides the name you set in your code"),
                 new ArgParser.Argument(new string[] {"-r", "--session"}, "session", "the requested game session you want to play on the server", false, "*"),
@@ -26,6 +26,7 @@ namespace Joueur.cs
             string gameName = argParser.GetValue<string>("game");
             string server = argParser.GetValue<string>("server");
             string playerName = argParser.GetValue<string>("name");
+            string requestedSession = argParser.GetValue<string>("requestedSession");
             int port = argParser.GetValue<int>("port");
             bool printIO = argParser.GetValue<bool>("printIO");
 
@@ -51,7 +52,6 @@ namespace Joueur.cs
                 playerName = ai.GetName();
             }
 
-            // TODO: get game name, requested session, and player name from args
             client.Send("play", new ServerMessages.SendPlay
                 {
                     playerName = playerName,
@@ -65,7 +65,7 @@ namespace Joueur.cs
 
 
             // hackish way to set the client in the game. we don't want to expose public methods that competitors may see via intellisense and try to use
-            client.SetConstants(lobbiedData.constants);
+            client.GameManager.SetConstants(lobbiedData.constants);
 
             var startData = (ServerMessages.StartData)client.WaitForEvent("start");
             

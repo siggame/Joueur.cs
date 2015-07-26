@@ -196,6 +196,8 @@ namespace Joueur.cs.Games.Checkers
 
             var yDirection = this.Player.YDirection;
 
+            AI.Shuffle<Checkers.Checker>(checkers);
+
             foreach(var checker in checkers)
             {
                 var neighbors = new List<Point>();
@@ -208,7 +210,7 @@ namespace Joueur.cs.Games.Checkers
                     neighbors.Add(new Point { X = checker.X - 1, Y = checker.Y - yDirection });
                 }
 
-                Shuffle<Point>(neighbors);
+                AI.Shuffle<Point>(neighbors);
 
                 while (neighbors.Count > 0)
                 {
@@ -245,7 +247,7 @@ namespace Joueur.cs.Games.Checkers
                                 int dx = neighbor.X - checker.X;
                                 int dy = neighbor.Y - checker.Y;
 
-                                neighbors.Add(new Point { X = dx, Y = dy, RequiresJump = true });
+                                neighbors.Add(new Point { X = neighbor.X + dx, Y = neighbor.Y + dy, RequiresJump = true });
                             }
                         }
                     }

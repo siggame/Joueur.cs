@@ -11,20 +11,18 @@ namespace Joueur.cs
     class GameManager
     {
         private BaseAI AI;
-        private Client Client;
         private BaseGame Game;
-        private Dictionary<string, string> ServerConstants;
+        private IDictionary<string, string> ServerConstants;
         private IDictionary<string, BaseGameObject> GameObjects;
 
-        public GameManager(Client client, BaseGame game, BaseAI ai)
+        public GameManager(BaseGame game, BaseAI ai)
         {
-            this.Client = client;
             this.Game = game;
             this.AI = ai;
             this.GameObjects = this.Game.GameObjects;
         }
 
-        public void SetConstants(Dictionary<string, string> constants)
+        public void SetConstants(IDictionary<string, string> constants)
         {
             this.ServerConstants = constants;
         }
@@ -54,15 +52,6 @@ namespace Joueur.cs
                     {
                         this.GameObjects.Add(id, this.CreateGameObject(objectDelta["gameObjectName"].ToObject<string>()));
                     }
-
-                    /*if (this.IsDeltaRemoved(objectDelta))
-                    {
-                        this.GameObjects.Remove(id);
-                    }
-                    else // it needs to be delta updated
-                    {
-                        this.DeltaMergeClass(this.GameObjects[id], objectDelta);
-                    }*/
                 }
             }
         }

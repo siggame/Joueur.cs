@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace Joueur.cs
 {
@@ -31,31 +32,30 @@ namespace Joueur.cs
 
         #endregion
 
+        public const int ERROR_CODE_INVALID = -17;
+        public const int ERROR_CODE_SOCKET_READ = -18;
+
         public string Server { get; private set; }
         public int Port { get; private set; }
         public bool PrintIO { get; private set; }
         private const char EOT_CHAR = (char) 4;
         private BaseGame Game;
         private BaseAI AI;
+        private BaseGameObject AIsPlayer;
         public GameManager GameManager;
         private TcpClient TCPClient;
         private Stack<ServerMessages.ReceivedEvent<Object>> EventsStack;
         private string ReceivedBuffer;
 
-        public void ConnectTo(BaseGame game, BaseAI ai, string server = "localhost", int port = 3000, bool printIO = false)
+        public void ConnectTo(BaseGame game, BaseAI ai, string server = "127.0.0.1", int port = 3000, bool printIO = false)
         {
             this.Game = game;
             this.AI = ai;
             this.Server = server;
             this.Port = port;
             this.PrintIO = printIO;
-            this.GameManager = new GameManager(this, game, ai);
+            this.GameManager = new GameManager(game, ai);
             this.TCPClient = new TcpClient(server, port);
-        }
-
-        public void SetConstants(Dictionary<string, string> constants)
-        {
-            this.GameManager.SetConstants(constants);
         }
 
         public void Send(string eventName, Object data)
@@ -78,12 +78,16 @@ namespace Joueur.cs
             stream.Write(bytes, 0, bytes.Length);
         }
 
-        public void Disconnect()
+        public void Disconnect(int errorCode = 0, string errorMessage = "")
         {
+            if (errorMessage != "")
+            {
+                System.Console.Error.WriteLine(errorMessage);
+            }
             NetworkStream stream = this.TCPClient.GetStream();
             stream.Close();
             this.TCPClient.Close();
-            System.Environment.Exit(0);
+            System.Environment.Exit(errorCode);
         }
 
 
@@ -123,7 +127,21 @@ namespace Joueur.cs
                 String responseData = String.Empty;
 
                 // Read the TcpServer response bytes.
-                int bytes = stream.Read(data, 0, data.Length);
+                int bytes = -2;
+                try
+                {
+                    bytes = stream.Read(data, 0, data.Length);
+                }
+                catch (IOException e)
+                {
+                    this.Disconnect(Client.ERROR_CODE_SOCKET_READ, "Error with reading socket: " + e.Message);
+                }
+
+                if (bytes == -2)
+                {
+                    continue;
+                } 
+
                 responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
 
                 if (this.PrintIO)
@@ -192,7 +210,12 @@ namespace Joueur.cs
         {
             this.GameManager.DeltaUpdate(data);
 
-            if (this.AI.GetType().GetField("Player").GetValue(this.AI) != null)
+            if (this.AIsPlayer == null)
+            {
+                this.AIsPlayer = (BaseGameObject)this.AI.GetType().GetField("Player").GetValue(this.AI);
+            }
+
+            if (this.AIsPlayer != null)
             {
                 this.AI.GameUpdated();
             }
@@ -200,12 +223,22 @@ namespace Joueur.cs
 
         private void AutoHandleInvalid(ServerMessages.ReceivedData data)
         {
-            Console.WriteLine("send invalid command data");
+            throw new Exception("send invalid command data");
         }
 
         private void AutoHandleOver(ServerMessages.ReceivedData data)
         {
-            this.AI.Ended(true, ""); // TODO: get if it actually won and the reason from the player
+            var won = true;
+            var reason = "unknown reason";
+
+            if (this.AIsPlayer != null) // try to figure out if we won or lost
+            {
+                won = (bool)this.AIsPlayer.GetType().GetProperty("Won").GetValue(this.AIsPlayer, null);
+                var reasonProperty = (won ? "ReasonWon" : "ReasonLost");
+                reason = (string)this.AIsPlayer.GetType().GetProperty(reasonProperty).GetValue(this.AIsPlayer, null);
+            }
+
+            this.AI.Ended(won, reason); // TODO: get if it actually won and the reason from the player
             this.Disconnect();
         }
 
@@ -225,12 +258,5 @@ namespace Joueur.cs
 
             return this.GameManager.GetValueFromJToken<T>(runData);
         }
-
-
-        #region Delta Handling
-
-
-
-        #endregion
     }
 }
