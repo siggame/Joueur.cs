@@ -121,8 +121,15 @@ namespace Joueur.cs
 
                 if (itemProperty != null)
                 {
-                    var itemValue = this.DeltaMerge(item.Value, itemProperty.GetValue(state, null));
-                    itemProperty.SetValue(state, itemValue, null);
+                    try
+                    {
+                        var itemValue = this.DeltaMerge(item.Value, itemProperty.GetValue(state, null));
+                        itemProperty.SetValue(state, itemValue, null);
+                    }
+                    catch(Exception exception)
+                    {
+                        ErrorHandler.HandleError(ErrorHandler.ErrorCode.REFLECTION_FAILED, exception, "Could not merge property '" + classPropertyKey + "' on '" + state.ToString() + "'.");
+                    }
                 }
             }
 

@@ -21,7 +21,7 @@ namespace Joueur.cs
                 new ArgParser.Argument(new string[] {"-n", "--name"}, "name", "the name you want to use as your AI\'s player name. This over-rides the name you set in your code"),
                 new ArgParser.Argument(new string[] {"-r", "--session"}, "session", "the requested game session you want to play on the server", false, "*"),
                 new ArgParser.Argument(new string[] {"--printIO"}, "printIO", "(debugging) print IO through the TCP socket to the terminal", false, null, ArgParser.Argument.Store.True),
-            });
+            }, (int)ErrorHandler.ErrorCode.INVALID_ARGS);
 
             string gameName = argParser.GetValue<string>("game");
             string server = argParser.GetValue<string>("server");
@@ -37,11 +37,21 @@ namespace Joueur.cs
                 port = Int32.Parse(split[1]);
             }
 
-            Type gameType = Type.GetType("Joueur.cs.Games." + gameName + ".Game");
-            BaseGame game = (BaseGame)Activator.CreateInstance(gameType);
+            BaseGame game = null;
+            BaseAI ai = null;
 
-            Type aiType = Type.GetType("Joueur.cs.Games." + gameName + ".AI");
-            BaseAI ai = (BaseAI)Activator.CreateInstance(aiType);
+            try
+            {
+                Type gameType = Type.GetType("Joueur.cs.Games." + gameName + ".Game");
+                game = (BaseGame)Activator.CreateInstance(gameType);
+
+                Type aiType = Type.GetType("Joueur.cs.Games." + gameName + ".AI");
+                ai = (BaseAI)Activator.CreateInstance(aiType);
+            }
+            catch(Exception exception)
+            {
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.GAME_NOT_FOUND, exception, "Could create Game and AI for game name '" + gameName + "'");
+            }
 
             Client client = Client.Instance;
 
@@ -72,25 +82,27 @@ namespace Joueur.cs
             Console.WriteLine("Game starting");
 
             // set the AI's game and player via reflection
-            ai.GetType().GetField("Game").SetValue(ai, game);
-            ai.GetType().GetField("Player").SetValue(ai, game.GameObjects[startData.playerID]);
-
-            ai.Start();
-            ai.GameUpdated();
-
-            while (true)
+            try
             {
-                var orderData = (ServerMessages.OrderData)client.WaitForEvent("order");
-
-                Object returned = ai.DoOrder(orderData.order, orderData.args);
-
-                client.Send("finished", new ServerMessages.SendFinished()
-                    {
-                        finished = orderData.order,
-                        returned = returned
-                    }
-                );
+                ai.GetType().GetField("Game").SetValue(ai, game);
+                ai.GetType().GetField("Player").SetValue(ai, game.GameObjects[startData.playerID]);
             }
+            catch(Exception exception)
+            {
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.REFLECTION_FAILED, exception, "Could not set the Game and Player for the AI during game startup.");
+            }
+
+            try
+            {
+                ai.Start();
+                ai.GameUpdated();
+            }
+            catch(Exception exception)
+            {
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "AI errored during initial game start.");
+            }
+
+            client.Play();
         }
     }
 }

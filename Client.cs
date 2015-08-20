@@ -32,9 +32,6 @@ namespace Joueur.cs
 
         #endregion
 
-        public const int ERROR_CODE_INVALID = -17;
-        public const int ERROR_CODE_SOCKET_READ = -18;
-
         public string Server { get; private set; }
         public int Port { get; private set; }
         public bool PrintIO { get; private set; }
@@ -46,6 +43,7 @@ namespace Joueur.cs
         private TcpClient TCPClient;
         private Stack<ServerMessages.ReceivedEvent<Object>> EventsStack;
         private string ReceivedBuffer;
+        private bool connected = false;
 
         public void ConnectTo(BaseGame game, BaseAI ai, string server = "127.0.0.1", int port = 3000, bool printIO = false)
         {
@@ -55,42 +53,78 @@ namespace Joueur.cs
             this.Port = port;
             this.PrintIO = printIO;
             this.GameManager = new GameManager(game, ai);
-            this.TCPClient = new TcpClient(server, port);
+
+            try
+            {
+                this.TCPClient = new TcpClient(server, port);
+            }
+            catch(Exception exception)
+            {
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.COULD_NOT_CONNECT, exception, "Could not connect to " + server + ":" + port);
+            }
+
+            this.connected = true;
         }
 
         public void Send(string eventName, Object data)
         {
             ServerMessages.SendMessage message = new ServerMessages.SendMessage(eventName, data);
 
-            string serialized = JsonConvert.SerializeObject(message) + EOT_CHAR;
+            string serialized = null;
+            try
+            {
+                serialized = JsonConvert.SerializeObject(message) + EOT_CHAR;
+            }
+            catch(Exception exception)
+            {
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.MALFORMED_JSON, exception, "Could not serialize object: " + data.ToString());
+            }
 
             if(this.PrintIO)
             {
                 Console.WriteLine("TO SERVER <-- " + serialized);
             }
 
-            // Translate the passed message into ASCII and store it as a Byte array.
-            Byte[] bytes = System.Text.Encoding.ASCII.GetBytes(serialized);
-
-            NetworkStream stream = this.TCPClient.GetStream();
-
-            // Send the message to the connected TcpServer.
-            stream.Write(bytes, 0, bytes.Length);
-        }
-
-        public void Disconnect(int errorCode = 0, string errorMessage = "")
-        {
-            if (errorMessage != "")
+            try
             {
-                System.Console.Error.WriteLine(errorMessage);
+                // Translate the passed message into ASCII and store it as a Byte array.
+                Byte[] bytes = System.Text.Encoding.ASCII.GetBytes(serialized);
+
+                NetworkStream stream = this.TCPClient.GetStream();
+
+                // Send the message to the connected TcpServer.
+                stream.Write(bytes, 0, bytes.Length);
             }
-            NetworkStream stream = this.TCPClient.GetStream();
-            stream.Close();
-            this.TCPClient.Close();
-            System.Environment.Exit(errorCode);
+            catch(Exception exception)
+            {
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.CANNOT_READ_SOCKET, exception, "Could not send data through socket.");
+            }
+            
+        }
+
+        public void Disconnect()
+        {
+            if (this.connected)
+            {
+                try
+                {
+                    NetworkStream stream = this.TCPClient.GetStream();
+                    stream.Close();
+                    this.TCPClient.Close();
+                }
+                catch
+                {
+                    // ignore, disconnect should only happen at the end when we don't care, or already during error handling when other errors liek this could bubble up.
+                }
+            }
         }
 
 
+
+        public void Play()
+        {
+            this.WaitForEvent(null); // wait's indefinitly. Should eventually be terminated by the 'over' event from the server.
+        }
 
         public Object WaitForEvent(string eventName)
         {
@@ -101,7 +135,7 @@ namespace Joueur.cs
                 while (this.EventsStack.Count > 0)
                 {
                     ServerMessages.ReceivedEvent<Object> receivedEvent = this.EventsStack.Pop();
-                    if (receivedEvent.@event == eventName)
+                    if (eventName != null && receivedEvent.@event == eventName)
                     {
                         return receivedEvent.data;
                     }
@@ -132,14 +166,14 @@ namespace Joueur.cs
                 {
                     bytes = stream.Read(data, 0, data.Length);
                 }
-                catch (IOException e)
+                catch (Exception exception)
                 {
-                    this.Disconnect(Client.ERROR_CODE_SOCKET_READ, "Error with reading socket: " + e.Message);
+                    ErrorHandler.HandleError(ErrorHandler.ErrorCode.CANNOT_READ_SOCKET, exception, "Cannot read socket while waiting for events.");
                 }
 
                 if (bytes == -2)
                 {
-                    continue;
+                    continue; // as no bytes were read
                 } 
 
                 responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
@@ -156,7 +190,17 @@ namespace Joueur.cs
 
                 for (int i = split.Length - 2; i >= 0; i--) // iterate through in reverse, skipping the over the very last item because we stored it in the receivedBuffer
                 {
-                    JObject deserialized = JObject.Parse(split[i]);
+                    JObject deserialized = null;
+                    string jsonStr = split[i];
+                    try
+                    {
+                        deserialized = JObject.Parse(jsonStr);
+                    }
+                    catch(Exception exception)
+                    {
+                        ErrorHandler.HandleError(ErrorHandler.ErrorCode.MALFORMED_JSON, exception, "Could not parse json '" + jsonStr + "'");
+                    }
+
                     var receivedEvent = new ServerMessages.ReceivedEvent<Object>();
                     receivedEvent.@event = deserialized.GetValue("event").ToString();
 
@@ -198,7 +242,7 @@ namespace Joueur.cs
             
             if(theMethod == null || eventName == String.Empty)
             {
-                Console.WriteLine("Error: cannot auto handle event \"" + eventName + "\"");
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.UNKNOWN_EVENT_FROM_SERVER, "Could not auto handle '" + eventName + "'");
             }
             else
             {
@@ -208,22 +252,43 @@ namespace Joueur.cs
 
         private void AutoHandleDelta(JObject data)
         {
-            this.GameManager.DeltaUpdate(data);
+            try
+            {
+                this.GameManager.DeltaUpdate(data);
+            }
+            catch(Exception exception)
+            {
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.DELTA_MERGE_FAILURE, exception, "Could not delta update");
+            }
 
             if (this.AIsPlayer == null)
             {
-                this.AIsPlayer = (BaseGameObject)this.AI.GetType().GetField("Player").GetValue(this.AI);
+                try
+                {
+                    this.AIsPlayer = (BaseGameObject)this.AI.GetType().GetField("Player").GetValue(this.AI);
+                }
+                catch(Exception exception)
+                {
+                    ErrorHandler.HandleError(ErrorHandler.ErrorCode.REFLECTION_FAILED, exception, "Could not get ai's player via reflection.");
+                }
             }
 
             if (this.AIsPlayer != null)
             {
-                this.AI.GameUpdated();
+                try
+                {
+                    this.AI.GameUpdated();
+                }
+                catch(Exception exception)
+                {
+                    ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "AI threw unhandled exception during GameUpdated()");
+                }
             }
         }
 
         private void AutoHandleInvalid(ServerMessages.ReceivedData data)
         {
-            throw new Exception("send invalid command data");
+            ErrorHandler.HandleError(ErrorHandler.ErrorCode.INVALID_EVENT, "Got invalid event.");
         }
 
         private void AutoHandleOver(ServerMessages.ReceivedData data)
@@ -233,13 +298,39 @@ namespace Joueur.cs
 
             if (this.AIsPlayer != null) // try to figure out if we won or lost
             {
-                won = (bool)this.AIsPlayer.GetType().GetProperty("Won").GetValue(this.AIsPlayer, null);
-                var reasonProperty = (won ? "ReasonWon" : "ReasonLost");
-                reason = (string)this.AIsPlayer.GetType().GetProperty(reasonProperty).GetValue(this.AIsPlayer, null);
+                try
+                {
+                    won = (bool)this.AIsPlayer.GetType().GetProperty("Won").GetValue(this.AIsPlayer, null);
+                    var reasonProperty = (won ? "ReasonWon" : "ReasonLost");
+                    reason = (string)this.AIsPlayer.GetType().GetProperty(reasonProperty).GetValue(this.AIsPlayer, null);
+                }
+                catch(Exception exception)
+                {
+                    ErrorHandler.HandleError(ErrorHandler.ErrorCode.REFLECTION_FAILED, exception, "Could not get win reason via reflection");
+                }
             }
 
-            this.AI.Ended(won, reason); // TODO: get if it actually won and the reason from the player
+            try
+            {
+                this.AI.Ended(won, reason);
+            }
+            catch(Exception exception)
+            {
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "AI errored duing Ended(won, reason)");
+            }
+
             this.Disconnect();
+            System.Environment.Exit(0);
+        }
+
+        private void AutoHandleOrder(ServerMessages.OrderData data)
+        {
+            Object returned = this.AI.DoOrder(data.order, data.args);
+
+            this.Send("finished", new ServerMessages.SendFinished() {
+                finished = data.order,
+                returned = returned
+            });
         }
 
 

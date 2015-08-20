@@ -51,10 +51,12 @@ namespace Joueur.cs
         private Dictionary<string, object> ParsedValues;
         private Dictionary<string, Argument> AliasToArgument;
         private List<Argument> ExpectedOrderedArgs;
+        private int ErrorCode;
 
-        public ArgParser(string[] args, string help, Argument[] arguments)
+        public ArgParser(string[] args, string help, Argument[] arguments, int errorCode = 1)
         {
             this.Help = help;
+            this.ErrorCode = errorCode;
             this.ParsedValues = new Dictionary<string, object>();
             this.AliasToArgument = new Dictionary<string, Argument>();
             this.ExpectedOrderedArgs = new List<Argument>();
@@ -62,6 +64,8 @@ namespace Joueur.cs
             this.BuildValidArguments(arguments);
 
             this.ParseConsoleArgs(args);
+
+            this.CheckRequired();
         }
 
         private void BuildValidArguments(Argument[] arguments)
@@ -147,9 +151,14 @@ namespace Joueur.cs
             }
         }
 
+        public bool HasValue(string key)
+        {
+            return this.ParsedValues.ContainsKey(key);
+        }
+
         public T GetValue<T>(string key)
         {
-            if (this.ParsedValues.ContainsKey(key))
+            if (this.HasValue(key))
             {
                 var value = this.ParsedValues[key];
 
@@ -238,7 +247,19 @@ namespace Joueur.cs
         public void GetHelp()
         {
             Console.Write(this.GetHelpString());
-            System.Environment.Exit(0);
+            System.Environment.Exit(this.ErrorCode);
+        }
+
+        public void CheckRequired()
+        {
+            foreach(var argument in this.Arguments)
+            {
+                if(argument.Required && !this.HasValue(argument.Aliases[0]))
+                {
+                    Console.Error.WriteLine("Error: missing value for '" + argument.Destination + "'.");
+                    this.GetHelp();
+                }
+            }
         }
     }
 }

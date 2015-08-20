@@ -14,7 +14,7 @@ namespace Joueur.cs
         public IDictionary<string, BaseGameObject> GameObjects { get; set; } // mapping of the game object ID (which is a string) to the actual game object. IDs are never re-used so this helps us grab and check what game objects have been created
 
         /// <summary>
-        /// A unique identifier for each game object. During any game IDs will never be re-used.
+        /// The name of the game.
         /// </summary>
         public string Name { get; protected set; }
 

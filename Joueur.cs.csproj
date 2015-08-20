@@ -51,6 +51,7 @@
     <Compile Include="BaseAI.cs" />
     <Compile Include="BaseGame.cs" />
     <Compile Include="BaseGameObject.cs" />
+    <Compile Include="ErrorHandler.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Program.cs" />
