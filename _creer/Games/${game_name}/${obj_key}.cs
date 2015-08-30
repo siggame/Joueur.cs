@@ -1,6 +1,5 @@
 // ${header}
 // ${obj['description']}
-
 <%include file="functions.noCreer" />
 using System;
 using System.Collections.Generic;
@@ -72,15 +71,14 @@ return_type = None
         /// </summary>
 % if 'arguments' in function_parms:
 % for arg_parms in function_parms['arguments']:
-<% arg_strings.append(shared['c#']['type'](arg_parms['type']) + " " + arg_parms['name'])
-%>        /// <param name="${arg_parms['name']}">${arg_parms['description']}</param>
+        /// <param name="${arg_parms['name']}">${arg_parms['description']}</param>
 % endfor
 % endif
 % if function_parms['returns']:
 <% return_type = shared['c#']['type'](function_parms['returns']['type'])
 %>        /// <returns>${function_parms['returns']['description']}</returns>
 % endif
-        public ${return_type or 'void'} ${upcase_first(function_name)}(${", ".join(arg_strings)})
+        public ${return_type or 'void'} ${upcase_first(function_name)}(${shared['c#']['args'](function_parms['arguments'])})
         {
             ${"return " if function_parms['returns'] else ""}this.RunOnServer<${return_type or 'object'}>("${function_name}", new Dictionary<string, object> {
 % for i, arg_parms in enumerate(function_parms['arguments']):
