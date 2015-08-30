@@ -48,7 +48,7 @@ ${merge("        // ", "properties", "        // you can add addtional propertie
         /// <summary>
         /// Creates a new instance of {$obj_key}. Used during game initialization, do not call directly.
         /// </summary>
-        public ${obj_key}() : base()
+        protected ${obj_key}() : base()
         {
 % if obj_key == "Game":
             this.Name = "${game_name}";

@@ -49,7 +49,7 @@ namespace Joueur.cs.Games.Checkers
         /// <summary>
         /// Creates a new instance of {$obj_key}. Used during game initialization, do not call directly.
         /// </summary>
-        public Checker() : base()
+        protected Checker() : base()
         {
         }
 

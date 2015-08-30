@@ -43,10 +43,10 @@ namespace Joueur.cs
             try
             {
                 Type gameType = Type.GetType("Joueur.cs.Games." + gameName + ".Game");
-                game = (BaseGame)Activator.CreateInstance(gameType);
+                game = (BaseGame)Activator.CreateInstance(gameType, true);
 
                 Type aiType = Type.GetType("Joueur.cs.Games." + gameName + ".AI");
-                ai = (BaseAI)Activator.CreateInstance(aiType);
+                ai = (BaseAI)Activator.CreateInstance(aiType, true);
             }
             catch(Exception exception)
             {

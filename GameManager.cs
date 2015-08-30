@@ -59,7 +59,7 @@ namespace Joueur.cs
         private BaseGameObject CreateGameObject(string className)
         {
             var gameObjectType = Type.GetType("Joueur.cs.Games." + this.Game.Name + "." + className);
-            var baseGameObject = Activator.CreateInstance(gameObjectType) as BaseGameObject;
+            var baseGameObject = Activator.CreateInstance(gameObjectType, true) as BaseGameObject;
 
             return baseGameObject;
         }

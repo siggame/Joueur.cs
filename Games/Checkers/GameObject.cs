@@ -34,7 +34,7 @@ namespace Joueur.cs.Games.Checkers
         /// <summary>
         /// Creates a new instance of {$obj_key}. Used during game initialization, do not call directly.
         /// </summary>
-        public GameObject() : base()
+        protected GameObject() : base()
         {
             this.Logs = new List<string>();
         }

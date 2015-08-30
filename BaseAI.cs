@@ -9,7 +9,7 @@ namespace Joueur.cs
 {
     abstract class BaseAI
     {
-        public BaseAI()
+        protected BaseAI()
         {
         }
 
