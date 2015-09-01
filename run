@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xbuild /p:Configuration=Release Joueur.cs.sln
+
+./Joueur.cs "$@"
