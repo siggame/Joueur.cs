@@ -1,0 +1,8 @@
+{
+    "requirements": [ "MSBuild" ],
+    "command": [
+        "MSBuild",
+        "/p:Configuration=Release",
+        { "locate": "Joueur.cs.shfbproj" }
+    ]
+}
