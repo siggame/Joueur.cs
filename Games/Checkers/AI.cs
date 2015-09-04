@@ -14,7 +14,8 @@ namespace Joueur.cs.Games.Checkers
     class AI : BaseAI
     {
         #region Properties
-        #pragma warning disable 0169 // the never assigned warning between here is incorrect. We set it for you via reflection. So this will remove if from the Error list.
+        #pragma warning disable 0169 // the never assigned warnings between here are incorrect. We set it for you via reflection. So these will remove it from the Error List.
+        #pragma warning disable 0649
         /// <summary>
         /// This is the Game object itself, it contains all the information about the current game
         /// </summary>
@@ -24,6 +25,7 @@ namespace Joueur.cs.Games.Checkers
         /// </summary>
         public readonly Checkers.Player Player;
         #pragma warning restore 0169
+        #pragma warning restore 0649
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 
