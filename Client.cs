@@ -291,6 +291,11 @@ namespace Joueur.cs
             ErrorHandler.HandleError(ErrorHandler.ErrorCode.INVALID_EVENT, "Got invalid event.");
         }
 
+        private void AutoHandleUnauthenticated(ServerMessages.ReceivedData data)
+        {
+            ErrorHandler.HandleError(ErrorHandler.ErrorCode.UNAUTHENTICATED, "Could not log into server.");
+        }
+
         private void AutoHandleOver(ServerMessages.ReceivedData data)
         {
             var won = true;

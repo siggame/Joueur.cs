@@ -20,6 +20,7 @@ namespace Joueur.cs
                 new ArgParser.Argument(new string[] {"-p", "--port"}, "port", "the port to connect to on the server. Can be defined on the server arg via server:port", false, 3000),
                 new ArgParser.Argument(new string[] {"-n", "--name"}, "name", "the name you want to use as your AI\'s player name. This over-rides the name you set in your code"),
                 new ArgParser.Argument(new string[] {"-r", "--session"}, "session", "the requested game session you want to play on the server", false, "*"),
+                new ArgParser.Argument(new string[] {"-w", "--password"}, "pass", "the password required for authentication on official servers"),
                 new ArgParser.Argument(new string[] {"--printIO"}, "printIO", "(debugging) print IO through the TCP socket to the terminal", false, null, ArgParser.Argument.Store.True),
             }, (int)ErrorHandler.ErrorCode.INVALID_ARGS);
 
@@ -27,6 +28,7 @@ namespace Joueur.cs
             string server = argParser.GetValue<string>("server");
             string playerName = argParser.GetValue<string>("name");
             string requestedSession = argParser.GetValue<string>("requestedSession");
+            string password = argParser.GetValue<string>("password");
             int port = argParser.GetValue<int>("port");
             bool printIO = argParser.GetValue<bool>("printIO");
 
@@ -65,7 +67,8 @@ namespace Joueur.cs
             client.Send("play", new ServerMessages.SendPlay
                 {
                     playerName = playerName,
-                    gameName = gameName
+                    gameName = gameName,
+                    password = password
                 }
             );
 
