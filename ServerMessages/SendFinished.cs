@@ -8,7 +8,7 @@ namespace Joueur.cs.ServerMessages
 {
     class SendFinished
     {
-        public string finished;
+        public int orderIndex;
         public Object returned;
     }
 }

@@ -47,14 +47,23 @@ namespace Joueur.cs
                     unserializedArgs[i++] = gameManager.Unserialize(arg);
                 }
 
-                var returned = method.Invoke(this, unserializedArgs);
+                try
+                {
+                    var returned = method.Invoke(this, unserializedArgs);
 
-                return returned;
+                    return returned;
+                }
+                catch(Exception exception)
+                {
+                    ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "AI errored while executing order '" + order + "'.");
+                }
             }
             else
             {
-                throw new Exception("Error: could not find order method for '" + order + "'");
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.REFLECTION_FAILED, "Could not find a method for the AI to execute order '" + order + "'.");
             }
+
+            return null; // should not reach here
         }
     }
 }

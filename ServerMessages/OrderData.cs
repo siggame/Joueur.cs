@@ -9,7 +9,8 @@ namespace Joueur.cs.ServerMessages
 {
     class OrderData : ReceivedData
     {
-        public string order;
+        public string name;
+        public int index;
         public List<JToken> args;
     }
 }

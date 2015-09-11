@@ -330,10 +330,10 @@ namespace Joueur.cs
 
         private void AutoHandleOrder(ServerMessages.OrderData data)
         {
-            Object returned = this.AI.DoOrder(data.order, data.args);
+            Object returned = this.AI.DoOrder(data.name, data.args);
 
             this.Send("finished", new ServerMessages.SendFinished() {
-                finished = data.order,
+                orderIndex = data.index,
                 returned = returned
             });
         }
