@@ -14,6 +14,8 @@ namespace Joueur.cs
         private BaseGame Game;
         private IDictionary<string, string> ServerConstants;
         private IDictionary<string, BaseGameObject> GameObjects;
+        private string DELTA_LIST_LENGTH = null;
+        private string DELTA_REMOVED = null;
 
         public GameManager(BaseGame game, BaseAI ai)
         {
@@ -25,6 +27,8 @@ namespace Joueur.cs
         public void SetConstants(IDictionary<string, string> constants)
         {
             this.ServerConstants = constants;
+            this.DELTA_LIST_LENGTH = constants["DELTA_LIST_LENGTH"];
+            this.DELTA_REMOVED = constants["DELTA_REMOVED"];
         }
 
         public string CSharpCase(string str)
@@ -138,7 +142,7 @@ namespace Joueur.cs
 
         private IList DeltaMergeList(IList list, JObject delta)
         {
-            int listLength = delta[this.ServerConstants["DELTA_ARRAY_LENGTH"]].ToObject<int>();
+            int listLength = delta[this.DELTA_LIST_LENGTH].ToObject<int>();
 
             // resize the list
             while (list.Count < listLength)
@@ -153,7 +157,7 @@ namespace Joueur.cs
 
             foreach (var item in delta)
             {
-                if (item.Key == this.ServerConstants["DELTA_ARRAY_LENGTH"])
+                if (item.Key == this.DELTA_LIST_LENGTH)
                 {
                     continue; // because we don't care about the length anymore
                 }
@@ -214,7 +218,7 @@ namespace Joueur.cs
 
         private bool IsDeltaList(JObject jobject)
         {
-            var jtoken = jobject[this.ServerConstants["DELTA_ARRAY_LENGTH"]];
+            var jtoken = jobject[this.DELTA_LIST_LENGTH];
             return (jtoken != null && jtoken.Type == JTokenType.Integer);
         }
 
@@ -230,7 +234,7 @@ namespace Joueur.cs
             }
 
             var str = (string)obj;
-            return str == this.ServerConstants["DELTA_REMOVED"];
+            return (str == this.DELTA_REMOVED);
         }
 
         public T GetValueFromJToken<T>(JToken jtoken)
