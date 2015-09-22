@@ -87,16 +87,16 @@ arg_strings = []
 %>        /// <param name="${arg_parms['name']}">${arg_parms['description']}</param>
 % endfor
 % endif
-% if function_parms['returns'] != None:
+% if function_parms['returns']:
         /// <returns>${function_parms['returns']['description']}</returns>
 % endif
-        public ${shared['c#']['type'](function_parms['returns']['type'])} ${upcase_first(function_name)}(${", ".join(arg_strings)})
+        public ${shared['c#']['type'](function_parms['returns']['type']) if function_parms['returns'] else "void"} ${upcase_first(function_name)}(${", ".join(arg_strings)})
         {
 ${merge("            // ", function_name,
 """            // Put your game logic here for {0}
             return {1};
-""".format(function_name, shared['c#']['default'](function_parms['returns']['type'], function_parms['returns']['default'])))
-}
+""".format(function_name, shared['c#']['default'](function_parms['returns']['type'], function_parms['returns']['default']) if function_parms['returns'] else "")
+)}
         }
 % endfor
 
