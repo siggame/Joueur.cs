@@ -12,5 +12,6 @@ namespace Joueur.cs.ServerMessages
         public string clientType = "C#";
         public string playerName = "C# Player";
         public string password;
+        public string gameSettings;
     }
 }
