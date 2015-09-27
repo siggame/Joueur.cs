@@ -28,6 +28,12 @@ namespace Joueur.cs
             // the inheriting AI can add code to this inherited function
         }
 
+        public virtual void Invalid(string message)
+        {
+            // the inheriting AI can add code to this inherited function
+            System.Console.Error.WriteLine("INVALID: " + message);
+        }
+
         public virtual void GameUpdated()
         {
             // the inheriting AI can add code to this inherited function

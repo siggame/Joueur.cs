@@ -215,6 +215,10 @@ namespace Joueur.cs
                         case "order":
                             receivedEvent.data = deserialized["data"].ToObject<ServerMessages.OrderData>();
                             break;
+                        case "invalid":
+                        case "fatal":
+                            receivedEvent.data = deserialized["data"].ToObject<ServerMessages.InvalidData>();
+                            break;
                         default:
                             if (deserialized["data"] != null)
                             {
@@ -286,14 +290,21 @@ namespace Joueur.cs
             }
         }
 
-        private void AutoHandleInvalid(ServerMessages.ReceivedData data)
+        private void AutoHandleInvalid(ServerMessages.InvalidData data)
         {
-            ErrorHandler.HandleError(ErrorHandler.ErrorCode.INVALID_EVENT, "Got invalid event.");
+            try
+            {
+                this.AI.Invalid(data.message);
+            }
+            catch (Exception exception)
+            {
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "AI threw unhandled exception during GameUpdated()");
+            }
         }
 
-        private void AutoHandleUnauthenticated(ServerMessages.ReceivedData data)
+        private void AutoHandleFatal(ServerMessages.InvalidData data)
         {
-            ErrorHandler.HandleError(ErrorHandler.ErrorCode.UNAUTHENTICATED, "Could not log into server.");
+            ErrorHandler.HandleError(ErrorHandler.ErrorCode.FATAL_EVENT, "Got fatal error: " + data.message);
         }
 
         private void AutoHandleOver(ServerMessages.ReceivedData data)
