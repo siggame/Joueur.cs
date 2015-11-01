@@ -86,6 +86,7 @@ return_type = None
 % endfor
             });
         }
+
 % endfor
 
 ${merge("        // ", "methods", "        // you can add addtional method(s) here.")}
