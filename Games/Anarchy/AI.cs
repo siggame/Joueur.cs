@@ -19,11 +19,11 @@ namespace Joueur.cs.Games.Anarchy
         /// <summary>
         /// This is the Game object itself, it contains all the information about the current game
         /// </summary>
-        public readonly Checkers.Game Game;
+        public readonly Anarchy.Game Game;
         /// <summary>
         /// This is your AI's player. This AI class is not a player, but it should command this Player.
         /// </summary>
-        public readonly Checkers.Player Player;
+        public readonly Anarchy.Player Player;
         #pragma warning restore 0169
         #pragma warning restore 0649
 
@@ -95,6 +95,72 @@ namespace Joueur.cs.Games.Anarchy
         {
             // <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             // Put your game logic here for runTurn
+
+            // Get my first warehouse
+            Warehouse warehouse = Player.Warehouses[0];
+            if(canBeBribed(warehouse))
+            {
+                Building target = Player.OtherPlayer.Buildings[0];
+                // Make sure the target is alive
+                if(Player.BribesRemaining > 0 && target.Health > 0)
+                {
+                    // Ignite the first enemy building
+                    warehouse.Ignite(target);
+                }
+            }
+            // Get my first fire department
+            FireDepartment fireDepartment = Player.FireDepartments[0];
+            if(canBeBribed(fireDepartment))
+            {
+                // Make sure to only use if my warehouse is on fire
+                if(Player.BribesRemaining > 0 && warehouse.Fire > 0)
+                {
+                    // Extinguish my first building
+                    fireDepartment.Extinguish(warehouse);
+                }
+            }
+            // Get my first police department
+            PoliceDepartment policeDepartment = Player.PoliceDepartments[0];
+            if(canBeBribed(policeDepartment))
+            {
+                Warehouse target = Player.OtherPlayer.Warehouses[0];
+                // Make sure the target is alive and has exposure
+                if(Player.BribesRemaining > 0 && target.Health > 0 && target.Exposure > 0)
+                {
+                    // Raid the first enemy warehouse
+                    policeDepartment.Raid(target);
+                }
+            }
+            // Get my first weather station
+            WeatherStation weatherStation1 = Player.WeatherStations[0];
+            if(canBeBribed(weatherStation1))
+            {
+                if(Player.BribesRemaining > 0)
+                {
+                    // Make sure the intensity isn't at max
+                    if(Game.NextForecast.Intensity < Game.MaxForecastIntensity)
+                    {
+                        weatherStation1.Intensify(false);
+                    }
+                    else
+                    {
+                        // Otherwise decrease the intensity
+                        weatherStation1.Intensify(true);
+                    }
+                }
+            }
+            // Get my second weather station
+            WeatherStation weatherStation2 = Player.WeatherStations[1];
+            if (canBeBribed(weatherStation2))
+            {
+                bool clockwise = true;
+                if (Player.BribesRemaining > 0)
+                {
+                    // Rotate counter-clockwise
+                    weatherStation2.Rotate(clockwise);
+                }
+            }
+
             return true;
             // <<-- /Creer-Merge: runTurn -->>
         }
@@ -102,6 +168,19 @@ namespace Joueur.cs.Games.Anarchy
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional methods here for your AI to call
+
+        /// <summary>
+        /// Convenience method for checking if you can use a bribe on a building
+        /// </summary>
+        /// <remarks>
+        /// This is an example of how you can create your own methods to use
+        /// </remarks>
+        /// <returns>true if building can be bribed this turn, false if the building cannot be bribed this turn</returns>
+        public bool canBeBribed(Building building)
+        {
+            // Make sure it has health, hasn't been bribed, and you are the owner
+            return (building.Health > 0 || building.Owner == Player || !building.Bribed);
+        }
         // <<-- /Creer-Merge: methods -->>
         #endregion
     }

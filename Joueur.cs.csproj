@@ -55,6 +55,7 @@
     <Compile Include="Joueur\GameManager.cs" />
     <Compile Include="Joueur\Client.cs" />
     <Compile Include="Joueur\ServerMessages\InvalidData.cs" />
+    <Compile Include="Joueur\ServerMessages\OverData.cs" />
     <Compile Include="Main.cs" />
     <!-- This tells Visual Studio to grab all the game directories (and thier files) inside the Games/ folder. If you do anything to force Visual Studio to update this csproj it will probably overwrite this with the actual directories, breaking forward compatibility with new games. You are advised to review your comits to make sure this line stays -->
     <Compile Include="Games\**" />
