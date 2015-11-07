@@ -215,6 +215,9 @@ namespace Joueur.cs
                         case "order":
                             receivedEvent.data = deserialized["data"].ToObject<ServerMessages.OrderData>();
                             break;
+                        case "over":
+                            receivedEvent.data = deserialized["data"].ToObject<ServerMessages.OverData>();
+                            break;
                         case "invalid":
                         case "fatal":
                             receivedEvent.data = deserialized["data"].ToObject<ServerMessages.InvalidData>();
@@ -307,7 +310,7 @@ namespace Joueur.cs
             ErrorHandler.HandleError(ErrorHandler.ErrorCode.FATAL_EVENT, "Got fatal error: " + data.message);
         }
 
-        private void AutoHandleOver(ServerMessages.ReceivedData data)
+        private void AutoHandleOver(ServerMessages.OverData data)
         {
             var won = true;
             var reason = "unknown reason";
@@ -333,6 +336,11 @@ namespace Joueur.cs
             catch(Exception exception)
             {
                 ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "AI errored duing Ended(won, reason)");
+            }
+
+            if (data.message != String.Empty)
+            {
+                Console.WriteLine(data.message);
             }
 
             this.Disconnect();
