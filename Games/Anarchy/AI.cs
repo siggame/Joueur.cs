@@ -134,7 +134,7 @@ namespace Joueur.cs.Games.Anarchy
 
                     }
                 }
-                
+
             }
             // Get my first police department
             PoliceDepartment policeDepartment = Player.PoliceDepartments[0];
