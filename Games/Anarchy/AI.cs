@@ -100,24 +100,41 @@ namespace Joueur.cs.Games.Anarchy
             Warehouse warehouse = Player.Warehouses[0];
             if(canBeBribed(warehouse))
             {
-                Building target = Player.OtherPlayer.Buildings[0];
-                // Make sure the target is alive
-                if(Player.BribesRemaining > 0 && target.Health > 0)
+                // Find the first enemy building that is not the headquarters
+                foreach(var target in Player.OtherPlayer.Buildings)
                 {
-                    // Ignite the first enemy building
-                    warehouse.Ignite(target);
+                    if(target != Player.OtherPlayer.Headquarters)
+                    {
+                        // Make sure the target is alive
+                        if (Player.BribesRemaining > 0 && target.Health > 0)
+                        {
+                            // Ignite the target building
+                            warehouse.Ignite(target);
+                            break;
+                        }
+                    }
                 }
             }
             // Get my first fire department
             FireDepartment fireDepartment = Player.FireDepartments[0];
             if(canBeBribed(fireDepartment))
             {
-                // Make sure to only use if my warehouse is on fire
-                if(Player.BribesRemaining > 0 && warehouse.Fire > 0)
+                // Find my first building that is not the headquarters
+                foreach(var building in Player.Buildings)
                 {
-                    // Extinguish my first building
-                    fireDepartment.Extinguish(warehouse);
+                    if(building != Player.Headquarters)
+                    {
+                        // Make sure to only use if my warehouse is on fire
+                        if (Player.BribesRemaining > 0 && warehouse.Fire > 0)
+                        {
+                            // Extinguish my building
+                            fireDepartment.Extinguish(building);
+                            break;
+                        }
+
+                    }
                 }
+                
             }
             // Get my first police department
             PoliceDepartment policeDepartment = Player.PoliceDepartments[0];
