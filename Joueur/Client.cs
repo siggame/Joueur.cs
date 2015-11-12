@@ -329,6 +329,8 @@ namespace Joueur.cs
                 }
             }
 
+            Console.WriteLine("Game is over. " + (won ? "I won!" : "I Lost :(") + " because " + reason);
+
             try
             {
                 this.AI.Ended(won, reason);
@@ -361,11 +363,21 @@ namespace Joueur.cs
 
         public T RunOnServer<T>(BaseGameObject caller, string functionName, IDictionary<string, object> args = null)
         {
+            IDictionary<string, object> serialized = null;
+            if (args != null)
+            {
+                serialized = new Dictionary<string, object>();
+                foreach (string key in args.Keys)
+                {
+                    serialized.Add(key, Client.Instance.GameManager.SerializeSafe(args[key]));
+                }
+            }
+
             this.Send("run", new ServerMessages.RunMessage() 
                 {
                     caller = this.GameManager.SerializeGameObject(caller),
                     functionName = functionName,
-                    args = args
+                    args = serialized
                 }
             );
 
