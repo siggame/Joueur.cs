@@ -19,7 +19,7 @@ namespace Joueur.cs
                 new ArgParser.Argument(new string[] {"-s", "--server"}, "server", "the url to the server you want to connect to e.g. locahost:3000", false, "127.0.0.1"),
                 new ArgParser.Argument(new string[] {"-p", "--port"}, "port", "the port to connect to on the server. Can be defined on the server arg via server:port", false, 3000),
                 new ArgParser.Argument(new string[] {"-n", "--name"}, "name", "the name you want to use as your AI\'s player name. This over-rides the name you set in your code"),
-                new ArgParser.Argument(new string[] {"-r", "--session"}, "session", "the requested game session you want to play on the server", false, "*"),
+                new ArgParser.Argument(new string[] {"-r", "--session"}, "requestedSession", "the requested game session you want to play on the server", false, "*"),
                 new ArgParser.Argument(new string[] {"-w", "--password"}, "password", "the password required for authentication on official servers"),
                 new ArgParser.Argument(new string[] {"--gameSettings"}, "gameSettings", "Any settings for the game server to force. Must be url parms formatted (key=value&otherKey=otherValue)"),
                 new ArgParser.Argument(new string[] {"--printIO"}, "printIO", "(debugging) print IO through the TCP socket to the terminal", false, null, ArgParser.Argument.Store.True),
@@ -71,7 +71,8 @@ namespace Joueur.cs
                     playerName = playerName,
                     gameName = gameName,
                     password = password,
-                    gameSettings = gameSettings
+                    gameSettings = gameSettings,
+                    requestedSession = requestedSession
                 }
             );
 
