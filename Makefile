@@ -12,4 +12,4 @@ core:
 	xbuild /p:Configuration=Release Joueur.cs.sln
 
 clean:
-	rm -rf ./bin ./obj ./packages
+	rm -rf ./bin ./obj ./packages ./nuget.exe ./.nuget/NuGet.exe
