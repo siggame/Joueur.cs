@@ -36,7 +36,9 @@ namespace Joueur.cs
         public int Port { get; private set; }
         public bool PrintIO { get; private set; }
         private const char EOT_CHAR = (char) 4;
+        #pragma warning disable 0414 // disable warnings. competitors dont need to see our errors
         private BaseGame Game;
+        #pragma warning restore 0414
         private BaseAI AI;
         private BaseGameObject AIsPlayer;
         public GameManager GameManager;

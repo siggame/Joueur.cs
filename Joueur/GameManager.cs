@@ -10,9 +10,11 @@ namespace Joueur.cs
 {
     class GameManager
     {
-        private BaseAI AI;
         private BaseGame Game;
+        #pragma warning disable 0414 // disable warnings. competitors dont need to see our errors
+        private BaseAI AI;
         private IDictionary<string, string> ServerConstants;
+        #pragma warning restore 0414
         private IDictionary<string, BaseGameObject> GameObjects;
         private string DELTA_LIST_LENGTH = null;
         private string DELTA_REMOVED = null;
@@ -121,8 +123,6 @@ namespace Joueur.cs
                 var classPropertyKey = this.CSharpCase(item.Key);
 
                 var itemProperty = state.GetType().GetProperty(classPropertyKey);
-                var i = state.GetType().GetField(classPropertyKey);
-
                 if (itemProperty != null)
                 {
                     try
