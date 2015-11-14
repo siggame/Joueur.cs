@@ -224,7 +224,7 @@ namespace Joueur.cs
 
         private bool IsDeltaRemoved(object obj)
         {
-            if (obj != null && (obj.GetType() == typeof(JToken) || obj.GetType() == typeof(JObject)))
+            if (obj != null && (obj.GetType() == typeof(JValue) || obj.GetType() == typeof(JToken) || obj.GetType() == typeof(JObject)))
             {
                 var jtoken = obj as JToken;
                 if (jtoken.Type != JTokenType.String)
