@@ -227,7 +227,7 @@ namespace Joueur.cs
                         default:
                             if (deserialized["data"] != null)
                             {
-                                receivedEvent.data = deserialized["data"].ToObject<JObject>();
+                                receivedEvent.data = deserialized["data"].ToObject<JToken>();
                             }
                             break;
                     }
