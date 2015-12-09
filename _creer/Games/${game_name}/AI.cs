@@ -17,11 +17,11 @@ namespace Joueur.cs.Games.${game_name}
         /// <summary>
         /// This is the Game object itself, it contains all the information about the current game
         /// </summary>
-        public readonly Checkers.Game Game;
+        public readonly ${game_name}.Game Game;
         /// <summary>
         /// This is your AI's player. This AI class is not a player, but it should command this Player.
         /// </summary>
-        public readonly Checkers.Player Player;
+        public readonly ${game_name}.Player Player;
         #pragma warning restore 0169
         #pragma warning restore 0649
 
