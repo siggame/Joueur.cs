@@ -331,7 +331,9 @@ namespace Joueur.cs
                 }
             }
 
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Game is over. " + (won ? "I won!" : "I Lost :(") + " because " + reason);
+            Console.ResetColor();
 
             try
             {
@@ -344,7 +346,9 @@ namespace Joueur.cs
 
             if (data.message != String.Empty)
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(data.message);
+                Console.ResetColor();
             }
 
             this.Disconnect();

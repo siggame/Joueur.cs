@@ -48,16 +48,27 @@ namespace Joueur.cs
             {
                 Type gameType = Type.GetType("Joueur.cs.Games." + gameName + ".Game");
                 game = (BaseGame)Activator.CreateInstance(gameType, true);
+            }
+            catch(Exception exception)
+            {
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.GAME_NOT_FOUND, exception, "Could create Game for game name '" + gameName + "'");
+            }
 
+            try
+            {
                 Type aiType = Type.GetType("Joueur.cs.Games." + gameName + ".AI");
                 ai = (BaseAI)Activator.CreateInstance(aiType, true);
             }
             catch(Exception exception)
             {
-                ErrorHandler.HandleError(ErrorHandler.ErrorCode.GAME_NOT_FOUND, exception, "Could create Game and AI for game name '" + gameName + "'");
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "Could create AI for game name '" + gameName + "'");
             }
 
             Client client = Client.Instance;
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Connecting to: " + server + ":" + port);
+            Console.ResetColor();
 
             client.ConnectTo(game, ai, server, port, printIO);
 
@@ -78,15 +89,18 @@ namespace Joueur.cs
 
             var lobbiedData = (ServerMessages.LobbiedData)client.WaitForEvent("lobbied");
 
-            Console.WriteLine("In Lobby for game '" + lobbiedData.gameName + "' in session '" + lobbiedData.gameSession + "'.");
-
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("In lobby for game '" + lobbiedData.gameName + "' in session '" + lobbiedData.gameSession + "'.");
+            Console.ResetColor();
 
             // hackish way to set the client in the game. we don't want to expose public methods that competitors may see via intellisense and try to use
             client.GameManager.SetConstants(lobbiedData.constants);
 
             var startData = (ServerMessages.StartData)client.WaitForEvent("start");
             
-            Console.WriteLine("Game starting");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Game is starting.");
+            Console.ResetColor();
 
             // set the AI's game and player via reflection
             try
