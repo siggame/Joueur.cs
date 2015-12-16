@@ -7,7 +7,8 @@ namespace Joueur.cs
 {
     static class ErrorHandler
     {
-        public enum ErrorCode {
+        public enum ErrorCode
+        {
             NONE = 0,
             INVALID_ARGS = 20,
             COULD_NOT_CONNECT = 21,
@@ -31,7 +32,8 @@ namespace Joueur.cs
 
         public static void HandleError(ErrorCode code, System.Exception exception = null, string message = null)
         {
-            Console.Error.WriteLine("Error: " + Enum.GetName(typeof(ErrorCode), code));
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Error.WriteLine("---\nError: " + Enum.GetName(typeof(ErrorCode), code));
             Console.Error.WriteLine("---");
 
             if (message != null)
@@ -46,6 +48,7 @@ namespace Joueur.cs
                 Console.Error.WriteLine("---");
             }
 
+            Console.ResetColor();
             Client.Instance.Disconnect();
 
             System.Environment.Exit((int)code);

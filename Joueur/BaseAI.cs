@@ -31,7 +31,9 @@ namespace Joueur.cs
         public virtual void Invalid(string message)
         {
             // the inheriting AI can add code to this inherited function
-            System.Console.Error.WriteLine("INVALID: " + message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Invalid: " + message);
+            Console.ResetColor();
         }
 
         public virtual void GameUpdated()
