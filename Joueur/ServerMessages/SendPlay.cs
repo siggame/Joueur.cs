@@ -11,6 +11,7 @@ namespace Joueur.cs.ServerMessages
         public string requestedSession = "*";
         public string clientType = "C#";
         public string playerName = "C# Player";
+        public int playerIndex = -1;
         public string password;
         public string gameSettings;
     }
