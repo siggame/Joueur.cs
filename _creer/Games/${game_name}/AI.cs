@@ -9,6 +9,9 @@ ${merge("// ", "usings", "// you can add addtional using(s) here")}
 
 namespace Joueur.cs.Games.${game_name}
 {
+    /// <summary>
+    /// This is where you build your AI for the ${game_name} game.
+    /// </summary>
     class AI : BaseAI
     {
         #region Properties
