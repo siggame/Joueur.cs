@@ -7,6 +7,9 @@ using System.Text;
 
 namespace Joueur.cs.Games.Chess
 {
+    /// <summary>
+    /// This is where you build your AI for the Chess game.
+    /// </summary>
     class AI : BaseAI
     {
         #region Properties

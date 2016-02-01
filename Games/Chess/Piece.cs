@@ -56,7 +56,7 @@ namespace Joueur.cs.Games.Chess
 
         #region Methods
         /// <summary>
-        /// Creates a new instance of {$obj_key}. Used during game initialization, do not call directly.
+        /// Creates a new instance of Piece. Used during game initialization, do not call directly.
         /// </summary>
         protected Piece() : base()
         {
