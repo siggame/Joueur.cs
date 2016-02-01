@@ -5,6 +5,9 @@
 nuget.exe
 .nuget/NuGet.exe
 
+# Sandcastle Help File Builder output
+Help/
+
 # User-specific files
 *.suo
 *.user
