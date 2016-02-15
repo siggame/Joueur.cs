@@ -75,9 +75,9 @@ namespace Joueur.cs.Games.Chess
 
 
         /// <summary>
-        /// This is called every time the AI is asked to respond with a command during their turn
+        /// This is called every time it is this AI.player's turn.
         /// </summary>
-        /// <returns>represents if you want to end your turn. true means end the turn, false means to keep your turn going and re-call runTurn()</returns>
+        /// <returns>Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.</returns>
         public bool RunTurn()
         {
             // Here is where you'll want to code your AI.
@@ -144,7 +144,7 @@ namespace Joueur.cs.Games.Chess
 
             // 2) print the opponent's last move to the console
             if (this.Game.Moves.Count > 0) {
-                Console.WriteLine("Opponent's Last Move: '" + this.Game.Moves.Last() + "'");
+                Console.WriteLine("Opponent's Last Move: '" + this.Game.Moves.Last().San + "'");
             }
 
             // 3) print how much time remaining this AI has to calculate moves
