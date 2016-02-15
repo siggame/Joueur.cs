@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Please do not modify this file.
+// Instead have a look at `README.md` for how to start writing you AI.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
