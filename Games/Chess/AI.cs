@@ -103,14 +103,14 @@ namespace Joueur.cs.Games.Chess
                 else // board
                 {
                     str += " " + rank + " |";
-                    // fill in all the ranks with pieces at the current rank
-                    for (int rankOffset = 0; rankOffset < 8; rankOffset++)
+                    // fill in all the ranks with pieces at the current file
+                    for (int fileOffset = 0; fileOffset < 8; fileOffset++)
                     {
-                        string file = "" + (char)(((int)"a"[0]) + rankOffset); // start at a, with with rank offset increasing the char;
+                        string file = "" + (char)(((int)"a"[0]) + fileOffset); // start at a, with with file offset increasing the char;
                         Piece currentPiece = null;
                         foreach (var piece in this.Game.Pieces)
                         {
-                            if (piece.File == file && piece.Rank == rank) // then we found the piece at (rank, file)
+                            if (piece.File == file && piece.Rank == rank) // then we found the piece at (file, rank)
                             {
                                 currentPiece = piece;
                                 break;
