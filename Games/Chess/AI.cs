@@ -103,7 +103,7 @@ namespace Joueur.cs.Games.Chess
                 else // board
                 {
                     str += " " + rank + " |";
-                    // fill in all the ranks with pieces at the current file
+                    // fill in all the files with pieces at the current rank
                     for (int fileOffset = 0; fileOffset < 8; fileOffset++)
                     {
                         string file = "" + (char)(((int)"a"[0]) + fileOffset); // start at a, with with file offset increasing the char;
