@@ -89,28 +89,28 @@ namespace Joueur.cs.Games.Chess
             //    4) makes a random (and probably invalid) move.
 
             // 1) print the board to the console
-            for (int file = 9; file >= -1; file--)
+            for (int rank = 9; rank >= -1; rank--)
             {
                 string str = "";
-                if (file == 9 || file == 0) // then the top or bottom of the board
+                if (rank == 9 || rank == 0) // then the top or bottom of the board
                 {
                     str = "   +------------------------+";
                 }
-                else if (file == -1) // then show the ranks
+                else if (rank == -1) // then show the ranks
                 {
                     str = "     a  b  c  d  e  f  g  h";
                 }
                 else // board
                 {
-                    str += " " + file + " |";
+                    str += " " + rank + " |";
                     // fill in all the ranks with pieces at the current rank
                     for (int rankOffset = 0; rankOffset < 8; rankOffset++)
                     {
-                        string rank = "" + (char)(((int)"a"[0]) + rankOffset); // start at a, with with rank offset increasing the char;
+                        string file = "" + (char)(((int)"a"[0]) + rankOffset); // start at a, with with rank offset increasing the char;
                         Piece currentPiece = null;
                         foreach (var piece in this.Game.Pieces)
                         {
-                            if (piece.Rank == rank && piece.File == file) // then we found the piece at (rank, file)
+                            if (piece.File == file && piece.Rank == rank) // then we found the piece at (rank, file)
                             {
                                 currentPiece = piece;
                                 break;
@@ -153,9 +153,9 @@ namespace Joueur.cs.Games.Chess
             // 4) make a random (and probably invalid) move.
             var rand = new Random();
             var randomPiece = this.Player.Pieces[rand.Next(this.Player.Pieces.Count)];
-            string randomRank = "" + (char)(((int)"a"[0]) + rand.Next(0, 8));
-            int randomFile = rand.Next(0, 8) + 1;
-            randomPiece.Move(randomRank, randomFile);
+            string randomFile = "" + (char)(((int)"a"[0]) + rand.Next(0, 8));
+            int randomRank = rand.Next(0, 8) + 1;
+            randomPiece.Move(randomFile, randomRank);
 
             return true; // to signify we are done with our turn.
         }
