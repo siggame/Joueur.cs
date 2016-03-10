@@ -47,14 +47,11 @@ namespace Joueur.cs
         private string ReceivedBuffer;
         private bool connected = false;
 
-        public void ConnectTo(BaseGame game, BaseAI ai, string server = "127.0.0.1", int port = 3000, bool printIO = false)
+        public void Connect(string server = "127.0.0.1", int port = 3000, bool printIO = false)
         {
-            this.Game = game;
-            this.AI = ai;
             this.Server = server;
             this.Port = port;
             this.PrintIO = printIO;
-            this.GameManager = new GameManager(game, ai);
 
             try
             {
@@ -66,6 +63,13 @@ namespace Joueur.cs
             }
 
             this.connected = true;
+        }
+
+        public void Setup(BaseGame game, BaseAI ai)
+        {
+            this.Game = game;
+            this.AI = ai;
+            this.GameManager = new GameManager(game, ai);
         }
 
         public void Send(string eventName, Object data)
@@ -84,7 +88,9 @@ namespace Joueur.cs
 
             if(this.PrintIO)
             {
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("TO SERVER <-- " + serialized);
+                Console.ResetColor();
             }
 
             try
@@ -182,7 +188,9 @@ namespace Joueur.cs
 
                 if (this.PrintIO)
                 {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("FROM SERVER --> " + responseData);
+                    Console.ResetColor();
                 }
 
                 string total = this.ReceivedBuffer + responseData;
