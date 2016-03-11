@@ -29,7 +29,7 @@ namespace Joueur.cs
                 new ArgParser.Argument(new string[] {"--printIO"}, "printIO", "(debugging) print IO through the TCP socket to the terminal", false, null, ArgParser.Argument.Store.True),
             }, (int)ErrorHandler.ErrorCode.INVALID_ARGS);
 
-            string gameName = argParser.GetValue<string>("game");
+            string gameAlias = argParser.GetValue<string>("game");
             string server = argParser.GetValue<string>("server");
             string playerName = argParser.GetValue<string>("name");
             int playerIndex = argParser.GetValue<int>("index");
@@ -46,9 +46,13 @@ namespace Joueur.cs
                 port = Int32.Parse(split[1]);
             }
 
-            BaseGame game = null;
-            BaseAI ai = null;
+            Client client = Client.Instance;
+            client.Connect(server, port, printIO);
 
+            client.Send("alias", gameAlias);
+            string gameName = client.WaitForEvent("named").ToString();
+
+            BaseGame game = null;
             try
             {
                 Type gameType = Type.GetType("Joueur.cs.Games." + gameName + ".Game");
@@ -59,6 +63,7 @@ namespace Joueur.cs
                 ErrorHandler.HandleError(ErrorHandler.ErrorCode.GAME_NOT_FOUND, exception, "Could create Game for game name '" + gameName + "'");
             }
 
+            BaseAI ai = null;
             try
             {
                 Type aiType = Type.GetType("Joueur.cs.Games." + gameName + ".AI");
@@ -69,13 +74,11 @@ namespace Joueur.cs
                 ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "Could create AI for game name '" + gameName + "'");
             }
 
-            Client client = Client.Instance;
-
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Connecting to: " + server + ":" + port);
             Console.ResetColor();
 
-            client.ConnectTo(game, ai, server, port, printIO);
+            client.Setup(game, ai);
 
             if (String.IsNullOrWhiteSpace(playerName))
             {
