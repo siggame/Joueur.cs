@@ -96,7 +96,7 @@ namespace Joueur.cs
                 case JTokenType.Boolean:
                     return jtoken.ToObject<bool>();
                 case JTokenType.Float:
-                    return jtoken.ToObject<float>();
+                    return jtoken.ToObject<double>();
                 case JTokenType.Integer:
                     var floatNum = jtoken.ToObject<float>();
                     var intNum = (int)floatNum;
