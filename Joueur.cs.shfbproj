@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <!-- The configuration and platform will be used to determine which assemblies to include from solution and
-				 project documentation sources -->
+         project documentation sources -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
@@ -29,29 +29,54 @@
     </DocumentationSources>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="False" />
-<NamespaceSummaryItem name="Joueur.cs.Games.GAME_NAME" isDocumented="True">&lt;h1&gt;GAME_NAME C# Client&lt;/h1&gt;
-&lt;p&gt;This is the root of your AI. Stay out of the Joueur/ folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in &lt;span style="display: inline; font-family: Consolas, Courier, monospace !important"&gt;Games/GAME_NAME/&lt;/span&gt;, with your very own AI living in &lt;span style="display: inline; font-family: Consolas, Courier, monospace !important"&gt;Games/GAME_NAME/ai.cs&lt;/span&gt; for you to make smarter.&lt;/p&gt;
+<NamespaceSummaryItem name="Joueur.cs.Games.GAME_NAME" isDocumented="True">
+&lt;h1&gt;GAME_NAME C# Client&lt;/h1&gt;
+
+&lt;p&gt;This is the root of your AI. Stay out of the Joueur/ folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in &lt;span style=&quot;font-family: monospace;&quot;&gt;Games/GAME_NAME/&lt;/span&gt;, with your very own AI living in &lt;span style=&quot;font-family: monospace;&quot;&gt;Games/GAME_NAME/ai.cs&lt;/span&gt; for you to make smarter.&lt;/p&gt;
 
 &lt;h2&gt;How to Run&lt;/h2&gt;
+
 &lt;p&gt;This client has been tested and confirmed to work on the Campus Windows machines loaded with Visual Studio 2013/2015, but it can work on your own Windows/Linux/Mac machines if you desire. It will &lt;strong&gt;not&lt;/strong&gt; work on the campus rc##xcs213 Linux machines however, as their version of mono is out of date.&lt;/p&gt;
+
 &lt;h3&gt;Windows&lt;/h3&gt;
-&lt;p&gt;Simply &lt;a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx"&gt;installing Visual Studio 2013 or newer&lt;/a&gt; should give you everything you need, namely C#. Just open up the sln file in this repo and build + run it.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: You’ll need to add &lt;a href="https://msdn.microsoft.com/en-us/library/cs8hbt1w(v=vs.90).aspx"&gt;command line args in visual studio&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The args should be: &lt;span style="display: inline; font-family: Consolas, Courier, monospace !important"&gt;GAME_NAME -s r99acm.device.mst.edu -r MyOwnGameSession&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Simply &lt;a href=&quot;https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx&quot;&gt;installing Visual Studio 2013 or newer&lt;/a&gt; should give you everything you need, namely C#. Just open up the sln file in this repo and build + run it.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: You&#39;ll need to add &lt;a href=&quot;https://msdn.microsoft.com/en-us/library/cs8hbt1w(v=vs.90&quot;&gt;command line args in visual studio&lt;/a&gt;.aspx).&lt;/p&gt;
+
+&lt;p&gt;The args should be: &lt;code&gt;GAME_NAME -s r99acm.device.mst.edu -r MyOwnGameSession&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3&gt;Linux&lt;/h3&gt;
-&lt;p&gt;You’ll need the latest version of Mono (v4.0.4 at the moment). The package on Ubuntu’s default packages it out of date and can’t build this project. Luckily if you follow &lt;a href="http://www.mono-project.com/docs/getting-started/install/linux/"&gt;Mono’s own guide&lt;/a&gt; on Linux installation they walk you through installing the latest version.&lt;/p&gt;
-&lt;p&gt;After that just do:&lt;/p&gt;
-&lt;code&gt;make
-.\testRun MyOwnGameSession
-&lt;/code&gt;
+
+&lt;p&gt;You&#39;ll need the latest version of Mono (v4.0.4 at the moment). The package on Ubuntu&#39;s default packages it out of date and can&#39;t build this project. Luckily if you follow &lt;a href=&quot;http://www.mono-project.com/docs/getting-started/install/linux/&quot;&gt;Mono&#39;s own guide&lt;/a&gt; on Linux installation they walk you through installing the latest version. But if you don&#39;t want to follow that guide do the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+echo &quot;deb http://download.mono-project.com/repo/debian wheezy main&quot; | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
+sudo apt-get update
+echo &quot;deb http://download.mono-project.com/repo/debian wheezy-apache24-compat main&quot; | sudo tee -a /etc/apt/sources.list.d/mono-xamarin.list
+sudo apt-get install mono-devel mono-complete referenceassemblies-pcl ca-certificates-mono
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;After those dependencies install, to run the client:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+make
+./testRun MyOwnGameSession
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;h2&gt;Other Notes&lt;/h2&gt;
-&lt;p&gt;Try not to modify the &lt;span style="display: inline; font-family: Consolas, Courier, monospace !important"&gt;.csproj&lt;/span&gt; file. The Arena runs this via Mono, and minor changes can break it for seemingly no reason. Every file in the &lt;span style="display: inline; font-family: Consolas, Courier, monospace !important"&gt;Games/&lt;/span&gt; directory is told to be auto included for compilation anyways, so if you are just adding code you shouldn’t have a need to modify it anyways.&lt;/p&gt;
-&lt;p&gt;
-It is possible that on your Missouri S&amp;T S-Drive this client will not run properly. This is not a fault with the client, but rather the school's S-Drive implimentation changing some file permissions during run time. We cannot control this. Instead, we recommend cloning your repo outside the S-Drive and use an SCP program like &lt;a href="https://winscp.net/eng/download.php"&gt;WinSCP&lt;/a&gt; to edit the files in Windows using whatever IDE you want if you want to code in Windows, but compile in Linux.
-&lt;/p&gt;
-</NamespaceSummaryItem></NamespaceSummaries>
+
+&lt;p&gt;Try not to modify the &lt;code&gt;.csproj&lt;/code&gt; file. The Arena runs this via Mono, and minor changes can break it for seemingly no reason. Every file in the &lt;code&gt;Games/&lt;/code&gt; directory is told to be auto included for compilation anyways, so if you are just adding code you shouldn&#39;t have a need to modify it anyways.&lt;/p&gt;
+
+&lt;p&gt;It is possible that on your Missouri S&amp;amp;T S-Drive this client will not run properly. This is not a fault with the client, but rather the school&#39;s S-Drive implimentation changing some file permissions during run time. We cannot control this. Instead, we recommend cloning your repo outside the S-Drive and use an SCP program like &lt;a href=&quot;https://winscp.net/eng/download.php&quot;&gt;WinSCP&lt;/a&gt; to edit the files in Windows using whatever IDE you want if you want to code in Windows, but compile in Linux.&lt;/p&gt;
+
+
+</NamespaceSummaryItem>
+<NamespaceSummaryItem name="Joueur.cs.Games.Spiders" isDocumented="False">
+<NamespaceSummaryItem name="Joueur.cs.Games.Anarchy" isDocumented="False" />
+<NamespaceSummaryItem name="Joueur.cs.Games.Checkers" isDocumented="False" />
+<NamespaceSummaryItem name="Joueur.cs.Games.Chess" isDocumented="False" /></NamespaceSummaries>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>False</NamespaceGrouping>
@@ -71,7 +96,7 @@ It is possible that on your Missouri S&amp;T S-Drive this client will not run pr
     </ApiFilter>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
-			 the build.  The others are optional common platform types that may appear. -->
+       the build.  The others are optional common platform types that may appear. -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -91,7 +116,7 @@ It is possible that on your Missouri S&amp;T S-Drive this client will not run pr
   <!-- Import the SHFB build targets -->
   <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
   <!-- The pre-build and post-build event properties must appear *after* the targets file import in order to be
-			 evaluated correctly. -->
+       evaluated correctly. -->
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
