@@ -1,4 +1,3 @@
-// ${header}
 // ${obj['description']}
 <%include file="functions.noCreer" />
 using System;
