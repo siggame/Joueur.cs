@@ -27,6 +27,11 @@ namespace Joueur.cs.Games.Chess
         public int CurrentTurn { get; protected set; }
 
         /// <summary>
+        /// Forsyth–Edwards Notation, a notation that describes the game board.
+        /// </summary>
+        public string Fen { get; protected set; }
+
+        /// <summary>
         /// The maximum number of turns before the game will automatically end.
         /// </summary>
         public int MaxTurns { get; protected set; }
