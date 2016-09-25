@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Saloon
     {
         #region Properties
         /// <summary>
-        /// The direction any Cowboys hit by this will move, can be 'North', 'East', 'South', 'West'.
+        /// The direction any Cowboys hit by this will move, can be 'North', 'East', 'South', or 'West'.
         /// </summary>
         public string DrunkDirection { get; protected set; }
 
@@ -32,7 +32,7 @@ namespace Joueur.cs.Games.Saloon
         public Saloon.Tile Location { get; protected set; }
 
         /// <summary>
-        /// The Tile this Bottle will fly to next turn, if it does not impact anything on it's path.
+        /// The Tile this Bottle will fly to next turn, if it does not impact anything on its path between the two.
         /// </summary>
         public Saloon.Tile NextLocation { get; protected set; }
 

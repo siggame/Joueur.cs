@@ -47,6 +47,16 @@ namespace Joueur.cs.Games.Saloon
         public IList<string> Jobs { get; protected set; }
 
         /// <summary>
+        /// The number of Tiles in the map along the y (vertical) axis.
+        /// </summary>
+        public int MapHeight { get; protected set; }
+
+        /// <summary>
+        /// The number of Tiles in the map along the x (horizontal) axis.
+        /// </summary>
+        public int MapWidth { get; protected set; }
+
+        /// <summary>
         /// The maximum number of Cowboys a Player can bring into the saloon.
         /// </summary>
         public int MaxCowboys { get; protected set; }
@@ -71,6 +81,11 @@ namespace Joueur.cs.Games.Saloon
         /// </summary>
         public string Session { get; protected set; }
 
+        /// <summary>
+        /// All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
+        /// </summary>
+        public IList<Saloon.Tile> Tiles { get; protected set; }
+
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add addtional properties(s) here. None of them will be tracked or updated by the server.
@@ -91,6 +106,7 @@ namespace Joueur.cs.Games.Saloon
             this.Furnishings = new List<Saloon.Furnishing>();
             this.Jobs = new List<string>();
             this.Players = new List<Saloon.Player>();
+            this.Tiles = new List<Saloon.Tile>();
         }
 
 
