@@ -16,7 +16,7 @@ The args should be: `Chess -s r99acm.device.mst.edu -r MyOwnGameSession`
 
 ### Linux
 
-You'll need the latest version of Mono (v4.0.4 at the moment). The package on Ubuntu's default packages it out of date and can't build this project. Luckily if you follow [Mono's own guide](http://www.mono-project.com/docs/getting-started/install/linux/) on Linux installation they walk you through installing the latest version. But if you don't want to follow that guide do the following:
+You'll need the latest version of Mono (v4.0.4 at the moment). Ubuntu's default Mono package is out of date and can't build this project. Luckily if you follow [Mono's own guide](http://www.mono-project.com/docs/getting-started/install/linux/) on Linux installation they walk you through installing the latest version. But if you don't want to follow that guide, then do the following:
 
 ```
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
@@ -35,6 +35,6 @@ make
 
 ## Other Notes
 
-Try not to modify the `.csproj` file. The Arena runs this via Mono, and minor changes can break it for seemingly no reason. Every file in the `Games/` directory is told to be auto included for compilation anyways, so if you are just adding code you shouldn't have a need to modify it anyways.
+Try not to modify the `.csproj` file. The Arena runs this via Mono, and minor changes can break it for seemingly no reason. Every file in the `Games/` directory is told to be auto included for compilation anyways, so if you are just adding code you shouldn't have a need to modify it regardless, though Visual Studio may try to.
 
 It is possible that on your Missouri S&T S-Drive this client will not run properly. This is not a fault with the client, but rather the school's S-Drive implimentation changing some file permissions during run time. We cannot control this. Instead, we recommend cloning your repo outside the S-Drive and use an SCP program like [WinSCP](https://winscp.net/eng/download.php) to edit the files in Windows using whatever IDE you want if you want to code in Windows, but compile in Linux.
