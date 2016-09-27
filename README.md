@@ -1,10 +1,10 @@
 # GAME_NAME C# Client
 
-This is the root of your AI. Stay out of the Joueur/ folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in `Games/GAME_NAME/`, with your very own AI living in `Games/GAME_NAME/ai.cs` for you to make smarter.
+This is the root of your AI. Stay out of the `Joueur/` folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in `Games/GAME_NAME/`, with your very own AI living in `Games/GAME_NAME/ai.cs` for you to make smarter.
 
 ## How to Run
 
-This client has been tested and confirmed to work on the Campus Windows machines loaded with Visual Studio 2013/2015, but it can work on your own Windows/Linux/Mac machines if you desire. It will **not** work on the campus rc##xcs213 Linux machines however, as their version of mono is out of date.
+This client has been tested and confirmed to work on the Missour S&T Windows machines loaded with Visual Studio 2013/2015, but it can work on your own Windows/Linux/Mac machines if you desire. It will **not** work on the campus rc##xcs213 Linux machines however, as their version of Mono is out of date.
 
 ### Windows
 
