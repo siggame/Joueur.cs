@@ -93,21 +93,13 @@ namespace Joueur.cs.Games.Saloon
         }
 
         /// <summary>
-        /// The Cowboy that was previously a 'Young Gun', and has now been promoted to a different job if successful, null otherwise.
-        /// </summary>
-        public void Returns()
-        {
-            this.RunOnServer<object>("returns", new Dictionary<string, object> {
-            });
-        }
-
-        /// <summary>
         /// Sends in the Young Gun to the nearest Tile into the Saloon, and promotes them to a new job.
         /// </summary>
         /// <param name="job">The job you want the Young Gun being brought in to be called in to do, changing their job to it.</param>
-        public void SendIn(string job)
+        /// <returns>The Cowboy that was previously a 'Young Gun', and has now been promoted to a different job if successful, null otherwise.</returns>
+        public Saloon.Cowboy SendIn(string job)
         {
-            this.RunOnServer<object>("sendIn", new Dictionary<string, object> {
+            return this.RunOnServer<Saloon.Cowboy>("sendIn", new Dictionary<string, object> {
                 {"job", job}
             });
         }
