@@ -67,6 +67,11 @@ namespace Joueur.cs.Games.Saloon
         public int Score { get; protected set; }
 
         /// <summary>
+        /// 0 when not having a team siesta. When greater than 0 represents how many turns left for the team siesta to complete.
+        /// </summary>
+        public int Siesta { get; protected set; }
+
+        /// <summary>
         /// The amount of time (in ns) remaining for this AI to send commands.
         /// </summary>
         public double TimeRemaining { get; protected set; }
@@ -75,6 +80,11 @@ namespace Joueur.cs.Games.Saloon
         /// If the player won the game or not.
         /// </summary>
         public bool Won { get; protected set; }
+
+        /// <summary>
+        /// The only 'Yong Gun' Cowboy this player owns, or null if they called in their young gun during their turn.
+        /// </summary>
+        public Saloon.Cowboy YoungGun { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

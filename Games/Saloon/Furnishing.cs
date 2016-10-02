@@ -22,6 +22,11 @@ namespace Joueur.cs.Games.Saloon
         public int Health { get; protected set; }
 
         /// <summary>
+        /// If this Furnishing has been destroyed, and has been removed from the game.
+        /// </summary>
+        public bool IsDestroyed { get; protected set; }
+
+        /// <summary>
         /// True if this Furnishing is a piano and can be played, False otherwise.
         /// </summary>
         public bool IsPiano { get; protected set; }

@@ -17,9 +17,9 @@ namespace Joueur.cs.Games.Saloon
     {
         #region Properties
         /// <summary>
-        /// All the beer Bottles currently flying over this Tile.
+        /// The beer Bottle currently flying over this Tile.
         /// </summary>
-        public IList<Saloon.Bottle> Bottles { get; protected set; }
+        public Saloon.Bottle Bottle { get; protected set; }
 
         /// <summary>
         /// The Cowboy that is on this Tile, or null if empty.
@@ -42,24 +42,24 @@ namespace Joueur.cs.Games.Saloon
         public bool IsWall { get; protected set; }
 
         /// <summary>
-        /// The Tile above this one (x, y-1). Null if out of bounds of the map.
+        /// The Tile to the 'East' of this one (x+1, y). Null if out of bounds of the map.
         /// </summary>
-        public Saloon.Tile TileAbove { get; protected set; }
+        public Saloon.Tile TileEast { get; protected set; }
 
         /// <summary>
-        /// The Tile below this one (x, y+1). Null if out of bounds of the map.
+        /// The Tile to the 'North' of this one (x, y-1). Null if out of bounds of the map.
         /// </summary>
-        public Saloon.Tile TileBelow { get; protected set; }
+        public Saloon.Tile TileNorth { get; protected set; }
 
         /// <summary>
-        /// The Tile to the left of this one (x-1, y). Null if out of bounds of the map.
+        /// The Tile to the 'South' of this one (x, y+1). Null if out of bounds of the map.
         /// </summary>
-        public Saloon.Tile TileLeft { get; protected set; }
+        public Saloon.Tile TileSouth { get; protected set; }
 
         /// <summary>
-        /// The Tile to the right of this one (x+1, y). Null if out of bounds of the map.
+        /// The Tile to the 'West' of this one (x-1, y). Null if out of bounds of the map.
         /// </summary>
-        public Saloon.Tile TileRight { get; protected set; }
+        public Saloon.Tile TileWest { get; protected set; }
 
         /// <summary>
         /// The x (horizontal) position of this Tile.
@@ -84,7 +84,6 @@ namespace Joueur.cs.Games.Saloon
         /// </summary>
         protected Tile() : base()
         {
-            this.Bottles = new List<Saloon.Bottle>();
         }
 
 

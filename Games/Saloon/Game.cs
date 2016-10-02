@@ -82,6 +82,11 @@ namespace Joueur.cs.Games.Saloon
         public string Session { get; protected set; }
 
         /// <summary>
+        /// How long siestas are for a player's team.
+        /// </summary>
+        public int SiestaLength { get; protected set; }
+
+        /// <summary>
         /// All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
         /// </summary>
         public IList<Saloon.Tile> Tiles { get; protected set; }

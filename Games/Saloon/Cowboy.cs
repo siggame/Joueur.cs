@@ -57,11 +57,6 @@ namespace Joueur.cs.Games.Saloon
         public Saloon.Player Owner { get; protected set; }
 
         /// <summary>
-        /// How many turns this unit has remaining for their siesta. 0 means they are awake, and can act.
-        /// </summary>
-        public int Siesta { get; protected set; }
-
-        /// <summary>
         /// The Tile that this Cowboy is located on.
         /// </summary>
         public Saloon.Tile Tile { get; protected set; }
@@ -70,6 +65,11 @@ namespace Joueur.cs.Games.Saloon
         /// How many times this unit has been drunk before taking their siesta and reseting this to 0.
         /// </summary>
         public int Tolerance { get; protected set; }
+
+        /// <summary>
+        /// How many turns this unit has remaining before it is no longer busy and can `act()` or `play()` again.
+        /// </summary>
+        public int TurnsBusy { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
