@@ -19,7 +19,7 @@ namespace Joueur.cs.Games.Saloon
         /// <summary>
         /// If the Cowboy can be moved this turn via its owner.
         /// </summary>
-        public int CanMove { get; protected set; }
+        public bool CanMove { get; protected set; }
 
         /// <summary>
         /// The direction this Cowboy is moving while drunk. Will be 'North', 'East', 'South', or 'West' when drunk; or '' (empty string) when not drunk.
