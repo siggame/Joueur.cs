@@ -1,4 +1,8 @@
 // ${obj['description']}
+
+// DO NOT MODIFY THIS FILE
+// Never try to directly create an instance of this class, or modify its member variables.
+// Instead, you should only be reading its variables and calling its functions.
 <%include file="functions.noCreer" />
 using System;
 using System.Collections.Generic;
