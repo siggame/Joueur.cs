@@ -1,5 +1,9 @@
 // A player in this game. Every AI controls one player.
 
+// DO NOT MODIFY THIS FILE
+// Never try to directly create an instance of this class, or modify its member variables.
+// Instead, you should only be reading its variables and calling its functions.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,9 +86,9 @@ namespace Joueur.cs.Games.Saloon
         public bool Won { get; protected set; }
 
         /// <summary>
-        /// The only 'Yong Gun' Cowboy this player owns, or null if they called in their young gun during their turn.
+        /// The YoungGun this Player uses to call in new Cowboys.
         /// </summary>
-        public Saloon.Cowboy YoungGun { get; protected set; }
+        public Saloon.YoungGun YoungGun { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -100,18 +104,6 @@ namespace Joueur.cs.Games.Saloon
         protected Player() : base()
         {
             this.Cowboys = new List<Saloon.Cowboy>();
-        }
-
-        /// <summary>
-        /// Sends in the Young Gun to the nearest Tile into the Saloon, and promotes them to a new job.
-        /// </summary>
-        /// <param name="job">The job you want the Young Gun being brought in to be called in to do, changing their job to it.</param>
-        /// <returns>The Cowboy that was previously a 'Young Gun', and has now been promoted to a different job if successful, null otherwise.</returns>
-        public Saloon.Cowboy SendIn(string job)
-        {
-            return this.RunOnServer<Saloon.Cowboy>("sendIn", new Dictionary<string, object> {
-                {"job", job}
-            });
         }
 
 

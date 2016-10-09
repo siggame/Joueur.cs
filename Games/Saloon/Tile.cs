@@ -1,5 +1,9 @@
 // A Tile in the game that makes up the 2D map grid.
 
+// DO NOT MODIFY THIS FILE
+// Never try to directly create an instance of this class, or modify its member variables.
+// Instead, you should only be reading its variables and calling its functions.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,12 +26,12 @@ namespace Joueur.cs.Games.Saloon
         public Saloon.Bottle Bottle { get; protected set; }
 
         /// <summary>
-        /// The Cowboy that is on this Tile, or null if empty.
+        /// The Cowboy that is on this Tile, null otherwise.
         /// </summary>
         public Saloon.Cowboy Cowboy { get; protected set; }
 
         /// <summary>
-        /// The furnishing that is on this Tile, or null if empty.
+        /// The furnishing that is on this Tile, null otherwise.
         /// </summary>
         public Saloon.Furnishing Furnishing { get; protected set; }
 
@@ -37,9 +41,9 @@ namespace Joueur.cs.Games.Saloon
         public bool HasHazard { get; protected set; }
 
         /// <summary>
-        /// If this Tile is a wall of the Saloon, and can never be pathed through.
+        /// If this Tile is a balcony of the Saloon that YoungGuns walk around on, and can never be pathed through by Cowboys.
         /// </summary>
-        public bool IsWall { get; protected set; }
+        public bool IsBalcony { get; protected set; }
 
         /// <summary>
         /// The Tile to the 'East' of this one (x+1, y). Null if out of bounds of the map.
@@ -70,6 +74,11 @@ namespace Joueur.cs.Games.Saloon
         /// The y (vertical) position of this Tile.
         /// </summary>
         public int Y { get; protected set; }
+
+        /// <summary>
+        /// The YoungGun on this tile, null otherwise.
+        /// </summary>
+        public Saloon.YoungGun YoungGun { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
