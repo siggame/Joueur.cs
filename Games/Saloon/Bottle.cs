@@ -23,7 +23,7 @@ namespace Joueur.cs.Games.Saloon
         /// <summary>
         /// The Direction this Bottle is flying and will move to between turns, can be 'North', 'East', 'South', or 'West'.
         /// </summary>
-        public Saloon.Tile Direction { get; protected set; }
+        public string Direction { get; protected set; }
 
         /// <summary>
         /// The direction any Cowboys hit by this will move, can be 'North', 'East', 'South', or 'West'.
