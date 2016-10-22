@@ -36,6 +36,11 @@ namespace Joueur.cs.Games.Saloon
         public bool IsPiano { get; protected set; }
 
         /// <summary>
+        /// If this is a piano and a Cowboy is playing it this turn.
+        /// </summary>
+        public bool IsPlaying { get; protected set; }
+
+        /// <summary>
         /// The Tile that this Furnishing is located on.
         /// </summary>
         public Saloon.Tile Tile { get; protected set; }

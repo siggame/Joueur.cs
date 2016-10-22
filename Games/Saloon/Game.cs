@@ -1,4 +1,4 @@
-// Use cowboys to have a good time and play some music on a Piano, while brawling with enemy Coyboys.
+// Use cowboys to have a good time and play some music on a Piano, while brawling with enemy Cowboys.
 
 // DO NOT MODIFY THIS FILE
 // Never try to directly create an instance of this class, or modify its member variables.
@@ -15,7 +15,7 @@ using System.Text;
 namespace Joueur.cs.Games.Saloon
 {
     /// <summary>
-    /// Use cowboys to have a good time and play some music on a Piano, while brawling with enemy Coyboys.
+    /// Use cowboys to have a good time and play some music on a Piano, while brawling with enemy Cowboys.
     /// </summary>
     class Game : BaseGame
     {
@@ -24,6 +24,11 @@ namespace Joueur.cs.Games.Saloon
         /// All the beer Bottles currently flying across the saloon in the game.
         /// </summary>
         public IList<Saloon.Bottle> Bottles { get; protected set; }
+
+        /// <summary>
+        /// How much damage is applied to neighboring things bit by the Sharpshooter between turns.
+        /// </summary>
+        public int BrawlerDamage { get; protected set; }
 
         /// <summary>
         /// Every Cowboy in the game.
@@ -84,6 +89,11 @@ namespace Joueur.cs.Games.Saloon
         /// A unique identifier for the game instance that is being played.
         /// </summary>
         public string Session { get; protected set; }
+
+        /// <summary>
+        /// How much damage is applied to things hit by Sharpshooters when they act.
+        /// </summary>
+        public int SharpshooterDamage { get; protected set; }
 
         /// <summary>
         /// How long siestas are for a player's team.
