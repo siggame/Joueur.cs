@@ -21,6 +21,11 @@ namespace Joueur.cs.Games.Saloon
     {
         #region Properties
         /// <summary>
+        /// How many turns a Bartender will be busy for after throwing a Bottle.
+        /// </summary>
+        public int BartenderCooldown { get; protected set; }
+
+        /// <summary>
         /// All the beer Bottles currently flying across the saloon in the game.
         /// </summary>
         public IList<Saloon.Bottle> Bottles { get; protected set; }
@@ -81,9 +86,9 @@ namespace Joueur.cs.Games.Saloon
         public IList<Saloon.Player> Players { get; protected set; }
 
         /// <summary>
-        /// When a player's rowdyness reaches or exceeds this number their Cowboys take a collective siesta.
+        /// When a player's rowdiness reaches or exceeds this number their Cowboys take a collective siesta.
         /// </summary>
-        public int RowdynessToSiesta { get; protected set; }
+        public int RowdinessToSiesta { get; protected set; }
 
         /// <summary>
         /// A unique identifier for the game instance that is being played.
@@ -104,6 +109,11 @@ namespace Joueur.cs.Games.Saloon
         /// All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
         /// </summary>
         public IList<Saloon.Tile> Tiles { get; protected set; }
+
+        /// <summary>
+        /// How many turns a Cowboy will be drunk for if a bottle breaks on it.
+        /// </summary>
+        public int TurnsDrunk { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

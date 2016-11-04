@@ -63,7 +63,7 @@ namespace Joueur.cs.Games.Saloon
         /// <summary>
         /// How rowdy their team is. When it gets too high their team takes a collective siesta.
         /// </summary>
-        public int Rowdyness { get; protected set; }
+        public int Rowdiness { get; protected set; }
 
         /// <summary>
         /// How many times their team has played a piano.
