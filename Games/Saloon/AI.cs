@@ -27,11 +27,11 @@ namespace Joueur.cs.Games.Saloon
         #pragma warning restore 0169
         #pragma warning restore 0649
 
-        // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add additional properties here for your AI to use
-        // <<-- /Creer-Merge: properties -->>
+        
         Random random = new Random();
+        
         List<string> directions = new List<string> { "North", "East", "South", "West" };
+        
         
         #endregion
 
@@ -88,10 +88,6 @@ namespace Joueur.cs.Games.Saloon
         /// <returns>Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.</returns>
         public bool RunTurn()
         {
-			// <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-			// Put your game logic here for runTurn
-			// everything in the game for demo purposed, but poorly so you
-			//
             // Put your game logic here for runTurn
 
             // This is "ShellAI", some basic code we've provided that does
