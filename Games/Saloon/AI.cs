@@ -108,7 +108,7 @@ namespace Joueur.cs.Games.Saloon
 			// 3. Tries to play a Piano
 			// 4. Tries to act
 
-			Console.Write("Start of my turn: " + Game.CurrentTurn);
+			Console.Write("Start of my turn: " + Game.CurrentTurn + "\n");
 
 			Cowboy activeCowboy = null;
 			foreach(Cowboy cb in Player.Cowboys)
@@ -137,7 +137,7 @@ namespace Joueur.cs.Games.Saloon
 			//   cowboys with that job already.
 			if(Player.YoungGun.CanCallIn && jobCount < Game.MaxCowboysPerJob)
 			{
-				Console.Write("1. Calling in: " + newJob);
+				Console.Write("1. Calling in: " + newJob + "\n");
 				Cowboy newCowboy = Player.YoungGun.CallIn(newJob);
 
 				// if there were no active cowboys, set our active one to the one we just called in.
@@ -164,7 +164,7 @@ namespace Joueur.cs.Games.Saloon
 				// Attempt to move toward the piano by finding a path.
 				if(activeCowboy.CanMove && !activeCowboy.IsDead)
 				{
-					Console.Write("Trying to use Cowboy #" + activeCowboy.Id);
+					Console.Write("Trying to use Cowboy #" + activeCowboy.Id + "\n");
 
 					// Path can be empty if no piano to find, or the target piano is our neighbor.
 					// The returned path is in reverse. [(neighbor-of-goal), . . . , (neighbor-of-start)]
@@ -174,7 +174,7 @@ namespace Joueur.cs.Games.Saloon
 					// If the path is not empty, move along it.
 					if(path.Count > 0)
 					{
-						Console.Write("2. Moving to Tile #" + path.First().Id);
+						Console.Write("2. Moving to Tile #" + path.First().Id + "\n");
 						activeCowboy.Move(path.Last());
 					}
 				}
@@ -188,7 +188,7 @@ namespace Joueur.cs.Games.Saloon
 					{
 						if(t.Furnishing != null && t.Furnishing.IsPiano)
 						{
-							Console.Write("3. Playing piano (furnishing)#" + t.Furnishing);
+							Console.Write("3. Playing piano (furnishing)#" + t.Furnishing + "\n");
 							activeCowboy.Play(t.Furnishing);
 							break;
 						}
@@ -207,14 +207,14 @@ namespace Joueur.cs.Games.Saloon
 					{
 						// Bartenders dispense brews freely, but they still manage to get their due.
 						string direction = directions.ElementAt(random.Next(0, 4));
-						Console.Write("4. Bartender acting on Tile #" + neighbor.Id + " with drunkDirection: " + direction);
+						Console.Write("4. Bartender acting on Tile #" + neighbor.Id + " with drunkDirection: " + direction + "\n");
 						activeCowboy.Act(neighbor, direction);
 					}
 					else if(activeCowboy.Job == "Brawler")
 					{
 						// Brawlers' brains are so pickled, they hardly know friend from foe.
 						// Probably don't ask them act on your behalf.
-						Console.Write("4. Brawlers cannot act (that's a fact)");
+						Console.Write("4. Brawlers cannot act (that's a fact)\n");
 					}
 					else if(activeCowboy.Job == "Sharpshooter")
 					{
@@ -222,22 +222,22 @@ namespace Joueur.cs.Games.Saloon
 						// requires them to focus when taking aim.
 						if(activeCowboy.Focus > 0)
 						{
-							Console.Write("4. Sharpshooter acting on Tile #" + neighbor.Id);
+							Console.Write("4. Sharpshooter acting on Tile #" + neighbor.Id + "\n");
 							activeCowboy.Act(neighbor);
 						}
 						else
 						{
-							Console.Write("4. Sharpshooter doesn't have enough focus. (focus == " + activeCowboy.Focus + ")");
+							Console.Write("4. Sharpshooter doesn't have enough focus. (focus == " + activeCowboy.Focus + ")\n");
 						}
 					}
 					else
 					{
-						Console.Write("Something ~spooooooky~ happened. :doot:");
+						Console.Write("Something ~spooooooky~ happened. :doot:\n");
 					}
 				}
 			}
 
-			Console.Write("Ending my turn.");
+			Console.Write("Ending my turn.\n");
 
             return true;
             // <<-- /Creer-Merge: runTurn -->>
@@ -283,7 +283,8 @@ namespace Joueur.cs.Games.Saloon
 					{
 						// Follow the path backward starting at the goal and return it.
 						List<Tile> path = new List<Tile>();
-						path.Add(goal);
+						if(goal.Furnishing == null && goal.Cowboy == null && goal.IsBalcony == false)
+							path.Add(goal);
 						for(Tile step = inspect; step != start; step = cameFrom[step])
 							path.Add(step);
 						return path;
