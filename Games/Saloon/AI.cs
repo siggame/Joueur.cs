@@ -27,12 +27,6 @@ namespace Joueur.cs.Games.Saloon
         #pragma warning restore 0169
         #pragma warning restore 0649
 
-        
-        Random random = new Random();
-        
-        List<string> directions = new List<string> { "North", "East", "South", "West" };
-        
-        
         #endregion
 
 
@@ -92,7 +86,7 @@ namespace Joueur.cs.Games.Saloon
 
             // This is "ShellAI", some basic code we've provided that does
             // everything in the game for demo purposed, but poorly so you
-            // can get to optimzing or overwritting it ASAP
+            // can get to optimizing or overwriting it ASAP
             //
             // ShellAI does a few things:
             // 1. Tries to spawn a new Cowboy
@@ -100,154 +94,151 @@ namespace Joueur.cs.Games.Saloon
             // 3. Tries to play a Piano
             // 4. Tries to act
 
-            Console.Write("Start of my turn: " + Game.CurrentTurn + "\n");
+            Console.WriteLine("Start of my turn: " + Game.CurrentTurn);
 
+            // Find the active cowboy to try to do things with
             Cowboy activeCowboy = null;
-            foreach(Cowboy cb in Player.Cowboys)
+            foreach (Cowboy cowboy in this.Player.Cowboys)
             {
-                if(!cb.IsDead)
+                if(!cowboy.IsDead)
                 {
-                    activeCowboy = cb;
+                    activeCowboy = cowboy;
                     break;
                 }
             }
+
+            // A random generator we use to do random silly things
+            Random random = new Random();
 
             // 1. Try to spawn a cowboy.
 
             // Randomly select a job.
             string newJob = Game.Jobs.ElementAt(random.Next(0, Game.Jobs.Count));
-            
+
             // Count cowboys with selected job
             int jobCount = 0;
-            foreach(Cowboy cb in Player.Cowboys)
+            foreach (Cowboy cowboy in this.Player.Cowboys)
             {
-                if(!cb.IsDead && cb.Job == newJob)
+                if(!cowboy.IsDead && cowboy.Job == newJob)
                     jobCount++;
             }
 
             // Call in the new cowboy with that job if there aren't too many
             //   cowboys with that job already.
-            if(Player.YoungGun.CanCallIn && jobCount < Game.MaxCowboysPerJob)
+            if (this.Player.YoungGun.CanCallIn && jobCount < Game.MaxCowboysPerJob)
             {
-                Console.Write("1. Calling in: " + newJob + "\n");
-                Cowboy newCowboy = Player.YoungGun.CallIn(newJob);
-
-                // if there were no active cowboys, set our active one to the one we just called in.
-                activeCowboy = (activeCowboy != null ? newCowboy : activeCowboy);
+                Console.WriteLine("1. Calling in: " + newJob);
+                this.Player.YoungGun.CallIn(newJob);
             }
 
             // Now lets use him
-            if(activeCowboy != null)
+            if (activeCowboy != null)
             {
                 // 2. Try to move to a piano.
 
                 // Find a piano.
                 Furnishing piano = null;
-                foreach(Furnishing f in Game.Furnishings)
+                foreach (Furnishing furnishing in Game.Furnishings)
                 {
-                    if(f.IsPiano && !f.IsDestroyed)
+                    if (furnishing.IsPiano && !furnishing.IsDestroyed)
                     {
-                        piano = f;
+                        piano = furnishing;
                         break;
                     }
                 }
 
-                // There will always be pianos or the game will end. No need to check for existance.
+                // There will always be pianos or the game will end. No need to check for existence.
                 // Attempt to move toward the piano by finding a path.
-                if(activeCowboy.CanMove && !activeCowboy.IsDead)
+                if (activeCowboy.CanMove && !activeCowboy.IsDead)
                 {
-                    Console.Write("Trying to use Cowboy #" + activeCowboy.Id + "\n");
+                    Console.WriteLine("Trying to use Cowboy #" + activeCowboy.Id);
 
                     // Path can be empty if no piano to find, or the target piano is our neighbor.
-                    // The returned path is in reverse. [(neighbor-of-goal), . . . , (neighbor-of-start)]
-                    // (ie. pull the next step in the path from the back of the returned list)
-                    List<Tile> path = FindPath(activeCowboy.Tile, piano.Tile);
+                    List<Tile> path = this.FindPath(activeCowboy.Tile, piano.Tile);
 
                     // If the path is not empty, move along it.
-                    if(path.Count > 0)
+                    if (path.Count > 0)
                     {
-                        Console.Write("2. Moving to Tile #" + path.First().Id + "\n");
-                        activeCowboy.Move(path.Last());
+                        Console.WriteLine("2. Moving to Tile #" + path.First().Id);
+                        activeCowboy.Move(path.First());
                     }
                 }
 
                 // 3. Try to play a nearby piano.
-
-                if(!activeCowboy.IsDead && activeCowboy.TurnsBusy == 0)
+                if (!activeCowboy.IsDead && activeCowboy.TurnsBusy == 0)
                 {
-                    List<Tile> neighbors = GetNeighbors(activeCowboy.Tile);
-                    foreach(Tile t in neighbors)
+                    List<Tile> neighbors = activeCowboy.Tile.GetNeighbors();
+                    foreach (Tile tile in neighbors)
                     {
-                        if(t.Furnishing != null && t.Furnishing.IsPiano)
+                        if (tile.Furnishing != null && tile.Furnishing.IsPiano)
                         {
-                            Console.Write("3. Playing piano (furnishing)#" + t.Furnishing + "\n");
-                            activeCowboy.Play(t.Furnishing);
+                            Console.WriteLine("3. Playing piano (Furnishing) #" + tile.Furnishing.Id);
+                            activeCowboy.Play(tile.Furnishing);
                             break;
                         }
                     }
                 }
 
                 // 4. Try to act with active cowboy
-                //   yes, you can play and act at the same time...
-                if(!activeCowboy.IsDead && activeCowboy.TurnsBusy == 0)
+                if (!activeCowboy.IsDead && activeCowboy.TurnsBusy == 0)
                 {
                     // Get a random neighboring tile.
-                    Tile neighbor = GetNeighbors(activeCowboy.Tile).ElementAt(random.Next(0, 4));
+                    var neighbors = activeCowboy.Tile.GetNeighbors();
+                    Tile neighbor = neighbors.ElementAt(random.Next(0, neighbors.Count));
 
                     // Based on job, act accordingly.
-                    if(activeCowboy.Job == "Bartender")
+                    if (activeCowboy.Job == "Bartender")
                     {
                         // Bartenders dispense brews freely, but they still manage to get their due.
-                        string direction = directions.ElementAt(random.Next(0, 4));
-                        Console.Write("4. Bartender acting on Tile #" + neighbor.Id + " with drunkDirection: " + direction + "\n");
+                        string direction = Tile.directions.ElementAt(random.Next(0, 4));
+                        Console.WriteLine("4. Bartender acting on Tile #" + neighbor.Id + " with drunkDirection: " + direction);
                         activeCowboy.Act(neighbor, direction);
                     }
-                    else if(activeCowboy.Job == "Brawler")
+                    else if (activeCowboy.Job == "Brawler")
                     {
                         // Brawlers' brains are so pickled, they hardly know friend from foe.
                         // Probably don't ask them act on your behalf.
-                        Console.Write("4. Brawlers cannot act (that's a fact)\n");
+                        Console.WriteLine("4. Brawlers cannot act");
                     }
-                    else if(activeCowboy.Job == "Sharpshooter")
+                    else if (activeCowboy.Job == "Sharpshooter")
                     {
                         // Sharpshooters aren't as quick as they used to be, and all that ruckus around them
                         // requires them to focus when taking aim.
-                        if(activeCowboy.Focus > 0)
+                        if (activeCowboy.Focus > 0)
                         {
-                            Console.Write("4. Sharpshooter acting on Tile #" + neighbor.Id + "\n");
+                            Console.WriteLine("4. Sharpshooter acting on Tile #" + neighbor.Id);
                             activeCowboy.Act(neighbor);
                         }
                         else
                         {
-                            Console.Write("4. Sharpshooter doesn't have enough focus. (focus == " + activeCowboy.Focus + ")\n");
+                            Console.WriteLine("4. Sharpshooter doesn't have enough focus. (focus == " + activeCowboy.Focus + ")");
                         }
-                    }
-                    else
-                    {
-                        Console.Write("Something ~spooooooky~ happened. :doot:\n");
                     }
                 }
             }
 
-            Console.Write("Ending my turn.\n");
+            Console.WriteLine("Ending my turn.");
 
             return true;
         }
-        
-        
 
-        // returns the neighbors of the passed tile in a List<Tile>.
-        public static List<Tile> GetNeighbors(Tile t)
-        {
-            return new List<Tile> { t.TileNorth, t.TileEast, t.TileSouth, t.TileWest };
-        }
-
+        /// <summary>
+        /// A very basic path finding algorithm (Breadth First Search) that when given a starting Tile, will return a valid path to the goal Tile.
+        /// </summary>
+        /// <remarks>
+        /// This is NOT an optimal pathfinding algorithm. It is intended as a stepping stone if you want to improve it.
+        /// </remarks>
+        /// <param name="start">the starting Tile</param>
+        /// <param name="goal">the goal Tile</param>
+        /// <returns>A List of Tiles representing the path, the the first element being a valid adjacent Tile to the start, and the last element being the goal.</returns>
         List<Tile> FindPath(Tile start, Tile goal)
         {
             // no need to make a path to here...
-            if(start == goal)
-                return new List<Tile>();    
-            
+            if (start == goal)
+            {
+                return new List<Tile>();
+            }
+
             // the tiles that will have their neighbors searched for 'goal'
             Queue<Tile> fringe = new Queue<Tile>();
 
@@ -258,31 +249,34 @@ namespace Joueur.cs.Games.Saloon
             fringe.Enqueue(start);
 
             // keep exploring neighbors of neighbors... until there are no more.
-            while(fringe.Count > 0)
+            while (fringe.Count > 0)
             {
                 // the tile we are currently exploring.
                 Tile inspect = fringe.Dequeue();
 
                 // cycle through the tile's neighbors.
-                foreach(Tile nb in GetNeighbors(inspect))
+                foreach (Tile neighbor in inspect.GetNeighbors())
                 {
-                    if(nb == goal)
+                    if (neighbor == goal)
                     {
                         // Follow the path backward starting at the goal and return it.
                         List<Tile> path = new List<Tile>();
-                        if(goal.Furnishing == null && goal.Cowboy == null && goal.IsBalcony == false)
-                            path.Add(goal);
-                        for(Tile step = inspect; step != start; step = cameFrom[step])
-                            path.Add(step);
+
+                        // Starting at the tile we are currently at, insert them retracing our steps till we get to the starting tile
+                        for (Tile step = inspect; step != start; step = cameFrom[step])
+                        {
+                            path.Insert(0, step);
+                        }
+
                         return path;
                     }
 
-                    // if the tile exists, has not been explored or added to the fringe yet, and has no furnishing, cowboy or balcony,
-                    if(nb != null && !cameFrom.ContainsKey(nb) && nb.Furnishing == null && nb.Cowboy == null && nb.IsBalcony == false)
+                    // if the tile exists, has not been explored or added to the fringe yet, and it is pathable
+                    if (neighbor != null && !cameFrom.ContainsKey(neighbor) && neighbor.IsPathable())
                     {
                         // add it to the tiles to be explored and add where it came from.
-                        fringe.Enqueue(nb);
-                        cameFrom.Add(nb, inspect);
+                        fringe.Enqueue(neighbor);
+                        cameFrom.Add(neighbor, inspect);
                     }
 
                 } // foreach(neighbor)

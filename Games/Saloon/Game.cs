@@ -8,9 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-// <<-- Creer-Merge: usings -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-// you can add addtional using(s) here
-// <<-- /Creer-Merge: usings -->>
 
 namespace Joueur.cs.Games.Saloon
 {
@@ -115,10 +112,6 @@ namespace Joueur.cs.Games.Saloon
         /// </summary>
         public int TurnsDrunk { get; protected set; }
 
-
-        // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add addtional properties(s) here. None of them will be tracked or updated by the server.
-        // <<-- /Creer-Merge: properties -->>
         #endregion
 
 
@@ -138,10 +131,22 @@ namespace Joueur.cs.Games.Saloon
             this.Tiles = new List<Saloon.Tile>();
         }
 
+        /// <summary>
+        /// Gets the Tile at a specified (x, y) position
+        /// </summary>
+        /// <param name="x">integer between 0 and the MapWidth</param>
+        /// <param name="y">integer between 0 and the MapHeight</param>
+        /// <returns>the Tile at (x, y) or null if out of bounds</returns>
+        public Tile GetTileAt(int x, int y)
+        {
+            if (x < 0 || y < 0 || x >= this.MapWidth || y >= this.MapHeight)
+            {
+                // out of bounds
+                return null;
+            }
 
-        // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add addtional method(s) here.
-        // <<-- /Creer-Merge: methods -->>
+            return this.Tiles[x + y * this.MapWidth];
+        }
         #endregion
     }
 }
