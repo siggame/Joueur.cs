@@ -82,8 +82,6 @@ namespace Joueur.cs.Games.Saloon
         /// <returns>Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.</returns>
         public bool RunTurn()
         {
-            // Put your game logic here for runTurn
-
             // This is "ShellAI", some basic code we've provided that does
             // everything in the game for demo purposed, but poorly so you
             // can get to optimizing or overwriting it ASAP
@@ -113,19 +111,21 @@ namespace Joueur.cs.Games.Saloon
             // 1. Try to spawn a cowboy.
 
             // Randomly select a job.
-            string newJob = Game.Jobs.ElementAt(random.Next(0, Game.Jobs.Count));
+            string newJob = this.Game.Jobs.ElementAt(random.Next(0, this.Game.Jobs.Count));
 
             // Count cowboys with selected job
             int jobCount = 0;
             foreach (Cowboy cowboy in this.Player.Cowboys)
             {
                 if(!cowboy.IsDead && cowboy.Job == newJob)
+                {
                     jobCount++;
+                }
             }
 
             // Call in the new cowboy with that job if there aren't too many
             //   cowboys with that job already.
-            if (this.Player.YoungGun.CanCallIn && jobCount < Game.MaxCowboysPerJob)
+            if (this.Player.YoungGun.CanCallIn && jobCount < this.Game.MaxCowboysPerJob)
             {
                 Console.WriteLine("1. Calling in: " + newJob);
                 this.Player.YoungGun.CallIn(newJob);
@@ -138,7 +138,7 @@ namespace Joueur.cs.Games.Saloon
 
                 // Find a piano.
                 Furnishing piano = null;
-                foreach (Furnishing furnishing in Game.Furnishings)
+                foreach (Furnishing furnishing in this.Game.Furnishings)
                 {
                     if (furnishing.IsPiano && !furnishing.IsDestroyed)
                     {
@@ -190,7 +190,7 @@ namespace Joueur.cs.Games.Saloon
                     if (activeCowboy.Job == "Bartender")
                     {
                         // Bartenders dispense brews freely, but they still manage to get their due.
-                        string direction = Tile.directions.ElementAt(random.Next(0, 4));
+                        string direction = Tile.Directions[random.Next(0, Tile.Directions.Length)];
                         Console.WriteLine("4. Bartender acting on Tile #" + neighbor.Id + " with drunkDirection: " + direction);
                         activeCowboy.Act(neighbor, direction);
                     }

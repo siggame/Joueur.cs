@@ -80,7 +80,7 @@ namespace Joueur.cs.Games.Saloon
         /// <summary>
         /// The list of all valid directions Tiles can be in
         /// </summary>
-        public static List<string> directions = new List<string> { "North", "East", "South", "West" };
+        public static readonly string[] Directions = { "North", "East", "South", "West" };
 
         #endregion
 
@@ -130,7 +130,7 @@ namespace Joueur.cs.Games.Saloon
         /// <returns>True if pathable, false otherwise</returns>
         public bool IsPathable()
         {
-            return !(this.IsBalcony || this.Cowboy != null || this.Furnishing != null);
+            return !this.IsBalcony && this.Cowboy == null && this.Furnishing == null;
         }
 
         /// <summary>
