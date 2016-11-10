@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-${merge("// ", "usings", "// you can add addtional using(s) here")}
+${merge("// ", "usings", "// you can add additional using(s) here", optional=True)}
 <%parent_classes = list(obj['parentClasses'])
 
 if not parent_classes:
@@ -42,7 +42,7 @@ if (obj_key == "Game" and (attr_name == "gameObjects" or attr_name == "name")) o
 
 % endfor
 
-${merge("        // ", "properties", "        // you can add addtional properties(s) here. None of them will be tracked or updated by the server.")}
+${merge("        // ", "properties", "        // you can add additional properties(s) here. None of them will be tracked or updated by the server.", optional=True)}
         #endregion
 
 
@@ -92,7 +92,7 @@ return_type = None
 
 % endfor
 
-${merge("        // ", "methods", "        // you can add addtional method(s) here.")}
+${merge("        // ", "methods", "        // you can add additional method(s) here.", optional=True)}
         #endregion
     }
 }

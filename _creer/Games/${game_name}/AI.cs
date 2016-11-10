@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-${merge("// ", "usings", "// you can add addtional using(s) here")}
+${merge("// ", "usings", "// you can add additional using(s) here", optional=True)}
 
 namespace Joueur.cs.Games.${game_name}
 {
@@ -103,7 +103,7 @@ ${merge("            // ", function_name,
 % endfor
 
 
-${merge("        // ", "methods", '        // you can add additional methods here for your AI to call')}
+${merge("        // ", "methods", '        // you can add additional methods here for your AI to call', optional=True)}
         #endregion
     }
 }
