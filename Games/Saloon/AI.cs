@@ -153,11 +153,13 @@ namespace Joueur.cs.Games.Saloon
                 {
                     Console.WriteLine("Trying to use Cowboy #" + activeCowboy.Id);
 
-                    // Path can be empty if no piano to find, or the target piano is our neighbor.
+                    // Find a path of tiles to the piano from our active cowboy's tile
                     List<Tile> path = this.FindPath(activeCowboy.Tile, piano.Tile);
 
-                    // If the path is not empty, move along it.
-                    if (path.Count > 0)
+                    // if there is a path, move along it
+                    //      Count of 0 means no path could be found to the tile
+                    //      Count of 1 means the piano is adjacent, and we can't move onto the same tile as the piano
+                    if (path.Count > 1)
                     {
                         Console.WriteLine("2. Moving to Tile #" + path.First().Id);
                         activeCowboy.Move(path.First());
@@ -230,7 +232,7 @@ namespace Joueur.cs.Games.Saloon
         /// </remarks>
         /// <param name="start">the starting Tile</param>
         /// <param name="goal">the goal Tile</param>
-        /// <returns>A List of Tiles representing the path, the the first element being a valid adjacent Tile to the start, and the last element being the goal.</returns>
+        /// <returns>A List of Tiles representing the path, the the first element being a valid adjacent Tile to the start, and the last element being the goal. Or an empty list if no path found.</returns>
         List<Tile> FindPath(Tile start, Tile goal)
         {
             // no need to make a path to here...
@@ -261,6 +263,7 @@ namespace Joueur.cs.Games.Saloon
                     {
                         // Follow the path backward starting at the goal and return it.
                         List<Tile> path = new List<Tile>();
+                        path.Add(goal);
 
                         // Starting at the tile we are currently at, insert them retracing our steps till we get to the starting tile
                         for (Tile step = inspect; step != start; step = cameFrom[step])
