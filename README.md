@@ -1,6 +1,6 @@
-# GAME_NAME C# Client
+# Saloon C# Client
 
-This is the root of your AI. Stay out of the `Joueur/` folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in `Games/GAME_NAME/`, with your very own AI living in `Games/GAME_NAME/ai.cs` for you to make smarter.
+This is the root of your AI. Stay out of the `Joueur/` folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in `Games/Saloon/`, with your very own AI living in `Games/Saloon/AI.cs` for you to make smarter.
 
 ## How to Run
 
@@ -12,7 +12,7 @@ Simply [installing Visual Studio 2013 or newer](https://www.visualstudio.com/en-
 
 *Note*: You'll need to add [command line args in visual studio](https://msdn.microsoft.com/en-us/library/cs8hbt1w(v=vs.90).aspx).
 
-The args should be: `GAME_NAME -s r99acm.device.mst.edu -r MyOwnGameSession`
+The args should be: `Saloon -s r99acm.device.mst.edu -r MyOwnGameSession`
 
 ### Linux
 

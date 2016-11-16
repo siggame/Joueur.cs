@@ -8,9 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-// <<-- Creer-Merge: usings -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-// you can add addtional using(s) here
-// <<-- /Creer-Merge: usings -->>
 
 namespace Joueur.cs.Games.Saloon
 {
@@ -80,10 +77,11 @@ namespace Joueur.cs.Games.Saloon
         /// </summary>
         public Saloon.YoungGun YoungGun { get; protected set; }
 
+        /// <summary>
+        /// The list of all valid directions Tiles can be in
+        /// </summary>
+        public static readonly string[] Directions = { "North", "East", "South", "West" };
 
-        // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add addtional properties(s) here. None of them will be tracked or updated by the server.
-        // <<-- /Creer-Merge: properties -->>
         #endregion
 
 
@@ -95,10 +93,61 @@ namespace Joueur.cs.Games.Saloon
         {
         }
 
+        /// <summary>
+        /// Gets the neighbors of this Tile
+        /// </summary>
+        /// <returns>The neighboring (adjacent) Tiles to this tile</returns>
+        public List<Tile> GetNeighbors()
+        {
+            var list = new List<Tile>();
 
-        // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add addtional method(s) here.
-        // <<-- /Creer-Merge: methods -->>
+            if (this.TileNorth != null)
+            {
+                list.Add(this.TileNorth);
+            }
+
+            if (this.TileEast != null)
+            {
+                list.Add(this.TileEast);
+            }
+
+            if (this.TileSouth != null)
+            {
+                list.Add(this.TileSouth);
+            }
+
+            if (this.TileWest != null)
+            {
+                list.Add(this.TileWest);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// Checks if a Tile is pathable to units
+        /// </summary>
+        /// <returns>True if pathable, false otherwise</returns>
+        public bool IsPathable()
+        {
+            return !this.IsBalcony && this.Cowboy == null && this.Furnishing == null;
+        }
+
+        /// <summary>
+        /// Checks if this Tile has a specific neighboring Tile
+        /// </summary>
+        /// <param name="tile">Tile to check against</param>
+        /// <returns>true if the tile is a neighbor of this Tile, false otherwise</returns>
+        public bool HasNeighbor(Tile tile)
+        {
+            if (tile == null)
+            {
+                return false;
+            }
+
+            return (this.TileNorth == tile || this.TileEast == tile || this.TileSouth == tile || this.TileEast == tile);
+        }
+
         #endregion
     }
 }
