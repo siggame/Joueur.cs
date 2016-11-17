@@ -11,7 +11,7 @@ namespace Joueur.cs
     class GameManager
     {
         private BaseGame Game;
-        #pragma warning disable 0414 // disable warnings. competitors dont need to see our errors
+        #pragma warning disable 0414 // disable warnings. competitors don't need to see our errors
         private BaseAI AI;
         private IDictionary<string, string> ServerConstants;
         #pragma warning restore 0414
@@ -101,7 +101,7 @@ namespace Joueur.cs
                     var floatNum = jtoken.ToObject<float>();
                     var intNum = (int)floatNum;
 
-                    if (intNum == floatNum) // then no overflow occured when parsing the integer, so just return the normal int. This can happen with very large floats that are whole numbers so appear as integers to json.net
+                    if (intNum == floatNum) // then no overflow occurred when parsing the integer, so just return the normal int. This can happen with very large floats that are whole numbers so appear as integers to json.net
                     {
                         return intNum;
                     }
