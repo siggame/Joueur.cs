@@ -368,7 +368,7 @@ namespace Joueur.cs
 
         private void AutoHandleOrder(ServerMessages.OrderData data)
         {
-            Object returned = this.AI.DoOrder(data.name, data.args);
+            Object returned = typeof(BaseAI).GetMethod("DoOrder", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(this.AI, new object[] { data.name, data.args });
 
             this.Send("finished", new ServerMessages.SendFinished() {
                 orderIndex = data.index,

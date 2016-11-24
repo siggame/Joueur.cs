@@ -41,7 +41,7 @@ namespace Joueur.cs
             // the inheriting AI can add code to this inherited function
         }
 
-        public Object DoOrder(string order, List<JToken> args)
+        private Object DoOrder(string order, List<JToken> args)
         {
             var gameManager = Client.Instance.GameManager;
             var method = this.GetType().GetMethod(gameManager.CSharpCase(order));
@@ -72,6 +72,45 @@ namespace Joueur.cs
             }
 
             return null; // should not reach here
+        }
+
+        private Dictionary<string, string> _AISettings = new Dictionary<string, string>(); // underscore to not interfere with competitors AI's variables
+
+        private void SetSettings(string aiSettings)
+        {
+            if (aiSettings == null || aiSettings == "")
+            {
+                return; // no need to set settings, as there are none
+            }
+
+            var settings = aiSettings.Split('&');
+            foreach (var pair in settings)
+            {
+                var kv = pair.Split('=');
+                var value = "";
+                // if they have a value set it, otherwise the value will be empty string as above
+                if (kv.Length == 2)
+                {
+                    value = kv[1];
+                }
+
+                this._AISettings.Add(kv[0], value);
+            }
+        }
+
+        /// <summary>
+        /// Gets an AI setting passed to the program via the `--aiSettings` flag.If the flag was set it will be returned as a string value, null otherwise.
+        /// </summary>
+        /// <param name="key">The key of the setting you wish to get the value for</param>
+        /// <returns>A string representing the value set via command line, or nil if the key was not set</returns>
+        public string GetSetting(string key)
+        {
+            if (this._AISettings.ContainsKey(key))
+            {
+                return this._AISettings[key];
+            }
+
+            return null;
         }
     }
 }
