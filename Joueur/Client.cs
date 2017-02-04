@@ -32,7 +32,7 @@ namespace Joueur.cs
 
         #endregion
 
-        public string Server { get; private set; }
+        public string Hostname { get; private set; }
         public int Port { get; private set; }
         public bool PrintIO { get; private set; }
         private const char EOT_CHAR = (char) 4;
@@ -49,15 +49,15 @@ namespace Joueur.cs
         private NetworkStream Stream;
         private byte[] TempData = new byte[1024];
 
-        public void Connect(string server = "127.0.0.1", int port = 3000, bool printIO = false)
+        public void Connect(string hostname = "127.0.0.1", int port = 3000, bool printIO = false)
         {
-            this.Server = server;
+            this.Hostname = hostname;
             this.Port = port;
             this.PrintIO = printIO;
 
             try
             {
-                this.TCPClient = new TcpClient(server, port);
+                this.TCPClient = new TcpClient(hostname, port);
                 this.TCPClient.ReceiveTimeout = 0;
                 this.TCPClient.SendTimeout = 0;
 
@@ -65,7 +65,7 @@ namespace Joueur.cs
             }
             catch(Exception exception)
             {
-                ErrorHandler.HandleError(ErrorHandler.ErrorCode.COULD_NOT_CONNECT, exception, "Could not connect to " + server + ":" + port);
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.COULD_NOT_CONNECT, exception, "Could not connect to " + hostname + ":" + port);
             }
 
             this.Connected = true;
@@ -358,7 +358,7 @@ namespace Joueur.cs
             if (data.message != String.Empty)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(data.message);
+                Console.WriteLine(data.message.Replace("__HOSTNAME__", this.Hostname));
                 Console.ResetColor();
             }
 
