@@ -1,11 +1,15 @@
 // A player in this game. Every AI controls one player.
 
+// DO NOT MODIFY THIS FILE
+// Never try to directly create an instance of this class, or modify its member variables.
+// Instead, you should only be reading its variables and calling its functions.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 // <<-- Creer-Merge: usings -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-// you can add addtional using(s) here
+// you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
 namespace Joueur.cs.Games.Checkers
@@ -39,7 +43,7 @@ namespace Joueur.cs.Games.Checkers
         /// <summary>
         /// This player's opponent in the game.
         /// </summary>
-        public Checkers.Player OtherPlayer { get; protected set; }
+        public Checkers.Player Opponent { get; protected set; }
 
         /// <summary>
         /// The reason why the player lost the game.
@@ -68,7 +72,7 @@ namespace Joueur.cs.Games.Checkers
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add addtional properties(s) here. None of them will be tracked or updated by the server.
+        // you can add additional properties(s) here. None of them will be tracked or updated by the server.
         // <<-- /Creer-Merge: properties -->>
         #endregion
 
@@ -84,7 +88,7 @@ namespace Joueur.cs.Games.Checkers
 
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add addtional method(s) here.
+        // you can add additional method(s) here.
         // <<-- /Creer-Merge: methods -->>
         #endregion
     }

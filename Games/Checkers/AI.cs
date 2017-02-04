@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 // <<-- Creer-Merge: usings -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-// you can add addtional using(s) here
+// you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
 namespace Joueur.cs.Games.Checkers

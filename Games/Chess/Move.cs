@@ -1,11 +1,15 @@
 // Contains all details about a Piece's move in the game.
 
+// DO NOT MODIFY THIS FILE
+// Never try to directly create an instance of this class, or modify its member variables.
+// Instead, you should only be reading its variables and calling its functions.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 // <<-- Creer-Merge: usings -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-// you can add addtional using(s) here
+// you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
 namespace Joueur.cs.Games.Chess
@@ -37,7 +41,7 @@ namespace Joueur.cs.Games.Chess
         public Chess.Piece Piece { get; protected set; }
 
         /// <summary>
-        /// The Piece type this Move's Piece was promoted to from a Pawn, empty string if no promotion occured.
+        /// The Piece type this Move's Piece was promoted to from a Pawn, empty string if no promotion occurred.
         /// </summary>
         public string Promotion { get; protected set; }
 
@@ -58,7 +62,7 @@ namespace Joueur.cs.Games.Chess
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add addtional properties(s) here. None of them will be tracked or updated by the server.
+        // you can add additional properties(s) here. None of them will be tracked or updated by the server.
         // <<-- /Creer-Merge: properties -->>
         #endregion
 
@@ -73,7 +77,7 @@ namespace Joueur.cs.Games.Chess
 
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add addtional method(s) here.
+        // you can add additional method(s) here.
         // <<-- /Creer-Merge: methods -->>
         #endregion
     }

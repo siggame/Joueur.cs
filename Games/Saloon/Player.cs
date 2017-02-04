@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 // <<-- Creer-Merge: usings -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-// you can add addtional using(s) here
+// you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
 namespace Joueur.cs.Games.Saloon
@@ -92,7 +92,7 @@ namespace Joueur.cs.Games.Saloon
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add addtional properties(s) here. None of them will be tracked or updated by the server.
+        // you can add additional properties(s) here. None of them will be tracked or updated by the server.
         // <<-- /Creer-Merge: properties -->>
         #endregion
 
@@ -108,7 +108,7 @@ namespace Joueur.cs.Games.Saloon
 
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add addtional method(s) here.
+        // you can add additional method(s) here.
         // <<-- /Creer-Merge: methods -->>
         #endregion
     }
