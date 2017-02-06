@@ -26,6 +26,7 @@ namespace Joueur.cs
                 new ArgParser.Argument(new string[] {"-r", "--session"}, "requestedSession", "the requested game session you want to play on the server", false, "*"),
                 new ArgParser.Argument(new string[] {"-w", "--password"}, "password", "the password required for authentication on official servers"),
                 new ArgParser.Argument(new string[] {"--gameSettings"}, "gameSettings", "Any settings for the game server to force. Must be url parms formatted (key=value&otherKey=otherValue)"),
+                new ArgParser.Argument(new string[] {"--aiSettings"}, "aiSettings", "Any settings for the AI. Delimit pairs by an ampersand (key=value&otherKey=otherValue)"),
                 new ArgParser.Argument(new string[] {"--printIO"}, "printIO", "(debugging) print IO through the TCP socket to the terminal", false, null, ArgParser.Argument.Store.True),
             }, (int)ErrorHandler.ErrorCode.INVALID_ARGS);
 
@@ -35,6 +36,7 @@ namespace Joueur.cs
             int playerIndex = argParser.GetValue<int>("index");
             string requestedSession = argParser.GetValue<string>("requestedSession");
             string password = argParser.GetValue<string>("password");
+            string aiSettings = argParser.GetValue<string>("aiSettings");
             string gameSettings = argParser.GetValue<string>("gameSettings");
             int port = argParser.GetValue<int>("port");
             bool printIO = argParser.GetValue<bool>("printIO");
@@ -79,6 +81,8 @@ namespace Joueur.cs
             Console.ResetColor();
 
             client.Setup(game, ai);
+
+            typeof(BaseAI).GetMethod("SetSettings", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(ai, new object[] { aiSettings });
 
             if (String.IsNullOrWhiteSpace(playerName))
             {

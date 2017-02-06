@@ -32,11 +32,11 @@ namespace Joueur.cs
 
         #endregion
 
-        public string Server { get; private set; }
+        public string Hostname { get; private set; }
         public int Port { get; private set; }
         public bool PrintIO { get; private set; }
         private const char EOT_CHAR = (char) 4;
-        #pragma warning disable 0414 // disable warnings. competitors dont need to see our errors
+        #pragma warning disable 0414 // disable warnings. competitors don't need to see our errors
         private BaseGame Game;
         #pragma warning restore 0414
         private BaseAI AI;
@@ -45,24 +45,30 @@ namespace Joueur.cs
         private TcpClient TCPClient;
         private Stack<ServerMessages.ReceivedEvent<Object>> EventsStack;
         private string ReceivedBuffer;
-        private bool connected = false;
+        private bool Connected = false;
+        private NetworkStream Stream;
+        private byte[] TempData = new byte[1024];
 
-        public void Connect(string server = "127.0.0.1", int port = 3000, bool printIO = false)
+        public void Connect(string hostname = "127.0.0.1", int port = 3000, bool printIO = false)
         {
-            this.Server = server;
+            this.Hostname = hostname;
             this.Port = port;
             this.PrintIO = printIO;
 
             try
             {
-                this.TCPClient = new TcpClient(server, port);
+                this.TCPClient = new TcpClient(hostname, port);
+                this.TCPClient.ReceiveTimeout = 0;
+                this.TCPClient.SendTimeout = 0;
+
+                this.Stream = this.TCPClient.GetStream();
             }
             catch(Exception exception)
             {
-                ErrorHandler.HandleError(ErrorHandler.ErrorCode.COULD_NOT_CONNECT, exception, "Could not connect to " + server + ":" + port);
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.COULD_NOT_CONNECT, exception, "Could not connect to " + hostname + ":" + port);
             }
 
-            this.connected = true;
+            this.Connected = true;
         }
 
         public void Setup(BaseGame game, BaseAI ai)
@@ -96,28 +102,24 @@ namespace Joueur.cs
             try
             {
                 // Translate the passed message into ASCII and store it as a Byte array.
-                Byte[] bytes = System.Text.Encoding.ASCII.GetBytes(serialized);
-
-                NetworkStream stream = this.TCPClient.GetStream();
+                byte[] bytes = System.Text.Encoding.ASCII.GetBytes(serialized);
 
                 // Send the message to the connected TcpServer.
-                stream.Write(bytes, 0, bytes.Length);
+                this.Stream.Write(bytes, 0, bytes.Length);
             }
             catch(Exception exception)
             {
                 ErrorHandler.HandleError(ErrorHandler.ErrorCode.CANNOT_READ_SOCKET, exception, "Could not send data through socket.");
             }
-            
         }
 
         public void Disconnect()
         {
-            if (this.connected)
+            if (this.Connected)
             {
                 try
                 {
-                    NetworkStream stream = this.TCPClient.GetStream();
-                    stream.Close();
+                    this.Stream.Close();
                     this.TCPClient.Close();
                 }
                 catch
@@ -131,7 +133,7 @@ namespace Joueur.cs
 
         public void Play()
         {
-            this.WaitForEvent(null); // wait's indefinitly. Should eventually be terminated by the 'over' event from the server.
+            this.WaitForEvent(null); // waits indefinitely. Should eventually be terminated by the 'over' event from the server.
         }
 
         public Object WaitForEvent(string eventName)
@@ -164,27 +166,28 @@ namespace Joueur.cs
 
             while (true)
             {
-                NetworkStream stream = this.TCPClient.GetStream();
-                Byte[] data = new Byte[1024];
                 String responseData = String.Empty;
 
-                // Read the TcpServer response bytes.
+                // Try to read the TcpServer response bytes.
                 int bytes = -2;
-                try
+                if (this.Stream.DataAvailable)
                 {
-                    bytes = stream.Read(data, 0, data.Length);
-                }
-                catch (Exception exception)
-                {
-                    ErrorHandler.HandleError(ErrorHandler.ErrorCode.CANNOT_READ_SOCKET, exception, "Cannot read socket while waiting for events.");
+                    try
+                    {
+                        bytes = Stream.Read(this.TempData, 0, this.TempData.Length);
+                    }
+                    catch (Exception exception)
+                    {
+                        ErrorHandler.HandleError(ErrorHandler.ErrorCode.CANNOT_READ_SOCKET, exception, "Cannot read socket while waiting for events.");
+                    }
                 }
 
                 if (bytes == -2)
                 {
                     continue; // as no bytes were read
-                } 
+                }
 
-                responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+                responseData = System.Text.Encoding.ASCII.GetString(this.TempData, 0, bytes);
 
                 if (this.PrintIO)
                 {
@@ -256,7 +259,7 @@ namespace Joueur.cs
         {
             string capitalizedEventName = eventName.First().ToString().ToUpper() + eventName.Substring(1);
             MethodInfo theMethod = this.GetType().GetMethod("AutoHandle" + capitalizedEventName, BindingFlags.NonPublic | BindingFlags.Instance);
-            
+
             if(theMethod == null || eventName == String.Empty)
             {
                 ErrorHandler.HandleError(ErrorHandler.ErrorCode.UNKNOWN_EVENT_FROM_SERVER, "Could not auto handle '" + eventName + "'");
@@ -349,13 +352,13 @@ namespace Joueur.cs
             }
             catch(Exception exception)
             {
-                ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "AI errored duing Ended(won, reason)");
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "AI errored during Ended(won, reason)");
             }
 
             if (data.message != String.Empty)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(data.message);
+                Console.WriteLine(data.message.Replace("__HOSTNAME__", this.Hostname));
                 Console.ResetColor();
             }
 
@@ -365,7 +368,7 @@ namespace Joueur.cs
 
         private void AutoHandleOrder(ServerMessages.OrderData data)
         {
-            Object returned = this.AI.DoOrder(data.name, data.args);
+            Object returned = typeof(BaseAI).GetMethod("DoOrder", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(this.AI, new object[] { data.name, data.args });
 
             this.Send("finished", new ServerMessages.SendFinished() {
                 orderIndex = data.index,
@@ -387,7 +390,7 @@ namespace Joueur.cs
                 }
             }
 
-            this.Send("run", new ServerMessages.RunMessage() 
+            this.Send("run", new ServerMessages.RunMessage()
                 {
                     caller = this.GameManager.SerializeGameObject(caller),
                     functionName = functionName,

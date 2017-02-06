@@ -89,6 +89,34 @@ namespace Joueur.cs.Games.Chess
             //    4) makes a random (and probably invalid) move.
 
             // 1) print the board to the console
+            this.PrintCurrentBoard();
+
+            // 2) print the opponent's last move to the console
+            if (this.Game.Moves.Count > 0) {
+                Console.WriteLine("Opponent's Last Move: '" + this.Game.Moves.Last().San + "'");
+            }
+
+            // 3) print how much time remaining this AI has to calculate moves
+            Console.WriteLine("Time Remaining: " + this.Player.TimeRemaining + " ns");
+
+            // 4) make a random (and probably invalid) move.
+            var rand = new Random();
+            var randomPiece = this.Player.Pieces[rand.Next(this.Player.Pieces.Count)];
+            string randomFile = "" + (char)(((int)"a"[0]) + rand.Next(0, 8));
+            int randomRank = rand.Next(0, 8) + 1;
+            randomPiece.Move(randomFile, randomRank);
+
+            return true; // to signify we are done with our turn.
+        }
+
+        /// <summary>
+        /// Prints the current board using pretty ASCII art
+        /// </summary>
+        /// <remarks>
+        /// Note: you can delete this function if you wish
+        /// </remarks>
+        public void PrintCurrentBoard()
+        {
             for (int rank = 9; rank >= -1; rank--)
             {
                 string str = "";
@@ -141,23 +169,6 @@ namespace Joueur.cs.Games.Chess
 
                 Console.WriteLine(str);
             }
-
-            // 2) print the opponent's last move to the console
-            if (this.Game.Moves.Count > 0) {
-                Console.WriteLine("Opponent's Last Move: '" + this.Game.Moves.Last().San + "'");
-            }
-
-            // 3) print how much time remaining this AI has to calculate moves
-            Console.WriteLine("Time Remaining: " + this.Player.TimeRemaining + " ns");
-
-            // 4) make a random (and probably invalid) move.
-            var rand = new Random();
-            var randomPiece = this.Player.Pieces[rand.Next(this.Player.Pieces.Count)];
-            string randomFile = "" + (char)(((int)"a"[0]) + rand.Next(0, 8));
-            int randomRank = rand.Next(0, 8) + 1;
-            randomPiece.Move(randomFile, randomRank);
-
-            return true; // to signify we are done with our turn.
         }
 
         #endregion
