@@ -4,3 +4,4 @@
 run text eol=lf
 arenaRun text eol=lf
 testRun text eol=lf
+*.exe binary
