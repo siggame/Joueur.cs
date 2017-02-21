@@ -1,3 +1,6 @@
 # force git to convert line endings
 # crlf line endings break many things
 * text eol=crlf
+run text eol=lf
+arenaRun text eol=lf
+testRun text eol=lf
