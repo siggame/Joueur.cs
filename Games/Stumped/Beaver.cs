@@ -31,11 +31,6 @@ namespace Joueur.cs.Games.Stumped
         public int Branches { get; protected set; }
 
         /// <summary>
-        /// Number of turns this beaver is distracted for (0 means not distracted).
-        /// </summary>
-        public int Distracted { get; protected set; }
-
-        /// <summary>
         /// The number of fish this beaver is holding.
         /// </summary>
         public int Fish { get; protected set; }
@@ -61,9 +56,19 @@ namespace Joueur.cs.Games.Stumped
         public Stumped.Player Owner { get; protected set; }
 
         /// <summary>
+        /// True if the Beaver has finished being recruited and can do things, False otherwise.
+        /// </summary>
+        public bool Recruited { get; protected set; }
+
+        /// <summary>
         /// The tile this beaver is on.
         /// </summary>
         public Stumped.Tile Tile { get; protected set; }
+
+        /// <summary>
+        /// Number of turns this beaver is distracted for (0 means not distracted).
+        /// </summary>
+        public int TurnsDistracted { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -83,12 +88,12 @@ namespace Joueur.cs.Games.Stumped
         /// <summary>
         /// Attacks another adjacent beaver.
         /// </summary>
-        /// <param name="tile">The tile of the beaver you want to attack.</param>
+        /// <param name="beaver">The beaver to attack. Must be on an adjacent tile.</param>
         /// <returns>True if successfully attacked, false otherwise.</returns>
-        public bool Attack(Stumped.Tile tile)
+        public bool Attack(Stumped.Beaver beaver)
         {
             return this.RunOnServer<bool>("attack", new Dictionary<string, object> {
-                {"tile", tile}
+                {"beaver", beaver}
             });
         }
 
@@ -105,12 +110,14 @@ namespace Joueur.cs.Games.Stumped
         /// <summary>
         /// Drops some of the given resource on the beaver's tile. Fish dropped in water disappear instantly, and fish dropped on land die one per tile per turn.
         /// </summary>
+        /// <param name="tile">The Tile to drop branches/fish on. Must be the same Tile that the Beaver is on, or an adjacent one.</param>
         /// <param name="resource">The type of resource to drop ('branch' or 'fish').</param>
-        /// <param name="amount">The amount of the resource to drop, numbers <= 0 will drop all of that type.</param>
+        /// <param name="amount">The amount of the resource to drop, numbers <= 0 will drop all the resource type.</param>
         /// <returns>True if successfully dropped the resource, false otherwise.</returns>
-        public bool Drop(string resource, int amount=0)
+        public bool Drop(Stumped.Tile tile, string resource, int amount=0)
         {
             return this.RunOnServer<bool>("drop", new Dictionary<string, object> {
+                {"tile", tile},
                 {"resource", resource},
                 {"amount", amount}
             });
@@ -119,19 +126,19 @@ namespace Joueur.cs.Games.Stumped
         /// <summary>
         /// Harvests the branches or fish from a Spawner on an adjacent tile.
         /// </summary>
-        /// <param name="tile">The tile you want to harvest.</param>
+        /// <param name="spawner">The Spawner you want to harvest. Must be on an adjacent tile.</param>
         /// <returns>True if successfully harvested, false otherwise.</returns>
-        public bool Harvest(Stumped.Tile tile)
+        public bool Harvest(Stumped.Spawner spawner)
         {
             return this.RunOnServer<bool>("harvest", new Dictionary<string, object> {
-                {"tile", tile}
+                {"spawner", spawner}
             });
         }
 
         /// <summary>
         /// Moves this beaver from its current tile to an adjacent tile.
         /// </summary>
-        /// <param name="tile">The tile this beaver should move to. Costs 2 moves normally, 3 if moving upstream, and 1 if moving downstream.</param>
+        /// <param name="tile">The tile this beaver should move to.</param>
         /// <returns>True if the move worked, false otherwise.</returns>
         public bool Move(Stumped.Tile tile)
         {
@@ -143,12 +150,14 @@ namespace Joueur.cs.Games.Stumped
         /// <summary>
         /// Picks up some branches or fish on the beaver's tile.
         /// </summary>
+        /// <param name="tile">The Tile to pickup branches/fish from. Must be the same Tile that the Beaver is on, or an adjacent one.</param>
         /// <param name="resource">The type of resource to pickup ('branch' or 'fish').</param>
-        /// <param name="amount">The amount of the resource to drop, numbers <= 0 will pickup all of that type.</param>
+        /// <param name="amount">The amount of the resource to drop, numbers <= 0 will pickup all of the resource type.</param>
         /// <returns>True if successfully picked up a resource, false otherwise.</returns>
-        public bool Pickup(string resource, int amount=0)
+        public bool Pickup(Stumped.Tile tile, string resource, int amount=0)
         {
             return this.RunOnServer<bool>("pickup", new Dictionary<string, object> {
+                {"tile", tile},
                 {"resource", resource},
                 {"amount", amount}
             });

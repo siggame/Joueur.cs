@@ -48,7 +48,7 @@ namespace Joueur.cs.Games.Stumped
         /// <summary>
         /// How many turns a beaver attacked by this job is distracted by.
         /// </summary>
-        public int Distracts { get; protected set; }
+        public int DistractionPower { get; protected set; }
 
         /// <summary>
         /// Scalar for how many fish this job harvests at once.
@@ -88,12 +88,12 @@ namespace Joueur.cs.Games.Stumped
         /// <summary>
         /// Recruits a Beaver of this Job to a lodge
         /// </summary>
-        /// <param name="lodge">The Tile that is a lodge owned by you that you wish to spawn the Beaver of this Job on.</param>
+        /// <param name="tile">The Tile that is a lodge owned by you that you wish to spawn the Beaver of this Job on.</param>
         /// <returns>The recruited Beaver if successful, null otherwise.</returns>
-        public Stumped.Beaver Recruit(Stumped.Tile lodge)
+        public Stumped.Beaver Recruit(Stumped.Tile tile)
         {
             return this.RunOnServer<Stumped.Beaver>("recruit", new Dictionary<string, object> {
-                {"lodge", lodge}
+                {"tile", tile}
             });
         }
 

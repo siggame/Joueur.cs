@@ -21,12 +21,17 @@ namespace Joueur.cs.Games.Stumped
     {
         #region Properties
         /// <summary>
-        /// How much of the resource is left.
+        /// True if this Spawner has been harvested this turn, and it will not heal at the end of the turn, false otherwise.
+        /// </summary>
+        public bool HasBeenHarvested { get; protected set; }
+
+        /// <summary>
+        /// How much health this spawner has, which is used to calculate how much of its resource can be harvested.
         /// </summary>
         public int Health { get; protected set; }
 
         /// <summary>
-        /// The tile this resource is on.
+        /// The tile this Spawner is on.
         /// </summary>
         public Stumped.Tile Tile { get; protected set; }
 

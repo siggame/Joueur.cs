@@ -51,6 +51,11 @@ namespace Joueur.cs.Games.Stumped
         public IList<Stumped.Job> Jobs { get; protected set; }
 
         /// <summary>
+        /// Constant number used to calculate what it costs to spawn a new lodge.
+        /// </summary>
+        public double LodgeCostConstant { get; protected set; }
+
+        /// <summary>
         /// How many lodges must be complete at once to win the game.
         /// </summary>
         public int LodgesCompleteToWin { get; protected set; }
@@ -84,6 +89,11 @@ namespace Joueur.cs.Games.Stumped
         /// Every Spawner in the game.
         /// </summary>
         public IList<Stumped.Spawner> Spawner { get; protected set; }
+
+        /// <summary>
+        /// Constant number used to calculate how many breanches/fish Beavers harvest from spawners.
+        /// </summary>
+        public double SpawnerHarvestConstant { get; protected set; }
 
         /// <summary>
         /// All the types of spawners in the game.
