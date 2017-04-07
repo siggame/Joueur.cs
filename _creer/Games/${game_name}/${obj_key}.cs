@@ -26,7 +26,7 @@ inherit_str = ", ".join(parent_classes) # note: this could have multi-inheritanc
 namespace Joueur.cs.Games.${game_name}
 {
     /// <summary>
-    /// ${obj['description']}
+    /// ${shared['c#']['escape'](obj['description'])}
     /// </summary>
     class ${obj_key} : ${inherit_str}
     {
@@ -36,7 +36,7 @@ namespace Joueur.cs.Games.${game_name}
 if (obj_key == "Game" and (attr_name == "gameObjects" or attr_name == "name")) or attr_name == "id":
     continue
 %>        /// <summary>
-        /// ${attr_parms['description']}
+        /// ${shared['c#']['escape'](attr_parms['description'])}
         /// </summary>
         public ${shared['c#']['type'](attr_parms['type'])} ${upcase_first(attr_name)} { get; protected set; }
 
@@ -70,16 +70,16 @@ ${merge("        // ", "properties", "        // you can add additional properti
 arg_strings = []
 return_type = None
 %>        /// <summary>
-        /// ${function_parms['description']}
+        /// ${shared['c#']['escape'](function_parms['description'])}
         /// </summary>
 % if 'arguments' in function_parms:
 % for arg_parms in function_parms['arguments']:
-        /// <param name="${arg_parms['name']}">${arg_parms['description']}</param>
+        /// <param name="${arg_parms['name']}">${shared['c#']['escape'](arg_parms['description'])}</param>
 % endfor
 % endif
 % if function_parms['returns']:
 <% return_type = shared['c#']['type'](function_parms['returns']['type'])
-%>        /// <returns>${function_parms['returns']['description']}</returns>
+%>        /// <returns>${shared['c#']['escape'](function_parms['returns']['description'])}</returns>
 % endif
         public ${return_type or 'void'} ${upcase_first(function_name)}(${shared['c#']['args'](function_parms['arguments'])})
         {
@@ -92,6 +92,84 @@ return_type = None
 
 % endfor
 
+% if 'Tile' in game_objs:
+% if 'TiledGame' in game['serverParentClasses']: #// then we need to add some client side utility functions
+% if obj_key == 'Game':
+        /// <summary>
+        /// Gets the Tile at a specified (x, y) position
+        /// </summary>
+        /// <param name="x">integer between 0 and the MapWidth</param>
+        /// <param name="y">integer between 0 and the MapHeight</param>
+        /// <returns>the Tile at (x, y) or null if out of bounds</returns>
+        public Tile GetTileAt(int x, int y)
+        {
+            if (x < 0 || y < 0 || x >= this.MapWidth || y >= this.MapHeight)
+            {
+                // out of bounds
+                return null;
+            }
+
+            return this.Tiles[x + y * this.MapWidth];
+        }
+% elif obj_key == 'Tile':
+        /// <summary>
+        /// Gets the neighbors of this Tile
+        /// </summary>
+        /// <returns>The neighboring (adjacent) Tiles to this tile</returns>
+        public List<Tile> GetNeighbors()
+        {
+            var list = new List<Tile>();
+
+            if (this.TileNorth != null)
+            {
+                list.Add(this.TileNorth);
+            }
+
+            if (this.TileEast != null)
+            {
+                list.Add(this.TileEast);
+            }
+
+            if (this.TileSouth != null)
+            {
+                list.Add(this.TileSouth);
+            }
+
+            if (this.TileWest != null)
+            {
+                list.Add(this.TileWest);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// Checks if a Tile is pathable to units
+        /// </summary>
+        /// <returns>True if pathable, false otherwise</returns>
+        public bool IsPathable()
+        {
+${merge("            // ", "is_pathable_builtin", "            return false; // DEVELOPER ADD LOGIC HERE")}
+        }
+
+        /// <summary>
+        /// Checks if this Tile has a specific neighboring Tile
+        /// </summary>
+        /// <param name="tile">Tile to check against</param>
+        /// <returns>true if the tile is a neighbor of this Tile, false otherwise</returns>
+        public bool HasNeighbor(Tile tile)
+        {
+            if (tile == null)
+            {
+                return false;
+            }
+
+            return (this.TileNorth == tile || this.TileEast == tile || this.TileSouth == tile || this.TileEast == tile);
+        }
+% endif
+% endif
+
+% endif
 ${merge("        // ", "methods", "        // you can add additional method(s) here.", optional=True)}
         #endregion
     }

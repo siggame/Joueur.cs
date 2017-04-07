@@ -112,7 +112,7 @@ namespace Joueur.cs.Games.Stumped
         /// </summary>
         /// <param name="tile">The Tile to drop branches/food on. Must be the same Tile that the Beaver is on, or an adjacent one.</param>
         /// <param name="resource">The type of resource to drop ('branch' or 'food').</param>
-        /// <param name="amount">The amount of the resource to drop, numbers <= 0 will drop all the resource type.</param>
+        /// <param name="amount">The amount of the resource to drop, numbers &lt;= 0 will drop all the resource type.</param>
         /// <returns>True if successfully dropped the resource, false otherwise.</returns>
         public bool Drop(Stumped.Tile tile, string resource, int amount=0)
         {
@@ -152,7 +152,7 @@ namespace Joueur.cs.Games.Stumped
         /// </summary>
         /// <param name="tile">The Tile to pickup branches/food from. Must be the same Tile that the Beaver is on, or an adjacent one.</param>
         /// <param name="resource">The type of resource to pickup ('branch' or 'food').</param>
-        /// <param name="amount">The amount of the resource to drop, numbers <= 0 will pickup all of the resource type.</param>
+        /// <param name="amount">The amount of the resource to drop, numbers &lt;= 0 will pickup all of the resource type.</param>
         /// <returns>True if successfully picked up a resource, false otherwise.</returns>
         public bool Pickup(Stumped.Tile tile, string resource, int amount=0)
         {
@@ -162,6 +162,7 @@ namespace Joueur.cs.Games.Stumped
                 {"amount", amount}
             });
         }
+
 
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

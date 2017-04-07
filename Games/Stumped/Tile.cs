@@ -101,6 +101,63 @@ namespace Joueur.cs.Games.Stumped
         }
 
 
+        /// <summary>
+        /// Gets the neighbors of this Tile
+        /// </summary>
+        /// <returns>The neighboring (adjacent) Tiles to this tile</returns>
+        public List<Tile> GetNeighbors()
+        {
+            var list = new List<Tile>();
+
+            if (this.TileNorth != null)
+            {
+                list.Add(this.TileNorth);
+            }
+
+            if (this.TileEast != null)
+            {
+                list.Add(this.TileEast);
+            }
+
+            if (this.TileSouth != null)
+            {
+                list.Add(this.TileSouth);
+            }
+
+            if (this.TileWest != null)
+            {
+                list.Add(this.TileWest);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// Checks if a Tile is pathable to units
+        /// </summary>
+        /// <returns>True if pathable, false otherwise</returns>
+        public bool IsPathable()
+        {
+            // <<-- Creer-Merge: is_pathable_builtin -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+            return false; // DEVELOPER ADD LOGIC HERE
+            // <<-- /Creer-Merge: is_pathable_builtin -->>
+        }
+
+        /// <summary>
+        /// Checks if this Tile has a specific neighboring Tile
+        /// </summary>
+        /// <param name="tile">Tile to check against</param>
+        /// <returns>true if the tile is a neighbor of this Tile, false otherwise</returns>
+        public bool HasNeighbor(Tile tile)
+        {
+            if (tile == null)
+            {
+                return false;
+            }
+
+            return (this.TileNorth == tile || this.TileEast == tile || this.TileSouth == tile || this.TileEast == tile);
+        }
+
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional method(s) here.
         // <<-- /Creer-Merge: methods -->>

@@ -124,6 +124,23 @@ namespace Joueur.cs.Games.Stumped
         }
 
 
+        /// <summary>
+        /// Gets the Tile at a specified (x, y) position
+        /// </summary>
+        /// <param name="x">integer between 0 and the MapWidth</param>
+        /// <param name="y">integer between 0 and the MapHeight</param>
+        /// <returns>the Tile at (x, y) or null if out of bounds</returns>
+        public Tile GetTileAt(int x, int y)
+        {
+            if (x < 0 || y < 0 || x >= this.MapWidth || y >= this.MapHeight)
+            {
+                // out of bounds
+                return null;
+            }
+
+            return this.Tiles[x + y * this.MapWidth];
+        }
+
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional method(s) here.
         // <<-- /Creer-Merge: methods -->>

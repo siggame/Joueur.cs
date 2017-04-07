@@ -2,6 +2,20 @@
 if not 'c#' in shared:
     shared['c#'] = {}
 
+    def cs_escape(s):
+        """
+        Returns the ASCII decoded version of the given HTML string. This does
+        NOT remove normal HTML tags like <p>.
+        """
+        htmlCodes = (
+                ('>', '&gt;'),
+                ('<', '&lt;')
+            )
+        for code in htmlCodes:
+            s = s.replace(code[0], code[1])
+        return s
+    shared['c#']['escape'] = cs_escape
+
     def cs_default(type_obj, default=None):
         base_type = type_obj['name']
         if default == None:
