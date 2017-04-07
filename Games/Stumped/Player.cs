@@ -26,7 +26,7 @@ namespace Joueur.cs.Games.Stumped
         public IList<Stumped.Beaver> Beavers { get; protected set; }
 
         /// <summary>
-        /// How many branches are required to build a lodge for this player.
+        /// How many branches are required to build a lodge for this Player.
         /// </summary>
         public int BranchesToBuildLodge { get; protected set; }
 
@@ -36,7 +36,7 @@ namespace Joueur.cs.Games.Stumped
         public string ClientType { get; protected set; }
 
         /// <summary>
-        /// A list of tiles that contain lodges owned by this player.
+        /// A list of Tiles that contain lodges owned by this player.
         /// </summary>
         public IList<Stumped.Tile> Lodges { get; protected set; }
 

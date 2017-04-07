@@ -26,11 +26,6 @@ namespace Joueur.cs.Games.Stumped
         public IList<Stumped.Beaver> Beavers { get; protected set; }
 
         /// <summary>
-        /// How many branches a lodge must have to be considered complete.
-        /// </summary>
-        public int BranchesToCompleteLodge { get; protected set; }
-
-        /// <summary>
         /// The player whose turn it is currently. That player can send commands. Other players cannot.
         /// </summary>
         public Stumped.Player CurrentPlayer { get; protected set; }
@@ -41,7 +36,7 @@ namespace Joueur.cs.Games.Stumped
         public int CurrentTurn { get; protected set; }
 
         /// <summary>
-        /// When a Player has less Beavers than this number, recruiting other Beavers is free.
+        /// When a Player has less Beavers than this number, then recruiting other Beavers is free.
         /// </summary>
         public int FreeBeaversCount { get; protected set; }
 
@@ -56,9 +51,9 @@ namespace Joueur.cs.Games.Stumped
         public double LodgeCostConstant { get; protected set; }
 
         /// <summary>
-        /// How many lodges must be complete at once to win the game.
+        /// How many lodges must be owned by a Player at once to win the game.
         /// </summary>
-        public int LodgesCompleteToWin { get; protected set; }
+        public int LodgesToWin { get; protected set; }
 
         /// <summary>
         /// The number of Tiles in the map along the y (vertical) axis.
@@ -91,12 +86,12 @@ namespace Joueur.cs.Games.Stumped
         public IList<Stumped.Spawner> Spawner { get; protected set; }
 
         /// <summary>
-        /// Constant number used to calculate how many breanches/fish Beavers harvest from spawners.
+        /// Constant number used to calculate how many breanches/food Beavers harvest from Spawners.
         /// </summary>
         public double SpawnerHarvestConstant { get; protected set; }
 
         /// <summary>
-        /// All the types of spawners in the game.
+        /// All the types of Spawners in the game.
         /// </summary>
         public IList<string> SpawnerTypes { get; protected set; }
 

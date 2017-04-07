@@ -1,4 +1,4 @@
-// A resource spawner that generates branches or fish.
+// A resource spawner that generates branches or food.
 
 // DO NOT MODIFY THIS FILE
 // Never try to directly create an instance of this class, or modify its member variables.
@@ -15,7 +15,7 @@ using System.Text;
 namespace Joueur.cs.Games.Stumped
 {
     /// <summary>
-    /// A resource spawner that generates branches or fish.
+    /// A resource spawner that generates branches or food.
     /// </summary>
     class Spawner : Stumped.GameObject
     {
@@ -26,17 +26,17 @@ namespace Joueur.cs.Games.Stumped
         public bool HasBeenHarvested { get; protected set; }
 
         /// <summary>
-        /// How much health this spawner has, which is used to calculate how much of its resource can be harvested.
+        /// How much health this Spawner has, which is used to calculate how much of its resource can be harvested.
         /// </summary>
         public int Health { get; protected set; }
 
         /// <summary>
-        /// The tile this Spawner is on.
+        /// The Tile this Spawner is on.
         /// </summary>
         public Stumped.Tile Tile { get; protected set; }
 
         /// <summary>
-        /// What type of resource this is ('Fish' or 'Branch').
+        /// What type of resource this is ('food' or 'branches').
         /// </summary>
         public string Type { get; protected set; }
 

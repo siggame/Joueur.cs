@@ -21,32 +21,32 @@ namespace Joueur.cs.Games.Stumped
     {
         #region Properties
         /// <summary>
-        /// The beaver on this tile if present, otherwise null.
+        /// The Beaver on this Tile if present, otherwise null.
         /// </summary>
         public Stumped.Beaver Beaver { get; protected set; }
 
         /// <summary>
-        /// The number of branches dropped on this tile.
+        /// The number of branches dropped on this Tile.
         /// </summary>
         public int Branches { get; protected set; }
 
         /// <summary>
-        /// The number of fish dropped on this tile.
-        /// </summary>
-        public int Fish { get; protected set; }
-
-        /// <summary>
-        /// The cardinal direction water is flowing on this tile ('North', 'East', 'South', 'West').
+        /// The cardinal direction water is flowing on this Tile ('North', 'East', 'South', 'West').
         /// </summary>
         public string FlowDirection { get; protected set; }
 
         /// <summary>
-        /// The owner of the beaver lodge on this tile, if present, otherwise null.
+        /// The number of food dropped on this Tile.
+        /// </summary>
+        public int Food { get; protected set; }
+
+        /// <summary>
+        /// The owner of the Beaver lodge on this Tile, if present, otherwise null.
         /// </summary>
         public Stumped.Player LodgeOwner { get; protected set; }
 
         /// <summary>
-        /// The resource spawner on this tile if present, otherwise null.
+        /// The resource Spawner on this Tile if present, otherwise null.
         /// </summary>
         public Stumped.Spawner Spawner { get; protected set; }
 
