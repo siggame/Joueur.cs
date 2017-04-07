@@ -86,7 +86,7 @@ namespace Joueur.cs.Games.Stumped
         public IList<Stumped.Spawner> Spawner { get; protected set; }
 
         /// <summary>
-        /// Constant number used to calculate how many breanches/food Beavers harvest from Spawners.
+        /// Constant number used to calculate how many branches/food Beavers harvest from Spawners.
         /// </summary>
         public double SpawnerHarvestConstant { get; protected set; }
 
