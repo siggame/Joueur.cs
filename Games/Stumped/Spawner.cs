@@ -8,9 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-// <<-- Creer-Merge: usings -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-// you can add additional using(s) here
-// <<-- /Creer-Merge: usings -->>
+
 
 namespace Joueur.cs.Games.Stumped
 {
@@ -41,9 +39,7 @@ namespace Joueur.cs.Games.Stumped
         public string Type { get; protected set; }
 
 
-        // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add additional properties(s) here. None of them will be tracked or updated by the server.
-        // <<-- /Creer-Merge: properties -->>
+
         #endregion
 
 
@@ -57,9 +53,7 @@ namespace Joueur.cs.Games.Stumped
 
 
 
-        // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add additional method(s) here.
-        // <<-- /Creer-Merge: methods -->>
+
         #endregion
     }
 }

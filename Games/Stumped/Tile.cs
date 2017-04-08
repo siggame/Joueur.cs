@@ -8,9 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-// <<-- Creer-Merge: usings -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-// you can add additional using(s) here
-// <<-- /Creer-Merge: usings -->>
+
 
 namespace Joueur.cs.Games.Stumped
 {
@@ -86,9 +84,7 @@ namespace Joueur.cs.Games.Stumped
         public int Y { get; protected set; }
 
 
-        // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add additional properties(s) here. None of them will be tracked or updated by the server.
-        // <<-- /Creer-Merge: properties -->>
+
         #endregion
 
 
@@ -138,9 +134,7 @@ namespace Joueur.cs.Games.Stumped
         /// <returns>True if pathable, false otherwise</returns>
         public bool IsPathable()
         {
-            // <<-- Creer-Merge: is_pathable_builtin -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-            return false; // DEVELOPER ADD LOGIC HERE
-            // <<-- /Creer-Merge: is_pathable_builtin -->>
+            return this.Beaver == null && this.Spawner == null && this.LodgeOwner == null;
         }
 
         /// <summary>
@@ -158,9 +152,7 @@ namespace Joueur.cs.Games.Stumped
             return (this.TileNorth == tile || this.TileEast == tile || this.TileSouth == tile || this.TileEast == tile);
         }
 
-        // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add additional method(s) here.
-        // <<-- /Creer-Merge: methods -->>
+
         #endregion
     }
 }
