@@ -95,10 +95,196 @@ namespace Joueur.cs.Games.Stumped
         /// <returns>Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.</returns>
         public bool RunTurn()
         {
-            // <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-            // Put your game logic here for runTurn
-            return true;
-            // <<-- /Creer-Merge: runTurn -->>
+            // This is your Stumped ShellAI
+            // ShellAI is intended to be a simple AI that does everything possible in the game, but plays the game very poorly
+            // This example code does the following:
+            // 1. Grabs a single beaver
+            // 2. tries to move the beaver
+            // 3. tries to do one of the 5 actions on it
+            // 4. Grabs a lodge and tries to recruit a new beaver
+
+            // NOTE: If you're executing from Visual Studio (or a similar IDE), you should modify the project's Properties file
+            //       and set your session name in the Debug tab
+
+            // First let's do a simple print statement telling us what turn we are on
+            Console.WriteLine($"My Turn {this.Game.CurrentTurn}");
+
+            // 1. get the first beaver to try to do things with
+            Beaver beaver = this.Player.Beavers.FirstOrDefault();
+
+            // if we have a beaver, and it's not distracted, and it is alive (health greater than 0)
+            if (beaver != null && beaver.TurnsDistracted == 0 && beaver.Health > 0) {
+                // then let's try to do stuff with it
+
+                // 2. Try to move the beaver
+                if (beaver.Moves >= 3) {
+                    // then it has enough moves to move in any direction, so let's move it
+
+                    // find a spawner to move to
+                    Tile target = null;
+                    foreach (Tile tile in this.Game.Tiles) {
+                        if (tile.Spawner != null && tile.Spawner.Health > 1) {
+                            // then we found a healthy spawner, let's target that tile to move to
+                            target = tile;
+                            break;
+                        }
+                    }
+
+                    // use the pathfinding algorithm below to make a path to the spawner's target tile
+                    List<Tile> path = this.FindPath(beaver.Tile, target);
+
+                    // if there is a path, move to it
+                    //      length 0 means no path could be found to the tile
+                    //      length 1 means the target is adjacent, and we can't move onto the same tile as the spawner
+                    //      length 2+ means we have to move towards it
+                    if (path.Any()) {
+                        Console.WriteLine($"Moving {beaver} towards {target}");
+                        beaver.Move(path[0]);
+                    }
+                }
+
+                // 3. Try to do an action on the beaver
+                if (beaver.Actions > 0) {
+                    // then let's try to do an action!
+
+                    // Do a random action!
+                    string action = RandomElement(new string[] {"buildLodge", "attack", "pickup", "drop", "harvest"});
+
+                    // how much this beaver is carrying, used for calculations
+                    int load = beaver.Branches + beaver.Food;
+                    
+                    switch (action) {
+                        case "buildLodge":
+                            // if the beaver has enough branches to build a lodge
+                            //   and the tile does not already have a lodge, then do so
+                            if (beaver.Branches + beaver.Tile.Branches >= this.Player.BranchesToBuildLodge && beaver.Tile.LodgeOwner == null) {
+                                Console.WriteLine($"{beaver.Job.Title} building lodge");
+                                beaver.BuildLodge();
+                            }
+                            break;
+                        case "attack":
+                            // look at all our neighbor tiles and if they have a beaver attack it!
+                            foreach (Tile neighbor in Shuffled(beaver.Tile.GetNeighbors())) {
+                                if (neighbor.Beaver != null) {
+                                    Console.WriteLine($"{beaver.Job.Title} attacking {neighbor.Beaver}");
+                                    beaver.Attack(neighbor.Beaver);
+                                    break;
+                                }
+                            }
+                            break;
+                        case "pickup":
+                            // make an array of our neighboring tiles + our tile as all can be picked up from
+                            IList<Tile> pickupTiles = Shuffled(beaver.Tile.GetNeighbors().Concat(new Tile[] {beaver.Tile}).ToList());
+
+                            // if the beaver can carry more resources, try to pick something up
+                            if (load < beaver.Job.CarryLimit) {
+                                foreach (Tile tile in pickupTiles) {
+                                    // try to pickup branches
+                                    if (tile.Branches > 0) {
+                                        Console.WriteLine($"{beaver.Job.Title} picking up branches");
+                                        beaver.Pickup(tile, "branches", 1);
+                                        break;
+                                    }
+                                    // try to pickup food
+                                    else if (tile.Food > 0) {
+                                        Console.WriteLine($"{beaver.Job.Title} picking up food");
+                                        beaver.Pickup(tile, "food", 1);
+                                        break;
+                                    }
+                                }
+                            }
+                            break;
+                        case "drop":
+                            // choose a random tile from our neighbors + out tile to drop stuff on
+                            IList<Tile> dropTiles = Shuffled(beaver.Tile.GetNeighbors().Concat(new Tile[] {beaver.Tile}).ToList());
+
+                            // find a valid tile to drop resources onto
+                            Tile tileToDropOn = null;
+                            foreach (Tile tile in dropTiles) {
+                                if (tile.Spawner == null) {
+                                    tileToDropOn = tile;
+                                    break;
+                                }
+                            }
+
+                            // if there is a tile that resources can be dropped on
+                            if (tileToDropOn != null) {
+                                // if we have branches to drop
+                                if (beaver.Branches > 0) {
+                                    Console.WriteLine($"{beaver.Job.Title} dropping 1 branch");
+                                    beaver.Drop(tileToDropOn, "branches", 1);
+                                }
+                                // or if we have food to drop
+                                else if (beaver.Food > 0) {
+                                    Console.WriteLine($"{beaver.Job.Title} dropping 1 food");
+                                    beaver.Drop(tileToDropOn, "food", 1);
+                                }
+                            }
+                            break;
+                        case "harvest":
+                            // if we can carry more, try to harvest something
+                            if (load < beaver.Job.CarryLimit) {
+                                // try to find a neighboring tile with a spawner on it to harvest from
+                                foreach (Tile neighbor in Shuffled(beaver.Tile.GetNeighbors())) {
+                                    // if it has a spawner on that tile, harvest from it
+                                    if (neighbor.Spawner != null) {
+                                        Console.WriteLine($"{beaver.Job.Title} harvesting {neighbor.Spawner}");
+                                        beaver.Harvest(neighbor.Spawner);
+                                        break;
+                                    }
+                                }
+                            }
+                            break;
+                    }
+                }
+            }
+
+            // now try to spawn a beaver if we have lodges
+
+            // 4. Get a lodge to try to spawn something at
+            Tile lodge = RandomElement(this.Player.Lodges);
+
+            // if we found a lodge and it has no beaver blocking it
+            if (lodge != null && lodge.Beaver == null) {
+                // then this lodge can have a new beaver appear here
+
+                // We need to know how many beavers we have to see if they are free to spawn
+                int aliveBeavers = this.Player.Beavers.Count(b => b.Health > 0);
+
+                // and we need a Job to spawn
+                Job job = RandomElement(this.Game.Jobs);
+
+                // if we have less beavers than the freeBeavers count, it is free to spawn
+                //    otherwise if that lodge has enough food on it to cover the job's cost
+                if (aliveBeavers < this.Game.FreeBeaversCount || lodge.Food >= job.Cost) {
+                    // then spawn a new beaver of that job!
+                    Console.WriteLine($"recruting {job.Title} to {lodge.X}, {lodge.Y}");
+                    job.Recruit(lodge);
+                }
+            }
+
+            Console.WriteLine("Done with our turn");
+            return true; // to signify that we are truly done with this turn
+        }
+
+        // A random number generator
+        public Random rand = new Random();
+
+        /// <summary>Simply returns a random element of an array</summary>
+        public T RandomElement<T>(IList<T> items) where T : class {
+            return items.Any() ? items[rand.Next(items.Count())] : null;
+        }
+
+        /// <summary>Simply returns a shuffled copy of an array</summary>
+        public IList<T> Shuffled<T>(IList<T> a) {
+            a = a.ToList();
+            for (int i = a.Count(); i > 0; i--) {
+                int j = rand.Next(i);
+                T x = a[i - 1];
+                a[i - 1] = a[j];
+                a[j] = x;
+            }
+            return a;
         }
 
         /// <summary>
