@@ -21,52 +21,52 @@ namespace Joueur.cs.Games.Stumped
     {
         #region Properties
         /// <summary>
-        /// The number of actions this job can make per turn.
+        /// The number of actions this Job can make per turn.
         /// </summary>
         public int Actions { get; protected set; }
 
         /// <summary>
-        /// How many resources a beaver with this job can hold at once.
+        /// How many combined resources a beaver with this Job can hold at once.
         /// </summary>
         public int CarryLimit { get; protected set; }
 
         /// <summary>
-        /// Scalar for how many branches this job harvests at once.
+        /// Scalar for how many branches this Job harvests at once.
         /// </summary>
         public int Chopping { get; protected set; }
 
         /// <summary>
-        /// How many fish this Job costs to recruit.
+        /// How much food this Job costs to recruit.
         /// </summary>
         public int Cost { get; protected set; }
 
         /// <summary>
-        /// The amount of damage this job does per attack.
+        /// The amount of damage this Job does per attack.
         /// </summary>
         public int Damage { get; protected set; }
 
         /// <summary>
-        /// How many turns a beaver attacked by this job is distracted by.
+        /// How many turns a beaver attacked by this Job is distracted by.
         /// </summary>
         public int DistractionPower { get; protected set; }
 
         /// <summary>
-        /// Scalar for how many fish this job harvests at once.
-        /// </summary>
-        public int Fishing { get; protected set; }
-
-        /// <summary>
-        /// The amount of starting health this job has.
+        /// The amount of starting health this Job has.
         /// </summary>
         public int Health { get; protected set; }
 
         /// <summary>
-        /// The number of moves this job can make per turn.
+        /// The number of moves this Job can make per turn.
         /// </summary>
         public int Moves { get; protected set; }
 
         /// <summary>
-        /// The job title ('builder', 'fisher', etc).
+        /// Scalar for how much food this Job harvests at once.
+        /// </summary>
+        public int Munching { get; protected set; }
+
+        /// <summary>
+        /// The Job title.
         /// </summary>
         public string Title { get; protected set; }
 
@@ -96,6 +96,7 @@ namespace Joueur.cs.Games.Stumped
                 {"tile", tile}
             });
         }
+
 
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

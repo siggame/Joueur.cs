@@ -26,7 +26,7 @@ namespace Joueur.cs.Games.Stumped
         public IList<Stumped.Beaver> Beavers { get; protected set; }
 
         /// <summary>
-        /// How many branches are required to build a lodge for this player.
+        /// How many branches are required to build a lodge for this Player.
         /// </summary>
         public int BranchesToBuildLodge { get; protected set; }
 
@@ -36,7 +36,7 @@ namespace Joueur.cs.Games.Stumped
         public string ClientType { get; protected set; }
 
         /// <summary>
-        /// A list of tiles that contain lodges owned by this player.
+        /// A list of Tiles that contain lodges owned by this player.
         /// </summary>
         public IList<Stumped.Tile> Lodges { get; protected set; }
 
@@ -91,6 +91,7 @@ namespace Joueur.cs.Games.Stumped
             this.Beavers = new List<Stumped.Beaver>();
             this.Lodges = new List<Stumped.Tile>();
         }
+
 
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

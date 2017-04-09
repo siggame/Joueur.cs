@@ -101,6 +101,72 @@ namespace Joueur.cs.Games.Stumped
             // <<-- /Creer-Merge: runTurn -->>
         }
 
+        /// <summary>
+        /// A very basic path finding algorithm (Breadth First Search) that when given a starting Tile, will return a valid path to the goal Tile.
+        /// </summary>
+        /// <remarks>
+        /// This is NOT an optimal pathfinding algorithm. It is intended as a stepping stone if you want to improve it.
+        /// </remarks>
+        /// <param name="start">the starting Tile</param>
+        /// <param name="goal">the goal Tile</param>
+        /// <returns>A List of Tiles representing the path, the the first element being a valid adjacent Tile to the start, and the last element being the goal. Or an empty list if no path found.</returns>
+        List<Tile> FindPath(Tile start, Tile goal)
+        {
+            // no need to make a path to here...
+            if (start == goal)
+            {
+                return new List<Tile>();
+            }
+
+            // the tiles that will have their neighbors searched for 'goal'
+            Queue<Tile> fringe = new Queue<Tile>();
+
+            // How we got to each tile that went into the fringe.
+            Dictionary<Tile, Tile> cameFrom = new Dictionary<Tile, Tile>();
+
+            // Enqueue start as the first tile to have its neighbors searched.
+            fringe.Enqueue(start);
+
+            // keep exploring neighbors of neighbors... until there are no more.
+            while (fringe.Count > 0)
+            {
+                // the tile we are currently exploring.
+                Tile inspect = fringe.Dequeue();
+
+                // cycle through the tile's neighbors.
+                foreach (Tile neighbor in inspect.GetNeighbors())
+                {
+                    if (neighbor == goal)
+                    {
+                        // Follow the path backward starting at the goal and return it.
+                        List<Tile> path = new List<Tile>();
+                        path.Add(goal);
+
+                        // Starting at the tile we are currently at, insert them retracing our steps till we get to the starting tile
+                        for (Tile step = inspect; step != start; step = cameFrom[step])
+                        {
+                            path.Insert(0, step);
+                        }
+
+                        return path;
+                    }
+
+                    // if the tile exists, has not been explored or added to the fringe yet, and it is pathable
+                    if (neighbor != null && !cameFrom.ContainsKey(neighbor) && neighbor.IsPathable())
+                    {
+                        // add it to the tiles to be explored and add where it came from.
+                        fringe.Enqueue(neighbor);
+                        cameFrom.Add(neighbor, inspect);
+                    }
+
+                } // foreach(neighbor)
+
+            } // while(fringe not empty)
+
+            // if you're here, that means that there was not a path to get to where you want to go.
+            //   in that case, we'll just return an empty path.
+            return new List<Tile>();
+        }
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional methods here for your AI to call

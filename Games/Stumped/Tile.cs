@@ -21,32 +21,32 @@ namespace Joueur.cs.Games.Stumped
     {
         #region Properties
         /// <summary>
-        /// The beaver on this tile if present, otherwise null.
+        /// The Beaver on this Tile if present, otherwise null.
         /// </summary>
         public Stumped.Beaver Beaver { get; protected set; }
 
         /// <summary>
-        /// The number of branches dropped on this tile.
+        /// The number of branches dropped on this Tile.
         /// </summary>
         public int Branches { get; protected set; }
 
         /// <summary>
-        /// The number of fish dropped on this tile.
-        /// </summary>
-        public int Fish { get; protected set; }
-
-        /// <summary>
-        /// The cardinal direction water is flowing on this tile ('North', 'East', 'South', 'West').
+        /// The cardinal direction water is flowing on this Tile ('North', 'East', 'South', 'West').
         /// </summary>
         public string FlowDirection { get; protected set; }
 
         /// <summary>
-        /// The owner of the beaver lodge on this tile, if present, otherwise null.
+        /// The number of food dropped on this Tile.
+        /// </summary>
+        public int Food { get; protected set; }
+
+        /// <summary>
+        /// The owner of the Beaver lodge on this Tile, if present, otherwise null.
         /// </summary>
         public Stumped.Player LodgeOwner { get; protected set; }
 
         /// <summary>
-        /// The resource spawner on this tile if present, otherwise null.
+        /// The resource Spawner on this Tile if present, otherwise null.
         /// </summary>
         public Stumped.Spawner Spawner { get; protected set; }
 
@@ -100,6 +100,63 @@ namespace Joueur.cs.Games.Stumped
         {
         }
 
+
+        /// <summary>
+        /// Gets the neighbors of this Tile
+        /// </summary>
+        /// <returns>The neighboring (adjacent) Tiles to this tile</returns>
+        public List<Tile> GetNeighbors()
+        {
+            var list = new List<Tile>();
+
+            if (this.TileNorth != null)
+            {
+                list.Add(this.TileNorth);
+            }
+
+            if (this.TileEast != null)
+            {
+                list.Add(this.TileEast);
+            }
+
+            if (this.TileSouth != null)
+            {
+                list.Add(this.TileSouth);
+            }
+
+            if (this.TileWest != null)
+            {
+                list.Add(this.TileWest);
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// Checks if a Tile is pathable to units
+        /// </summary>
+        /// <returns>True if pathable, false otherwise</returns>
+        public bool IsPathable()
+        {
+            // <<-- Creer-Merge: is_pathable_builtin -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+            return false; // DEVELOPER ADD LOGIC HERE
+            // <<-- /Creer-Merge: is_pathable_builtin -->>
+        }
+
+        /// <summary>
+        /// Checks if this Tile has a specific neighboring Tile
+        /// </summary>
+        /// <param name="tile">Tile to check against</param>
+        /// <returns>true if the tile is a neighbor of this Tile, false otherwise</returns>
+        public bool HasNeighbor(Tile tile)
+        {
+            if (tile == null)
+            {
+                return false;
+            }
+
+            return (this.TileNorth == tile || this.TileEast == tile || this.TileSouth == tile || this.TileEast == tile);
+        }
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional method(s) here.
