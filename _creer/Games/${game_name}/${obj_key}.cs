@@ -33,7 +33,7 @@ namespace Joueur.cs.Games.${game_name}
         #region Properties
 % for attr_name in obj['attribute_names']:
 <% attr_parms = obj['attributes'][attr_name]
-if (obj_key == "Game" and (attr_name == "gameObjects" or attr_name == "name")) or attr_name == "id":
+if (obj_key == "Game" and (attr_name == "gameObjects" or attr_name == "name")) or attr_name == "id" or attr_name == "gameObjectName":
     continue
 %>        /// <summary>
         /// ${shared['c#']['escape'](attr_parms['description'])}

@@ -21,11 +21,6 @@ namespace Joueur.cs.Games.Saloon
     {
         #region Properties
         /// <summary>
-        /// String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.
-        /// </summary>
-        public string GameObjectName { get; protected set; }
-
-        /// <summary>
         /// Any strings logged will be stored here. Intended for debugging.
         /// </summary>
         public IList<string> Logs { get; protected set; }
@@ -56,6 +51,7 @@ namespace Joueur.cs.Games.Saloon
                 {"message", message}
             });
         }
+
 
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

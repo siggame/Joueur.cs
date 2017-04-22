@@ -21,11 +21,6 @@ namespace Joueur.cs.Games.Spiders
     {
         #region Properties
         /// <summary>
-        /// String representing the top level Class that this game object is an instance of. Used for reflection to create new instances on clients, but exposed for convenience should AIs want this data.
-        /// </summary>
-        public string GameObjectName { get; protected set; }
-
-        /// <summary>
         /// Any strings logged will be stored here. Intended for debugging.
         /// </summary>
         public IList<string> Logs { get; protected set; }
