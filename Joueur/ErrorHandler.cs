@@ -2,7 +2,7 @@ using System;
 
 namespace Joueur.cs
 {
-    static class ErrorHandler
+    public static class ErrorHandler
     {
         public enum ErrorCode
         {

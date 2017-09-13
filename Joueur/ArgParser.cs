@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Joueur.cs
 {
-    class ArgParser
+    public class ArgParser
     {
         public class Argument
         {
