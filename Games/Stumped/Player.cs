@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Stumped
     /// <summary>
     /// A player in this game. Every AI controls one player.
     /// </summary>
-    public class Player : Stumped.GameObject
+    class Player : Stumped.GameObject
     {
         #region Properties
         /// <summary>

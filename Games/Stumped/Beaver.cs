@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Stumped
     /// <summary>
     /// A beaver in the game.
     /// </summary>
-    public class Beaver : Stumped.GameObject
+    class Beaver : Stumped.GameObject
     {
         #region Properties
         /// <summary>

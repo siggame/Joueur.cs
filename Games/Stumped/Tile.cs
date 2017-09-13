@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Stumped
     /// <summary>
     /// A Tile in the game that makes up the 2D map grid.
     /// </summary>
-    public class Tile : Stumped.GameObject
+    class Tile : Stumped.GameObject
     {
         #region Properties
         /// <summary>

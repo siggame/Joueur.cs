@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Stumped
     /// <summary>
     /// Information about a beaver's job.
     /// </summary>
-    public class Job : Stumped.GameObject
+    class Job : Stumped.GameObject
     {
         #region Properties
         /// <summary>

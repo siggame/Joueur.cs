@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Stumped
     /// <summary>
     /// Gather branches and build up your lodge as beavers fight to survive.
     /// </summary>
-    public class Game : BaseGame
+    class Game : BaseGame
     {
         #region Properties
         /// <summary>
