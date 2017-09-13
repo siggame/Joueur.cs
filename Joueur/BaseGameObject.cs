@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Joueur.cs
 {
-    abstract class BaseGameObject
+    public abstract class BaseGameObject
     {
         /// <summary>
         /// A unique identifier for each game object. During any game IDs will never be re-used.
