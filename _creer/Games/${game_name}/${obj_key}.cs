@@ -28,7 +28,7 @@ namespace Joueur.cs.Games.${game_name}
     /// <summary>
     /// ${shared['c#']['escape'](obj['description'])}
     /// </summary>
-    class ${obj_key} : ${inherit_str}
+    public class ${obj_key} : ${inherit_str}
     {
         #region Properties
 % for attr_name in obj['attribute_names']:
