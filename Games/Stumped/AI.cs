@@ -11,21 +11,21 @@ using System.Text;
 namespace Joueur.cs.Games.Stumped
 {
     /// <summary>
-    /// This is where you build your AI for the Stumped game.
+    /// This is where you build your AI for Stumped.
     /// </summary>
-    class AI : BaseAI
+    public class AI : BaseAI
     {
         #region Properties
         #pragma warning disable 0169 // the never assigned warnings between here are incorrect. We set it for you via reflection. So these will remove it from the Error List.
         #pragma warning disable 0649
         /// <summary>
-        /// This is the Game object itself, it contains all the information about the current game
+        /// This is the Game object itself. It contains all the information about the current game.
         /// </summary>
-        public readonly Stumped.Game Game;
+        public readonly Game Game;
         /// <summary>
-        /// This is your AI's player. This AI class is not a player, but it should command this Player.
+        /// This is your AI's player. It contains all the information about your player's state.
         /// </summary>
-        public readonly Stumped.Player Player;
+        public readonly Player Player;
         #pragma warning restore 0169
         #pragma warning restore 0649
 
@@ -39,7 +39,7 @@ namespace Joueur.cs.Games.Stumped
         /// <summary>
         /// This returns your AI's name to the game server. Just replace the string.
         /// </summary>
-        /// <returns>string of you AI's name.</returns>
+        /// <returns>Your AI's name</returns>
         public override string GetName()
         {
             // <<-- Creer-Merge: get-name -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -48,10 +48,10 @@ namespace Joueur.cs.Games.Stumped
         }
 
         /// <summary>
-        /// This is automatically called when the game first starts, once the Game object and all GameObjects have been initialized, but before any players do anything.
+        /// This is automatically called when the game first starts, once the Game and all GameObjects have been initialized, but before any players do anything.
         /// </summary>
         /// <remarks>
-        /// This is a good place to initialize any variables you add to your AI, or start tracking game objects.
+        /// This is a good place to initialize any variables you add to your AI or start tracking game objects.
         /// </remarks>
         public override void Start()
         {
@@ -64,7 +64,7 @@ namespace Joueur.cs.Games.Stumped
         /// This is automatically called every time the game (or anything in it) updates.
         /// </summary>
         /// <remarks>
-        /// If a function you call triggers an update this will be called before that function returns.
+        /// If a function you call triggers an update, this will be called before that function returns.
         /// </remarks>
         public override void GameUpdated()
         {
@@ -77,10 +77,10 @@ namespace Joueur.cs.Games.Stumped
         /// This is automatically called when the game ends.
         /// </summary>
         /// <remarks>
-        /// You can do any cleanup of you AI here, or do custom logging. After this function returns the application will close.
+        /// You can do any cleanup of you AI here, or do custom logging. After this function returns, the application will close.
         /// </remarks>
-        /// <param name="won">true if your player won, false otherwise</param>
-        /// <param name="reason">a string explaining why you won or lost</param>
+        /// <param name="won">True if your player won, false otherwise</param>
+        /// <param name="reason">A string explaining why you won or lost</param>
         public override void Ended(bool won, string reason)
         {
             // <<-- Creer-Merge: ended -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -109,7 +109,7 @@ namespace Joueur.cs.Games.Stumped
         /// </remarks>
         /// <param name="start">the starting Tile</param>
         /// <param name="goal">the goal Tile</param>
-        /// <returns>A List of Tiles representing the path, the the first element being a valid adjacent Tile to the start, and the last element being the goal. Or an empty list if no path found.</returns>
+        /// <returns>A list of Tiles representing the path where the first element is a valid adjacent Tile to the start, and the last element is the goal. Or an empty list if no path found.</returns>
         List<Tile> FindPath(Tile start, Tile goal)
         {
             // no need to make a path to here...
@@ -128,7 +128,7 @@ namespace Joueur.cs.Games.Stumped
             fringe.Enqueue(start);
 
             // keep exploring neighbors of neighbors... until there are no more.
-            while (fringe.Count > 0)
+            while (fringe.Any())
             {
                 // the tile we are currently exploring.
                 Tile inspect = fringe.Dequeue();
