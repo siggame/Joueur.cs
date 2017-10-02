@@ -66,26 +66,26 @@ ${merge("        // ", "properties", "        // you can add additional properti
         }
 
 % for function_name in obj['function_names']:
-<% function_parms = obj['functions'][function_name]
+<% function_params = obj['functions'][function_name]
 arg_strings = []
 return_type = None
 %>        /// <summary>
-        /// ${shared['c#']['escape'](function_parms['description'])}
+        /// ${shared['c#']['escape'](function_params['description'])}
         /// </summary>
-% if 'arguments' in function_parms:
-% for arg_parms in function_parms['arguments']:
+% if 'arguments' in function_params:
+% for arg_parms in function_params['arguments']:
         /// <param name="${arg_parms['name']}">${shared['c#']['escape'](arg_parms['description'])}</param>
 % endfor
 % endif
-% if function_parms['returns']:
-<% return_type = shared['c#']['type'](function_parms['returns']['type'])
-%>        /// <returns>${shared['c#']['escape'](function_parms['returns']['description'])}</returns>
+% if function_params['returns']:
+<% return_type = shared['c#']['type'](function_params['returns']['type'])
+%>        /// <returns>${shared['c#']['escape'](function_params['returns']['description'])}</returns>
 % endif
-        public ${return_type or 'void'} ${upcase_first(function_name)}(${shared['c#']['args'](function_parms['arguments'])})
+        public ${return_type or 'void'} ${upcase_first(function_name)}(${shared['c#']['args'](function_params['arguments'])})
         {
-            ${"return " if function_parms['returns'] else ""}this.RunOnServer<${return_type or 'object'}>("${function_name}", new Dictionary<string, object> {
-% for i, arg_parms in enumerate(function_parms['arguments']):
-                {"${arg_parms['name']}", ${arg_parms['name']}}${"," if (i+1) < len(function_parms['arguments']) else ""}
+            ${"return " if function_params['returns'] else ""}this.RunOnServer<${return_type or 'object'}>("${function_name}", new Dictionary<string, object> {
+% for i, arg_parms in enumerate(function_params['arguments']):
+                {"${arg_parms['name']}", ${arg_parms['name']}}${"," if (i+1) < len(function_params['arguments']) else ""}
 % endfor
             });
         }
