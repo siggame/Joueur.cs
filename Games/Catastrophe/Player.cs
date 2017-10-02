@@ -76,7 +76,7 @@ namespace Joueur.cs.Games.Catastrophe
         public IList<Catastrophe.Unit> Units { get; protected set; }
 
         /// <summary>
-        /// The total upkeep of every Unit owned by this Player.
+        /// The total upkeep of every Unit owned by this Player. If there isn't enough food for every Unit, all Units become starved and do not consume food.
         /// </summary>
         public int Upkeep { get; protected set; }
 

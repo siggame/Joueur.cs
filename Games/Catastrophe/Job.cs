@@ -23,7 +23,7 @@ namespace Joueur.cs.Games.Catastrophe
         /// <summary>
         /// The amount of energy this Job normally uses to perform its actions.
         /// </summary>
-        public double ActCost { get; protected set; }
+        public double ActionCost { get; protected set; }
 
         /// <summary>
         /// How many combined resources a Unit with this Job can hold at once.
@@ -46,7 +46,7 @@ namespace Joueur.cs.Games.Catastrophe
         public string Title { get; protected set; }
 
         /// <summary>
-        /// The amount of food per turn this Unit consumes. If there isn't enough food for every Unit, all units become starved and do not consume food.
+        /// The amount of food per turn this Unit consumes. If there isn't enough food for every Unit, all Units become starved and do not consume food.
         /// </summary>
         public int Upkeep { get; protected set; }
 

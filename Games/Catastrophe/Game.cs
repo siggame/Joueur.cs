@@ -21,7 +21,7 @@ namespace Joueur.cs.Games.Catastrophe
     {
         #region Properties
         /// <summary>
-        /// The multiplier for the amount of energy regenerated when resting in a base with the cat overlord.
+        /// The multiplier for the amount of energy regenerated when resting in a shelter with the cat overlord.
         /// </summary>
         public double CatEnergyMult { get; protected set; }
 
@@ -34,6 +34,11 @@ namespace Joueur.cs.Games.Catastrophe
         /// The current turn number, starting at 0 for the first player's turn.
         /// </summary>
         public int CurrentTurn { get; protected set; }
+
+        /// <summary>
+        /// The amount of turns it takes for a Tile that was just harvested to grow food again.
+        /// </summary>
+        public int HarvestCooldown { get; protected set; }
 
         /// <summary>
         /// All the Jobs that Units can have in the game.

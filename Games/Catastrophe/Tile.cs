@@ -26,7 +26,7 @@ namespace Joueur.cs.Games.Catastrophe
         public int Food { get; protected set; }
 
         /// <summary>
-        /// The amount of food that can be harvested from this tile per turn.
+        /// The amount of food that can be harvested from this Tile per turn.
         /// </summary>
         public int HarvestRate { get; protected set; }
 
@@ -36,7 +36,7 @@ namespace Joueur.cs.Games.Catastrophe
         public int Materials { get; protected set; }
 
         /// <summary>
-        /// The structure on this Tile if present, otherwise null.
+        /// The Structure on this Tile if present, otherwise null.
         /// </summary>
         public string Structure { get; protected set; }
 
@@ -59,6 +59,11 @@ namespace Joueur.cs.Games.Catastrophe
         /// The Tile to the 'West' of this one (x-1, y). Null if out of bounds of the map.
         /// </summary>
         public Catastrophe.Tile TileWest { get; protected set; }
+
+        /// <summary>
+        /// The amount of turns before this resource can be harvested.
+        /// </summary>
+        public int TurnsToHarvest { get; protected set; }
 
         /// <summary>
         /// What type of Tile this is.

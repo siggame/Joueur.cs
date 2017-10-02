@@ -21,12 +21,12 @@ namespace Joueur.cs.Games.Catastrophe
     {
         #region Properties
         /// <summary>
-        /// Whether this unit has performed its action this turn.
+        /// Whether this Unit has performed its action this turn.
         /// </summary>
         public bool Acted { get; protected set; }
 
         /// <summary>
-        /// The amount of energy this unit has (from 0.0 to 1.0).
+        /// The amount of energy this Unit has (from 0.0 to 100.0).
         /// </summary>
         public double Energy { get; protected set; }
 
@@ -46,7 +46,7 @@ namespace Joueur.cs.Games.Catastrophe
         public int Materials { get; protected set; }
 
         /// <summary>
-        /// The tile this Unit is moving to. This only applies to neutral fresh humans spawned on the road.
+        /// The tile this Unit is moving to. This only applies to neutral fresh humans spawned on the road. Otherwise, the tile this Unit is on.
         /// </summary>
         public Catastrophe.Tile MovementTarget { get; protected set; }
 
@@ -56,17 +56,17 @@ namespace Joueur.cs.Games.Catastrophe
         public int Moves { get; protected set; }
 
         /// <summary>
-        /// The Player that owns and can control this Unit, or null if the unit is neutral.
+        /// The Player that owns and can control this Unit, or null if the Unit is neutral.
         /// </summary>
         public Catastrophe.Player Owner { get; protected set; }
 
         /// <summary>
-        /// The units in the same squad as this unit. Units in the same squad attack and defend together.
+        /// The Units in the same squad as this Unit. Units in the same squad attack and defend together.
         /// </summary>
         public IList<Catastrophe.Unit> Squad { get; protected set; }
 
         /// <summary>
-        /// Whether this unit is starving. Starving units regenerate energy at half the rate they normally would while resting.
+        /// Whether this Unit is starving. Starving Units regenerate energy at half the rate they normally would while resting.
         /// </summary>
         public bool Starving { get; protected set; }
 
@@ -76,7 +76,7 @@ namespace Joueur.cs.Games.Catastrophe
         public Catastrophe.Tile Tile { get; protected set; }
 
         /// <summary>
-        /// The number of turns before this Unit dies. This only applies to neutral fresh humans created from combat.
+        /// The number of turns before this Unit dies. This only applies to neutral fresh humans created from combat. Otherwise, 0.
         /// </summary>
         public int TurnsToDie { get; protected set; }
 
@@ -97,7 +97,7 @@ namespace Joueur.cs.Games.Catastrophe
         }
 
         /// <summary>
-        /// Attacks an adjacent tile. Costs an action for each unit in this squad. Units in this squad without an action don't participate in combat. Units in the squad cannot move after performing this action.
+        /// Attacks an adjacent Tile. Costs an action for each Unit in this Unit's squad. Units in the squad without an action don't participate in combat. Units in combat cannot move afterwards.
         /// </summary>
         /// <param name="tile">The Tile to attack.</param>
         /// <returns>True if successfully attacked, false otherwise.</returns>
@@ -109,7 +109,7 @@ namespace Joueur.cs.Games.Catastrophe
         }
 
         /// <summary>
-        /// Changes this Unit's Job. Must be at max energy (1.0) to change Jobs.
+        /// Changes this Unit's Job. Must be at max energy (100.0) to change Jobs.
         /// </summary>
         /// <param name="job">The Job to change to.</param>
         /// <returns>True if successfully changed Jobs, false otherwise.</returns>
@@ -121,10 +121,10 @@ namespace Joueur.cs.Games.Catastrophe
         }
 
         /// <summary>
-        /// Constructs a structure on an adjacent Tile.
+        /// Constructs a Structure on an adjacent Tile.
         /// </summary>
-        /// <param name="tile">The Tile to construct the structure on. It must have enough materials on it for a structure to be constructed.</param>
-        /// <param name="type">The type of structure to construct on that tile.</param>
+        /// <param name="tile">The Tile to construct the Structure on. It must have enough materials on it for a Structure to be constructed.</param>
+        /// <param name="type">The type of Structure to construct on that Tile.</param>
         /// <returns>True if successfully constructed a structure, false otherwise.</returns>
         public bool Construct(Catastrophe.Tile tile, string type)
         {
@@ -159,11 +159,11 @@ namespace Joueur.cs.Games.Catastrophe
         }
 
         /// <summary>
-        /// Drops some of the given resource on or adjacent to the unit's Tile. Does not count as an action.
+        /// Drops some of the given resource on or adjacent to the Unit's Tile. Does not count as an action.
         /// </summary>
         /// <param name="tile">The Tile to drop materials/food on.</param>
         /// <param name="resource">The type of resource to drop ('material' or 'food').</param>
-        /// <param name="amount">The amount of the resource to drop, numbers &lt;= 0 will drop all of the resource.</param>
+        /// <param name="amount">The amount of the resource to drop. Amounts &lt;= 0 will drop as much as possible.</param>
         /// <returns>True if successfully dropped the resource, false otherwise.</returns>
         public bool Drop(Catastrophe.Tile tile, string resource, int amount=0)
         {
@@ -199,11 +199,11 @@ namespace Joueur.cs.Games.Catastrophe
         }
 
         /// <summary>
-        /// Picks up some materials or food on or adjacent to the unit's tile. Does not count as an action.
+        /// Picks up some materials or food on or adjacent to the Unit's Tile. Does not count as an action.
         /// </summary>
         /// <param name="tile">The Tile to pickup materials/food from.</param>
         /// <param name="resource">The type of resource to pickup ('material' or 'food').</param>
-        /// <param name="amount">The amount of the resource to pickup, numbers &lt;= 0 will pickup all of the resource possible.</param>
+        /// <param name="amount">The amount of the resource to pickup. Amounts &lt;= 0 will pickup as much as possible.</param>
         /// <returns>True if successfully picked up a resource, false otherwise.</returns>
         public bool Pickup(Catastrophe.Tile tile, string resource, int amount=0)
         {
@@ -215,7 +215,7 @@ namespace Joueur.cs.Games.Catastrophe
         }
 
         /// <summary>
-        /// Regenerates energy. Must be in range of a friendly shelter to rest. Unit cannot move after performing this action.
+        /// Regenerates energy. Must be in range of a friendly shelter to rest. Costs an action. Units cannot move after resting.
         /// </summary>
         /// <returns>True if successfully rested, false otherwise.</returns>
         public bool Rest()

@@ -26,7 +26,7 @@ namespace Joueur.cs.Games.Catastrophe
         public int EffectRadius { get; protected set; }
 
         /// <summary>
-        /// The number of materials in this Structure.
+        /// The number of materials in this Structure. Once this number reaches 0, this Structure is destroyed.
         /// </summary>
         public int Materials { get; protected set; }
 
@@ -36,12 +36,12 @@ namespace Joueur.cs.Games.Catastrophe
         public Catastrophe.Player Owner { get; protected set; }
 
         /// <summary>
-        /// The Tile this structure is on.
+        /// The Tile this Structure is on.
         /// </summary>
         public Catastrophe.Tile Tile { get; protected set; }
 
         /// <summary>
-        /// The type of structure this is.
+        /// The type of Structure this is ('shelter', 'monument', 'wall', 'road').
         /// </summary>
         public string Type { get; protected set; }
 
