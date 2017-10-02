@@ -11,7 +11,7 @@ namespace Joueur.cs.Games.${game_name}
     /// <summary>
     /// This is where you build your AI for ${game_name}.
     /// </summary>
-    class AI : BaseAI
+    public class AI : BaseAI
     {
         #region Properties
         #pragma warning disable 0169 // the never assigned warnings between here are incorrect. We set it for you via reflection. So these will remove it from the Error List.

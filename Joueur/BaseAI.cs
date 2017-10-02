@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Joueur.cs
 {
-    abstract class BaseAI
+    public abstract class BaseAI
     {
         protected BaseAI()
         {
