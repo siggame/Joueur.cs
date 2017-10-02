@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Catastrophe
     /// <summary>
     /// A unit in the game.
     /// </summary>
-    class Unit : Catastrophe.GameObject
+    public class Unit : Catastrophe.GameObject
     {
         #region Properties
         /// <summary>

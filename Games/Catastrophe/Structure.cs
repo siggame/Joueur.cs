@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Catastrophe
     /// <summary>
     /// A structure on a Tile.
     /// </summary>
-    class Structure : Catastrophe.GameObject
+    public class Structure : Catastrophe.GameObject
     {
         #region Properties
         /// <summary>

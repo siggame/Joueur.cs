@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Catastrophe
     /// <summary>
     /// Convert as many humans to as you can to survive in this post-apocalyptic wasteland.
     /// </summary>
-    class Game : BaseGame
+    public class Game : BaseGame
     {
         #region Properties
         /// <summary>

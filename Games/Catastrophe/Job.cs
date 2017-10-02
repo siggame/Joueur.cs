@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Catastrophe
     /// <summary>
     /// Information about a Unit's job.
     /// </summary>
-    class Job : Catastrophe.GameObject
+    public class Job : Catastrophe.GameObject
     {
         #region Properties
         /// <summary>

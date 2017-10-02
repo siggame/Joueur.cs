@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Catastrophe
     /// <summary>
     /// A player in this game. Every AI controls one player.
     /// </summary>
-    class Player : Catastrophe.GameObject
+    public class Player : Catastrophe.GameObject
     {
         #region Properties
         /// <summary>

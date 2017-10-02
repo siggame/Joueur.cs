@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Catastrophe
     /// <summary>
     /// A Tile in the game that makes up the 2D map grid.
     /// </summary>
-    class Tile : Catastrophe.GameObject
+    public class Tile : Catastrophe.GameObject
     {
         #region Properties
         /// <summary>
