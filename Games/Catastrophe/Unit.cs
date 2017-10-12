@@ -111,9 +111,9 @@ namespace Joueur.cs.Games.Catastrophe
         /// <summary>
         /// Changes this Unit's Job. Must be at max energy (100.0) to change Jobs.
         /// </summary>
-        /// <param name="job">The Job to change to.</param>
+        /// <param name="job">The name of the Job to change to.</param>
         /// <returns>True if successfully changed Jobs, false otherwise.</returns>
-        public bool ChangeJob(Catastrophe.Job job)
+        public bool ChangeJob(string job)
         {
             return this.RunOnServer<bool>("changeJob", new Dictionary<string, object> {
                 {"job", job}

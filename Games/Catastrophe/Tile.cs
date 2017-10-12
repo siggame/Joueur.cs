@@ -38,7 +38,7 @@ namespace Joueur.cs.Games.Catastrophe
         /// <summary>
         /// The Structure on this Tile if present, otherwise null.
         /// </summary>
-        public string Structure { get; protected set; }
+        public Catastrophe.Structure Structure { get; protected set; }
 
         /// <summary>
         /// The Tile to the 'East' of this one (x+1, y). Null if out of bounds of the map.
@@ -64,11 +64,6 @@ namespace Joueur.cs.Games.Catastrophe
         /// The amount of turns before this resource can be harvested.
         /// </summary>
         public int TurnsToHarvest { get; protected set; }
-
-        /// <summary>
-        /// What type of Tile this is.
-        /// </summary>
-        public string Type { get; protected set; }
 
         /// <summary>
         /// The Unit on this Tile if present, otherwise null.
