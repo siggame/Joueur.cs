@@ -63,7 +63,7 @@ namespace Joueur.cs
             }
             catch(Exception exception)
             {
-                ErrorHandler.HandleError(ErrorHandler.ErrorCode.GAME_NOT_FOUND, exception, "Could create Game for game name '" + gameName + "'");
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.GAME_NOT_FOUND, exception, "Could not create Game for game name '" + gameName + "'");
                 return;
             }
 
