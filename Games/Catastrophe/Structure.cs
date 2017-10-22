@@ -41,7 +41,7 @@ namespace Joueur.cs.Games.Catastrophe
         public Catastrophe.Tile Tile { get; protected set; }
 
         /// <summary>
-        /// The type of Structure this is ('shelter', 'monument', 'wall', 'road').
+        /// The type of Structure this is ('shelter', 'monument', 'wall', 'road', 'neutral').
         /// </summary>
         public string Type { get; protected set; }
 
