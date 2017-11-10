@@ -46,6 +46,11 @@ namespace Joueur.cs.Games.Catastrophe
         public IList<Catastrophe.Job> Jobs { get; protected set; }
 
         /// <summary>
+        /// The amount that the harvest rate is lowered each season.
+        /// </summary>
+        public int LowerHarvestAmount { get; protected set; }
+
+        /// <summary>
         /// The number of Tiles in the map along the y (vertical) axis.
         /// </summary>
         public int MapHeight { get; protected set; }
@@ -61,6 +66,21 @@ namespace Joueur.cs.Games.Catastrophe
         public int MaxTurns { get; protected set; }
 
         /// <summary>
+        /// The multiplier for the cost of actions when performing them in range of a monument. Does not effect pickup cost.
+        /// </summary>
+        public double MonumentCostMult { get; protected set; }
+
+        /// <summary>
+        /// The number of materials in a monument.
+        /// </summary>
+        public int MonumentMaterials { get; protected set; }
+
+        /// <summary>
+        /// The number of materials in a neutral Structure.
+        /// </summary>
+        public int NeutralMaterials { get; protected set; }
+
+        /// <summary>
         /// List of all the players in the game.
         /// </summary>
         public IList<Catastrophe.Player> Players { get; protected set; }
@@ -69,6 +89,11 @@ namespace Joueur.cs.Games.Catastrophe
         /// A unique identifier for the game instance that is being played.
         /// </summary>
         public string Session { get; protected set; }
+
+        /// <summary>
+        /// The number of materials in a shelter.
+        /// </summary>
+        public int ShelterMaterials { get; protected set; }
 
         /// <summary>
         /// The multiplier for the amount of energy regenerated when resting while starving.
@@ -86,9 +111,29 @@ namespace Joueur.cs.Games.Catastrophe
         public IList<Catastrophe.Tile> Tiles { get; protected set; }
 
         /// <summary>
+        /// After a food tile is harvested, the number of turns before it can be harvested again.
+        /// </summary>
+        public int TurnsBetweenHarvests { get; protected set; }
+
+        /// <summary>
+        /// The number of turns between fresh humans being spawned on the road.
+        /// </summary>
+        public int TurnsToCreateHuman { get; protected set; }
+
+        /// <summary>
+        /// The number of turns before the harvest rate is lowered (length of each season basically).
+        /// </summary>
+        public int TurnsToLowerHarvest { get; protected set; }
+
+        /// <summary>
         /// Every Unit in the game.
         /// </summary>
         public IList<Catastrophe.Unit> Units { get; protected set; }
+
+        /// <summary>
+        /// The number of materials in a wall.
+        /// </summary>
+        public int WallMaterials { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
