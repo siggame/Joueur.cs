@@ -7,7 +7,7 @@ dependencies: ;
 
 core:
 	dotnet restore
-	dotnet build -c "Release"
+	dotnet build -o build
 
 clean:
 	rm -rf bin/ obj/ packages/ backup/
