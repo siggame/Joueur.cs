@@ -1,13 +1,15 @@
+.vscode/
+
 docs/
 _creer/
 packages/
-packages/
+build/
+obj/
 
 .git/
 .gitattributes
 .gitignore
 
-arenaRun
 run
 testRun
 
