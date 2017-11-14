@@ -1,8 +1,8 @@
 FROM siggame/joueur:cs-onbuild as build
 
-FROM mono:slim
+FROM microsoft/dotnet:runtime-deps
 
 WORKDIR /client
-COPY --from=build /usr/src/client/bin/Release/Joueur.cs.exe cs-client.exe
+COPY --from=build /usr/src/client/build /client
 
-ENTRYPOINT ["mono", "cs-client.exe", GAME_NAME]
+ENTRYPOINT ["./cs-client", GAME_NAME]
