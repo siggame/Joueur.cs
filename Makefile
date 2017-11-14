@@ -10,4 +10,4 @@ core:
 	dotnet build -o build
 
 clean:
-	rm -rf bin/ obj/ packages/ backup/
+	rm -rf build/ obj/ packages/ bin/
