@@ -6,7 +6,8 @@ all:
 dependencies: ;
 
 core:
-	xbuild /p:Configuration=Release Joueur.cs.sln
+	dotnet restore
+	dotnet build -c "Release"
 
 clean:
-	rm -rf ./bin ./obj ./packages
+	rm -rf bin/ obj/ packages/ backup/
