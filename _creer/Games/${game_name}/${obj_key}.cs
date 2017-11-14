@@ -164,7 +164,7 @@ ${merge("            // ", "is_pathable_builtin", "            return false; // 
                 return false;
             }
 
-            return (this.TileNorth == tile || this.TileEast == tile || this.TileSouth == tile || this.TileEast == tile);
+            return (this.TileNorth == tile || this.TileEast == tile || this.TileSouth == tile || this.TileWest == tile);
         }
 % endif
 % endif
