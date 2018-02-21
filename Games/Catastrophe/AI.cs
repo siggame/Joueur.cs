@@ -1,15 +1,17 @@
-// This is where you build your AI for the ${game_name} game.
-<%include file="functions.noCreer" />
+// This is where you build your AI for the Catastrophe game.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-${merge("// ", "usings", "// you can add additional using(s) here", optional=True)}
+// <<-- Creer-Merge: usings -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+// you can add additional using(s) here
+// <<-- /Creer-Merge: usings -->>
 
-namespace Joueur.cs.Games.${game_name}
+namespace Joueur.cs.Games.Catastrophe
 {
     /// <summary>
-    /// This is where you build your AI for ${game_name}.
+    /// This is where you build your AI for Catastrophe.
     /// </summary>
     public class AI : BaseAI
     {
@@ -27,7 +29,9 @@ namespace Joueur.cs.Games.${game_name}
         #pragma warning restore 0169
         #pragma warning restore 0649
 
-${merge("        // ", "properties", '        // you can add additional properties here for your AI to use')}
+        // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+        // you can add additional properties here for your AI to use
+        // <<-- /Creer-Merge: properties -->>
         #endregion
 
 
@@ -38,7 +42,9 @@ ${merge("        // ", "properties", '        // you can add additional properti
         /// <returns>Your AI's name</returns>
         public override string GetName()
         {
-${merge("            // ", "get-name", '            return "' + game_name + ' C# Player"; // REPLACE THIS WITH YOUR TEAM NAME!')}
+            // <<-- Creer-Merge: get-name -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+            return "Catastrophe C# Player"; // REPLACE THIS WITH YOUR TEAM NAME!
+            // <<-- /Creer-Merge: get-name -->>
         }
 
         /// <summary>
@@ -49,7 +55,9 @@ ${merge("            // ", "get-name", '            return "' + game_name + ' C#
         /// </remarks>
         public override void Start()
         {
-${merge("            // ", "start", '            base.Start();')}
+            // <<-- Creer-Merge: start -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+            base.Start();
+            // <<-- /Creer-Merge: start -->>
         }
 
         /// <summary>
@@ -60,7 +68,9 @@ ${merge("            // ", "start", '            base.Start();')}
         /// </remarks>
         public override void GameUpdated()
         {
-${merge("            // ", "game-updated", '            base.GameUpdated();')}
+            // <<-- Creer-Merge: game-updated -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+            base.GameUpdated();
+            // <<-- /Creer-Merge: game-updated -->>
         }
 
         /// <summary>
@@ -73,36 +83,24 @@ ${merge("            // ", "game-updated", '            base.GameUpdated();')}
         /// <param name="reason">A string explaining why you won or lost</param>
         public override void Ended(bool won, string reason)
         {
-${merge("            // ", "ended", '            base.Ended(won, reason);')}
+            // <<-- Creer-Merge: ended -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+            base.Ended(won, reason);
+            // <<-- /Creer-Merge: ended -->>
         }
 
-% for function_name in ai['function_names']:
-<% function_parms = ai["functions"][function_name];
-arg_strings = []
-%>
+
         /// <summary>
-        /// ${function_parms['description']}
+        /// This is called every time it is this AI.player's turn.
         /// </summary>
-% if 'arguments' in function_parms:
-% for arg_parms in function_parms['arguments']:
-<% arg_strings.append(shared['c#']['type'](arg_parms['type']) + " " + arg_parms['name']) # syntax highlighter freaking out, needs ;
-%>        /// <param name="${arg_parms['name']}">${arg_parms['description']}</param>
-% endfor
-% endif
-% if function_parms['returns']:
-        /// <returns>${function_parms['returns']['description']}</returns>
-% endif
-        public ${shared['c#']['type'](function_parms['returns']['type']) if function_parms['returns'] else "void"} ${upcase_first(function_name)}(${", ".join(arg_strings)})
+        /// <returns>Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.</returns>
+        public bool RunTurn()
         {
-${merge("            // ", function_name,
-"""            // Put your game logic here for {0}
-            return {1};
-""".format(function_name, shared['c#']['default'](function_parms['returns']['type'], function_parms['returns']['default']) if function_parms['returns'] else "")
-)}
+            // <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+            // Put your game logic here for runTurn
+            return true;
+            // <<-- /Creer-Merge: runTurn -->>
         }
-% endfor
 
-% if 'TiledGame' in game['serverParentClasses']: #// then we need to add some client side utility functions
         /// <summary>
         /// A very basic path finding algorithm (Breadth First Search) that when given a starting Tile, will return a valid path to the goal Tile.
         /// </summary>
@@ -170,8 +168,9 @@ ${merge("            // ", function_name,
             return new List<Tile>();
         }
 
-% endif
-${merge("        // ", "methods", '        // you can add additional methods here for your AI to call', optional=True)}
+        // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+        // you can add additional methods here for your AI to call
+        // <<-- /Creer-Merge: methods -->>
         #endregion
     }
 }

@@ -9,25 +9,26 @@ using Newtonsoft.Json;
 using System.Text;
 using Newtonsoft.Json.Linq;
 using System.Collections;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace Joueur.cs
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var argParser = new ArgParser(args, "Runs the C# client with options. Must a provide a game name to play on the server.", new ArgParser.Argument[] {
-                new ArgParser.Argument(new string[] {"game"}, "game", "the name of the game you want to play on the server", true),
-                new ArgParser.Argument(new string[] {"-s", "--server"}, "server", "the url to the server you want to connect to e.g. locahost:3000", false, "127.0.0.1"),
-                new ArgParser.Argument(new string[] {"-p", "--port"}, "port", "the port to connect to on the server. Can be defined on the server arg via server:port", false, 3000),
-                new ArgParser.Argument(new string[] {"-n", "--name"}, "name", "the name you want to use as your AI\'s player name. This over-rides the name you set in your code"),
-                new ArgParser.Argument(new string[] {"-i", "--index"}, "index", "the player number you want to be, with 0 being the first player", false, -1),
-                new ArgParser.Argument(new string[] {"-r", "--session"}, "requestedSession", "the requested game session you want to play on the server", false, "*"),
-                new ArgParser.Argument(new string[] {"-w", "--password"}, "password", "the password required for authentication on official servers"),
-                new ArgParser.Argument(new string[] {"--gameSettings"}, "gameSettings", "Any settings for the game server to force. Must be url parms formatted (key=value&otherKey=otherValue)"),
-                new ArgParser.Argument(new string[] {"--aiSettings"}, "aiSettings", "Any settings for the AI. Delimit pairs by an ampersand (key=value&otherKey=otherValue)"),
-                new ArgParser.Argument(new string[] {"--printIO"}, "printIO", "(debugging) print IO through the TCP socket to the terminal", false, null, ArgParser.Argument.Store.True),
+            var argParser = new ArgParser(args, "Runs the C# client with options. Must a provide a game name to play on the server.", new[] {
+                new ArgParser.Argument(new[] {"game"}, "game", "the name of the game you want to play on the server", true),
+                new ArgParser.Argument(new[] {"-s", "--server"}, "server", "the url to the server you want to connect to e.g. locahost:3000", false, "127.0.0.1"),
+                new ArgParser.Argument(new[] {"-p", "--port"}, "port", "the port to connect to on the server. Can be defined on the server arg via server:port", false, 3000),
+                new ArgParser.Argument(new[] {"-n", "--name"}, "name", "the name you want to use as your AI\'s player name. This over-rides the name you set in your code"),
+                new ArgParser.Argument(new[] {"-i", "--index"}, "index", "the player number you want to be, with 0 being the first player", false, -1),
+                new ArgParser.Argument(new[] {"-r", "--session"}, "requestedSession", "the requested game session you want to play on the server", false, "*"),
+                new ArgParser.Argument(new[] {"-w", "--password"}, "password", "the password required for authentication on official servers"),
+                new ArgParser.Argument(new[] {"--gameSettings"}, "gameSettings", "Any settings for the game server to force. Must be url parms formatted (key=value&otherKey=otherValue)"),
+                new ArgParser.Argument(new[] {"--aiSettings"}, "aiSettings", "Any settings for the AI. Delimit pairs by an ampersand (key=value&otherKey=otherValue)"),
+                new ArgParser.Argument(new[] {"--printIO"}, "printIO", "(debugging) print IO through the TCP socket to the terminal", false, null, ArgParser.Argument.Store.True),
             }, (int)ErrorHandler.ErrorCode.INVALID_ARGS);
 
             string gameAlias = argParser.GetValue<string>("game");
@@ -54,7 +55,7 @@ namespace Joueur.cs
             client.Send("alias", gameAlias);
             string gameName = client.WaitForEvent("named").ToString();
 
-            BaseGame game = null;
+            BaseGame game;
             try
             {
                 Type gameType = Type.GetType("Joueur.cs.Games." + gameName + ".Game");
@@ -62,10 +63,11 @@ namespace Joueur.cs
             }
             catch(Exception exception)
             {
-                ErrorHandler.HandleError(ErrorHandler.ErrorCode.GAME_NOT_FOUND, exception, "Could create Game for game name '" + gameName + "'");
+                ErrorHandler.HandleError(ErrorHandler.ErrorCode.GAME_NOT_FOUND, exception, "Could not create Game for game name '" + gameName + "'");
+                return;
             }
 
-            BaseAI ai = null;
+            BaseAI ai;
             try
             {
                 Type aiType = Type.GetType("Joueur.cs.Games." + gameName + ".AI");
@@ -74,6 +76,7 @@ namespace Joueur.cs
             catch(Exception exception)
             {
                 ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "Could create AI for game name '" + gameName + "'");
+                return;
             }
 
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -84,7 +87,7 @@ namespace Joueur.cs
 
             typeof(BaseAI).GetMethod("SetSettings", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(ai, new object[] { aiSettings });
 
-            if (String.IsNullOrWhiteSpace(playerName))
+            if (string.IsNullOrWhiteSpace(playerName))
             {
                 playerName = ai.GetName();
             }

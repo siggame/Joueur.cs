@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Joueur.cs
 {
-    class GameManager
+    public class GameManager
     {
         private BaseGame Game;
         #pragma warning disable 0414 // disable warnings. competitors don't need to see our errors

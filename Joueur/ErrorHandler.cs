@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Joueur.cs
 {
-    static class ErrorHandler
+    public static class ErrorHandler
     {
         public enum ErrorCode
         {
@@ -30,7 +27,7 @@ namespace Joueur.cs
             HandleError(code, null, message);
         }
 
-        public static void HandleError(ErrorCode code, System.Exception exception = null, string message = null)
+        public static void HandleError(ErrorCode code, Exception exception = null, string message = null)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Error.WriteLine("---\nError: " + Enum.GetName(typeof(ErrorCode), code));
@@ -51,7 +48,7 @@ namespace Joueur.cs
             Console.ResetColor();
             Client.Instance.Disconnect();
 
-            System.Environment.Exit((int)code);
+            Environment.Exit((int)code);
         }
     }
 }
