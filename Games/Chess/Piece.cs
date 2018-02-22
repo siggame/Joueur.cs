@@ -43,7 +43,7 @@ namespace Joueur.cs.Games.Chess
         public int Rank { get; protected set; }
 
         /// <summary>
-        /// The type of chess Piece this is, either: 'King', 'Queen', 'Knight', 'Rook', 'Bishop', or 'Pawn'.
+        /// The type of chess Piece this is, either 'King, 'Queen', 'Knight', 'Rook', 'Bishop', or 'Pawn'.
         /// </summary>
         public string Type { get; protected set; }
 

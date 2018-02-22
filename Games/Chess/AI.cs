@@ -109,6 +109,7 @@ namespace Joueur.cs.Games.Chess
             return true; // to signify we are done with our turn.
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Prints the current board using pretty ASCII art
         /// </summary>
@@ -171,6 +172,11 @@ namespace Joueur.cs.Games.Chess
             }
         }
 
+=======
+        // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+        // you can add additional methods here for your AI to call
+        // <<-- /Creer-Merge: methods -->>
+>>>>>>> 5519aecd94a47c3e781c9b19c5469ee88b43e376
         #endregion
     }
 }

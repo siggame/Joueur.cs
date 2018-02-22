@@ -10,7 +10,7 @@ using System.IO;
 
 namespace Joueur.cs
 {
-    sealed class Client // Client is a singleton
+    public sealed class Client // Client is a singleton
     {
         #region Singleton pattern setup
 

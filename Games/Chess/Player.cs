@@ -58,7 +58,7 @@ namespace Joueur.cs.Games.Chess
         public IList<Chess.Piece> Pieces { get; protected set; }
 
         /// <summary>
-        /// The direction your Pieces must go along the rank axis until they reach the other side.
+        /// The direction your Pieces must go along the rank axis until they reach the other side. Will be +1 if the Player is 'White', or -1 if the Player is 'Black'.
         /// </summary>
         public int RankDirection { get; protected set; }
 

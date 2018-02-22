@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Joueur.cs
 {
-    class ArgParser
+    public class ArgParser
     {
         public class Argument
         {
@@ -18,7 +18,7 @@ namespace Joueur.cs
             public string[] Aliases;
             public bool Required;
 
-            public Argument(string[] aliases, string destination, string help, bool required = false, object defaultValue=null, Store? howToStore=null)
+            public Argument(string[] aliases, string destination, string help, bool required = false, object defaultValue = null, Store? howToStore = null)
             {
                 this.Aliases = aliases;
                 this.Destination = destination;
@@ -34,7 +34,7 @@ namespace Joueur.cs
                 }
                 this.Default = defaultValue;
 
-                switch(this.HowToStore)
+                switch (this.HowToStore)
                 {
                     case Store.True:
                         this.Default = false;
@@ -105,7 +105,7 @@ namespace Joueur.cs
             {
                 string arg = args[i];
 
-                if(arg == "-h" || arg == "--help")
+                if (arg == "-h" || arg == "--help")
                 {
                     this.GetHelp();
                 }
@@ -153,7 +153,7 @@ namespace Joueur.cs
 
         public bool HasValue(string key)
         {
-            return this.ParsedValues.ContainsKey(key);
+            return this.ParsedValues.ContainsValue(key);
         }
 
         public T GetValue<T>(string key)
@@ -162,7 +162,7 @@ namespace Joueur.cs
             {
                 var value = this.ParsedValues[key];
 
-                if(typeof(T) == typeof(int) && value.GetType() == typeof(string))
+                if (typeof(T) == typeof(int) && value.GetType() == typeof(string))
                 {
                     value = Int32.Parse((string)value);
                 }
@@ -222,7 +222,7 @@ namespace Joueur.cs
             s.Append(this.Help);
 
             s.Append("\n\nPositional Arguments:\n");
-            foreach(var tuple in requiredArgs)
+            foreach (var tuple in requiredArgs)
             {
                 s.Append("  ");
                 s.Append(tuple.Item1.PadRight(maxStringLength, ' '));
@@ -252,9 +252,9 @@ namespace Joueur.cs
 
         public void CheckRequired()
         {
-            foreach(var argument in this.Arguments)
+            foreach (var argument in this.Arguments)
             {
-                if(argument.Required && !this.HasValue(argument.Aliases[0]))
+                if (argument.Required && !this.HasValue(argument.Aliases[0]))
                 {
                     Console.Error.WriteLine("Error: missing value for '" + argument.Destination + "'.");
                     this.GetHelp();

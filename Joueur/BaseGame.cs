@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Joueur.cs
 {
-    abstract class BaseGame
+    public abstract class BaseGame
     {
         /// <summary>
         /// A mapping of every game object's ID to the actual game object. Primarily used by the server and client to easily refer to the game objects via ID.
