@@ -13,8 +13,8 @@ namespace Joueur.cs.Games.Chess
     class AI : BaseAI
     {
         #region Properties
-        #pragma warning disable 0169 // the never assigned warnings between here are incorrect. We set it for you via reflection. So these will remove it from the Error List.
-        #pragma warning disable 0649
+#pragma warning disable 0169 // the never assigned warnings between here are incorrect. We set it for you via reflection. So these will remove it from the Error List.
+#pragma warning disable 0649
         /// <summary>
         /// This is the Game object itself, it contains all the information about the current game
         /// </summary>
@@ -23,8 +23,8 @@ namespace Joueur.cs.Games.Chess
         /// This is your AI's player. This AI class is not a player, but it should command this Player.
         /// </summary>
         public readonly Chess.Player Player;
-        #pragma warning restore 0169
-        #pragma warning restore 0649
+#pragma warning restore 0169
+#pragma warning restore 0649
         #endregion
 
 
@@ -92,7 +92,8 @@ namespace Joueur.cs.Games.Chess
             this.PrintCurrentBoard();
 
             // 2) print the opponent's last move to the console
-            if (this.Game.Moves.Count > 0) {
+            if (this.Game.Moves.Count > 0)
+            {
                 Console.WriteLine("Opponent's Last Move: '" + this.Game.Moves.Last().San + "'");
             }
 
@@ -109,7 +110,6 @@ namespace Joueur.cs.Games.Chess
             return true; // to signify we are done with our turn.
         }
 
-<<<<<<< HEAD
         /// <summary>
         /// Prints the current board using pretty ASCII art
         /// </summary>
@@ -172,11 +172,6 @@ namespace Joueur.cs.Games.Chess
             }
         }
 
-=======
-        // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add additional methods here for your AI to call
-        // <<-- /Creer-Merge: methods -->>
->>>>>>> 5519aecd94a47c3e781c9b19c5469ee88b43e376
         #endregion
     }
 }

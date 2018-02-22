@@ -4,9 +4,5 @@ if [ -z "$1" ]
   then
     echo "No argument(s) supplied. Please specify game session you want to join or make."
   else
-<<<<<<< HEAD
-    ./run Chess -s r99acm.device.mst.edu -r "$@"
-=======
     ./run GAME_NAME -s game.siggame.io -r "$@"
->>>>>>> 5519aecd94a47c3e781c9b19c5469ee88b43e376
 fi
