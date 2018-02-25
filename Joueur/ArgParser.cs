@@ -26,7 +26,7 @@ namespace Joueur.cs
                 this.Required = required;
                 if (howToStore == null)
                 {
-                    this.Default = Store.Value;
+                    this.HowToStore = Store.Value;
                 }
                 else
                 {
@@ -50,7 +50,7 @@ namespace Joueur.cs
         private Argument[] Arguments;
         private Dictionary<string, object> ParsedValues;
         private Dictionary<string, Argument> AliasToArgument;
-        private List<Argument> ExpectedOrderedArgs;
+        private Queue<Argument> ExpectedOrderedArgs;
         private int ErrorCode;
 
         public ArgParser(string[] args, string help, Argument[] arguments, int errorCode = 1)
@@ -59,7 +59,7 @@ namespace Joueur.cs
             this.ErrorCode = errorCode;
             this.ParsedValues = new Dictionary<string, object>();
             this.AliasToArgument = new Dictionary<string, Argument>();
-            this.ExpectedOrderedArgs = new List<Argument>();
+            this.ExpectedOrderedArgs = new Queue<Argument>();
 
             this.BuildValidArguments(arguments);
 
@@ -90,7 +90,7 @@ namespace Joueur.cs
                     }
                     else  // it is not an option, but an expected arg
                     {
-                        this.ExpectedOrderedArgs.Add(argument);
+                        this.ExpectedOrderedArgs.Enqueue(argument);
                         break;
                     }
                 }
@@ -110,50 +110,52 @@ namespace Joueur.cs
                     this.GetHelp();
                 }
 
-                if (i < this.ExpectedOrderedArgs.Count) // then it SHOULD BE an expected arg
+                if (this.AliasToArgument.ContainsKey(arg))
                 {
-                    currentArgument = this.ExpectedOrderedArgs[i];
+                    currentArgument = this.AliasToArgument[arg];
                 }
-
-                if (currentArgument == null)
+                else if (this.ExpectedOrderedArgs.Count() > 0)
                 {
-                    if (this.AliasToArgument.ContainsKey(arg))
-                    {
-                        currentArgument = this.AliasToArgument[arg];
-                    }
-                    else
-                    {
-                        throw new Exception("Unexpected arg alias '" + arg + "'");
-                    }
-
-                    // check for flags (value that don't have leading values)
-                    object value = null;
-                    if (currentArgument.HowToStore == Argument.Store.False)
-                    {
-                        value = false;
-                    }
-
-                    if (currentArgument.HowToStore == Argument.Store.True)
-                    {
-                        value = true;
-                    }
-
-                    if (value != null)
-                    {
-                        this.ParsedValues[currentArgument.Destination] = value;
-                    }
-                }
-                else // we have a current arg to store it's value
-                {
+                    currentArgument = this.ExpectedOrderedArgs.Dequeue();
                     this.ParsedValues[currentArgument.Destination] = arg;
-                    currentArgument = null;
+                    continue;
+                }
+                else
+                {
+                    Console.Error.WriteLine("Unexpected arg alias '" + arg + "'");
+                    this.GetHelp();
+                }
+
+                // check for flags (value that don't have leading values)
+                object value = null;
+                if (currentArgument.HowToStore == Argument.Store.False)
+                {
+                    value = false;
+                }
+                else if (currentArgument.HowToStore == Argument.Store.True)
+                {
+                    value = true;
+                }
+
+                if (value != null)
+                {
+                    this.ParsedValues[currentArgument.Destination] = value;
+                }
+                else if (i < args.Length - 1)
+                {
+                    this.ParsedValues[currentArgument.Destination] = args[++i];
+                }
+                else
+                {
+                    Console.Error.WriteLine("Error: Missing value for '" + arg + "'");
+                    this.GetHelp();
                 }
             }
         }
 
         public bool HasValue(string key)
         {
-            return this.ParsedValues.ContainsValue(key);
+            return this.ParsedValues.GetValueOrDefault(key, null) != null;
         }
 
         public T GetValue<T>(string key)
@@ -254,7 +256,7 @@ namespace Joueur.cs
         {
             foreach (var argument in this.Arguments)
             {
-                if (argument.Required && !this.HasValue(argument.Aliases[0]))
+                if (argument.Required && !this.HasValue(argument.Destination))
                 {
                     Console.Error.WriteLine("Error: missing value for '" + argument.Destination + "'.");
                     this.GetHelp();
