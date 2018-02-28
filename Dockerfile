@@ -1,8 +1,6 @@
 FROM siggame/joueur:cs-onbuild as build
 
-FROM microsoft/dotnet:runtime-deps
+FROM siggame/joueur:cs-base
 
-WORKDIR /client
-COPY --from=build /usr/src/client/build /client
+COPY --from=build --chown=siggame:siggame /usr/src/client/build ./
 
-ENTRYPOINT ["./cs-client", GAME_NAME]
