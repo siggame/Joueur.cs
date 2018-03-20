@@ -1,6 +1,6 @@
 language: csharp
-solution: Joueur.cs.sln
 python: 3.6
+dotnet: 2.1.101
 
 script:
   # ensure the project successfully compiles
