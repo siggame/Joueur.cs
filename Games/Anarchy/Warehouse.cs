@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Anarchy
     /// <summary>
     /// A typical abandoned warehouse... that anarchists hang out in and can be bribed to burn down Buildings.
     /// </summary>
-    class Warehouse : Anarchy.Building
+    public class Warehouse : Anarchy.Building
     {
         #region Properties
         /// <summary>

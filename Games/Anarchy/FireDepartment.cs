@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Anarchy
     /// <summary>
     /// Can put out fires completely.
     /// </summary>
-    class FireDepartment : Anarchy.Building
+    public class FireDepartment : Anarchy.Building
     {
         #region Properties
         /// <summary>

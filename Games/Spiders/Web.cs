@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Spiders
     /// <summary>
     /// A connection (edge) to a Nest (node) in the game that Spiders can converge on (regardless of owner). Spiders can travel in either direction on Webs.
     /// </summary>
-    class Web : Spiders.GameObject
+    public class Web : Spiders.GameObject
     {
         #region Properties
         /// <summary>

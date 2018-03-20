@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Checkers
     /// <summary>
     /// A checker on the game board.
     /// </summary>
-    class Checker : Checkers.GameObject
+    public class Checker : Checkers.GameObject
     {
         #region Properties
         /// <summary>

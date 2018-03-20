@@ -12,12 +12,15 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
+/// <summary>
+/// The traditional 8x8 chess board with pieces.
+/// </summary>
 namespace Joueur.cs.Games.Chess
 {
     /// <summary>
     /// The traditional 8x8 chess board with pieces.
     /// </summary>
-    class Game : BaseGame
+    public class Game : BaseGame
     {
         #region Properties
         /// <summary>
@@ -31,7 +34,7 @@ namespace Joueur.cs.Games.Chess
         public int CurrentTurn { get; protected set; }
 
         /// <summary>
-        /// Forsyth–Edwards Notation, a notation that describes the game board.
+        /// Forsythâ€“Edwards Notation, a notation that describes the game board.
         /// </summary>
         public string Fen { get; protected set; }
 

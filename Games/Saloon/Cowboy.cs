@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Saloon
     /// <summary>
     /// A person on the map that can move around and interact within the saloon.
     /// </summary>
-    class Cowboy : Saloon.GameObject
+    public class Cowboy : Saloon.GameObject
     {
         #region Properties
         /// <summary>

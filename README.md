@@ -1,6 +1,8 @@
-# GAME_NAME C# Client
+# C# Joueur Client
 
-This is the root of your AI. Stay out of the `Joueur/` folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in `Games/GAME_NAME/`, with your very own AI living in `Games/GAME_NAME/ai.cs` for you to make smarter.
+This is the client for the [Cadre][cadre] AI framework. It can play multiple different games, though you will probably only be interested in one at a time.
+
+In general, try to stay out of the `Joueur/` folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in `Games/GAME_NAME/`, with your very own AI living in `Games/GAME_NAME/ai.cs` for you to make smarter.
 
 ## How to Run
 
@@ -8,11 +10,30 @@ This client has been tested and confirmed to work on the Missouri S&T Windows ma
 
 ### Windows
 
-Simply [installing Visual Studio 2015 or newer](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) should give you everything you need, namely C#. Just open up the sln file in this repo and build + run it.
+#### Visual Studio
 
-*Note*: You'll need to add [command line args in visual studio](https://msdn.microsoft.com/en-us/library/cs8hbt1w(v=vs.90).aspx).
+Most C# developers are comfortable with Microsoft's Visual Studio, so we make sure this works easily in VS.
 
-The args should be: `GAME_NAME -s r99acm.device.mst.edu -r MyOwnGameSession`
+Simply [installing Visual Studio 2015 or newer](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) as well as the .NET Desktop Development workload installed.
+
+With those installed, Just open up the sln file in this repo and build + run it.
+
+*Note*: You'll need to add [command line args in visual studio](https://msdn.microsoft.com/en-us/library/cs8hbt1w(v=vs.90).aspx) to the project's solution to tell the game server what game you want to play.
+
+The args should be: `GAME_NAME -s game.siggame.io -r MyOwnGameSession`
+
+#### Visual Studio Code / Command Line usage
+
+If you instead opt to develop in Visual Studio Code, Atom, or any other development enviroment that requires command line usage, Microsoft's `dotnet` core has you covered. Simply install it from [Microsoft's website](https://www.microsoft.com/net/download/windows) and sure the `dotnet` command works from your favorite terminal, then run:
+
+To Build:
+
+    dotnet restore
+    dotnet build -o build
+
+To Run:
+
+    ./build/cs-client GAME_NAME -s game.siggame.io
 
 ### Linux
 
@@ -33,5 +54,6 @@ It is possible that on your Missouri S&T S-Drive this client will not run proper
 
 The only file you should ever modify to create your AI is the `AI.cs` file. All the other files are needed for the game to work. In addition, you should never be creating your own instances of the Game's classes, nor should you ever try to modify their variables. Instead, treat the Game and its members as a read only structure that represents the game state on the game server. You interact with it by calling the game functions.
 
+[cadre]: https://github.com/siggame/Cadre
 [dotnet]: https://www.microsoft.com/net/learn/get-started/linux
 [gitbash]: https://git-scm.com/downloads

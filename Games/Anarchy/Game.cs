@@ -12,12 +12,15 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
+/// <summary>
+/// Two player grid based game where each player tries to burn down the other player's buildings. Let it burn.
+/// </summary>
 namespace Joueur.cs.Games.Anarchy
 {
     /// <summary>
     /// Two player grid based game where each player tries to burn down the other player's buildings. Let it burn.
     /// </summary>
-    class Game : BaseGame
+    public class Game : BaseGame
     {
         #region Properties
         /// <summary>

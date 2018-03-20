@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Anarchy
     /// <summary>
     /// A basic building. It does nothing besides burn down. Other Buildings inherit from this class.
     /// </summary>
-    class Building : Anarchy.GameObject
+    public class Building : Anarchy.GameObject
     {
         #region Properties
         /// <summary>

@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Checkers
     /// <summary>
     /// A player in this game. Every AI controls one player.
     /// </summary>
-    class Player : Checkers.GameObject
+    public class Player : Checkers.GameObject
     {
         #region Properties
         /// <summary>

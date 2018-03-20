@@ -12,12 +12,15 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
+/// <summary>
+/// Gather branches and build up your lodge as beavers fight to survive.
+/// </summary>
 namespace Joueur.cs.Games.Stumped
 {
     /// <summary>
     /// Gather branches and build up your lodge as beavers fight to survive.
     /// </summary>
-    class Game : BaseGame
+    public class Game : BaseGame
     {
         #region Properties
         /// <summary>

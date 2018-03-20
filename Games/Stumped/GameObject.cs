@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Stumped
     /// <summary>
     /// An object in the game. The most basic class that all game classes should inherit from automatically.
     /// </summary>
-    class GameObject : BaseGameObject
+    public class GameObject : BaseGameObject
     {
         #region Properties
         /// <summary>

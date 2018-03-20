@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Spiders
     /// <summary>
     /// A Spider spawned by the BroodMother.
     /// </summary>
-    class Spiderling : Spiders.Spider
+    public class Spiderling : Spiders.Spider
     {
         #region Properties
         /// <summary>

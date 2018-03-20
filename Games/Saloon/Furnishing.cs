@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Saloon
     /// <summary>
     /// An furnishing in the Saloon that must be pathed around, or destroyed.
     /// </summary>
-    class Furnishing : Saloon.GameObject
+    public class Furnishing : Saloon.GameObject
     {
         #region Properties
         /// <summary>
