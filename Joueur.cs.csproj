@@ -15,6 +15,9 @@
     <PackageId>Joueur.cs</PackageId>
     <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\win7-x64\cs-client.xml</DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Remove="_creer\**"/>
   </ItemGroup>
