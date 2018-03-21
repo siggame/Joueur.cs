@@ -37,7 +37,7 @@ To Run:
 
 ### Linux
 
-Install [dotnet 2.0][dotnet]
+Install [dotnet 2.0][dotnet] ([make sure you install the prerequisites too][linux-prereqs])
 
 After those dependencies install, to run the client:
 
@@ -56,4 +56,5 @@ The only file you should ever modify to create your AI is the `AI.cs` file. All 
 
 [cadre]: https://github.com/siggame/Cadre
 [dotnet]: https://www.microsoft.com/net/learn/get-started/linux
+[linux-prereqs]: https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites
 [gitbash]: https://git-scm.com/downloads
