@@ -10,7 +10,7 @@
     <RuntimeIdentifier Condition="'$(IsOSX)' != ''">osx-x64</RuntimeIdentifier>
     <RuntimeIdentifier Condition="'$(IsLinux)' != ''">linux-x64</RuntimeIdentifier>
     <DebugType>portable</DebugType>
-    <AssemblyName>cs-client</AssemblyName>
+    <AssemblyName>joueur-cs</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>Joueur.cs</PackageId>
     <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
