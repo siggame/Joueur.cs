@@ -203,3 +203,4 @@ FakesAssemblies/
 
 # generated docs
 docs/output
+docs/**/.manifest

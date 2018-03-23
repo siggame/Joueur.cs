@@ -1,0 +1,5 @@
+- name: Articles
+  href: articles/
+- name: Games
+  href: games/
+  homepage: games/index.md
