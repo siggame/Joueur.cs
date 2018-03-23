@@ -9,7 +9,8 @@
           ]
         }
       ],
-      "dest": "games",
+      "dest": "docs",
+      "filter": "filter.yml",
       "disableGitFeatures": false
     }
   ],
@@ -17,21 +18,18 @@
     "content": [
       {
         "files": [
-          "games/**.yml",
-          "games/index.md"
-        ]
-      },
-      {
-        "files": [
-          "articles/**.md",
-          "articles/**/toc.yml",
-          "toc.yml",
-          "*.md"
+          "docs/**.yml",
+          "docs/index.md",
+	  "toc.yml",
+	  "*.md"
         ]
       }
     ],
     "overwrite": [
       {
+	"files": [
+          "overwrite/**.md"
+        ],
         "exclude": [
           "output/**"
         ]
@@ -41,7 +39,8 @@
     "globalMetadataFiles": [],
     "globalMetadata": {
       "_disableContribution": true,
-      "_appTitle": "C# Joueur Client"
+      "_appTitle": "C# Joueur Client",
+      "_enableSearch": true
     },
     "fileMetadataFiles": [],
     "template": [

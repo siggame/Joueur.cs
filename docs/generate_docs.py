@@ -4,42 +4,97 @@ import subprocess
 import shutil
 from datetime import date
 import sys
+import zipfile
 
 def run(*args, **kwargs):
     error_code = subprocess.call(*args, **kwargs)
     if error_code != 0: # an error happened
         sys.exit(error_code)
 
-temp_path = "./temp/"
-if os.path.isdir(temp_path):
-    shutil.rmtree(temp_path)
-os.makedirs(temp_path)
+if os.path.isdir("./output/"):
+    shutil.rmtree("./output/")
 
-with open("../README.md", "r") as file:
-    readme = file.read()
+if not os.path.isdir("./bin"):
+    run(["wget https://github.com/dotnet/docfx/releases/download/v2.33.1/docfx.zip"], shell=True)
+    # run(["unzip docfx.zip -d docfx"], shell=True)
+    with zipfile.ZipFile("./docfx.zip","r") as zip_ref:
+        zip_ref.extractall("bin")
+    os.remove("./docfx.zip")
+    os.chmod("./bin/docfx.exe", 0o777)
+    # run(["chmod 777 ./bin/docfx.exe"])
+
+shutil.copyfile("../README.md", "./docs/index.md")
+shutil.copyfile("../README.md", "./index.md")
+
+if os.path.isdir("./overwrite"):
+    shutil.rmtree("./overwrite")
+
+os.makedirs("./overwrite")
 
 game_names = [f for f in os.listdir("../Games") if os.path.isdir(os.path.join("../Games", f))]
 
-games_sections = '##Games\n\n' + (
-    '\n'.join(["* [{0}](namespaceJoueur_1_1cs_1_1Games_1_1{0}.html)".format(n) for n in game_names])
-+ "\n\n")
+for game_name in game_names:
+    with open(os.path.join("../Games/", game_name, "Game.cs"), "r") as file:
+        lines = file.read().splitlines()
+        summary = False
+        for line in lines:
+            if summary:
+                summary = line.replace("/// ", "")
+                break
 
-insert_at = readme.find("## How to Run")
+            if line.strip() == "/// <summary>":
+                summary = True
 
-with open(os.path.join(temp_path, "README.md"), 'w+') as file:
-    file.write(readme[:insert_at] + games_sections + readme[insert_at:])
+    with open("./overwrite/" + game_name + ".md", "w+") as file:
+        file.write("""---
+uid: Joueur.cs.Games.{game_name}
+---
+### Rules
 
-shutil.copyfile("./Doxyfile", os.path.join(temp_path, "Doxyfile"))
+> {summary}
 
-shutil.copytree("../Games/", os.path.join(temp_path, "Games/"))
+The full game rules for {game_name} can be found on [GitHub][rules].
 
-shutil.copyfile("../Joueur/BaseGameObject.cs", os.path.join(temp_path, "BaseGameObject.cs"))
+Additional materials, such as the [story][story] and [game template][creer] can be found on [GitHub][root] as well.
 
-run(["doxygen"], shell=True, cwd=temp_path)
+[rules]: https://github.com/siggame/Cadre/blob/master/Games/{game_name}/rules.md
+[story]: https://github.com/siggame/Cadre/blob/master/Games/{game_name}/story.md
+[creer]: https://github.com/siggame/Cadre/blob/master/Games/{game_name}/creer.yaml
+[root]: https://github.com/siggame/Cadre/blob/master/Games/{game_name}/
+""".format(game_name=game_name, summary=summary))
+        file.truncate()
 
-output_path = "./output"
-if os.path.isdir(output_path):
-    shutil.rmtree(output_path)
-shutil.copytree(os.path.join(temp_path, "docs", "html"), output_path)
+run(["./bin/docfx.exe metadata docfx.json"], shell=True)
+run(["./bin/docfx.exe build docfx.json"], shell=True)
 
-shutil.rmtree(temp_path)
+with open("./output/docs/toc.html", "r+") as file:
+    contents = file.read()
+    contents = contents.replace(">Joueur.cs.Games.", ">")
+
+    START_STR = "<li>"
+    start = contents.find(START_STR)
+
+    END_STR = "</ul>  </li>"
+    end = contents.find(END_STR)
+
+    contents = contents[:(start + len(START_STR))] + contents[(end + len(END_STR)):]
+    file.seek(0)
+    file.write(contents)
+    file.truncate()
+
+# this is hacky, but it basically forces a sub dir to be the root
+# it seems some JS built into docfx formats the TOC, so even if we put it
+# in the root it will look dumb, and their JS is minified
+with open("./output/index.html", "r+") as file:
+    contents = file.read()
+    STR = "<head>"
+    i = contents.find(STR) + len(STR)
+    contents = contents[:i] + """
+        <meta http-equiv="refresh" content="0; url=docs/">
+        <script type="text/javascript">
+            window.location.href = "docs/"
+        </script>
+""" + contents[i:]
+    file.write(contents)
+
+print("Done generating C# docs")

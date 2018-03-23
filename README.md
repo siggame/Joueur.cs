@@ -33,7 +33,7 @@ To Build:
 
 To Run:
 
-    ./build/cs-client GAME_NAME -s game.siggame.io
+    ./build/joueur-cs GAME_NAME -s game.siggame.io
 
 ### Linux
 
