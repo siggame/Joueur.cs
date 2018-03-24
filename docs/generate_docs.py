@@ -23,7 +23,6 @@ if not os.path.isdir("./bin"):
     os.chmod("./bin/docfx.exe", 0o777)
     # run(["chmod 777 ./bin/docfx.exe"])
 
-shutil.copyfile("../README.md", "./docs/index.md")
 shutil.copyfile("../README.md", "./index.md")
 
 if os.path.isdir("./overwrite"):
