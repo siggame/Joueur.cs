@@ -1,3 +1,3 @@
-- name: Docs
-  href: docs/
-  homepage: docs/index.md
+- name: Games
+  href: games/
+  homepage: games/index.md

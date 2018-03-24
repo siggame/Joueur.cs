@@ -9,7 +9,7 @@
           ]
         }
       ],
-      "dest": "docs",
+      "dest": "games",
       "filter": "filter.yml",
       "disableGitFeatures": false
     }
@@ -18,16 +18,16 @@
     "content": [
       {
         "files": [
-          "docs/**.yml",
-          "docs/index.md",
-	  "toc.yml",
-	  "*.md"
+          "games/**.yml",
+          "games/index.md",
+          "toc.yml",
+          "*.md"
         ]
       }
     ],
     "overwrite": [
       {
-	"files": [
+        "files": [
           "overwrite/**.md"
         ],
         "exclude": [

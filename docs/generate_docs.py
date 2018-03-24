@@ -9,30 +9,35 @@ import zipfile
 def run(*args, **kwargs):
     error_code = subprocess.call(*args, **kwargs)
     if error_code != 0: # an error happened
+        print("unexpected error")
         sys.exit(error_code)
+    return error_code
 
 if os.path.isdir("./output/"):
     shutil.rmtree("./output/")
 
-if not os.path.isdir("./bin"):
+if not os.path.isdir("./docfx"):
     run(["wget https://github.com/dotnet/docfx/releases/download/v2.33.1/docfx.zip"], shell=True)
     # run(["unzip docfx.zip -d docfx"], shell=True)
     with zipfile.ZipFile("./docfx.zip","r") as zip_ref:
-        zip_ref.extractall("bin")
+        zip_ref.extractall("./docfx")
     os.remove("./docfx.zip")
-    os.chmod("./bin/docfx.exe", 0o777)
-    # run(["chmod 777 ./bin/docfx.exe"])
+    os.chmod("./docfx/docfx.exe", 0o777)
+    # run(["chmod 777 ./docfx/docfx.exe"])
 
-shutil.copyfile("../README.md", "./docs/index.md")
 shutil.copyfile("../README.md", "./index.md")
 
 if os.path.isdir("./overwrite"):
     shutil.rmtree("./overwrite")
-
 os.makedirs("./overwrite")
+
+if os.path.isdir("./games"):
+    shutil.rmtree("./games")
+os.makedirs("./games")
 
 game_names = [f for f in os.listdir("../Games") if os.path.isdir(os.path.join("../Games", f))]
 
+summaries = {}
 for game_name in game_names:
     with open(os.path.join("../Games/", game_name, "Game.cs"), "r") as file:
         lines = file.read().splitlines()
@@ -40,6 +45,7 @@ for game_name in game_names:
         for line in lines:
             if summary:
                 summary = line.replace("/// ", "")
+                summaries[game_name] = summary
                 break
 
             if line.strip() == "/// <summary>":
@@ -49,9 +55,10 @@ for game_name in game_names:
         file.write("""---
 uid: Joueur.cs.Games.{game_name}
 ---
+
 ### Rules
 
-> {summary}
+_{summary}_
 
 The full game rules for {game_name} can be found on [GitHub][rules].
 
@@ -64,10 +71,37 @@ Additional materials, such as the [story][story] and [game template][creer] can 
 """.format(game_name=game_name, summary=summary))
         file.truncate()
 
-run(["./bin/docfx.exe metadata docfx.json"], shell=True)
-run(["./bin/docfx.exe build docfx.json"], shell=True)
+with open("./games/index.md", "w+") as file:
+    file.write("""
+# Games
 
-with open("./output/docs/toc.html", "r+") as file:
+These are the games that are available to play via the C# Joueur Client. Their source code is stored in the directory: `Games/GAME_NAME/`, where `GAME_NAME` is the name of the game (with the first letter capitalized).
+
+""" + ("\n".join('#### [**{n}**](Joueur.cs.Games.{n}.html)\n{s}'.format(n=n, s=summaries[n]) for n in game_names)) + """
+
+## Other Notes
+
+### Modifying non AI files
+
+Each class fle inside of `Games/GAME_NAME/`, except for your `AI.cs` should ideally not be modified. They are intended
+to be read only constructs that hold the state of that object at the point in time you are reading its properties.
+
+That being is said, if you really wish to add functionality, such as helper functions, ensure they do not directly modify game state information.
+
+### Game Logic
+
+If you are attempting to figure out how the logic is executed for a game, that code is **not** here.
+All [cadre](https://github.com/siggame/Cadre) game clients are dumb state tracking programs that facilitate IO between a game server and your AI in whatever language you choose.
+
+If you wish to get the actual code for a game check in the [game server](https://github.com/siggame/Cerveau).
+Its directory structure is similar to most clients (such as this one).
+
+""")
+
+run(["mono ./docfx/docfx.exe metadata ./docfx.json"], shell=True)
+run(["mono ./docfx/docfx.exe build ./docfx.json"], shell=True)
+
+with open("./output/games/toc.html", "r+") as file:
     contents = file.read()
     contents = contents.replace(">Joueur.cs.Games.", ">")
 
@@ -81,20 +115,5 @@ with open("./output/docs/toc.html", "r+") as file:
     file.seek(0)
     file.write(contents)
     file.truncate()
-
-# this is hacky, but it basically forces a sub dir to be the root
-# it seems some JS built into docfx formats the TOC, so even if we put it
-# in the root it will look dumb, and their JS is minified
-with open("./output/index.html", "r+") as file:
-    contents = file.read()
-    STR = "<head>"
-    i = contents.find(STR) + len(STR)
-    contents = contents[:i] + """
-        <meta http-equiv="refresh" content="0; url=docs/">
-        <script type="text/javascript">
-            window.location.href = "docs/"
-        </script>
-""" + contents[i:]
-    file.write(contents)
 
 print("Done generating C# docs")
