@@ -53,7 +53,7 @@ namespace Joueur.cs.Games.Pirates
         /// <summary>
         /// (Merchants only) The path this Unit will follow. The first element is the Tile this Unit will move to next.
         /// </summary>
-        public Pirates.Tile Path { get; protected set; }
+        public IList<Pirates.Tile> Path { get; protected set; }
 
         /// <summary>
         /// If a ship is on this Tile, how much health it has remaining. 0 for no ship.
@@ -83,6 +83,7 @@ namespace Joueur.cs.Games.Pirates
         /// </summary>
         protected Unit() : base()
         {
+            this.Path = new List<Pirates.Tile>();
         }
 
         /// <summary>
