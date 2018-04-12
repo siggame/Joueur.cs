@@ -71,7 +71,7 @@ namespace Joueur.cs.Games.Pirates
         public int MapWidth { get; protected set; }
 
         /// <summary>
-        /// The Euclidean distance from a Player port required to reach maxInterestRate.
+        /// The Euclidean distance from a Player Port required to reach maxInterestRate.
         /// </summary>
         public double MaxInterestDistance { get; protected set; }
 
@@ -84,6 +84,21 @@ namespace Joueur.cs.Games.Pirates
         /// The maximum number of turns before the game will automatically end.
         /// </summary>
         public int MaxTurns { get; protected set; }
+
+        /// <summary>
+        /// How much gold it costs a merchant Port to create a crew member.
+        /// </summary>
+        public int MerchantCrewCost { get; protected set; }
+
+        /// <summary>
+        /// How much gold merchant Ports get per turn. They gain (Port.investment * merchantInvestmentRate) gold each turn.
+        /// </summary>
+        public double MerchantInvestmentRate { get; protected set; }
+
+        /// <summary>
+        /// How much gold it costs a merchant Port to create a ship.
+        /// </summary>
+        public int MerchantShipCost { get; protected set; }
 
         /// <summary>
         /// List of all the players in the game.

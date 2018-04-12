@@ -90,7 +90,7 @@ namespace Joueur.cs.Games.Pirates
         /// Attacks either crew, a ship, or a port on a Tile in range.
         /// </summary>
         /// <param name="tile">The Tile to attack.</param>
-        /// <param name="target">Whether to attack 'crew', 'ship', or 'port'. Crew deal damage to crew, and ships deal damage to ships and ports. Consumes any remaining moves.</param>
+        /// <param name="target">Whether to attack 'crew', 'ship', or 'port'. Crew deal damage to crew, and ships deal damage to ships. Both can attack ports as well. Units cannot attack other units in ports. Consumes any remaining moves.</param>
         /// <returns>True if successfully attacked, false otherwise.</returns>
         public bool Attack(Pirates.Tile tile, string target)
         {
@@ -104,7 +104,7 @@ namespace Joueur.cs.Games.Pirates
         /// Builds a Port on the given Tile.
         /// </summary>
         /// <param name="tile">The Tile to build the Port on.</param>
-        /// <returns>True if successfully constructed a Port, false otherwise.</returns>
+        /// <returns>True if successfully built a Port, false otherwise.</returns>
         public bool Build(Pirates.Tile tile)
         {
             return this.RunOnServer<bool>("build", new Dictionary<string, object> {
@@ -115,7 +115,7 @@ namespace Joueur.cs.Games.Pirates
         /// <summary>
         /// Buries gold on this Unit's Tile.
         /// </summary>
-        /// <param name="amount">How much gold this Unit should bury.</param>
+        /// <param name="amount">How much gold this Unit should bury. Amounts &lt;= 0 will bury as much as possible.</param>
         /// <returns>True if successfully buried, false otherwise.</returns>
         public bool Bury(int amount)
         {
@@ -125,7 +125,7 @@ namespace Joueur.cs.Games.Pirates
         }
 
         /// <summary>
-        /// Puts gold into an adjacent Port. If that Port is the Player's main port, the gold is added to that Player. If that Port is owned by merchants, adds to the investment.
+        /// Puts gold into an adjacent Port. If that Port is the Player's main port, the gold is added to that Player. If that Port is owned by merchants, it adds to that Port's investment.
         /// </summary>
         /// <param name="amount">The amount of gold to deposit. Amounts &lt;= 0 will deposit all the gold on this Unit.</param>
         /// <returns>True if successfully deposited, false otherwise.</returns>
@@ -163,14 +163,10 @@ namespace Joueur.cs.Games.Pirates
         /// <summary>
         /// Regenerates this Unit's health. Must be used in range of a port.
         /// </summary>
-        /// <param name="tile">The Tile to move the crew to.</param>
-        /// <param name="amount">The number of crew to move onto that Tile. Amount &lt;= 0 will move all the crew to that Tile.</param>
-        /// <returns>True if successfully split, false otherwise.</returns>
-        public bool Rest(Pirates.Tile tile, int amount=1)
+        /// <returns>True if successfully rested, false otherwise.</returns>
+        public bool Rest()
         {
             return this.RunOnServer<bool>("rest", new Dictionary<string, object> {
-                {"tile", tile},
-                {"amount", amount}
             });
         }
 
