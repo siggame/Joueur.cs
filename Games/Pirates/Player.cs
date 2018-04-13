@@ -53,7 +53,7 @@ namespace Joueur.cs.Games.Pirates
         /// <summary>
         /// The Port owned by this Player.
         /// </summary>
-        public Pirates.Port Ports { get; protected set; }
+        public Pirates.Port Port { get; protected set; }
 
         /// <summary>
         /// The reason why the player lost the game.
