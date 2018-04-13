@@ -91,11 +91,6 @@ namespace Joueur.cs.Games.Pirates
         public double MerchantInterestRate { get; protected set; }
 
         /// <summary>
-        /// Every Port in the game. Merchant ports have owner set to null.
-        /// </summary>
-        public IList<Pirates.Port> MerchantPorts { get; protected set; }
-
-        /// <summary>
         /// The Euclidean distance buried gold must be from the Player's Port to accumulate interest.
         /// </summary>
         public double MinInterestDistance { get; protected set; }
@@ -104,6 +99,11 @@ namespace Joueur.cs.Games.Pirates
         /// List of all the players in the game.
         /// </summary>
         public IList<Pirates.Player> Players { get; protected set; }
+
+        /// <summary>
+        /// Every Port in the game. Merchant ports have owner set to null.
+        /// </summary>
+        public IList<Pirates.Port> Ports { get; protected set; }
 
         /// <summary>
         /// How far a Unit can be from a Port to rest. Range is circular.
@@ -165,8 +165,8 @@ namespace Joueur.cs.Games.Pirates
         {
             this.Name = "Pirates";
 
-            this.MerchantPorts = new List<Pirates.Port>();
             this.Players = new List<Pirates.Player>();
+            this.Ports = new List<Pirates.Port>();
             this.Tiles = new List<Pirates.Tile>();
             this.Units = new List<Pirates.Unit>();
         }
