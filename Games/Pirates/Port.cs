@@ -21,27 +21,12 @@ namespace Joueur.cs.Games.Pirates
     {
         #region Properties
         /// <summary>
-        /// Whether this Port has created a Unit this turn.
-        /// </summary>
-        public bool Cooldown { get; protected set; }
-
-        /// <summary>
-        /// Whether this Port can be destroyed.
-        /// </summary>
-        public int Destroyable { get; protected set; }
-
-        /// <summary>
-        /// (Merchants only) How much gold this Port has accumulated. Once this port can afford to create a ship, it will spend gold to construct one.
+        /// For players, how much more gold this Port can spend this turn. For merchants, how much gold this Port has accumulated (it will spawn a ship when the Port can afford one).
         /// </summary>
         public int Gold { get; protected set; }
 
         /// <summary>
-        /// How much health this Port has.
-        /// </summary>
-        public int Health { get; protected set; }
-
-        /// <summary>
-        /// (Merchants only) How much gold this Port accumulates each turn.
+        /// (Merchants only) How much gold was invested into this Port. Investment determines the strength and value of the next ship.
         /// </summary>
         public int Investment { get; protected set; }
 

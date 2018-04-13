@@ -21,6 +21,11 @@ namespace Joueur.cs.Games.Pirates
     {
         #region Properties
         /// <summary>
+        /// (Visualizer only) Whether this tile is deep sea or grassy. This has no effect on gameplay, but feel free to use it if you want.
+        /// </summary>
+        public bool Decoration { get; protected set; }
+
+        /// <summary>
         /// The amount of gold buried on this tile.
         /// </summary>
         public int Gold { get; protected set; }

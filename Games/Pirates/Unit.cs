@@ -61,6 +61,11 @@ namespace Joueur.cs.Games.Pirates
         public int ShipHealth { get; protected set; }
 
         /// <summary>
+        /// (Merchants only) The number of turns this merchant ship won't be able to move. They will still attack. Merchant ships are stunned when they're attacked.
+        /// </summary>
+        public int StunTurns { get; protected set; }
+
+        /// <summary>
         /// (Merchants only) The Port this Unit is moving to.
         /// </summary>
         public Pirates.Port TargetPort { get; protected set; }
@@ -87,10 +92,10 @@ namespace Joueur.cs.Games.Pirates
         }
 
         /// <summary>
-        /// Attacks either crew, a ship, or a port on a Tile in range.
+        /// Attacks either the 'crew' or 'ship' on a Tile in range.
         /// </summary>
         /// <param name="tile">The Tile to attack.</param>
-        /// <param name="target">Whether to attack 'crew', 'ship', or 'port'. Crew deal damage to crew, and ships deal damage to ships. Both can attack ports as well. Units cannot attack other units in ports. Consumes any remaining moves.</param>
+        /// <param name="target">Whether to attack 'crew' or 'ship'. Crew deal damage to crew and ships deal damage to ships. Consumes any remaining moves.</param>
         /// <returns>True if successfully attacked, false otherwise.</returns>
         public bool Attack(Pirates.Tile tile, string target)
         {
@@ -101,19 +106,7 @@ namespace Joueur.cs.Games.Pirates
         }
 
         /// <summary>
-        /// Builds a Port on the given Tile.
-        /// </summary>
-        /// <param name="tile">The Tile to build the Port on.</param>
-        /// <returns>True if successfully built a Port, false otherwise.</returns>
-        public bool Build(Pirates.Tile tile)
-        {
-            return this.RunOnServer<bool>("build", new Dictionary<string, object> {
-                {"tile", tile}
-            });
-        }
-
-        /// <summary>
-        /// Buries gold on this Unit's Tile.
+        /// Buries gold on this Unit's Tile. Gold must be a certain distance away for it to get interest (Game.minInterestDistance).
         /// </summary>
         /// <param name="amount">How much gold this Unit should bury. Amounts &lt;= 0 will bury as much as possible.</param>
         /// <returns>True if successfully buried, false otherwise.</returns>
@@ -125,7 +118,7 @@ namespace Joueur.cs.Games.Pirates
         }
 
         /// <summary>
-        /// Puts gold into an adjacent Port. If that Port is the Player's main port, the gold is added to that Player. If that Port is owned by merchants, it adds to that Port's investment.
+        /// Puts gold into an adjacent Port. If that Port is the Player's port, the gold is added to that Player. If that Port is owned by merchants, it adds to that Port's investment.
         /// </summary>
         /// <param name="amount">The amount of gold to deposit. Amounts &lt;= 0 will deposit all the gold on this Unit.</param>
         /// <returns>True if successfully deposited, false otherwise.</returns>
@@ -149,7 +142,7 @@ namespace Joueur.cs.Games.Pirates
         }
 
         /// <summary>
-        /// Moves this Unit from its current Tile to an adjacent Tile.
+        /// Moves this Unit from its current Tile to an adjacent Tile. If this Unit merges with another one, the other Unit will be destroyed and its tile will be set to null. Make sure to check that your Unit's tile is not null before doing things with it.
         /// </summary>
         /// <param name="tile">The Tile this Unit should move to.</param>
         /// <returns>True if it moved, false otherwise.</returns>
@@ -187,7 +180,7 @@ namespace Joueur.cs.Games.Pirates
         }
 
         /// <summary>
-        /// Takes gold from the Player. You can only withdraw from your main port.
+        /// Takes gold from the Player. You can only withdraw from your own Port.
         /// </summary>
         /// <param name="amount">The amount of gold to withdraw. Amounts &lt;= 0 will withdraw everything.</param>
         /// <returns>True if successfully withdrawn, false otherwise.</returns>

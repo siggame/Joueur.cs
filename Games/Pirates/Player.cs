@@ -51,9 +51,9 @@ namespace Joueur.cs.Games.Pirates
         public Pirates.Player Opponent { get; protected set; }
 
         /// <summary>
-        /// The ports owned by this Player.
+        /// The Port owned by this Player.
         /// </summary>
-        public IList<Pirates.Port> Ports { get; protected set; }
+        public Pirates.Port Ports { get; protected set; }
 
         /// <summary>
         /// The reason why the player lost the game.
@@ -64,11 +64,6 @@ namespace Joueur.cs.Games.Pirates
         /// The reason why the player won the game.
         /// </summary>
         public string ReasonWon { get; protected set; }
-
-        /// <summary>
-        /// This Player's starting port.
-        /// </summary>
-        public Pirates.Port StartingPort { get; protected set; }
 
         /// <summary>
         /// The amount of time (in ns) remaining for this AI to send commands.
@@ -98,7 +93,6 @@ namespace Joueur.cs.Games.Pirates
         /// </summary>
         protected Player() : base()
         {
-            this.Ports = new List<Pirates.Port>();
             this.Units = new List<Pirates.Unit>();
         }
 

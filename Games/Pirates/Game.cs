@@ -21,6 +21,11 @@ namespace Joueur.cs.Games.Pirates
     {
         #region Properties
         /// <summary>
+        /// The rate buried gold increases each turn.
+        /// </summary>
+        public double BuryInterestRate { get; protected set; }
+
+        /// <summary>
         /// How much gold it costs to construct a single crew.
         /// </summary>
         public int CrewCost { get; protected set; }
@@ -71,54 +76,34 @@ namespace Joueur.cs.Games.Pirates
         public int MapWidth { get; protected set; }
 
         /// <summary>
-        /// The Euclidean distance from a Player Port required to reach maxInterestRate.
-        /// </summary>
-        public double MaxInterestDistance { get; protected set; }
-
-        /// <summary>
-        /// The maximum rate buried gold can increase over time.
-        /// </summary>
-        public double MaxInterestRate { get; protected set; }
-
-        /// <summary>
         /// The maximum number of turns before the game will automatically end.
         /// </summary>
         public int MaxTurns { get; protected set; }
 
         /// <summary>
-        /// How much gold it costs a merchant Port to create a crew member.
+        /// How much gold merchant Ports get each turn.
         /// </summary>
-        public int MerchantCrewCost { get; protected set; }
+        public double MerchantGoldRate { get; protected set; }
 
         /// <summary>
-        /// How much gold merchant Ports get per turn. They gain (Port.investment * merchantInvestmentRate) gold each turn.
+        /// When a merchant ship spawns, the amount of additional gold it has relative to the Port's investment.
         /// </summary>
-        public double MerchantInvestmentRate { get; protected set; }
+        public double MerchantInterestRate { get; protected set; }
 
         /// <summary>
-        /// How much gold it costs a merchant Port to create a ship.
+        /// Every Port in the game. Merchant ports have owner set to null.
         /// </summary>
-        public int MerchantShipCost { get; protected set; }
+        public IList<Pirates.Port> MerchantPorts { get; protected set; }
+
+        /// <summary>
+        /// The Euclidean distance buried gold must be from the Player's Port to accumulate interest.
+        /// </summary>
+        public double MinInterestDistance { get; protected set; }
 
         /// <summary>
         /// List of all the players in the game.
         /// </summary>
         public IList<Pirates.Player> Players { get; protected set; }
-
-        /// <summary>
-        /// How much gold it costs to construct a port.
-        /// </summary>
-        public int PortCost { get; protected set; }
-
-        /// <summary>
-        /// The maximum amount of health a Port can have.
-        /// </summary>
-        public int PortHealth { get; protected set; }
-
-        /// <summary>
-        /// Every Port in the game.
-        /// </summary>
-        public IList<Pirates.Port> Ports { get; protected set; }
 
         /// <summary>
         /// How far a Unit can be from a Port to rest. Range is circular.
@@ -161,7 +146,7 @@ namespace Joueur.cs.Games.Pirates
         public IList<Pirates.Tile> Tiles { get; protected set; }
 
         /// <summary>
-        /// Every Unit in the game.
+        /// Every Unit in the game. Merchant units have targetPort set to a port.
         /// </summary>
         public IList<Pirates.Unit> Units { get; protected set; }
 
@@ -180,8 +165,8 @@ namespace Joueur.cs.Games.Pirates
         {
             this.Name = "Pirates";
 
+            this.MerchantPorts = new List<Pirates.Port>();
             this.Players = new List<Pirates.Player>();
-            this.Ports = new List<Pirates.Port>();
             this.Tiles = new List<Pirates.Tile>();
             this.Units = new List<Pirates.Unit>();
         }
