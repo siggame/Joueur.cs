@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Spiders
     /// <summary>
     /// A player in this game. Every AI controls one player.
     /// </summary>
-    class Player : Spiders.GameObject
+    public class Player : Spiders.GameObject
     {
         #region Properties
         /// <summary>

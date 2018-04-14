@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Saloon
     /// <summary>
     /// A Tile in the game that makes up the 2D map grid.
     /// </summary>
-    class Tile : Saloon.GameObject
+    public class Tile : Saloon.GameObject
     {
         #region Properties
         /// <summary>

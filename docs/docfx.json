@@ -1,0 +1,55 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../",
+          "files": [
+            "Joueur.cs.csproj"
+          ]
+        }
+      ],
+      "dest": "games",
+      "filter": "filter.yml",
+      "disableGitFeatures": false
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "games/**.yml",
+          "games/index.md",
+          "toc.yml",
+          "*.md"
+        ]
+      }
+    ],
+    "overwrite": [
+      {
+        "files": [
+          "overwrite/**.md"
+        ],
+        "exclude": [
+          "output/**"
+        ]
+      }
+    ],
+    "dest": "output",
+    "globalMetadataFiles": [],
+    "globalMetadata": {
+      "_disableContribution": true,
+      "_appTitle": "C# Joueur Client",
+      "_enableSearch": true
+    },
+    "fileMetadataFiles": [],
+    "template": [
+      "default"
+    ],
+    "postProcessors": [],
+    "noLangKeyword": false,
+    "keepFileLink": false,
+    "cleanupCacheHistory": false,
+    "disableGitFeatures": false
+  }
+}

@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Anarchy
     /// <summary>
     /// Used to keep cities under control and raid Warehouses.
     /// </summary>
-    class PoliceDepartment : Anarchy.Building
+    public class PoliceDepartment : Anarchy.Building
     {
         #region Properties
 

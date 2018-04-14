@@ -23,7 +23,11 @@ else:
 inherit_str = ", ".join(parent_classes) # note: this could have multi-inheritance, which C# does not support. Will need to make some sore of Interface system in the future, or combine all multi-inheritied features into one for C#
 
 %>
-namespace Joueur.cs.Games.${game_name}
+${"""/// <summary>
+/// {}
+/// </summary>
+""".format(shared['c#']['escape'](obj['description'])) if obj_key == 'Game' else ''
+}namespace Joueur.cs.Games.${game_name}
 {
     /// <summary>
     /// ${shared['c#']['escape'](obj['description'])}

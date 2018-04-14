@@ -12,6 +12,9 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
+/// <summary>
+/// Convert as many humans to as you can to survive in this post-apocalyptic wasteland.
+/// </summary>
 namespace Joueur.cs.Games.Catastrophe
 {
     /// <summary>

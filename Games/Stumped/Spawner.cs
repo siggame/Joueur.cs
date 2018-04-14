@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Stumped
     /// <summary>
     /// A resource spawner that generates branches or food.
     /// </summary>
-    class Spawner : Stumped.GameObject
+    public class Spawner : Stumped.GameObject
     {
         #region Properties
         /// <summary>

@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Chess
     /// <summary>
     /// A chess piece.
     /// </summary>
-    class Piece : Chess.GameObject
+    public class Piece : Chess.GameObject
     {
         #region Properties
         /// <summary>

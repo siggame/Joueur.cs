@@ -1,0 +1,3 @@
+- name: Games
+  href: games/
+  homepage: games/index.md

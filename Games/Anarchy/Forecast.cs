@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Anarchy
     /// <summary>
     /// The weather effect that will be applied at the end of a turn, which causes fires to spread.
     /// </summary>
-    class Forecast : Anarchy.GameObject
+    public class Forecast : Anarchy.GameObject
     {
         #region Properties
         /// <summary>

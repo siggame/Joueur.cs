@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Saloon
     /// <summary>
     /// A player in this game. Every AI controls one player.
     /// </summary>
-    class Player : Saloon.GameObject
+    public class Player : Saloon.GameObject
     {
         #region Properties
         /// <summary>

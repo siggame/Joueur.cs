@@ -12,12 +12,15 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
+/// <summary>
+/// There's an infestation of enemy spiders challenging your queen broodmother spider! Protect her and attack the other broodmother in this turn based, node based, game.
+/// </summary>
 namespace Joueur.cs.Games.Spiders
 {
     /// <summary>
     /// There's an infestation of enemy spiders challenging your queen broodmother spider! Protect her and attack the other broodmother in this turn based, node based, game.
     /// </summary>
-    class Game : BaseGame
+    public class Game : BaseGame
     {
         #region Properties
         /// <summary>

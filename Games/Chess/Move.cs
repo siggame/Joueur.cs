@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Chess
     /// <summary>
     /// Contains all details about a Piece's move in the game.
     /// </summary>
-    class Move : Chess.GameObject
+    public class Move : Chess.GameObject
     {
         #region Properties
         /// <summary>

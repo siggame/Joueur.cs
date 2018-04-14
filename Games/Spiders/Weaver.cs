@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Spiders
     /// <summary>
     /// A Spiderling that can alter existing Webs by weaving to add or remove silk from the Webs, thus altering its strength.
     /// </summary>
-    class Weaver : Spiders.Spiderling
+    public class Weaver : Spiders.Spiderling
     {
         #region Properties
         /// <summary>

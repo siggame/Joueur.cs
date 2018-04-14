@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Spiders
     /// <summary>
     /// A Spiderling that creates and spits new Webs from the Nest it is on to another Nest, connecting them.
     /// </summary>
-    class Spitter : Spiders.Spiderling
+    public class Spitter : Spiders.Spiderling
     {
         #region Properties
         /// <summary>

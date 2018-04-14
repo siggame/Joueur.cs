@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Spiders
     /// <summary>
     /// A Spiderling that can cut existing Webs.
     /// </summary>
-    class Cutter : Spiders.Spiderling
+    public class Cutter : Spiders.Spiderling
     {
         #region Properties
         /// <summary>

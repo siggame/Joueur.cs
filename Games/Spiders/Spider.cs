@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Spiders
     /// <summary>
     /// A Spider in the game. The most basic unit.
     /// </summary>
-    class Spider : Spiders.GameObject
+    public class Spider : Spiders.GameObject
     {
         #region Properties
         /// <summary>

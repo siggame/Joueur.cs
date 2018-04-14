@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Anarchy
     /// <summary>
     /// Can be bribed to change the next Forecast in some way.
     /// </summary>
-    class WeatherStation : Anarchy.Building
+    public class WeatherStation : Anarchy.Building
     {
         #region Properties
 

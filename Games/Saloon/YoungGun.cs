@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Saloon
     /// <summary>
     /// An eager young person that wants to join your gang, and will call in the veteran Cowboys you need to win the brawl in the saloon.
     /// </summary>
-    class YoungGun : Saloon.GameObject
+    public class YoungGun : Saloon.GameObject
     {
         #region Properties
         /// <summary>

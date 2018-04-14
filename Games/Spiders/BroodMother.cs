@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Spiders
     /// <summary>
     /// The Spider Queen. She alone can spawn Spiderlings for each Player, and if she dies the owner loses.
     /// </summary>
-    class BroodMother : Spiders.Spider
+    public class BroodMother : Spiders.Spider
     {
         #region Properties
         /// <summary>

@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Anarchy
     /// <summary>
     /// A player in this game. Every AI controls one player.
     /// </summary>
-    class Player : Anarchy.GameObject
+    public class Player : Anarchy.GameObject
     {
         #region Properties
         /// <summary>

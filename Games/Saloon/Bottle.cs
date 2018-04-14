@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Saloon
     /// <summary>
     /// A bottle thrown by a bartender at a Tile.
     /// </summary>
-    class Bottle : Saloon.GameObject
+    public class Bottle : Saloon.GameObject
     {
         #region Properties
         /// <summary>

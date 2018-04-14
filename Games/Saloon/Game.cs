@@ -12,12 +12,15 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
+/// <summary>
+/// Use cowboys to have a good time and play some music on a Piano, while brawling with enemy Cowboys.
+/// </summary>
 namespace Joueur.cs.Games.Saloon
 {
     /// <summary>
     /// Use cowboys to have a good time and play some music on a Piano, while brawling with enemy Cowboys.
     /// </summary>
-    class Game : BaseGame
+    public class Game : BaseGame
     {
         #region Properties
         /// <summary>

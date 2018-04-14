@@ -18,7 +18,8 @@ namespace Joueur.cs
     {
         private static void Main(string[] args)
         {
-            var argParser = new ArgParser(args, "Runs the C# client with options. Must a provide a game name to play on the server.", new[] {
+
+            ArgParser argParser = new ArgParser(args, "Runs the C# client with options. Must a provide a game name to play on the server.", new[] {
                 new ArgParser.Argument(new[] {"game"}, "game", "the name of the game you want to play on the server", true),
                 new ArgParser.Argument(new[] {"-s", "--server"}, "server", "the url to the server you want to connect to e.g. locahost:3000", false, "127.0.0.1"),
                 new ArgParser.Argument(new[] {"-p", "--port"}, "port", "the port to connect to on the server. Can be defined on the server arg via server:port", false, 3000),
@@ -61,7 +62,7 @@ namespace Joueur.cs
                 Type gameType = Type.GetType("Joueur.cs.Games." + gameName + ".Game");
                 game = (BaseGame)Activator.CreateInstance(gameType, true);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 ErrorHandler.HandleError(ErrorHandler.ErrorCode.GAME_NOT_FOUND, exception, "Could not create Game for game name '" + gameName + "'");
                 return;
@@ -73,7 +74,7 @@ namespace Joueur.cs
                 Type aiType = Type.GetType("Joueur.cs.Games." + gameName + ".AI");
                 ai = (BaseAI)Activator.CreateInstance(aiType, true);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "Could create AI for game name '" + gameName + "'");
                 return;
@@ -93,14 +94,14 @@ namespace Joueur.cs
             }
 
             client.Send("play", new ServerMessages.SendPlay
-                {
-                    playerName = playerName,
-                    playerIndex = playerIndex,
-                    gameName = gameName,
-                    password = password,
-                    gameSettings = gameSettings,
-                    requestedSession = requestedSession
-                }
+            {
+                playerName = playerName,
+                playerIndex = playerIndex,
+                gameName = gameName,
+                password = password,
+                gameSettings = gameSettings,
+                requestedSession = requestedSession
+            }
             );
 
             var lobbiedData = (ServerMessages.LobbiedData)client.WaitForEvent("lobbied");
@@ -113,7 +114,7 @@ namespace Joueur.cs
             client.GameManager.SetConstants(lobbiedData.constants);
 
             var startData = (ServerMessages.StartData)client.WaitForEvent("start");
-            
+
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Game is starting.");
             Console.ResetColor();
@@ -124,7 +125,7 @@ namespace Joueur.cs
                 ai.GetType().GetField("Game").SetValue(ai, game);
                 ai.GetType().GetField("Player").SetValue(ai, game.GameObjects[startData.playerID]);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 ErrorHandler.HandleError(ErrorHandler.ErrorCode.REFLECTION_FAILED, exception, "Could not set the Game and Player for the AI during game startup.");
             }
@@ -134,7 +135,7 @@ namespace Joueur.cs
                 ai.Start();
                 ai.GameUpdated();
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 ErrorHandler.HandleError(ErrorHandler.ErrorCode.AI_ERRORED, exception, "AI errored during initial game start.");
             }

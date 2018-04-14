@@ -17,7 +17,7 @@ namespace Joueur.cs.Games.Chess
     /// <summary>
     /// A player in this game. Every AI controls one player.
     /// </summary>
-    class Player : Chess.GameObject
+    public class Player : Chess.GameObject
     {
         #region Properties
         /// <summary>
