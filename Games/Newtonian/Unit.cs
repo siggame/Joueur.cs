@@ -36,7 +36,7 @@ namespace Joueur.cs.Games.Newtonian
         public int BlueiumOre { get; protected set; }
 
         /// <summary>
-        /// If a ship is on this Tile, how much health it has remaining.
+        /// The remaining health of a unit.
         /// </summary>
         public int Health { get; protected set; }
 
@@ -122,12 +122,14 @@ namespace Joueur.cs.Games.Newtonian
         /// <summary>
         /// Drops material at the units feat
         /// </summary>
+        /// <param name="tile">The tile the materials will be dropped on.</param>
         /// <param name="amount">The amount of materials to dropped. Amounts &lt;= 0 will drop all the materials on the Unit.</param>
         /// <param name="material">The material the unit will drop.</param>
         /// <returns>True if successfully deposited, false otherwise.</returns>
-        public bool Drop(int amount, string material)
+        public bool Drop(Newtonian.Tile tile, int amount, string material)
         {
             return this.RunOnServer<bool>("drop", new Dictionary<string, object> {
+                {"tile", tile},
                 {"amount", amount},
                 {"material", material}
             });
@@ -148,12 +150,14 @@ namespace Joueur.cs.Games.Newtonian
         /// <summary>
         /// Picks up material at the units feat
         /// </summary>
+        /// <param name="tile">The tile the materials will be dropped on.</param>
         /// <param name="amount">The amount of materials to pick up. Amounts &lt;= 0 will pick up all the materials on the Unit.</param>
         /// <param name="material">The material the unit will pick up.</param>
         /// <returns>True if successfully deposited, false otherwise.</returns>
-        public bool Pickup(int amount, string material)
+        public bool Pickup(Newtonian.Tile tile, int amount, string material)
         {
             return this.RunOnServer<bool>("pickup", new Dictionary<string, object> {
+                {"tile", tile},
                 {"amount", amount},
                 {"material", material}
             });

@@ -74,9 +74,9 @@ namespace Joueur.cs.Games.Newtonian
         {
             // <<-- Creer-Merge: game-updated -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             base.GameUpdated();
-	        this.DisplayMap();
-	        Console.ForegroundColor = ConsoleColor.White;
-	        Console.BackgroundColor = ConsoleColor.Black;
+            this.DisplayMap();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
             // <<-- /Creer-Merge: game-updated -->>
         }
 
@@ -104,9 +104,9 @@ namespace Joueur.cs.Games.Newtonian
         {
             // <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             // Put your game logic here for runTurn
-			this.DisplayMap();
-	        Console.ForegroundColor = ConsoleColor.White;
-	        Console.BackgroundColor = ConsoleColor.Black;
+            this.DisplayMap();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
             return true;
             // <<-- /Creer-Merge: runTurn -->>
         }
@@ -179,78 +179,78 @@ namespace Joueur.cs.Games.Newtonian
         }
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-		// you can add additional methods here for your AI to call
-		private void DisplayMap() {
-			Console.SetCursorPosition(0, 0);
-			Console.BackgroundColor = ConsoleColor.White;
-			Console.Write(new string(' ', this.Game.MapWidth + 2));
-			Console.BackgroundColor = ConsoleColor.Black;
-			Console.WriteLine();
-			for (int y = 0; y < this.Game.MapHeight; y++) {
-				Console.BackgroundColor = ConsoleColor.White;
-				Console.Write(' ');
-				for (int x = 0; x < this.Game.MapWidth; x++) {
-					Tile t = this.Game.Tiles[y * this.Game.MapWidth + x];
+        // you can add additional methods here for your AI to call
+        private void DisplayMap() {
+            Console.SetCursorPosition(0, 0);
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Write(new string(' ', this.Game.MapWidth + 2));
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.WriteLine();
+            for (int y = 0; y < this.Game.MapHeight; y++) {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write(' ');
+                for (int x = 0; x < this.Game.MapWidth; x++) {
+                    Tile t = this.Game.Tiles[y * this.Game.MapWidth + x];
 
-					// Background color
-					if (t.Machine != null) {
-						Console.BackgroundColor = ((t.Machine.OreType == "redium") ? ConsoleColor.DarkRed : ConsoleColor.DarkBlue);
-					} else if (t.IsWall == true) {
-						if (t.Decoration == 1) {
-							Console.BackgroundColor = ConsoleColor.DarkGray;
-						} else {
-							Console.BackgroundColor = ConsoleColor.DarkGray;
-						}
-					} else {
-						if (t.Decoration == 1) {
-							Console.BackgroundColor = ConsoleColor.Gray;
-						} else {
-							Console.BackgroundColor = ConsoleColor.Gray;
-						}
-					}
+                    // Background color
+                    if (t.Machine != null) {
+                        Console.BackgroundColor = ((t.Machine.OreType == "redium") ? ConsoleColor.DarkRed : ConsoleColor.DarkBlue);
+                    } else if (t.IsWall == true) {
+                        if (t.Decoration == 1) {
+                            Console.BackgroundColor = ConsoleColor.DarkGray;
+                        } else {
+                            Console.BackgroundColor = ConsoleColor.DarkGray;
+                        }
+                    } else {
+                        if (t.Decoration == 1) {
+                            Console.BackgroundColor = ConsoleColor.Gray;
+                        } else {
+                            Console.BackgroundColor = ConsoleColor.Gray;
+                        }
+                    }
 
-					// Character to display
-					char foreground = '.';
-					Console.ForegroundColor = ConsoleColor.White;
+                    // Character to display
+                    char foreground = '.';
+                    Console.ForegroundColor = ConsoleColor.White;
 
-					// Tile specific stuff
-					if (t.Unit != null) {
-						Console.ForegroundColor = t.Unit.Owner == this.Player ? ConsoleColor.Green : ConsoleColor.Red;
-						foreground = 'U'; //t.Unit.ShipHealth > 0 ? 'S' : 'C';
-						/*} else if (t.Gold > 0) {
-							Console.ForegroundColor = ConsoleColor.Yellow;
-							foreground = '$';
-						} else if (false && this.Game.Units.Any(u => u.Path.Contains(t))) {
-							Console.ForegroundColor = ConsoleColor.Yellow;
-							foreground = '*';
-						} else if (t.Decoration) {
-							Console.ForegroundColor = ConsoleColor.White;
-							foreground = '.';*/
-					}
+                    // Tile specific stuff
+                    if (t.Unit != null) {
+                        Console.ForegroundColor = t.Unit.Owner == this.Player ? ConsoleColor.Green : ConsoleColor.Red;
+                        foreground = 'U'; //t.Unit.ShipHealth > 0 ? 'S' : 'C';
+                        /*} else if (t.Gold > 0) {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            foreground = '$';
+                        } else if (false && this.Game.Units.Any(u => u.Path.Contains(t))) {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            foreground = '*';
+                        } else if (t.Decoration) {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            foreground = '.';*/
+                    }
 
-					Console.Write(foreground);
-				}
+                    Console.Write(foreground);
+                }
 
-				Console.BackgroundColor = ConsoleColor.White;
-				Console.Write(' ');
-				Console.BackgroundColor = ConsoleColor.Black;
-				Console.ForegroundColor = ConsoleColor.Gray;
-				Console.Write(y);
-				Console.WriteLine();
-			}
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write(' ');
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write(y);
+                Console.WriteLine();
+            }
 
-			Console.BackgroundColor = ConsoleColor.White;
-			Console.Write(new string(' ', this.Game.MapWidth + 2));
-			Console.BackgroundColor = ConsoleColor.Black;
-			Console.ForegroundColor = ConsoleColor.Gray;
-			Console.WriteLine();
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Write(new string(' ', this.Game.MapWidth + 2));
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine();
 
-			// Clear everything past here
-			int left = Console.CursorLeft;
-			int top = Console.CursorTop;
-			Console.Write(new string(' ', Math.Max(Console.WindowHeight, Console.WindowWidth * (Console.WindowHeight - top) - 1)));
-			Console.SetCursorPosition(left, top);
-		}
+            // Clear everything past here
+            int left = Console.CursorLeft;
+            int top = Console.CursorTop;
+            Console.Write(new string(' ', Math.Max(Console.WindowHeight, Console.WindowWidth * (Console.WindowHeight - top) - 1)));
+            Console.SetCursorPosition(left, top);
+        }
         // <<-- /Creer-Merge: methods -->>
         #endregion
     }
