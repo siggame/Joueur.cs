@@ -47,7 +47,7 @@ namespace Joueur.cs.Games.Newtonian
         public override string GetName()
         {
             // <<-- Creer-Merge: get-name -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-            return "DEV!!!"; // REPLACE THIS WITH YOUR TEAM NAME!
+            return "Newtonian C# Player"; // REPLACE THIS WITH YOUR TEAM NAME!
             // <<-- /Creer-Merge: get-name -->>
         }
 
@@ -61,6 +61,8 @@ namespace Joueur.cs.Games.Newtonian
         {
             // <<-- Creer-Merge: start -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             base.Start();
+
+	        Console.Clear();
             // <<-- /Creer-Merge: start -->>
         }
 
@@ -107,7 +109,7 @@ namespace Joueur.cs.Games.Newtonian
 			this.DisplayMap();
 	        Console.ForegroundColor = ConsoleColor.White;
 	        Console.BackgroundColor = ConsoleColor.Black;
-            return true;
+			return true;
             // <<-- /Creer-Merge: runTurn -->>
         }
 
@@ -179,7 +181,7 @@ namespace Joueur.cs.Games.Newtonian
         }
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-		// you can add additional methods here for your AI to call
+        // you can add additional methods here for your AI to call
 		private void DisplayMap() {
 			Console.SetCursorPosition(0, 0);
 			Console.BackgroundColor = ConsoleColor.White;
@@ -251,7 +253,7 @@ namespace Joueur.cs.Games.Newtonian
 			Console.Write(new string(' ', Math.Max(Console.WindowHeight, Console.WindowWidth * (Console.WindowHeight - top) - 1)));
 			Console.SetCursorPosition(left, top);
 		}
-        // <<-- /Creer-Merge: methods -->>
-        #endregion
-    }
+		// <<-- /Creer-Merge: methods -->>
+		#endregion
+	}
 }

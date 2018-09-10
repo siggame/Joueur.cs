@@ -21,19 +21,9 @@ namespace Joueur.cs.Games.Newtonian
     {
         #region Properties
         /// <summary>
-        /// The amount of ore that is in the machine. Cannot be higher than the refineInput value.
-        /// </summary>
-        public int Input { get; protected set; }
-
-        /// <summary>
         /// What type of ore the machine takes it, also determins the type of material it outputs.
         /// </summary>
         public string OreType { get; protected set; }
-
-        /// <summary>
-        /// The amount of material that is waiting to be collected in the machine.
-        /// </summary>
-        public int Output { get; protected set; }
 
         /// <summary>
         /// The amount of ore that needs to be inputted into the machine.

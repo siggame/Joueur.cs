@@ -26,11 +26,6 @@ namespace Joueur.cs.Games.Newtonian
         public string ClientType { get; protected set; }
 
         /// <summary>
-        /// Every generator tile owned by this Player.
-        /// </summary>
-        public IList<Newtonian.Tile> GeneratorTiles { get; protected set; }
-
-        /// <summary>
         /// The amount of heat this Player has.
         /// </summary>
         public int Heat { get; protected set; }
@@ -108,7 +103,6 @@ namespace Joueur.cs.Games.Newtonian
         /// </summary>
         protected Player() : base()
         {
-            this.GeneratorTiles = new List<Newtonian.Tile>();
             this.Units = new List<Newtonian.Unit>();
         }
 

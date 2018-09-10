@@ -99,6 +99,11 @@ namespace Joueur.cs.Games.Newtonian
         public int SpawnTime { get; protected set; }
 
         /// <summary>
+        /// How many turns a unit is stunned.
+        /// </summary>
+        public int StunTime { get; protected set; }
+
+        /// <summary>
         /// All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
         /// </summary>
         public IList<Newtonian.Tile> Tiles { get; protected set; }
@@ -107,6 +112,11 @@ namespace Joueur.cs.Games.Newtonian
         /// The amount of time (in nano-seconds) added after each player performs a turn.
         /// </summary>
         public int TimeAddedPerTurn { get; protected set; }
+
+        /// <summary>
+        /// How many turns a unit is immune to being stunned.
+        /// </summary>
+        public int TimeImmune { get; protected set; }
 
         /// <summary>
         /// Every Unit in the game.
