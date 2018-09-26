@@ -73,9 +73,9 @@ namespace Joueur.cs.Games.Newtonian
         {
             // <<-- Creer-Merge: game-updated -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             base.GameUpdated();
-	        this.DisplayMap();
-	        Console.ForegroundColor = ConsoleColor.White;
-	        Console.BackgroundColor = ConsoleColor.Black;
+            this.DisplayMap();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
             // <<-- /Creer-Merge: game-updated -->>
         }
 
@@ -103,7 +103,10 @@ namespace Joueur.cs.Games.Newtonian
         {
             // <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             // Put your game logic here for runTurn
-			return true;
+            this.DisplayMap();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
+            return true;
             // <<-- /Creer-Merge: runTurn -->>
         }
 
@@ -242,23 +245,22 @@ namespace Joueur.cs.Games.Newtonian
                         }
                     }
 
-					Console.Write(foreground);
-				}
+                    Console.Write(foreground);
+                }
 
-				Console.BackgroundColor = ConsoleColor.White;
-				Console.Write(' ');
-				Console.BackgroundColor = ConsoleColor.Black;
-				Console.ForegroundColor = ConsoleColor.Gray;
-				Console.Write(y);
-				Console.WriteLine();
-			}
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write(' ');
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write(y);
+                Console.WriteLine();
+            }
 
-			Console.BackgroundColor = ConsoleColor.White;
-			Console.Write(new string(' ', this.Game.MapWidth + 2));
-			Console.BackgroundColor = ConsoleColor.Black;
-			Console.ForegroundColor = ConsoleColor.Gray;
-			Console.WriteLine();
-
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Write(new string(' ', this.Game.MapWidth + 2));
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine();
 			// Clear everything past here
 			int left = Console.CursorLeft;
 			int top = Console.CursorTop;
