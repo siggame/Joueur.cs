@@ -6,10 +6,7 @@ using System.Linq;
 using System.Text;
 // <<-- Creer-Merge: usings -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 // you can add additional using(s) here
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using Joueur.cs.Games.Newtonian.Helpers;
-using static Joueur.cs.Games.Newtonian.Helpers.Pathfinder;
 // <<-- /Creer-Merge: usings -->>
 
 namespace Joueur.cs.Games.Newtonian
@@ -106,9 +103,6 @@ namespace Joueur.cs.Games.Newtonian
         {
             // <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             // Put your game logic here for runTurn
-			this.DisplayMap();
-	        Console.ForegroundColor = ConsoleColor.White;
-	        Console.BackgroundColor = ConsoleColor.Black;
 			return true;
             // <<-- /Creer-Merge: runTurn -->>
         }
@@ -199,36 +193,54 @@ namespace Joueur.cs.Games.Newtonian
 						Console.BackgroundColor = ((t.Machine.OreType == "redium") ? ConsoleColor.DarkRed : ConsoleColor.DarkBlue);
 					} else if (t.IsWall == true) {
 						if (t.Decoration == 1) {
-							Console.BackgroundColor = ConsoleColor.DarkGray;
+							Console.BackgroundColor = ConsoleColor.Black;
 						} else {
 							Console.BackgroundColor = ConsoleColor.DarkGray;
 						}
 					} else {
 						if (t.Decoration == 1) {
-							Console.BackgroundColor = ConsoleColor.Gray;
+							Console.BackgroundColor = ConsoleColor.DarkYellow;
 						} else {
 							Console.BackgroundColor = ConsoleColor.Gray;
 						}
 					}
 
 					// Character to display
-					char foreground = '.';
+					char foreground = '·';
 					Console.ForegroundColor = ConsoleColor.White;
 
 					// Tile specific stuff
 					if (t.Unit != null) {
 						Console.ForegroundColor = t.Unit.Owner == this.Player ? ConsoleColor.Green : ConsoleColor.Red;
 						foreground = 'U'; //t.Unit.ShipHealth > 0 ? 'S' : 'C';
-						/*} else if (t.Gold > 0) {
-							Console.ForegroundColor = ConsoleColor.Yellow;
-							foreground = '$';
-						} else if (false && this.Game.Units.Any(u => u.Path.Contains(t))) {
+                    }
+                    else if(t.Owner != null) {
+                        if(t.Type == "spawn") {
+                            foreground = 'S';
+                            Console.ForegroundColor = t.Owner == this.Player ? ConsoleColor.Green : ConsoleColor.Red;
+                        } else if(t.Type == "generator") {
+                            foreground = 'G';
+                            Console.ForegroundColor = t.Owner == this.Player ? ConsoleColor.Green : ConsoleColor.Red;
+                        }
+						/*if (false && this.Game.Units.Any(u => u.Path.Contains(t))) {
 							Console.ForegroundColor = ConsoleColor.Yellow;
 							foreground = '*';
 						} else if (t.Decoration) {
 							Console.ForegroundColor = ConsoleColor.White;
 							foreground = '.';*/
-					}
+					} else if(t.Type == "conveyor") {
+                        if(t.Direction == "north") {
+                            foreground = '↑';
+                        } else if(t.Direction == "east") {
+                            foreground = '→';
+                        } else if(t.Direction == "west") {
+                            foreground = '←';
+                        } else if(t.Direction == "blank") {
+                            foreground = '_';
+                        } else {
+                            foreground = '↓';
+                        }
+                    }
 
 					Console.Write(foreground);
 				}
