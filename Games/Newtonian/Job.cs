@@ -1,4 +1,4 @@
-// Information about a units's job.
+// Information about a unit's job.
 
 // DO NOT MODIFY THIS FILE
 // Never try to directly create an instance of this class, or modify its member variables.
@@ -15,13 +15,13 @@ using System.Text;
 namespace Joueur.cs.Games.Newtonian
 {
     /// <summary>
-    /// Information about a units's job.
+    /// Information about a unit's job.
     /// </summary>
     public class Job : Newtonian.GameObject
     {
         #region Properties
         /// <summary>
-        /// How many combined resources a beaver with this Job can hold at once.
+        /// How many combined resources a unit with this Job can hold at once.
         /// </summary>
         public int CarryLimit { get; protected set; }
 

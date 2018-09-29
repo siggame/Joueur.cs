@@ -31,22 +31,22 @@ namespace Joueur.cs.Games.Newtonian
         public int BlueiumOre { get; protected set; }
 
         /// <summary>
-        /// (Visualizer only) Different tile tipes, cracked, slightly dirty, ect. This has no effect on gameplay, but feel free to use it if you want.
+        /// (Visualizer only) Different tile types, cracked, slightly dirty, etc. This has no effect on gameplay, but feel free to use it if you want.
         /// </summary>
         public int Decoration { get; protected set; }
 
         /// <summary>
-        /// The direction of a conveyor belt ('blank', 'north', 'east', 'south', or 'west'). blank mean no conveyor.
+        /// The direction of a conveyor belt ('blank', 'north', 'east', 'south', or 'west'). blank means conveyor doesn't move.
         /// </summary>
         public string Direction { get; protected set; }
 
         /// <summary>
-        /// Weither or not the tile is a wall.
+        /// Whether or not the tile is a wall.
         /// </summary>
         public bool IsWall { get; protected set; }
 
         /// <summary>
-        /// The machine on this Tile if present, otherwise null.
+        /// The Machine on this Tile if present, otherwise null.
         /// </summary>
         public Newtonian.Machine Machine { get; protected set; }
 

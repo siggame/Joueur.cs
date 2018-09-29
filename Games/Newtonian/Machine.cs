@@ -1,4 +1,4 @@
-// A machine on a tile.
+// A machine in the game. Used to refine ore.
 
 // DO NOT MODIFY THIS FILE
 // Never try to directly create an instance of this class, or modify its member variables.
@@ -15,28 +15,28 @@ using System.Text;
 namespace Joueur.cs.Games.Newtonian
 {
     /// <summary>
-    /// A machine on a tile.
+    /// A machine in the game. Used to refine ore.
     /// </summary>
     public class Machine : Newtonian.GameObject
     {
         #region Properties
         /// <summary>
-        /// What type of ore the machine takes it, also determins the type of material it outputs.
+        /// What type of ore the machine takes it. Also determines the type of material it outputs. (redium or blueium).
         /// </summary>
         public string OreType { get; protected set; }
 
         /// <summary>
-        /// The amount of ore that needs to be inputted into the machine.
+        /// The amount of ore that needs to be inputted into the machine for it to be worked.
         /// </summary>
         public int RefineInput { get; protected set; }
 
         /// <summary>
-        /// The amount of material that out of the machine after running.
+        /// The amount of refined ore that is returned after the machine has been fully worked.
         /// </summary>
         public int RefineOutput { get; protected set; }
 
         /// <summary>
-        /// The amount of turns this machine takes to refine the ore.
+        /// The number of times this machine needs to be worked to refine ore.
         /// </summary>
         public int RefineTime { get; protected set; }
 
@@ -46,12 +46,7 @@ namespace Joueur.cs.Games.Newtonian
         public Newtonian.Tile Tile { get; protected set; }
 
         /// <summary>
-        /// Time till the machine finishes running.
-        /// </summary>
-        public int TimeLeft { get; protected set; }
-
-        /// <summary>
-        /// Tracks how many times this machine has been worked.
+        /// Tracks how many times this machine has been worked. (0 to refineTime).
         /// </summary>
         public int Worked { get; protected set; }
 

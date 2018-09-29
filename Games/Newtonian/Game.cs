@@ -34,17 +34,17 @@ namespace Joueur.cs.Games.Newtonian
         public int CurrentTurn { get; protected set; }
 
         /// <summary>
-        /// Determins the rate at which the highest value victory points degrade.
+        /// Percent loss from the difference of Heat and Pressure. (0 to 1).
         /// </summary>
         public double DegradeRate { get; protected set; }
 
         /// <summary>
-        /// How many interns a player can have.
+        /// The maximum number of interns a player can have.
         /// </summary>
         public int InternCap { get; protected set; }
 
         /// <summary>
-        /// Every job in the game.
+        /// A list of all jobs. first item is intern, second is physicists, and third is manager.
         /// </summary>
         public IList<Newtonian.Job> Jobs { get; protected set; }
 
@@ -54,7 +54,7 @@ namespace Joueur.cs.Games.Newtonian
         public IList<Newtonian.Machine> Machines { get; protected set; }
 
         /// <summary>
-        /// How many managers a player can have.
+        /// The maximum number of managers a player can have.
         /// </summary>
         public int ManagerCap { get; protected set; }
 
@@ -69,12 +69,17 @@ namespace Joueur.cs.Games.Newtonian
         public int MapWidth { get; protected set; }
 
         /// <summary>
+        /// The number of materials that spawn per spawn cycle.
+        /// </summary>
+        public int MaterialSpawn { get; protected set; }
+
+        /// <summary>
         /// The maximum number of turns before the game will automatically end.
         /// </summary>
         public int MaxTurns { get; protected set; }
 
         /// <summary>
-        /// How many physicists a player can have.
+        /// The maximum number of physicists a player can have.
         /// </summary>
         public int PhysicistCap { get; protected set; }
 
@@ -84,7 +89,7 @@ namespace Joueur.cs.Games.Newtonian
         public IList<Newtonian.Player> Players { get; protected set; }
 
         /// <summary>
-        /// How much each refined ore adds when put in the generator.
+        /// The amount of victory points added when a refined ore is consumed by the generator.
         /// </summary>
         public int RefinedValue { get; protected set; }
 
@@ -94,12 +99,12 @@ namespace Joueur.cs.Games.Newtonian
         public string Session { get; protected set; }
 
         /// <summary>
-        /// The number of turns between spawning unit waves.
+        /// The amount of turns it takes a unit to spawn.
         /// </summary>
         public int SpawnTime { get; protected set; }
 
         /// <summary>
-        /// How many turns a unit is stunned.
+        /// The amount of turns a unit cannot do anything when stunned.
         /// </summary>
         public int StunTime { get; protected set; }
 
@@ -114,7 +119,7 @@ namespace Joueur.cs.Games.Newtonian
         public int TimeAddedPerTurn { get; protected set; }
 
         /// <summary>
-        /// How many turns a unit is immune to being stunned.
+        /// The number turns a unit is immune to being stunned.
         /// </summary>
         public int TimeImmune { get; protected set; }
 

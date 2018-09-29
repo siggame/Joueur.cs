@@ -217,7 +217,7 @@ namespace Joueur.cs.Games.Newtonian
                         Console.ForegroundColor = t.Unit.Owner == this.Player ? ConsoleColor.Green : ConsoleColor.Red;
                         foreground = t.Unit.Job.Title[0] == 'i' ? 'I' : t.Unit.Job.Title[0] == 'm' ? 'M' : 'P'; //t.Unit.ShipHealth > 0 ? 'S' : 'C';
                     }
-                    else if(t.Owner != null) {
+                    if(t.Owner != null) {
                         if(t.Type == "spawn") {
                             Console.BackgroundColor = t.Owner == this.Player ? ConsoleColor.Cyan : ConsoleColor.Magenta;
                         } else if(t.Type == "generator") {

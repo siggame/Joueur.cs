@@ -21,17 +21,17 @@ namespace Joueur.cs.Games.Newtonian
     {
         #region Properties
         /// <summary>
-        /// Whether this Unit has performed its action this turn.
+        /// Whether or not this Unit has performed its action this turn.
         /// </summary>
         public bool Acted { get; protected set; }
 
         /// <summary>
-        /// The amount of blueium carried by this unit.
+        /// The amount of blueium carried by this unit. (0 to job carry capacity - other carried items).
         /// </summary>
         public int Blueium { get; protected set; }
 
         /// <summary>
-        /// The amount of blueium ore carried by this unit.
+        /// The amount of blueium ore carried by this unit. (0 to job carry capacity - other carried items).
         /// </summary>
         public int BlueiumOre { get; protected set; }
 
@@ -41,12 +41,12 @@ namespace Joueur.cs.Games.Newtonian
         public int Health { get; protected set; }
 
         /// <summary>
-        /// The Job this Unit does.
+        /// The Job this Unit has.
         /// </summary>
         public Newtonian.Job Job { get; protected set; }
 
         /// <summary>
-        /// How many more times this Unit may move this turn.
+        /// The number of moves this unit has left this turn.
         /// </summary>
         public int Moves { get; protected set; }
 
@@ -56,22 +56,22 @@ namespace Joueur.cs.Games.Newtonian
         public Newtonian.Player Owner { get; protected set; }
 
         /// <summary>
-        /// The amount of redium carried by this unit.
+        /// The amount of redium carried by this unit. (0 to job carry capacity - other carried items).
         /// </summary>
         public int Redium { get; protected set; }
 
         /// <summary>
-        /// The amount of redium ore carried by this unit.
+        /// The amount of redium ore carried by this unit. (0 to job carry capacity - other carried items).
         /// </summary>
         public int RediumOre { get; protected set; }
 
         /// <summary>
-        /// Duration of stun immunity.
+        /// Duration of stun immunity. (0 to timeImmune).
         /// </summary>
         public int StunImmune { get; protected set; }
 
         /// <summary>
-        /// Duration the unit is stunned.
+        /// Duration the unit is stunned. (0 to the game constant stunTime).
         /// </summary>
         public int StunTime { get; protected set; }
 
@@ -96,7 +96,7 @@ namespace Joueur.cs.Games.Newtonian
         }
 
         /// <summary>
-        /// Makes the unit do something to a machine on its tile. Interns sabotage, physicists run, and managers protect.
+        /// Makes the unit do something to a machine adjacent to its tile. Interns sabotage, physicists work. Interns stun physicist, physicist stuns manager, manager stuns intern.
         /// </summary>
         /// <param name="tile">The tile the unit acts on.</param>
         /// <returns>True if successfully acted, false otherwise.</returns>
@@ -108,7 +108,7 @@ namespace Joueur.cs.Games.Newtonian
         }
 
         /// <summary>
-        /// Attacks a unit on a ajacent tile.
+        /// Attacks a unit on an adjacent tile.
         /// </summary>
         /// <param name="tile">The Tile to attack.</param>
         /// <returns>True if successfully attacked, false otherwise.</returns>
@@ -120,10 +120,10 @@ namespace Joueur.cs.Games.Newtonian
         }
 
         /// <summary>
-        /// Drops material at the units feat
+        /// Drops materials at the units feet or adjacent tile.
         /// </summary>
         /// <param name="tile">The tile the materials will be dropped on.</param>
-        /// <param name="amount">The amount of materials to dropped. Amounts &lt;= 0 will drop all the materials on the Unit.</param>
+        /// <param name="amount">The number of materials to dropped. Amounts &lt;= 0 will drop all the materials.</param>
         /// <param name="material">The material the unit will drop.</param>
         /// <returns>True if successfully deposited, false otherwise.</returns>
         public bool Drop(Newtonian.Tile tile, int amount, string material)
@@ -148,10 +148,10 @@ namespace Joueur.cs.Games.Newtonian
         }
 
         /// <summary>
-        /// Picks up material at the units feat
+        /// Picks up material at the units feet or adjacent tile.
         /// </summary>
-        /// <param name="tile">The tile the materials will be dropped on.</param>
-        /// <param name="amount">The amount of materials to pick up. Amounts &lt;= 0 will pick up all the materials on the Unit.</param>
+        /// <param name="tile">The tile the materials will be picked up from.</param>
+        /// <param name="amount">The amount of materials to pick up. Amounts &lt;= 0 will pick up all the materials that the unit can.</param>
         /// <param name="material">The material the unit will pick up.</param>
         /// <returns>True if successfully deposited, false otherwise.</returns>
         public bool Pickup(Newtonian.Tile tile, int amount, string material)

@@ -26,12 +26,17 @@ namespace Joueur.cs.Games.Newtonian
         public string ClientType { get; protected set; }
 
         /// <summary>
+        /// Every generator Tile owned by this Player. (listed from the outer edges inward, from top to bottom).
+        /// </summary>
+        public IList<Newtonian.Tile> GeneratorTiles { get; protected set; }
+
+        /// <summary>
         /// The amount of heat this Player has.
         /// </summary>
         public int Heat { get; protected set; }
 
         /// <summary>
-        /// Time left till a intern spawns.
+        /// The time left till a intern spawns. (0 to spawnTime).
         /// </summary>
         public int InternSpawn { get; protected set; }
 
@@ -41,7 +46,7 @@ namespace Joueur.cs.Games.Newtonian
         public bool Lost { get; protected set; }
 
         /// <summary>
-        /// Time left till a manager spawns.
+        /// The time left till a manager spawns. (0 to spawnTime).
         /// </summary>
         public int ManagerSpawn { get; protected set; }
 
@@ -56,7 +61,7 @@ namespace Joueur.cs.Games.Newtonian
         public Newtonian.Player Opponent { get; protected set; }
 
         /// <summary>
-        /// Time left till a physicist spawns.
+        /// The time left till a physicist spawns. (0 to spawnTime).
         /// </summary>
         public int PhysicistSpawn { get; protected set; }
 
@@ -74,6 +79,11 @@ namespace Joueur.cs.Games.Newtonian
         /// The reason why the player won the game.
         /// </summary>
         public string ReasonWon { get; protected set; }
+
+        /// <summary>
+        /// All the tiles this Player's units can spawn on. (listed from the outer edges inward, from top to bottom).
+        /// </summary>
+        public IList<Newtonian.Tile> SpawnTiles { get; protected set; }
 
         /// <summary>
         /// The amount of time (in ns) remaining for this AI to send commands.
@@ -103,6 +113,8 @@ namespace Joueur.cs.Games.Newtonian
         /// </summary>
         protected Player() : base()
         {
+            this.GeneratorTiles = new List<Newtonian.Tile>();
+            this.SpawnTiles = new List<Newtonian.Tile>();
             this.Units = new List<Newtonian.Unit>();
         }
 
