@@ -209,7 +209,7 @@ namespace Joueur.cs.Games.Newtonian
                     }
 
                     // Character to display
-                    char foreground = '·';
+                    char foreground = t.Machine == null ? '·' : 'M';
                     Console.ForegroundColor = ConsoleColor.White;
 
                     // Tile specific stuff
@@ -217,7 +217,19 @@ namespace Joueur.cs.Games.Newtonian
                         Console.ForegroundColor = t.Unit.Owner == this.Player ? ConsoleColor.Green : ConsoleColor.Red;
                         foreground = t.Unit.Job.Title[0] == 'i' ? 'I' : t.Unit.Job.Title[0] == 'm' ? 'M' : 'P'; //t.Unit.ShipHealth > 0 ? 'S' : 'C';
                     }
-                    if(t.Owner != null) {
+                    if(t.Blueium > 0 || t.Redium > 0) {
+                        Console.BackgroundColor = t.Blueium >= t.Redium ? ConsoleColor.DarkBlue : ConsoleColor.DarkRed;
+                        if(foreground == '·') {
+                            foreground = 'R';
+                        }
+                    }
+                    else if(t.BlueiumOre > 0 || t.RediumOre > 0) {
+                        Console.BackgroundColor = t.BlueiumOre >= t.RediumOre ? ConsoleColor.DarkBlue : ConsoleColor.DarkRed;
+                        if(foreground == '·') {
+                            foreground = 'O';
+                        }
+                    }
+                    else if(t.Owner != null) {
                         if(t.Type == "spawn") {
                             Console.BackgroundColor = t.Owner == this.Player ? ConsoleColor.Cyan : ConsoleColor.Magenta;
                         } else if(t.Type == "generator") {
