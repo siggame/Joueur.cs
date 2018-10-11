@@ -128,6 +128,11 @@ namespace Joueur.cs.Games.Newtonian
         /// </summary>
         public IList<Newtonian.Unit> Units { get; protected set; }
 
+        /// <summary>
+        /// The amount of combined heat and pressure that you need to win.
+        /// </summary>
+        public int VictoryAmount { get; protected set; }
+
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional properties(s) here. None of them will be tracked or updated by the server.
