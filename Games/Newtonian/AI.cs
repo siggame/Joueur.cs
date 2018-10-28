@@ -243,15 +243,15 @@ namespace Joueur.cs.Games.Newtonian
                             foreground = '.';*/
                     } else if(t.Type == "conveyor") {
                         if(t.Direction == "north") {
-                            foreground = '↑';
+                            foreground = '^';
                         } else if(t.Direction == "east") {
-                            foreground = '→';
+                            foreground = '>';
                         } else if(t.Direction == "west") {
-                            foreground = '←';
+                            foreground = '<';
                         } else if(t.Direction == "blank") {
                             foreground = '_';
                         } else {
-                            foreground = '↓';
+                            foreground = 'V';
                         }
                     }
 

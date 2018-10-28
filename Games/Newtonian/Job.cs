@@ -41,7 +41,7 @@ namespace Joueur.cs.Games.Newtonian
         public int Moves { get; protected set; }
 
         /// <summary>
-        /// The Job title.
+        /// The Job title. 'intern', 'manager', or 'physicist'.
         /// </summary>
         public string Title { get; protected set; }
 
