@@ -195,13 +195,13 @@ namespace Joueur.cs.Games.Newtonian
                     if (t.Machine != null) {
                         Console.BackgroundColor = ((t.Machine.OreType == "redium") ? ConsoleColor.DarkRed : ConsoleColor.DarkBlue);
                     } else if (t.IsWall == true) {
-                        if (t.Decoration == 1) {
+                        if (t.Decoration == 1 || t.Decoration == 2) {
                             Console.BackgroundColor = ConsoleColor.Black;
                         } else {
                             Console.BackgroundColor = ConsoleColor.DarkGray;
                         }
                     } else {
-                        if (t.Decoration == 1) {
+                        if (t.Decoration == 1 || t.Decoration == 2) {
                             Console.BackgroundColor = ConsoleColor.DarkYellow;
                         } else {
                             Console.BackgroundColor = ConsoleColor.Gray;
