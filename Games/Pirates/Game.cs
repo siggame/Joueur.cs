@@ -12,6 +12,9 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
+/// <summary>
+/// Steal from merchants and become the most infamous pirate.
+/// </summary>
 namespace Joueur.cs.Games.Pirates
 {
     /// <summary>
