@@ -159,7 +159,12 @@ namespace Joueur.cs.Games.Newtonian
         public bool IsPathable()
         {
             // <<-- Creer-Merge: is_pathable_builtin -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-            return false; // DEVELOPER ADD LOGIC HERE
+            if (this.IsWall || this.Unit != null || this.Machine != null) {
+                return false;
+            }
+            else {
+                return true;
+            }
             // <<-- /Creer-Merge: is_pathable_builtin -->>
         }
 

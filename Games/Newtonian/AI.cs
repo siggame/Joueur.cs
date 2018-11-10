@@ -73,6 +73,9 @@ namespace Joueur.cs.Games.Newtonian
         {
             // <<-- Creer-Merge: game-updated -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             base.GameUpdated();
+            /*this.DisplayMap(); // be careful using this as it will probably cause your client to time out in this function.
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;*/
             // <<-- /Creer-Merge: game-updated -->>
         }
 
@@ -100,6 +103,197 @@ namespace Joueur.cs.Games.Newtonian
         {
             // <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             // Put your game logic here for runTurn
+            /*DisplayMap();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;*/
+
+            /*
+            Please note: This code is intentionally bad. You should try to optimize everything here. THe code here is only to show you how to use the game's
+                        mechanics with the MegaMinerAI server framework.
+            */
+
+            // Goes through all the units that you own.
+            foreach (Unit unit in this.Player.Units) {
+                // Only tries to do something if the unit actually exists.
+                if (unit != null && unit.Tile != null) {
+                    if (unit.Job.Title == "physicist") {
+                        // If the unit is a physicist, tries to work on machines that are ready, but if there are none,
+                        // it finds and attacks enemy managers.
+
+                        // Tries to find a workable machine for blueium ore.
+                        // Note: You need to get redium ore as well.
+                        Tile target = null;
+
+                        // Goes through all the machines in the game and picks one that is ready to process ore as its target.
+                        foreach (Machine machine in this.Game.Machines) {
+                            if (machine.Tile.BlueiumOre >= machine.RefineInput) {
+                                target = machine.Tile;
+                            }
+                        }
+
+                        if (target == null) {
+                            // Chases down enemy managers if there are no machines that are ready to be worked.
+                            foreach (Unit enemy in this.Game.Units) {
+                                // Only does anything if the unit that we found is a manager and belongs to our opponent.
+                                if (enemy.Tile != null && enemy.Owner == this.Player.Opponent && enemy.Job.Title == "manager") {
+                                    // Moves towards the manager.
+                                    while (unit.Moves > 0 && this.FindPath(unit.Tile, enemy.Tile).Count > 0) {
+                                        // Moves until there are no moves left for the physicist.
+                                        if (!unit.Move(this.FindPath(unit.Tile, enemy.Tile)[0])) {
+                                            break;
+                                        }
+                                    }
+                                    if (unit.Tile == enemy.Tile.TileEast || unit.Tile == enemy.Tile.TileWest ||
+                                        unit.Tile == enemy.Tile.TileNorth || unit.Tile == enemy.Tile.TileSouth) {
+                                        if (enemy.StunTime == 0 && enemy.StunImmune == 0) {
+                                            // Stuns the enemy manager if they are not stunned and not immune.
+                                            unit.Act(enemy.Tile);
+                                        }
+                                        else {
+                                            // Attacks the manager otherwise.
+                                            unit.Attack(enemy.Tile);
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        else {
+                            // Gets the tile of the targeted machine if adjacent to it.
+                            bool adjacent = false;
+                            foreach (Tile tile in target.GetNeighbors()) {
+                                if (tile == unit.Tile) {
+                                    adjacent = true;
+                                }
+                            }
+                            // If there is a machine that is waiting to be worked on, go to it.
+                            while (unit.Moves > 0 && this.FindPath(unit.Tile, target).Count > 1) {// && !adjacent) {
+                                if (!unit.Move(this.FindPath(unit.Tile, target)[0])) {
+                                    break;
+                                }
+                            }
+                            // Acts on the target machine to run it if the physicist is adjacent.
+                            if (adjacent && !unit.Acted) {
+                                unit.Act(target);
+                            }
+                        }
+                    }
+                    else if (unit.Job.Title == "intern") {
+                        // If the unit is an intern, collects blueium ore.
+                        // Note: You also need to collect redium ore.
+
+                        // Goes to gather resources if currently carrying less than the carry limit.
+                        if (unit.BlueiumOre < unit.Job.CarryLimit) {
+                            // Your intern's current target.
+                            Tile target = null;
+
+                            // Goes to collect blueium ore that isn't on a machine.
+                            foreach (Tile tile in this.Game.Tiles) {
+                                if (tile.BlueiumOre > 0 && tile.Machine == null) {
+                                    target = tile;
+                                    break;
+                                }
+                            }
+                            // Moves towards our target until at the target or out of moves.
+                            if (this.FindPath(unit.Tile, target).Count > 0) {
+                                while (unit.Moves > 0 && this.FindPath(unit.Tile, target).Count > 0) {
+                                    if (!unit.Move(this.FindPath(unit.Tile, target)[0])) {
+                                        break;
+                                    }
+                                }
+                            }
+                            // Picks up the appropriate resource once we reach our target's tile.
+                            if (unit.Tile == target && target.BlueiumOre > 0) {
+                                unit.Pickup(target, 0, "blueium ore");
+                            }
+                        }
+                        else {
+                            // Deposits blueium ore in a machine for it if we have any.
+
+                            // Finds a machine in the game's tiles that takes blueium ore.
+                            foreach (Tile tile in this.Game.Tiles) {
+                                if (tile.Machine != null && tile.Machine.OreType == "blueium") {
+                                    // Moves towards the found machine until we reach it or are out of moves.
+                                    while (unit.Moves > 0 && this.FindPath(unit.Tile, tile).Count > 1) {
+                                        if (!unit.Move(this.FindPath(unit.Tile, tile)[0])) {
+                                            break;
+                                        }
+                                    }
+                                    // Deposits blueium ore on the machine if we have reached it.
+                                    if (this.FindPath(unit.Tile, tile).Count <= 1) {
+                                        unit.Drop(tile, 0, "blueium ore");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if (unit.Job.Title == "manager") {
+                        // Finds enemy interns, stuns, and attacks them if there is no blueium to take to the generator.
+                        Tile target = null;
+
+                        foreach (Tile tile in this.Game.Tiles) {
+                            if (tile.Blueium > 1 && unit.Blueium < unit.Job.CarryLimit) {
+                                target = tile;
+                            }
+                        }
+                        if (target == null && unit.Blueium == 0) {
+                            foreach (Unit enemy in this.Game.Units) {
+                                // Only does anything for an intern that is owned by your opponent.
+                                if (enemy.Tile != null && enemy.Owner == this.Player.Opponent && enemy.Job.Title == "intern") {
+                                    // Moves towards the intern until reached or out of moves.
+                                    while (unit.Moves > 0 && this.FindPath(unit.Tile, enemy.Tile).Count > 1) {
+                                        if (!unit.Move(this.FindPath(unit.Tile, enemy.Tile)[0])) {
+                                            break;
+                                        }
+                                    }
+                                    // Either stuns or attacks the intern if we are within range.
+                                    if (unit.Tile == enemy.Tile.TileEast || unit.Tile == enemy.Tile.TileWest ||
+                                        unit.Tile == enemy.Tile.TileNorth || unit.Tile == enemy.Tile.TileSouth) {
+                                        if (enemy.StunTime == 0 && enemy.StunImmune == 0) {
+                                            // Stuns the enemy intern if they are not stunned and not immune.
+                                            unit.Act(enemy.Tile);
+                                        }
+                                        else {
+                                            // Attacks the intern otherwise.
+                                            unit.Attack(enemy.Tile);
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        else if (target != null) {
+                            // Moves towards our target until at the target or out of moves.
+                            while (unit.Moves > 0 && this.FindPath(unit.Tile, target).Count > 1) {
+                                if (!unit.Move(this.FindPath(unit.Tile, target)[0])) {
+                                    break;
+                                }
+                            }
+                            // Picks up blueium once we reach our target's tile.
+                            if (this.FindPath(unit.Tile, target).Count <= 1 && target.Blueium > 0) {
+                                unit.Pickup(target, 0, "blueium");
+                            }
+                        }
+                        else if (target == null && unit.Blueium > 0) {
+                            // Stores a tile that is part of your generator.
+                            Tile genTile = this.Player.GeneratorTiles[0];
+
+                            // Goes to your generator and drops blueium in.
+                            while (unit.Moves > 0 && this.FindPath(unit.Tile, genTile).Count > 0) {
+                                if (!unit.Move(this.FindPath(unit.Tile, genTile)[0])) {
+                                    break;
+                                }
+                            }
+
+                            // Deposits blueium in our generator if we have reached it.
+                            if (this.FindPath(unit.Tile, genTile).Count <= 1) {
+                                unit.Drop(unit.Tile, 0, "blueium");
+                            }
+                        }
+                    }
+                }
+            }
+
             return true;
             // <<-- /Creer-Merge: runTurn -->>
         }
@@ -173,6 +367,104 @@ namespace Joueur.cs.Games.Newtonian
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional methods here for your AI to call
+        private void DisplayMap() {
+            Console.SetCursorPosition(0, 0);
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Write(new string(' ', this.Game.MapWidth + 2));
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.WriteLine();
+            for (int y = 0; y < this.Game.MapHeight; y++) {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write(' ');
+                for (int x = 0; x < this.Game.MapWidth; x++) {
+                    Tile t = this.Game.Tiles[y * this.Game.MapWidth + x];
+
+                    // Background color
+                    if (t.Machine != null) {
+                        Console.BackgroundColor = ((t.Machine.OreType == "redium") ? ConsoleColor.DarkRed : ConsoleColor.DarkBlue);
+                    } else if (t.IsWall == true) {
+                        if (t.Decoration == 1 || t.Decoration == 2) {
+                            Console.BackgroundColor = ConsoleColor.DarkGray;  // Black;
+                        } else {
+                            Console.BackgroundColor = ConsoleColor.DarkGray;
+                        }
+                    } else {
+                        if (t.Decoration == 1 || t.Decoration == 2) {
+                            Console.BackgroundColor = ConsoleColor.DarkYellow;
+                        } else {
+                            Console.BackgroundColor = ConsoleColor.Gray;
+                        }
+                    }
+
+                    // Character to display
+                    char foreground = t.Machine == null ? '·' : 'M';
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    // Tile specific stuff
+                    if (t.Unit != null) {
+                        Console.ForegroundColor = t.Unit.Owner == this.Player ? ConsoleColor.Green : ConsoleColor.Red;
+                        foreground = t.Unit.Job.Title[0] == 'i' ? 'I' : t.Unit.Job.Title[0] == 'm' ? 'M' : 'P'; //t.Unit.ShipHealth > 0 ? 'S' : 'C';
+                    }
+                    if(t.Blueium > 0 || t.Redium > 0) {
+                        Console.BackgroundColor = t.Blueium >= t.Redium ? ConsoleColor.DarkBlue : ConsoleColor.DarkRed;
+                        if(foreground == '·') {
+                            foreground = 'R';
+                        }
+                    }
+                    else if(t.BlueiumOre > 0 || t.RediumOre > 0) {
+                        Console.BackgroundColor = t.BlueiumOre >= t.RediumOre ? ConsoleColor.DarkBlue : ConsoleColor.DarkRed;
+                        if(foreground == '·') {
+                            foreground = 'O';
+                        }
+                    }
+                    else if(t.Owner != null) {
+                        if(t.Type == "spawn") {
+                            Console.BackgroundColor = t.Owner == this.Player ? ConsoleColor.Cyan : ConsoleColor.Magenta;
+                        } else if(t.Type == "generator") {
+                            Console.BackgroundColor = t.Owner == this.Player ? ConsoleColor.DarkCyan : ConsoleColor.DarkMagenta;
+                        }
+                        /*if (false && this.Game.Units.Any(u => u.Path.Contains(t))) {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            foreground = '*';
+                        } else if (t.Decoration) {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            foreground = '.';*/
+                    } else if(t.Type == "conveyor") {
+                        if(t.Direction == "north") {
+                            foreground = '^';
+                        } else if(t.Direction == "east") {
+                            foreground = '>';
+                        } else if(t.Direction == "west") {
+                            foreground = '<';
+                        } else if(t.Direction == "blank") {
+                            foreground = '_';
+                        } else {
+                            foreground = 'V';
+                        }
+                    }
+
+                    Console.Write(foreground);
+                }
+
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write(' ');
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write(y);
+                Console.WriteLine();
+            }
+
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Write(new string(' ', this.Game.MapWidth + 2));
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine();
+            // Clear everything past here
+            int left = Console.CursorLeft;
+            int top = Console.CursorTop;
+            Console.Write(new string(' ', Math.Max(Console.WindowHeight, Console.WindowWidth * (Console.WindowHeight - top) - 1)));
+            Console.SetCursorPosition(left, top);
+        }
         // <<-- /Creer-Merge: methods -->>
         #endregion
     }
