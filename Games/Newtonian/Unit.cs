@@ -96,7 +96,7 @@ namespace Joueur.cs.Games.Newtonian
         }
 
         /// <summary>
-        /// Makes the unit do something to a machine adjacent to its tile. Interns sabotage, physicists work. Interns stun physicist, physicist stuns manager, manager stuns intern.
+        /// Makes the unit do something to a machine or unit adjacent to its tile. Interns sabotage, physicists work. Interns stun physicist, physicist stuns manager, manager stuns intern.
         /// </summary>
         /// <param name="tile">The tile the unit acts on.</param>
         /// <returns>True if successfully acted, false otherwise.</returns>

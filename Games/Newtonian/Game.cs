@@ -24,6 +24,11 @@ namespace Joueur.cs.Games.Newtonian
     {
         #region Properties
         /// <summary>
+        /// The percent of max HP regained when a unit end their turn on a tile owned by their player.
+        /// </summary>
+        public double RegenerateRate { get; protected set; }
+
+        /// <summary>
         /// The player whose turn it is currently. That player can send commands. Other players cannot.
         /// </summary>
         public Newtonian.Player CurrentPlayer { get; protected set; }
@@ -32,11 +37,6 @@ namespace Joueur.cs.Games.Newtonian
         /// The current turn number, starting at 0 for the first player's turn.
         /// </summary>
         public int CurrentTurn { get; protected set; }
-
-        /// <summary>
-        /// Percent loss from the difference of Heat and Pressure. (0 to 1).
-        /// </summary>
-        public double DegradeRate { get; protected set; }
 
         /// <summary>
         /// The maximum number of interns a player can have.
