@@ -26,24 +26,14 @@ namespace Joueur.cs.Games.Chess
         public string ClientType { get; protected set; }
 
         /// <summary>
-        /// The color (side) of this player. Either 'White' or 'Black', with the 'White' player having the first move.
+        /// The color (side) of this player. Either 'white' or 'black', with the 'white' player having the first move.
         /// </summary>
         public string Color { get; protected set; }
-
-        /// <summary>
-        /// True if this player is currently in check, and must move out of check, false otherwise.
-        /// </summary>
-        public bool InCheck { get; protected set; }
 
         /// <summary>
         /// If the player lost the game or not.
         /// </summary>
         public bool Lost { get; protected set; }
-
-        /// <summary>
-        /// If the Player has made their move for the turn. true means they can no longer move a Piece this turn.
-        /// </summary>
-        public bool MadeMove { get; protected set; }
 
         /// <summary>
         /// The name of the player.
@@ -54,16 +44,6 @@ namespace Joueur.cs.Games.Chess
         /// This player's opponent in the game.
         /// </summary>
         public Chess.Player Opponent { get; protected set; }
-
-        /// <summary>
-        /// All the uncaptured chess Pieces owned by this player.
-        /// </summary>
-        public IList<Chess.Piece> Pieces { get; protected set; }
-
-        /// <summary>
-        /// The direction your Pieces must go along the rank axis until they reach the other side. Will be +1 if the Player is 'White', or -1 if the Player is 'Black'.
-        /// </summary>
-        public int RankDirection { get; protected set; }
 
         /// <summary>
         /// The reason why the player lost the game.
@@ -98,7 +78,6 @@ namespace Joueur.cs.Games.Chess
         /// </summary>
         protected Player() : base()
         {
-            this.Pieces = new List<Chess.Piece>();
         }
 
 

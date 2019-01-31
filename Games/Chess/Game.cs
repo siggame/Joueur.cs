@@ -24,34 +24,14 @@ namespace Joueur.cs.Games.Chess
     {
         #region Properties
         /// <summary>
-        /// The player whose turn it is currently. That player can send commands. Other players cannot.
-        /// </summary>
-        public Chess.Player CurrentPlayer { get; protected set; }
-
-        /// <summary>
-        /// The current turn number, starting at 0 for the first player's turn.
-        /// </summary>
-        public int CurrentTurn { get; protected set; }
-
-        /// <summary>
-        /// Forsythâ€“Edwards Notation, a notation that describes the game board.
+        /// Forsyth-Edwards Notation (fen), a notation that describes the game board state.
         /// </summary>
         public string Fen { get; protected set; }
 
         /// <summary>
-        /// The maximum number of turns before the game will automatically end.
+        /// The list of [known] moves that have occured in the game, in Standard Algebriac Notation (SAN) format. The first element is the first move, with the last being the most recent.
         /// </summary>
-        public int MaxTurns { get; protected set; }
-
-        /// <summary>
-        /// The list of Moves that have occurred, in order.
-        /// </summary>
-        public IList<Chess.Move> Moves { get; protected set; }
-
-        /// <summary>
-        /// All the uncaptured Pieces in the game.
-        /// </summary>
-        public IList<Chess.Piece> Pieces { get; protected set; }
+        public IList<string> History { get; protected set; }
 
         /// <summary>
         /// List of all the players in the game.
@@ -62,11 +42,6 @@ namespace Joueur.cs.Games.Chess
         /// A unique identifier for the game instance that is being played.
         /// </summary>
         public string Session { get; protected set; }
-
-        /// <summary>
-        /// How many turns until the game ends because no pawn has moved and no Piece has been taken.
-        /// </summary>
-        public int TurnsToDraw { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -83,8 +58,7 @@ namespace Joueur.cs.Games.Chess
         {
             this.Name = "Chess";
 
-            this.Moves = new List<Chess.Move>();
-            this.Pieces = new List<Chess.Piece>();
+            this.History = new List<string>();
             this.Players = new List<Chess.Player>();
         }
 
