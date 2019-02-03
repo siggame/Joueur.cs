@@ -4,9 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-// <<-- Creer-Merge: usings -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-// you can add additional using(s) here
-// <<-- /Creer-Merge: usings -->>
 
 namespace Joueur.cs.Games.Chess
 {
@@ -29,9 +26,7 @@ namespace Joueur.cs.Games.Chess
         #pragma warning restore 0169
         #pragma warning restore 0649
 
-        // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional properties here for your AI to use
-        // <<-- /Creer-Merge: properties -->>
         #endregion
 
 
@@ -42,9 +37,7 @@ namespace Joueur.cs.Games.Chess
         /// <returns>Your AI's name</returns>
         public override string GetName()
         {
-            // <<-- Creer-Merge: get-name -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             return "Chess C# Player"; // REPLACE THIS WITH YOUR TEAM NAME!
-            // <<-- /Creer-Merge: get-name -->>
         }
 
         /// <summary>
@@ -55,9 +48,7 @@ namespace Joueur.cs.Games.Chess
         /// </remarks>
         public override void Start()
         {
-            // <<-- Creer-Merge: start -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             base.Start();
-            // <<-- /Creer-Merge: start -->>
         }
 
         /// <summary>
@@ -68,9 +59,7 @@ namespace Joueur.cs.Games.Chess
         /// </remarks>
         public override void GameUpdated()
         {
-            // <<-- Creer-Merge: game-updated -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             base.GameUpdated();
-            // <<-- /Creer-Merge: game-updated -->>
         }
 
         /// <summary>
@@ -83,9 +72,7 @@ namespace Joueur.cs.Games.Chess
         /// <param name="reason">A string explaining why you won or lost</param>
         public override void Ended(bool won, string reason)
         {
-            // <<-- Creer-Merge: ended -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             base.Ended(won, reason);
-            // <<-- /Creer-Merge: ended -->>
         }
 
 
@@ -95,15 +82,61 @@ namespace Joueur.cs.Games.Chess
         /// <returns>A string in Standard Algebriac Notation (SAN) for the move you want to make. If the move is invalid or not properly formatted you will lose the game.</returns>
         public string MakeMove()
         {
-            // <<-- Creer-Merge: makeMove -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-            // Put your game logic here for makeMove
-            return "";
-            // <<-- /Creer-Merge: makeMove -->>
+            Console.WriteLine(this.PrettyFEN(this.Game.Fen, this.Player.Color));
+
+            // This will only work if we are black move the pawn at b2 to b3.
+            // Otherwise we will lose.
+            // Your job is to code SOMETHING to parse the FEN string in some way to determine a valid move, in SAN format.
+            return "b3";
         }
 
-        // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-        // you can add additional methods here for your AI to call
-        // <<-- /Creer-Merge: methods -->>
+        /// <summary>
+        /// Pretty formats an FEN string to a human readable string.
+        /// </summary>
+        /// <remarks>
+        /// For more information on FEN (Forsyth-Edwards Notation) strings see:
+        /// https://wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
+        /// </remarks>
+        private string PrettyFEN(string fen, string us)
+        {
+            // split the FEN string up to help parse it
+            var split = fen.Split(' ');
+            var first = split[0]; // the first part is always the board locations
+
+            var sideToMove = split[1][0]; // always the second part for side to move
+            var usOrThem = sideToMove == us[0] ? "us"  : "them";
+
+            var fullmove = split[5]; // always the sixth part for the full move
+
+            var lines = first.Split('/');
+            var strings = new StringBuilder();
+
+            strings.Append($"Move: {fullmove}\nSide to move: {sideToMove} ({usOrThem})\n   +-----------------+");
+
+            int i = -1;
+            foreach (var line in lines)
+            {
+                i++;
+                strings.Append($"\n {8 - i} |");
+                foreach (var character in line)
+                {
+                    int asInt = 0;
+                    if(Int32.TryParse($"{character}", out asInt))
+                    {
+                        strings.Append(string.Concat(Enumerable.Repeat(" .", asInt)));
+                    }
+                    else
+                    {
+                        strings.Append($" {character}");
+                    }
+                }
+                strings.Append(" |");
+            }
+            strings.Append("\n   +-----------------+\n     a b c d e f g h\n");
+
+            return strings.ToString();
+        }
+
         #endregion
     }
 }

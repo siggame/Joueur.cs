@@ -1,8 +1,8 @@
-# C# Joueur Client
+# C# Chess Client
 
 This is the client for the [Cadre][cadre] AI framework. It can play multiple different games, though you will probably only be interested in one at a time.
 
-In general, try to stay out of the `Joueur/` folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in `Games/GAME_NAME/`, with your very own AI living in `Games/GAME_NAME/ai.cs` for you to make smarter.
+In general, try to stay out of the `Joueur/` folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in `Games/Chess/`, with your very own AI living in `Games/Chess/ai.cs` for you to make smarter.
 
 ## How to Run
 
@@ -20,7 +20,7 @@ With those installed, Just open up the sln file in this repo and build + run it.
 
 *Note*: You'll need to add [command line args in visual studio](https://msdn.microsoft.com/en-us/library/cs8hbt1w(v=vs.90).aspx) to the project's solution to tell the game server what game you want to play.
 
-The args should be: `GAME_NAME -s game.siggame.io -r MyOwnGameSession`
+The args should be: `Chess -s game.siggame.io -r MyOwnGameSession`
 
 #### Visual Studio Code / Command Line usage
 
@@ -33,7 +33,7 @@ To Build:
 
 To Run:
 
-    ./build/joueur-cs GAME_NAME -s game.siggame.io
+    ./build/joueur-cs Chess -s game.siggame.io
 
 ### Linux
 

@@ -1,9 +1,0 @@
-apiRules:
-- exclude:
-    uidRegex: RunOnServer
-    type: Method
-- exclude:
-    hasAttribute:
-      uid: Joueur.cs.Games.Anarchy.GameObject
-      ctorArguments: []
-
