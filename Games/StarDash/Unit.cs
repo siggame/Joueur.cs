@@ -12,12 +12,12 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
-namespace Joueur.cs.Games.StarDash
+namespace Joueur.cs.Games.Stardash
 {
     /// <summary>
     /// A unit in the game. May be a corvette, missleboat, martyr, transport, miner.
     /// </summary>
-    public class Unit : StarDash.GameObject
+    public class Unit : Stardash.GameObject
     {
         #region Properties
         /// <summary>
@@ -43,7 +43,7 @@ namespace Joueur.cs.Games.StarDash
         /// <summary>
         /// The Job this Unit has.
         /// </summary>
-        public StarDash.Job Job { get; protected set; }
+        public Stardash.Job Job { get; protected set; }
 
         /// <summary>
         /// The amount of Legendarium ore carried by this unit. (0 to job carry capacity - other carried items).
@@ -63,7 +63,7 @@ namespace Joueur.cs.Games.StarDash
         /// <summary>
         /// The Player that owns and can control this Unit.
         /// </summary>
-        public StarDash.Player Owner { get; protected set; }
+        public Stardash.Player Owner { get; protected set; }
 
         /// <summary>
         /// The radius of the circle this unit occupies.
@@ -105,7 +105,7 @@ namespace Joueur.cs.Games.StarDash
         /// </summary>
         /// <param name="enemy">The Unit being attacked.</param>
         /// <returns>True if successfully attacked, false otherwise.</returns>
-        public bool Attack(StarDash.Unit enemy)
+        public bool Attack(Stardash.Unit enemy)
         {
             return this.RunOnServer<bool>("attack", new Dictionary<string, object> {
                 {"enemy", enemy}
@@ -117,7 +117,7 @@ namespace Joueur.cs.Games.StarDash
         /// </summary>
         /// <param name="body">The object to be mined.</param>
         /// <returns>True if successfully acted, false otherwise.</returns>
-        public bool Mine(StarDash.Body body)
+        public bool Mine(Stardash.Body body)
         {
             return this.RunOnServer<bool>("mine", new Dictionary<string, object> {
                 {"body", body}
@@ -173,7 +173,7 @@ namespace Joueur.cs.Games.StarDash
         /// <param name="amount">The amount of materials to you with to grab. Amounts &lt;= 0 will pick up all the materials that the unit can.</param>
         /// <param name="material">The material the unit will pick up. 'resource1', 'resource2', or 'resource3'.</param>
         /// <returns>True if successfully taken, false otherwise.</returns>
-        public bool Transfer(StarDash.Unit unit, int amount, string material)
+        public bool Transfer(Stardash.Unit unit, int amount, string material)
         {
             return this.RunOnServer<bool>("transfer", new Dictionary<string, object> {
                 {"unit", unit},

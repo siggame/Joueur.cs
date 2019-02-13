@@ -12,12 +12,12 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
-namespace Joueur.cs.Games.StarDash
+namespace Joueur.cs.Games.Stardash
 {
     /// <summary>
     /// A player in this game. Every AI controls one player.
     /// </summary>
-    public class Player : StarDash.GameObject
+    public class Player : Stardash.GameObject
     {
         #region Properties
         /// <summary>
@@ -28,7 +28,7 @@ namespace Joueur.cs.Games.StarDash
         /// <summary>
         /// The home base of the player.
         /// </summary>
-        public StarDash.Body HomeBase { get; protected set; }
+        public Stardash.Body HomeBase { get; protected set; }
 
         /// <summary>
         /// If the player lost the game or not.
@@ -48,7 +48,7 @@ namespace Joueur.cs.Games.StarDash
         /// <summary>
         /// This player's opponent in the game.
         /// </summary>
-        public StarDash.Player Opponent { get; protected set; }
+        public Stardash.Player Opponent { get; protected set; }
 
         /// <summary>
         /// The reason why the player lost the game.
@@ -68,7 +68,7 @@ namespace Joueur.cs.Games.StarDash
         /// <summary>
         /// Every Unit owned by this Player.
         /// </summary>
-        public IList<StarDash.Unit> Units { get; protected set; }
+        public IList<Stardash.Unit> Units { get; protected set; }
 
         /// <summary>
         /// The number of victory points the player has.
@@ -93,7 +93,7 @@ namespace Joueur.cs.Games.StarDash
         /// </summary>
         protected Player() : base()
         {
-            this.Units = new List<StarDash.Unit>();
+            this.Units = new List<Stardash.Unit>();
         }
 
 

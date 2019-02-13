@@ -12,12 +12,12 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
-namespace Joueur.cs.Games.StarDash
+namespace Joueur.cs.Games.Stardash
 {
     /// <summary>
     /// A celestial body located within the game.
     /// </summary>
-    public class Body : StarDash.GameObject
+    public class Body : Stardash.GameObject
     {
         #region Properties
         /// <summary>

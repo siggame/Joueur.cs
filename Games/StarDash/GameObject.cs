@@ -12,7 +12,7 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
-namespace Joueur.cs.Games.StarDash
+namespace Joueur.cs.Games.Stardash
 {
     /// <summary>
     /// An object in the game. The most basic class that all game classes should inherit from automatically.

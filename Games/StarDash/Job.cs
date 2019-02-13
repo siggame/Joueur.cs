@@ -12,12 +12,12 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
-namespace Joueur.cs.Games.StarDash
+namespace Joueur.cs.Games.Stardash
 {
     /// <summary>
     /// Information about a unit's job.
     /// </summary>
-    public class Job : StarDash.GameObject
+    public class Job : Stardash.GameObject
     {
         #region Properties
         /// <summary>

@@ -1,4 +1,4 @@
-// This is where you build your AI for the StarDash game.
+// This is where you build your AI for the Stardash game.
 
 using System;
 using System.Collections.Generic;
@@ -8,10 +8,10 @@ using System.Text;
 // you can add additional using(s) here
 // <<-- /Creer-Merge: usings -->>
 
-namespace Joueur.cs.Games.StarDash
+namespace Joueur.cs.Games.Stardash
 {
     /// <summary>
-    /// This is where you build your AI for StarDash.
+    /// This is where you build your AI for Stardash.
     /// </summary>
     public class AI : BaseAI
     {
@@ -43,7 +43,7 @@ namespace Joueur.cs.Games.StarDash
         public override string GetName()
         {
             // <<-- Creer-Merge: get-name -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-            return "StarDash C# Player"; // REPLACE THIS WITH YOUR TEAM NAME!
+            return "Stardash C# Player"; // REPLACE THIS WITH YOUR TEAM NAME!
             // <<-- /Creer-Merge: get-name -->>
         }
 

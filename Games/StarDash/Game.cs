@@ -15,7 +15,7 @@ using System.Text;
 /// <summary>
 /// Collect of the most of the rarest mineral orbiting aroung the sun and outcompete your competetor.
 /// </summary>
-namespace Joueur.cs.Games.StarDash
+namespace Joueur.cs.Games.Stardash
 {
     /// <summary>
     /// Collect of the most of the rarest mineral orbiting aroung the sun and outcompete your competetor.
@@ -26,12 +26,12 @@ namespace Joueur.cs.Games.StarDash
         /// <summary>
         /// All the celestial bodies in the game.
         /// </summary>
-        public IList<StarDash.Body> Bodies { get; protected set; }
+        public IList<Stardash.Body> Bodies { get; protected set; }
 
         /// <summary>
         /// The player whose turn it is currently. That player can send commands. Other players cannot.
         /// </summary>
-        public StarDash.Player CurrentPlayer { get; protected set; }
+        public Stardash.Player CurrentPlayer { get; protected set; }
 
         /// <summary>
         /// The current turn number, starting at 0 for the first player's turn.
@@ -46,7 +46,7 @@ namespace Joueur.cs.Games.StarDash
         /// <summary>
         /// A list of all jobs. first item is corvette, second is missleboat, third is martyr, fourth is transport, and fifth is miner.
         /// </summary>
-        public IList<StarDash.Job> Jobs { get; protected set; }
+        public IList<Stardash.Job> Jobs { get; protected set; }
 
         /// <summary>
         /// The highest amount of material, barring rarity, that can be in a asteroid.
@@ -86,7 +86,7 @@ namespace Joueur.cs.Games.StarDash
         /// <summary>
         /// List of all the players in the game.
         /// </summary>
-        public IList<StarDash.Player> Players { get; protected set; }
+        public IList<Stardash.Player> Players { get; protected set; }
 
         /// <summary>
         /// The regeneration rate of asteroids.
@@ -116,7 +116,7 @@ namespace Joueur.cs.Games.StarDash
         /// <summary>
         /// Every Unit in the game.
         /// </summary>
-        public IList<StarDash.Unit> Units { get; protected set; }
+        public IList<Stardash.Unit> Units { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -131,12 +131,12 @@ namespace Joueur.cs.Games.StarDash
         /// </summary>
         protected Game() : base()
         {
-            this.Name = "StarDash";
+            this.Name = "Stardash";
 
-            this.Bodies = new List<StarDash.Body>();
-            this.Jobs = new List<StarDash.Job>();
-            this.Players = new List<StarDash.Player>();
-            this.Units = new List<StarDash.Unit>();
+            this.Bodies = new List<Stardash.Body>();
+            this.Jobs = new List<Stardash.Job>();
+            this.Players = new List<Stardash.Player>();
+            this.Units = new List<Stardash.Unit>();
         }
 
 
