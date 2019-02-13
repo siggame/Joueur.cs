@@ -99,6 +99,11 @@ namespace Joueur.cs.Games.Stardash
         public int ProjectileSpeed { get; protected set; }
 
         /// <summary>
+        /// Every projectile in the game.
+        /// </summary>
+        public IList<Stardash.Projectile> Projectiles { get; protected set; }
+
+        /// <summary>
         /// The regeneration rate of asteroids.
         /// </summary>
         public double RegenerateRate { get; protected set; }
@@ -146,6 +151,7 @@ namespace Joueur.cs.Games.Stardash
             this.Bodies = new List<Stardash.Body>();
             this.Jobs = new List<Stardash.Job>();
             this.Players = new List<Stardash.Player>();
+            this.Projectiles = new List<Stardash.Projectile>();
             this.Units = new List<Stardash.Unit>();
         }
 

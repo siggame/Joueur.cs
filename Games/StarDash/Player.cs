@@ -51,6 +51,11 @@ namespace Joueur.cs.Games.Stardash
         public Stardash.Player Opponent { get; protected set; }
 
         /// <summary>
+        /// Every Projectile owned by this Player.
+        /// </summary>
+        public IList<Stardash.Projectile> Projectiles { get; protected set; }
+
+        /// <summary>
         /// The reason why the player lost the game.
         /// </summary>
         public string ReasonLost { get; protected set; }
@@ -93,6 +98,7 @@ namespace Joueur.cs.Games.Stardash
         /// </summary>
         protected Player() : base()
         {
+            this.Projectiles = new List<Stardash.Projectile>();
             this.Units = new List<Stardash.Unit>();
         }
 
