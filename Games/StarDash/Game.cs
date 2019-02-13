@@ -64,6 +64,11 @@ namespace Joueur.cs.Games.Stardash
         public int MinAsteroid { get; protected set; }
 
         /// <summary>
+        /// The rate at which miners grab minerals from asteroids.
+        /// </summary>
+        public int MiningSpeed { get; protected set; }
+
+        /// <summary>
         /// The rarity modifier of the most common ore. This controls how much spawns.
         /// </summary>
         public double OreRarity1 { get; protected set; }
@@ -87,6 +92,11 @@ namespace Joueur.cs.Games.Stardash
         /// List of all the players in the game.
         /// </summary>
         public IList<Stardash.Player> Players { get; protected set; }
+
+        /// <summary>
+        /// The amount of distance missiles travel through space.
+        /// </summary>
+        public int ProjectileSpeed { get; protected set; }
 
         /// <summary>
         /// The regeneration rate of asteroids.

@@ -50,6 +50,11 @@ namespace Joueur.cs.Games.Stardash
         /// </summary>
         public string Title { get; protected set; }
 
+        /// <summary>
+        /// How much money it costs to spawn a unit.
+        /// </summary>
+        public int UnitCost { get; protected set; }
+
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional properties(s) here. None of them will be tracked or updated by the server.

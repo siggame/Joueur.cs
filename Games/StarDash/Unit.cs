@@ -153,16 +153,14 @@ namespace Joueur.cs.Games.Stardash
         }
 
         /// <summary>
-        /// tell you if there is a open path to that location.
+        /// Attacks the specified projectile.
         /// </summary>
-        /// <param name="x">The x position of the destination you wish to check to.</param>
-        /// <param name="y">The y position of the destination you wish to check to.</param>
-        /// <returns>True if pathable by this unit, false otherwise.</returns>
-        public bool Pathable(double x, double y)
+        /// <param name="missile">The projectile being shot down.</param>
+        /// <returns>True if successfully attacked, false otherwise.</returns>
+        public bool ShootDown(Stardash.Projectile missile)
         {
-            return this.RunOnServer<bool>("pathable", new Dictionary<string, object> {
-                {"x", x},
-                {"y", y}
+            return this.RunOnServer<bool>("shootDown", new Dictionary<string, object> {
+                {"missile", missile}
             });
         }
 
