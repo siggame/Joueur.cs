@@ -66,6 +66,11 @@ namespace Joueur.cs.Games.Stardash
         public Stardash.Player Owner { get; protected set; }
 
         /// <summary>
+        /// The martyr ship that is currently shielding this ship if any.
+        /// </summary>
+        public Stardash.Unit Protector { get; protected set; }
+
+        /// <summary>
         /// The radius of the circle this unit occupies.
         /// </summary>
         public double Radius { get; protected set; }

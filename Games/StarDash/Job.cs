@@ -41,6 +41,11 @@ namespace Joueur.cs.Games.Stardash
         public int Moves { get; protected set; }
 
         /// <summary>
+        /// The distance at which this job can effect things.
+        /// </summary>
+        public int Range { get; protected set; }
+
+        /// <summary>
         /// The reserve the martyr use to protect allies.
         /// </summary>
         public int Shield { get; protected set; }

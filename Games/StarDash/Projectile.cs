@@ -21,6 +21,11 @@ namespace Joueur.cs.Games.Stardash
     {
         #region Properties
         /// <summary>
+        /// The amount of remaining distance the projectile can move.
+        /// </summary>
+        public int Fuel { get; protected set; }
+
+        /// <summary>
         /// The Player that owns and can control this Unit.
         /// </summary>
         public Stardash.Player Owner { get; protected set; }
