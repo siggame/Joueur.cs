@@ -39,6 +39,11 @@ namespace Joueur.cs.Games.Stardash
         public int CurrentTurn { get; protected set; }
 
         /// <summary>
+        /// Radius of the no dash zone around the sun.
+        /// </summary>
+        public int DashBlock { get; protected set; }
+
+        /// <summary>
         /// The distance traveled each turn by dashing.
         /// </summary>
         public int DashDistance { get; protected set; }
@@ -112,6 +117,11 @@ namespace Joueur.cs.Games.Stardash
         /// A unique identifier for the game instance that is being played.
         /// </summary>
         public string Session { get; protected set; }
+
+        /// <summary>
+        /// The standard size of ships.
+        /// </summary>
+        public int ShipRadius { get; protected set; }
 
         /// <summary>
         /// The size of the map in the X direction.

@@ -26,6 +26,16 @@ namespace Joueur.cs.Games.Stardash
         public bool Acted { get; protected set; }
 
         /// <summary>
+        /// The x value this unit is dashing to.
+        /// </summary>
+        public double DashX { get; protected set; }
+
+        /// <summary>
+        /// The y value this unit is dashing to.
+        /// </summary>
+        public double DashY { get; protected set; }
+
+        /// <summary>
         /// The remaining health of a unit.
         /// </summary>
         public int Energy { get; protected set; }
@@ -144,7 +154,7 @@ namespace Joueur.cs.Games.Stardash
         }
 
         /// <summary>
-        /// tells you if your ship can be at that location.
+        /// tells you if your ship can dash to that location.
         /// </summary>
         /// <param name="x">The x position of the location you wish to check.</param>
         /// <param name="y">The y position of the location you wish to check.</param>

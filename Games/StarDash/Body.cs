@@ -36,6 +36,11 @@ namespace Joueur.cs.Games.Stardash
         public string MaterialType { get; protected set; }
 
         /// <summary>
+        /// The Player that owns and can control this Unit.
+        /// </summary>
+        public Stardash.Player Owner { get; protected set; }
+
+        /// <summary>
         /// The radius of the circle that this body takes up.
         /// </summary>
         public double Radius { get; protected set; }
