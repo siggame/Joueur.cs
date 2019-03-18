@@ -76,17 +76,17 @@ namespace Joueur.cs.Games.Stardash
         /// <summary>
         /// The rarity modifier of the most common ore. This controls how much spawns.
         /// </summary>
-        public double OreRarity1 { get; protected set; }
+        public double OreRarityGenarium { get; protected set; }
 
         /// <summary>
         /// The rarity modifier of the second rarest ore. This controls how much spawns.
         /// </summary>
-        public double OreRarity2 { get; protected set; }
+        public double OreRarityRarium { get; protected set; }
 
         /// <summary>
         /// The rarity modifier of the rarest ore. This controls how much spawns.
         /// </summary>
-        public double OreRarity3 { get; protected set; }
+        public double OreRaritylegendarium { get; protected set; }
 
         /// <summary>
         /// The amount of energy the planets restore each round.
@@ -97,6 +97,11 @@ namespace Joueur.cs.Games.Stardash
         /// List of all the players in the game.
         /// </summary>
         public IList<Stardash.Player> Players { get; protected set; }
+
+        /// <summary>
+        /// The standard size of ships.
+        /// </summary>
+        public int ProjectileRadius { get; protected set; }
 
         /// <summary>
         /// The amount of distance missiles travel through space.

@@ -81,14 +81,14 @@ namespace Joueur.cs.Games.Stardash
         public Stardash.Unit Protector { get; protected set; }
 
         /// <summary>
-        /// The radius of the circle this unit occupies.
-        /// </summary>
-        public double Radius { get; protected set; }
-
-        /// <summary>
         /// The amount of Rarium carried by this unit. (0 to job carry capacity - other carried items).
         /// </summary>
         public int Rarium { get; protected set; }
+
+        /// <summary>
+        /// The sheild that a martyr ship has.
+        /// </summary>
+        public int Shield { get; protected set; }
 
         /// <summary>
         /// The x value this unit is on.
@@ -128,6 +128,20 @@ namespace Joueur.cs.Games.Stardash
         }
 
         /// <summary>
+        /// Causes the unit to dash towards the designated destination.
+        /// </summary>
+        /// <param name="x">The x value of the destination's coordinates.</param>
+        /// <param name="y">The y value of the destination's coordinates.</param>
+        /// <returns>True if it moved, false otherwise.</returns>
+        public bool Dash(double x, double y)
+        {
+            return this.RunOnServer<bool>("dash", new Dictionary<string, object> {
+                {"x", x},
+                {"y", y}
+            });
+        }
+
+        /// <summary>
         /// allows a miner to mine a asteroid
         /// </summary>
         /// <param name="body">The object to be mined.</param>
@@ -154,7 +168,7 @@ namespace Joueur.cs.Games.Stardash
         }
 
         /// <summary>
-        /// tells you if your ship can dash to that location.
+        /// tells you if your ship can be at that location.
         /// </summary>
         /// <param name="x">The x position of the location you wish to check.</param>
         /// <param name="y">The y position of the location you wish to check.</param>

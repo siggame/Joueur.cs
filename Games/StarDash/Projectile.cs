@@ -31,11 +31,6 @@ namespace Joueur.cs.Games.Stardash
         public Stardash.Player Owner { get; protected set; }
 
         /// <summary>
-        /// The radius of the circle this projectile occupies.
-        /// </summary>
-        public double Radius { get; protected set; }
-
-        /// <summary>
         /// The unit that is being attacked by this projectile.
         /// </summary>
         public Stardash.Unit Target { get; protected set; }
