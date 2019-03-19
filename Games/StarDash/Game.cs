@@ -49,9 +49,19 @@ namespace Joueur.cs.Games.Stardash
         public int DashDistance { get; protected set; }
 
         /// <summary>
+        /// The value of every unit of genarium.
+        /// </summary>
+        public double GenariumValue { get; protected set; }
+
+        /// <summary>
         /// A list of all jobs. first item is corvette, second is missleboat, third is martyr, fourth is transport, and fifth is miner.
         /// </summary>
         public IList<Stardash.Job> Jobs { get; protected set; }
+
+        /// <summary>
+        /// The value of every unit of legendarium.
+        /// </summary>
+        public double LegendariumValue { get; protected set; }
 
         /// <summary>
         /// The highest amount of material, barring rarity, that can be in a asteroid.
@@ -74,9 +84,19 @@ namespace Joueur.cs.Games.Stardash
         public int MiningSpeed { get; protected set; }
 
         /// <summary>
+        /// The amount of mythicite that spawns at the start of the game.
+        /// </summary>
+        public double MythiciteAmount { get; protected set; }
+
+        /// <summary>
         /// The rarity modifier of the most common ore. This controls how much spawns.
         /// </summary>
         public double OreRarityGenarium { get; protected set; }
+
+        /// <summary>
+        /// The rarity modifier of the rarest ore. This controls how much spawns.
+        /// </summary>
+        public double OreRarityLegendarium { get; protected set; }
 
         /// <summary>
         /// The rarity modifier of the second rarest ore. This controls how much spawns.
@@ -84,9 +104,9 @@ namespace Joueur.cs.Games.Stardash
         public double OreRarityRarium { get; protected set; }
 
         /// <summary>
-        /// The rarity modifier of the rarest ore. This controls how much spawns.
+        /// The amount of energy a planet can hold at once.
         /// </summary>
-        public double OreRaritylegendarium { get; protected set; }
+        public int PlanetEnergyCap { get; protected set; }
 
         /// <summary>
         /// The amount of energy the planets restore each round.
@@ -112,6 +132,11 @@ namespace Joueur.cs.Games.Stardash
         /// Every projectile in the game.
         /// </summary>
         public IList<Stardash.Projectile> Projectiles { get; protected set; }
+
+        /// <summary>
+        /// The value of every unit of rarium.
+        /// </summary>
+        public double RariumValue { get; protected set; }
 
         /// <summary>
         /// The regeneration rate of asteroids.

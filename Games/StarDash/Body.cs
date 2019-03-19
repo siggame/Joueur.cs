@@ -21,7 +21,7 @@ namespace Joueur.cs.Games.Stardash
     {
         #region Properties
         /// <summary>
-        /// The amount of material the object has.
+        /// The amount of material the object has, or energy if it is a planet.
         /// </summary>
         public int Amount { get; protected set; }
 
