@@ -173,9 +173,9 @@ namespace Joueur.cs.Games.Stardash
         /// <param name="x">The x position of the location you wish to check.</param>
         /// <param name="y">The y position of the location you wish to check.</param>
         /// <returns>True if pathable by this unit, false otherwise.</returns>
-        public bool Open(double x, double y)
+        public bool Safe(double x, double y)
         {
-            return this.RunOnServer<bool>("open", new Dictionary<string, object> {
+            return this.RunOnServer<bool>("safe", new Dictionary<string, object> {
                 {"x", x},
                 {"y", y}
             });

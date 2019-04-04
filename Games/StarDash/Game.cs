@@ -24,7 +24,7 @@ namespace Joueur.cs.Games.Stardash
     {
         #region Properties
         /// <summary>
-        /// All the celestial bodies in the game.
+        /// All the celestial bodies in the game. The first two are planets and the third is the sun. The fourth is the VP asteroid. Everything else is normal asteroids.
         /// </summary>
         public IList<Stardash.Body> Bodies { get; protected set; }
 
@@ -42,6 +42,11 @@ namespace Joueur.cs.Games.Stardash
         /// Radius of the no dash zone around the sun.
         /// </summary>
         public int DashBlock { get; protected set; }
+
+        /// <summary>
+        /// The cost of dashing.
+        /// </summary>
+        public int DashCost { get; protected set; }
 
         /// <summary>
         /// The distance traveled each turn by dashing.
@@ -64,7 +69,7 @@ namespace Joueur.cs.Games.Stardash
         public double LegendariumValue { get; protected set; }
 
         /// <summary>
-        /// The highest amount of material, barring rarity, that can be in a asteroid.
+        /// The highest amount of material, that can be in a asteroid.
         /// </summary>
         public int MaxAsteroid { get; protected set; }
 
@@ -74,7 +79,7 @@ namespace Joueur.cs.Games.Stardash
         public int MaxTurns { get; protected set; }
 
         /// <summary>
-        /// The smallest amount of material, barring rarity, that can be in a asteroid.
+        /// The smallest amount of material, that can be in a asteroid.
         /// </summary>
         public int MinAsteroid { get; protected set; }
 
@@ -87,6 +92,11 @@ namespace Joueur.cs.Games.Stardash
         /// The amount of mythicite that spawns at the start of the game.
         /// </summary>
         public double MythiciteAmount { get; protected set; }
+
+        /// <summary>
+        /// The number of orbit updates you cannot mine the mithicite asteroid.
+        /// </summary>
+        public int OrbitsProtected { get; protected set; }
 
         /// <summary>
         /// The rarity modifier of the most common ore. This controls how much spawns.
@@ -167,6 +177,11 @@ namespace Joueur.cs.Games.Stardash
         /// The amount of time (in nano-seconds) added after each player performs a turn.
         /// </summary>
         public int TimeAddedPerTurn { get; protected set; }
+
+        /// <summary>
+        /// The number of turns it takes for a asteroid to orbit the sun. (Asteroids move after each players turn).
+        /// </summary>
+        public int TurnsToOrbit { get; protected set; }
 
         /// <summary>
         /// Every Unit in the game.

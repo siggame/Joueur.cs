@@ -36,7 +36,7 @@ namespace Joueur.cs.Games.Stardash
         public string MaterialType { get; protected set; }
 
         /// <summary>
-        /// The Player that owns and can control this Unit.
+        /// The Player that owns and can control this Body.
         /// </summary>
         public Stardash.Player Owner { get; protected set; }
 
@@ -68,6 +68,30 @@ namespace Joueur.cs.Games.Stardash
         /// </summary>
         protected Body() : base()
         {
+        }
+
+        /// <summary>
+        /// The x value of this body a number of turns from now. (0-how many you want).
+        /// </summary>
+        /// <param name="num">The number of turns in the future you wish to check.</param>
+        /// <returns>The x position of the body the input number of turns in the future.</returns>
+        public int NextX(int num)
+        {
+            return this.RunOnServer<int>("nextX", new Dictionary<string, object> {
+                {"num", num}
+            });
+        }
+
+        /// <summary>
+        /// The x value of this body a number of turns from now. (0-how many you want).
+        /// </summary>
+        /// <param name="num">The number of turns in the future you wish to check.</param>
+        /// <returns>The x position of the body the input number of turns in the future.</returns>
+        public int NextY(int num)
+        {
+            return this.RunOnServer<int>("nextY", new Dictionary<string, object> {
+                {"num", num}
+            });
         }
 
         /// <summary>

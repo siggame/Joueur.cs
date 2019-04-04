@@ -26,7 +26,7 @@ namespace Joueur.cs.Games.Stardash
         public int Fuel { get; protected set; }
 
         /// <summary>
-        /// The Player that owns and can control this Unit.
+        /// The Player that owns and can control this Projectile.
         /// </summary>
         public Stardash.Player Owner { get; protected set; }
 
