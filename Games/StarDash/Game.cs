@@ -39,11 +39,6 @@ namespace Joueur.cs.Games.Stardash
         public int CurrentTurn { get; protected set; }
 
         /// <summary>
-        /// Radius of the no dash zone around the sun.
-        /// </summary>
-        public int DashBlock { get; protected set; }
-
-        /// <summary>
         /// The cost of dashing.
         /// </summary>
         public int DashCost { get; protected set; }
@@ -59,7 +54,7 @@ namespace Joueur.cs.Games.Stardash
         public double GenariumValue { get; protected set; }
 
         /// <summary>
-        /// A list of all jobs. first item is corvette, second is missleboat, third is martyr, fourth is transport, and fifth is miner.
+        /// A list of all jobs. first item is corvette, second is missileboat, third is martyr, fourth is transport, and fifth is miner.
         /// </summary>
         public IList<Stardash.Job> Jobs { get; protected set; }
 
