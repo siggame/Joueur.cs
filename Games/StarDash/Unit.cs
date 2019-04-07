@@ -46,9 +46,9 @@ namespace Joueur.cs.Games.Stardash
         public int Genarium { get; protected set; }
 
         /// <summary>
-        /// Tracks wheither or not the ship is dashing.
+        /// Tracks wheither or not the ship is dashing or Mining. If true, it cannot do anything else.
         /// </summary>
-        public bool IsDashing { get; protected set; }
+        public bool IsBusy { get; protected set; }
 
         /// <summary>
         /// The Job this Unit has.
