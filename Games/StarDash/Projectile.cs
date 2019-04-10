@@ -21,6 +21,11 @@ namespace Joueur.cs.Games.Stardash
     {
         #region Properties
         /// <summary>
+        /// The remaining health of the projectile.
+        /// </summary>
+        public int Energy { get; protected set; }
+
+        /// <summary>
         /// The amount of remaining distance the projectile can move.
         /// </summary>
         public int Fuel { get; protected set; }

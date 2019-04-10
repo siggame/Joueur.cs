@@ -36,7 +36,7 @@ namespace Joueur.cs.Games.Stardash
         public double DashY { get; protected set; }
 
         /// <summary>
-        /// The remaining health of a unit.
+        /// The remaining health of the unit.
         /// </summary>
         public int Energy { get; protected set; }
 
