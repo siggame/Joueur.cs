@@ -19,7 +19,7 @@ namespace Joueur.cs.Games.Stardash
         #pragma warning disable 0169 // the never assigned warnings between here are incorrect. We set it for you via reflection. So these will remove it from the Error List.
         #pragma warning disable 0649
         /// <summary>
-        /// This is the Game object itself. It contains all the information about the current game.
+        /// This is the Game object it It contains all the information about the current game.
         /// </summary>
         public readonly Game Game;
         /// <summary>
@@ -97,12 +97,163 @@ namespace Joueur.cs.Games.Stardash
         {
             // <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             // Put your game logic here for runTurn
+            // Gets the coordinates of your home base (planet).
+            var homeX = Player.HomeBase.X;
+            var homeY = Player.HomeBase.Y;
+
+            // Gets the coordinates of the sun.
+            var sun = Game.Bodies[2];
+
+            // Checks if we have any units.
+            if(Player.Units.Count == 0)
+            {
+                // We don't have any units.
+                Player.HomeBase.Spawn(homeX, homeY, "miner");
+            }
+
+            // Gets the first unit in our list of units.
+            var unit = Player.Units.FirstOrDefault();
+            if(unit != null)
+            {
+                System.Console.WriteLine($"Unit: {unit.Energy}; X: {unit.X}; Y: {unit.Y}");
+                if(unit.Energy < 0.5 * unit.Job.Energy)
+                {
+                    // If the miner is below 50% energy, goes back to its home base to heal.
+                    FindDash(unit, homeX, homeY);
+                }
+                else if (unit.Genarium < unit.Job.CarryLimit)
+                {
+                    // If there is space in our inventory, go mine an asteroid for genarium (the worst mineral btw).
+                    Body target = null; 
+                    var bestDist = 9999.0;
+
+                    // Finds the closest asteroid that contains genarium to target.
+                    foreach (Body body in Game.Bodies)
+                    {
+                        // Only looks at asteroids that contain genarium.
+                        if (body.MaterialType == "genarium")
+                        {
+                            System.Console.WriteLine("Found genarium");
+                            // Gets the distance from the unit to the body
+                            var distance = Distance(unit.X, unit.Y, body.X, body.Y);
+
+                            // Updates the target if the new asteroid is closer to our unit.
+                            if (distance < bestDist)
+                                target = body;
+                                bestDist = distance;
+                        }
+                    }
+
+                    if (target != null)
+                    {
+                        // Tries to move to the asteroid.
+                        FindDash(unit, target.X, target.Y);
+
+                        // Checks if the miner is within mining range of the target asteroid.
+                        if (Distance(unit.X, unit.Y, target.X, target.Y) < unit.Job.Range)
+                            unit.Mine(target);
+                    }
+                }
+                else
+                // Otherwise return to home base and drop off any mined genarium and restoring energy in the process.
+                FindDash(unit, homeX, homeY);
+            }
             return true;
             // <<-- /Creer-Merge: runTurn -->>
         }
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional methods here for your AI to call
+        double Distance(double x1, double y1, double x2, double y2)
+        {
+            /*
+            Returns the Euclidian distance between two points.
+                Args:
+                    x1 (int): The x coordinate of the first point.
+                    y1 (int): The y coordinate of the first point.
+                    x2 (int): The x coordinate of the second point.
+                    y2 (int): The y coordinate of the second point.
+                Returns:
+                    float: The distance between the two points.
+            */ 
+            return Math.Sqrt(Math.Pow((x1 - x2), 2.0) + Math.Pow((y1 - y2), 2.0));
+        }
+
+    void FindDash(Unit unit, double x, double y)
+    {
+        /* This is an EXTREMELY basic pathfinding function to move your ship until it can dash to your target.
+            You REALLY should improve this functionality or make your own new one, since this is VERY basic and inefficient.
+            Like, for real.
+            Args:
+                unit (unit): The unit that will be moving.
+                x (int): The x coordinate of the destination.
+                y (int): The y coordinate of the destination.
+        */
+        // Gets the sun from the list of bodies.
+        var sun = Game.Bodies[2];
+
+        while (unit.Moves >= 1)
+        {
+
+            if (unit.Safe(x, y) && unit.Energy >= Math.Ceiling((Distance(unit.X, unit.Y, x, y) / Game.DashDistance) * Game.DashCost))
+            {
+                // Dashes if it is safe to dash to the point and we have enough energy to dash there.
+                unit.Dash(x, y);
+                // Breaks out of the loop since we can't do anything else now.
+                break;
+            }
+            else
+            {
+                // Otherwise tries moving towards the target.
+                // The x and y modifiers for movement.
+                var xMod = 0;
+                var yMod = 0;
+
+                if (unit.X < x || (y < sun.Y && unit.Y > sun.Y || y > sun.Y && unit.Y < sun.Y) && x > sun.X)
+                    // Move to the right if the destination is to the right or on the other side of the sun on the right side.
+                    xMod = 1;
+                else if (unit.X > x || (y < sun.Y && unit.Y > sun.Y || y > sun.Y && unit.Y < sun.Y) && x < sun.X)
+                    // Move to the left if the destination is to the left or on the other side of the sun on the left side.
+                    xMod = -1;
+
+                if (unit.Y < y || (x < sun.X && unit.X > sun.X || x > sun.X && unit.X < sun.X) && y > sun.Y)
+                    // Move down if the destination is down or on the other side of the sun on the lower side.
+                    yMod = 1;
+                else if (unit.Y > y || (x < sun.X && unit.X > sun.X || x > sun.X && unit.X < sun.X) && y < sun.Y)
+                    // Move up if the destination is up or on the other side of the sun on the upper side.
+                    yMod = -1;
+
+                if (xMod != 0 && yMod != 0 && !unit.Safe(unit.X + xMod, unit.Y + yMod))
+                {
+                    // Special case if we cannot safely move diagonally.
+                    if (unit.Safe(unit.X + xMod, unit.Y))
+                        // Only move horizontally if it is safe.
+                        yMod = 0;
+                    else if (unit.Safe(unit.X, unit.Y + yMod))
+                        // Only move vertically if it is safe.
+                        xMod = 0;
+                }
+
+                if (unit.Moves < Math.Sqrt(2) && xMod != 0 && yMod != 0)
+                {
+                    // Special case if we only have 1 move left and are trying to move 2.
+                    if (unit.Safe(unit.X + xMod, unit.Y))
+                        yMod = 0;
+                    else if (unit.Safe(unit.X, unit.Y + yMod))
+                        xMod = 0;
+                    else break;
+                }
+
+                if ((xMod != 0 || yMod != 0) && (Math.Sqrt(Math.Pow(xMod, 2) + Math.Pow(yMod, 2)) >= unit.Moves))
+                    // Tries to move if either of the modifiers is not zero (we are actually moving somewhere).
+                    unit.Move(unit.X + xMod, unit.Y + yMod);
+                else
+                    // Breaks otherwise, since something probably went wrong.
+                    break;
+            }
+        }
+    }
+
         // <<-- /Creer-Merge: methods -->>
         #endregion
     }
