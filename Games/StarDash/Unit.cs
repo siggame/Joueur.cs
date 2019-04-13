@@ -186,9 +186,9 @@ namespace Joueur.cs.Games.Stardash
         /// </summary>
         /// <param name="missile">The projectile being shot down.</param>
         /// <returns>True if successfully attacked, false otherwise.</returns>
-        public bool ShootDown(Stardash.Projectile missile)
+        public bool Shootdown(Stardash.Projectile missile)
         {
-            return this.RunOnServer<bool>("shootDown", new Dictionary<string, object> {
+            return this.RunOnServer<bool>("shootdown", new Dictionary<string, object> {
                 {"missile", missile}
             });
         }
@@ -198,7 +198,7 @@ namespace Joueur.cs.Games.Stardash
         /// </summary>
         /// <param name="unit">The unit you are grabbing the resources from.</param>
         /// <param name="amount">The amount of materials to you with to grab. Amounts &lt;= 0 will pick up all the materials that the unit can.</param>
-        /// <param name="material">The material the unit will pick up. 'resource1', 'resource2', or 'resource3'.</param>
+        /// <param name="material">The material the unit will pick up. 'genarium', 'rarium', 'legendarium', or 'mythicite'.</param>
         /// <returns>True if successfully taken, false otherwise.</returns>
         public bool Transfer(Stardash.Unit unit, int amount, string material)
         {

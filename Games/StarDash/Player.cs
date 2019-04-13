@@ -51,7 +51,7 @@ namespace Joueur.cs.Games.Stardash
         public Stardash.Player Opponent { get; protected set; }
 
         /// <summary>
-        /// Every Projectile owned by this Player.
+        /// Every Projectile owned by this Player. The earlier in the list the older they are.
         /// </summary>
         public IList<Stardash.Projectile> Projectiles { get; protected set; }
 
@@ -71,7 +71,7 @@ namespace Joueur.cs.Games.Stardash
         public double TimeRemaining { get; protected set; }
 
         /// <summary>
-        /// Every Unit owned by this Player.
+        /// Every Unit owned by this Player. The earlier in the list the older they are.
         /// </summary>
         public IList<Stardash.Unit> Units { get; protected set; }
 

@@ -26,12 +26,12 @@ namespace Joueur.cs.Games.Stardash
         public int Amount { get; protected set; }
 
         /// <summary>
-        /// The type of celestial body it is.
+        /// The type of celestial body it is. Either 'planet', 'asteroid', or 'sun'.
         /// </summary>
         public string BodyType { get; protected set; }
 
         /// <summary>
-        /// The type of material the celestial body has.
+        /// The type of material the celestial body has. Either 'none', 'genarium', 'rarium', 'legendarium', or 'mythicite'.
         /// </summary>
         public string MaterialType { get; protected set; }
 
