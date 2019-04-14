@@ -90,15 +90,15 @@ namespace Joueur.cs.Games.Chess
 
 
         /// <summary>
-        /// This is called every time it is this AI.player's turn.
+        /// This is called every time it is this AI.player's turn to make a move.
         /// </summary>
-        /// <returns>Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.</returns>
-        public bool RunTurn()
+        /// <returns>A string in Standard Algebriac Notation (SAN) for the move you want to make. If the move is invalid or not properly formatted you will lose the game.</returns>
+        public string MakeMove()
         {
-            // <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-            // Put your game logic here for runTurn
-            return true;
-            // <<-- /Creer-Merge: runTurn -->>
+            // <<-- Creer-Merge: makeMove -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
+            // Put your game logic here for makeMove
+            return "";
+            // <<-- /Creer-Merge: makeMove -->>
         }
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
