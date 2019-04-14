@@ -19,7 +19,7 @@ namespace Joueur.cs.Games.Stardash
         #pragma warning disable 0169 // the never assigned warnings between here are incorrect. We set it for you via reflection. So these will remove it from the Error List.
         #pragma warning disable 0649
         /// <summary>
-        /// This is the Game object it It contains all the information about the current game.
+        /// This is the Game object itself. It contains all the information about the current game.
         /// </summary>
         public readonly Game Game;
         /// <summary>
