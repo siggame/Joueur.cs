@@ -142,6 +142,20 @@ namespace Joueur.cs.Games.Stardash
         }
 
         /// <summary>
+        /// tells you if your ship can dash to that location from where it is without clipping the sun.
+        /// </summary>
+        /// <param name="x">The x position of the location you wish to arrive.</param>
+        /// <param name="y">The y position of the location you wish to arrive.</param>
+        /// <returns>True if pathable by this unit, false otherwise.</returns>
+        public bool IsDashable(double x, double y)
+        {
+            return this.RunOnServer<bool>("isDashable", new Dictionary<string, object> {
+                {"x", x},
+                {"y", y}
+            });
+        }
+
+        /// <summary>
         /// allows a miner to mine a asteroid
         /// </summary>
         /// <param name="body">The object to be mined.</param>
@@ -168,7 +182,7 @@ namespace Joueur.cs.Games.Stardash
         }
 
         /// <summary>
-        /// tells you if your ship can move to that location from were it is without clipping the sun.
+        /// tells you if your ship can move to that location from were it is landing in the sun.
         /// </summary>
         /// <param name="x">The x position of the location you wish to arrive.</param>
         /// <param name="y">The y position of the location you wish to arrive.</param>
