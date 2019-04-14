@@ -17,7 +17,7 @@ if os.path.isdir("./output/"):
     shutil.rmtree("./output/")
 
 if not os.path.isdir("./docfx"):
-    run(["wget https://github.com/dotnet/docfx/releases/download/v2.33.1/docfx.zip"], shell=True)
+    run(["wget https://github.com/dotnet/docfx/releases/download/v2.41/docfx.zip"], shell=True)
     # run(["unzip docfx.zip -d docfx"], shell=True)
     with zipfile.ZipFile("./docfx.zip","r") as zip_ref:
         zip_ref.extractall("./docfx")
