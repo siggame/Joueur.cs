@@ -56,6 +56,21 @@ namespace Joueur.cs.Games.Necrowar
         public bool IsWall { get; protected set; }
 
         /// <summary>
+        /// The amount of Ghouls on this tile at the moment.
+        /// </summary>
+        public int NumOfGhouls { get; protected set; }
+
+        /// <summary>
+        /// The amount of Hell Hounds on this tile at the moment.
+        /// </summary>
+        public int NumOfHounds { get; protected set; }
+
+        /// <summary>
+        /// The amount of animated zombies on this tile at the moment.
+        /// </summary>
+        public int NumOfZombies { get; protected set; }
+
+        /// <summary>
         /// The Tile to the 'East' of this one (x+1, y). Null if out of bounds of the map.
         /// </summary>
         public Necrowar.Tile TileEast { get; protected set; }
@@ -81,7 +96,7 @@ namespace Joueur.cs.Games.Necrowar
         public Necrowar.Tower Tower { get; protected set; }
 
         /// <summary>
-        /// The type of Tile this is ('normal', 'path', 'river', or 'spawn').
+        /// The type of Tile this is ('normal', 'path', 'river', 'mine', 'castle', 'pathSpawn', or 'workerSpawn').
         /// </summary>
         public string Type { get; protected set; }
 
@@ -113,6 +128,18 @@ namespace Joueur.cs.Games.Necrowar
         /// </summary>
         protected Tile() : base()
         {
+        }
+
+        /// <summary>
+        /// Resurrect the corpses on this tile into zombies.
+        /// </summary>
+        /// <param name="number">Number of zombies on the tile that are being resurrected.</param>
+        /// <returns>True if Unit was created successfully, false otherwise.</returns>
+        public bool Res(int number)
+        {
+            return this.RunOnServer<bool>("res", new Dictionary<string, object> {
+                {"number", number}
+            });
         }
 
 

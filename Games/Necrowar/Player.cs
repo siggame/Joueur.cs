@@ -31,12 +31,12 @@ namespace Joueur.cs.Games.Necrowar
         public int Gold { get; protected set; }
 
         /// <summary>
-        /// The amount of health remaining for this player's main unit.
+        /// The amount of health remaining for this player's Castle.
         /// </summary>
         public int Health { get; protected set; }
 
         /// <summary>
-        /// The tile that the home base is located on.
+        /// The tiles that the home base is located on.
         /// </summary>
         public IList<Necrowar.Tile> HomeBase { get; protected set; }
 
@@ -112,6 +112,30 @@ namespace Joueur.cs.Games.Necrowar
             this.Side = new List<Necrowar.Tile>();
             this.Towers = new List<Necrowar.Tower>();
             this.Units = new List<Necrowar.Unit>();
+        }
+
+        /// <summary>
+        /// Spawn a fighting Unit on this player's path spawn tile.
+        /// </summary>
+        /// <param name="type">What type of Unit to create (ghoul, hound, abomination, wraith, or horseman).</param>
+        /// <returns>True if Unit was created successfully, false otherwise.</returns>
+        public bool SpawnUnit(string type)
+        {
+            return this.RunOnServer<bool>("spawnUnit", new Dictionary<string, object> {
+                {"type", type}
+            });
+        }
+
+        /// <summary>
+        /// Spawn a worker Unit on this player's worker spawn tile.
+        /// </summary>
+        /// <param name="type">What type of Unit to create (worker, zombie, ghoul).</param>
+        /// <returns>True if Unit was created successfully, false otherwise.</returns>
+        public bool SpawnWorker(string type)
+        {
+            return this.RunOnServer<bool>("spawnWorker", new Dictionary<string, object> {
+                {"type", type}
+            });
         }
 
 
