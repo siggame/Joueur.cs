@@ -104,7 +104,7 @@ namespace Joueur.cs.Games.Necrowar
         }
 
         /// <summary>
-        /// Enters a mine and is put to work gathering resources.
+        /// Enters an empty mine tile and is put to work gathering resources.
         /// </summary>
         /// <param name="tile">The tile the mine is located on.</param>
         /// <returns>True if successfully entered mine and began mining, false otherwise.</returns>

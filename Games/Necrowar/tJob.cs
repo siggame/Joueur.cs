@@ -80,6 +80,11 @@ namespace Joueur.cs.Games.Necrowar
         /// </summary>
         public string Title { get; protected set; }
 
+        /// <summary>
+        /// How many turns this tower type needs to take between attacks.
+        /// </summary>
+        public int TurnsBetweenAttacks { get; protected set; }
+
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional properties(s) here. None of them will be tracked or updated by the server.

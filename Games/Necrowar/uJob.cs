@@ -26,11 +26,6 @@ namespace Joueur.cs.Games.Necrowar
         public int Damage { get; protected set; }
 
         /// <summary>
-        /// Amount of damage this type does against towers on a given turn.
-        /// </summary>
-        public int DamageVsTowers { get; protected set; }
-
-        /// <summary>
         /// How much does this type cost in gold.
         /// </summary>
         public int GoldCost { get; protected set; }
