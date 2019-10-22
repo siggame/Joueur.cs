@@ -101,7 +101,7 @@ namespace Joueur.cs.Games.Necrowar
         public string Type { get; protected set; }
 
         /// <summary>
-        /// The Unit on this Tile if present, otherwise null.
+        /// The list of Units on this Tile if present, otherwise null.
         /// </summary>
         public Necrowar.Unit Unit { get; protected set; }
 

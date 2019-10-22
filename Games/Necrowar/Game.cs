@@ -64,11 +64,6 @@ namespace Joueur.cs.Games.Necrowar
         public int MaxTurns { get; protected set; }
 
         /// <summary>
-        /// The maximum number of workers that can occupy a mine at a given time.
-        /// </summary>
-        public int MineUnitCap { get; protected set; }
-
-        /// <summary>
         /// List of all the players in the game.
         /// </summary>
         public IList<Necrowar.Player> Players { get; protected set; }

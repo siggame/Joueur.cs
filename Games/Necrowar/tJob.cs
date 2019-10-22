@@ -26,36 +26,6 @@ namespace Joueur.cs.Games.Necrowar
         public bool AllUnits { get; protected set; }
 
         /// <summary>
-        /// The amount of damage this type does per attack against abominations.
-        /// </summary>
-        public int DamageVsAbomination { get; protected set; }
-
-        /// <summary>
-        /// The amount of damage this type does per attack against ghouls.
-        /// </summary>
-        public int DamageVsGhoul { get; protected set; }
-
-        /// <summary>
-        /// The amount of damage this type does per attack against horseman.
-        /// </summary>
-        public int DamageVsHorseman { get; protected set; }
-
-        /// <summary>
-        /// The amount of damage this type does per attack against hounds.
-        /// </summary>
-        public int DamageVsHound { get; protected set; }
-
-        /// <summary>
-        /// The amount of damage this type does per attack against wraiths.
-        /// </summary>
-        public int DamageVsWraith { get; protected set; }
-
-        /// <summary>
-        /// The amount of damage this type does per attack against zombies.
-        /// </summary>
-        public int DamageVsZombie { get; protected set; }
-
-        /// <summary>
         /// How much does this type cost in gold.
         /// </summary>
         public int GoldCost { get; protected set; }
