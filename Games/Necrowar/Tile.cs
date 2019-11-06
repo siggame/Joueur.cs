@@ -26,9 +26,19 @@ namespace Joueur.cs.Games.Necrowar
         public int Corpses { get; protected set; }
 
         /// <summary>
+        /// Whether or not the tile is where a player's castle rests.
+        /// </summary>
+        public bool IsCastle { get; protected set; }
+
+        /// <summary>
         /// Whether or not the tile is considered to be a gold mine or not.
         /// </summary>
         public bool IsGoldMine { get; protected set; }
+
+        /// <summary>
+        /// Whether or not the tile can be moved on by workers.
+        /// </summary>
+        public bool IsGrass { get; protected set; }
 
         /// <summary>
         /// Whether or not the tile is considered to be the island gold mine or not.
@@ -51,9 +61,14 @@ namespace Joueur.cs.Games.Necrowar
         public bool IsTower { get; protected set; }
 
         /// <summary>
-        /// Whether or not the tile can be moved on by workers.
+        /// Whether or not this tile is this player's Unit spawn.
         /// </summary>
-        public bool IsWall { get; protected set; }
+        public bool IsUnitSpawn { get; protected set; }
+
+        /// <summary>
+        /// Whether or not this tile is this player's Worker spawn.
+        /// </summary>
+        public bool IsWorkerSpawn { get; protected set; }
 
         /// <summary>
         /// The amount of Ghouls on this tile at the moment.
@@ -96,7 +111,7 @@ namespace Joueur.cs.Games.Necrowar
         public Necrowar.Tower Tower { get; protected set; }
 
         /// <summary>
-        /// The type of Tile this is ('normal', 'path', 'river', 'mine', 'castle', 'pathSpawn', or 'workerSpawn').
+        /// The type of Tile this is ('grass', 'path', 'river', 'mine', 'castle', 'pathSpawn', or 'workerSpawn').
         /// </summary>
         public string Type { get; protected set; }
 

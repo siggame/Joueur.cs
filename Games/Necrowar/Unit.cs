@@ -21,14 +21,24 @@ namespace Joueur.cs.Games.Necrowar
     {
         #region Properties
         /// <summary>
-        /// Whether or not this Unit has performed its action this turn (attack or build).
+        /// Whether or not this Unit has attacked this turn or not.
         /// </summary>
-        public bool Acted { get; protected set; }
+        public bool Attacked { get; protected set; }
+
+        /// <summary>
+        /// Whether or not this Unit has built a tower (workers only) this turn or not.
+        /// </summary>
+        public bool Built { get; protected set; }
 
         /// <summary>
         /// The remaining health of a unit.
         /// </summary>
         public int Health { get; protected set; }
+
+        /// <summary>
+        /// Whether or not this Unit has moved yet this turn.
+        /// </summary>
+        public bool Moved { get; protected set; }
 
         /// <summary>
         /// The number of moves this unit has left this turn.
