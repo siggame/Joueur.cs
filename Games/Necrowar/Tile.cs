@@ -26,7 +26,7 @@ namespace Joueur.cs.Games.Necrowar
         public int Corpses { get; protected set; }
 
         /// <summary>
-        /// Whether or not the tile is where a player's castle rests.
+        /// Whether or not the tile is a castle tile.
         /// </summary>
         public bool IsCastle { get; protected set; }
 
@@ -36,7 +36,7 @@ namespace Joueur.cs.Games.Necrowar
         public bool IsGoldMine { get; protected set; }
 
         /// <summary>
-        /// Whether or not the tile can be moved on by workers.
+        /// Whether or not the tile is considered grass or not (Workers can walk on grass).
         /// </summary>
         public bool IsGrass { get; protected set; }
 
@@ -46,7 +46,7 @@ namespace Joueur.cs.Games.Necrowar
         public bool IsIslandGoldMine { get; protected set; }
 
         /// <summary>
-        /// Whether or not the tile is considered a path or not.
+        /// Whether or not the tile is considered a path or not (Units can walk on paths).
         /// </summary>
         public bool IsPath { get; protected set; }
 
@@ -61,29 +61,19 @@ namespace Joueur.cs.Games.Necrowar
         public bool IsTower { get; protected set; }
 
         /// <summary>
-        /// Whether or not this tile is this player's Unit spawn.
+        /// Whether or not the tile is the unit spawn.
         /// </summary>
         public bool IsUnitSpawn { get; protected set; }
 
         /// <summary>
-        /// Whether or not this tile is this player's Worker spawn.
+        /// Whether or not the tile can be moved on by workers.
+        /// </summary>
+        public bool IsWall { get; protected set; }
+
+        /// <summary>
+        /// Whether or not the tile is the worker spawn.
         /// </summary>
         public bool IsWorkerSpawn { get; protected set; }
-
-        /// <summary>
-        /// The amount of Ghouls on this tile at the moment.
-        /// </summary>
-        public int NumOfGhouls { get; protected set; }
-
-        /// <summary>
-        /// The amount of Hell Hounds on this tile at the moment.
-        /// </summary>
-        public int NumOfHounds { get; protected set; }
-
-        /// <summary>
-        /// The amount of animated zombies on this tile at the moment.
-        /// </summary>
-        public int NumOfZombies { get; protected set; }
 
         /// <summary>
         /// The Tile to the 'East' of this one (x+1, y). Null if out of bounds of the map.
@@ -111,12 +101,12 @@ namespace Joueur.cs.Games.Necrowar
         public Necrowar.Tower Tower { get; protected set; }
 
         /// <summary>
-        /// The type of Tile this is ('grass', 'path', 'river', 'mine', 'castle', 'pathSpawn', or 'workerSpawn').
+        /// The type of Tile this is ('normal', 'path', 'river', or 'spawn').
         /// </summary>
         public string Type { get; protected set; }
 
         /// <summary>
-        /// The list of Units on this Tile if present, otherwise null.
+        /// The Unit on this Tile if present, otherwise null.
         /// </summary>
         public Necrowar.Unit Unit { get; protected set; }
 
@@ -146,14 +136,36 @@ namespace Joueur.cs.Games.Necrowar
         }
 
         /// <summary>
-        /// Resurrect the corpses on this tile into zombies.
+        /// Resurrect the corpses on this tile into Zombies.
         /// </summary>
-        /// <param name="number">Number of zombies on the tile that are being resurrected.</param>
-        /// <returns>True if Unit was created successfully, false otherwise.</returns>
+        /// <param name="number">Number of zombies to resurrect.</param>
+        /// <returns>True if successful res, false otherwise.</returns>
         public bool Res(int number)
         {
             return this.RunOnServer<bool>("res", new Dictionary<string, object> {
                 {"number", number}
+            });
+        }
+
+        /// <summary>
+        /// Spawns a fighting unit on the correct tile.
+        /// </summary>
+        /// <param name="title">The title of the desired unit type.</param>
+        /// <returns>True if successfully spawned, false otherwise.</returns>
+        public bool SpawnUnit(string title)
+        {
+            return this.RunOnServer<bool>("spawnUnit", new Dictionary<string, object> {
+                {"title", title}
+            });
+        }
+
+        /// <summary>
+        /// Spawns a worker on the correct tile.
+        /// </summary>
+        /// <returns>True if successfully spawned, false otherwise.</returns>
+        public bool SpawnWorker()
+        {
+            return this.RunOnServer<bool>("spawnWorker", new Dictionary<string, object> {
             });
         }
 

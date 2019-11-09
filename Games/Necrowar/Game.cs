@@ -44,6 +44,11 @@ namespace Joueur.cs.Games.Necrowar
         public int IslandIncomePerUnit { get; protected set; }
 
         /// <summary>
+        /// The maximum number of workers that can occupy the mine on the island at a given time.
+        /// </summary>
+        public int IslandUnitCap { get; protected set; }
+
+        /// <summary>
         /// The Amount of gold income per turn per unit fishing on the river side.
         /// </summary>
         public int ManaIncomePerUnit { get; protected set; }
@@ -62,6 +67,11 @@ namespace Joueur.cs.Games.Necrowar
         /// The maximum number of turns before the game will automatically end.
         /// </summary>
         public int MaxTurns { get; protected set; }
+
+        /// <summary>
+        /// The maximum number of workers that can occupy a mine at a given time.
+        /// </summary>
+        public int MineUnitCap { get; protected set; }
 
         /// <summary>
         /// List of all the players in the game.

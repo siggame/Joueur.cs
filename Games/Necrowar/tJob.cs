@@ -26,7 +26,7 @@ namespace Joueur.cs.Games.Necrowar
         public bool AllUnits { get; protected set; }
 
         /// <summary>
-        /// How much damage this tower type does in a single turn of attack.
+        /// The amount of damage this type does per attack.
         /// </summary>
         public int Damage { get; protected set; }
 
@@ -56,7 +56,7 @@ namespace Joueur.cs.Games.Necrowar
         public string Title { get; protected set; }
 
         /// <summary>
-        /// How many turns this tower type needs to take between attacks.
+        /// How many turns have to take place between this type's attacks.
         /// </summary>
         public int TurnsBetweenAttacks { get; protected set; }
 

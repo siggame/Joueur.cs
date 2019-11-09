@@ -21,24 +21,14 @@ namespace Joueur.cs.Games.Necrowar
     {
         #region Properties
         /// <summary>
-        /// Whether or not this Unit has attacked this turn or not.
+        /// Whether or not this Unit has performed its action this turn (attack or build).
         /// </summary>
-        public bool Attacked { get; protected set; }
-
-        /// <summary>
-        /// Whether or not this Unit has built a tower (workers only) this turn or not.
-        /// </summary>
-        public bool Built { get; protected set; }
+        public bool Acted { get; protected set; }
 
         /// <summary>
         /// The remaining health of a unit.
         /// </summary>
         public int Health { get; protected set; }
-
-        /// <summary>
-        /// Whether or not this Unit has moved yet this turn.
-        /// </summary>
-        public bool Moved { get; protected set; }
 
         /// <summary>
         /// The number of moves this unit has left this turn.
@@ -114,7 +104,7 @@ namespace Joueur.cs.Games.Necrowar
         }
 
         /// <summary>
-        /// Enters an empty mine tile and is put to work gathering resources.
+        /// Enters a mine and is put to work gathering resources.
         /// </summary>
         /// <param name="tile">The tile the mine is located on.</param>
         /// <returns>True if successfully entered mine and began mining, false otherwise.</returns>
