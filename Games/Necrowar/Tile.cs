@@ -76,6 +76,21 @@ namespace Joueur.cs.Games.Necrowar
         public bool IsWorkerSpawn { get; protected set; }
 
         /// <summary>
+        /// The amount of Ghouls on this tile.
+        /// </summary>
+        public int NumGhouls { get; protected set; }
+
+        /// <summary>
+        /// The amount of Hounds on this tile.
+        /// </summary>
+        public int NumHounds { get; protected set; }
+
+        /// <summary>
+        /// The amount of Zombies on this tile.
+        /// </summary>
+        public int NumZombies { get; protected set; }
+
+        /// <summary>
         /// The Tile to the 'East' of this one (x+1, y). Null if out of bounds of the map.
         /// </summary>
         public Necrowar.Tile TileEast { get; protected set; }
@@ -138,12 +153,12 @@ namespace Joueur.cs.Games.Necrowar
         /// <summary>
         /// Resurrect the corpses on this tile into Zombies.
         /// </summary>
-        /// <param name="number">Number of zombies to resurrect.</param>
+        /// <param name="num">Number of zombies to resurrect.</param>
         /// <returns>True if successful res, false otherwise.</returns>
-        public bool Res(int number)
+        public bool Res(int num)
         {
             return this.RunOnServer<bool>("res", new Dictionary<string, object> {
-                {"number", number}
+                {"num", num}
             });
         }
 
