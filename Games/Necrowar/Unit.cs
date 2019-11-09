@@ -80,14 +80,12 @@ namespace Joueur.cs.Games.Necrowar
         /// <summary>
         /// Unit, if it is a worker, builds a tower on the tile it is on, only workers can do this.
         /// </summary>
-        /// <param name="tile">The tile the unit is on/builds on.</param>
-        /// <param name="tJob">The type of tower that is being built. 'arrow', 'aoe', 'ballista', or 'cleansing'.</param>
+        /// <param name="title">The tower type to build, as a string.</param>
         /// <returns>True if successfully built, false otherwise.</returns>
-        public bool Build(Necrowar.Tile tile, Necrowar.tJob tJob)
+        public bool Build(string title)
         {
             return this.RunOnServer<bool>("build", new Dictionary<string, object> {
-                {"tile", tile},
-                {"tJob", tJob}
+                {"title", title}
             });
         }
 
