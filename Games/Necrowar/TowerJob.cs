@@ -1,4 +1,4 @@
-// A tower in the game. Used to combat enemy waves.
+// Information about a tower's job/type.
 
 // DO NOT MODIFY THIS FILE
 // Never try to directly create an instance of this class, or modify its member variables.
@@ -15,35 +15,50 @@ using System.Text;
 namespace Joueur.cs.Games.Necrowar
 {
     /// <summary>
-    /// A tower in the game. Used to combat enemy waves.
+    /// Information about a tower's job/type.
     /// </summary>
-    public class Tower : Necrowar.GameObject
+    public class TowerJob : Necrowar.GameObject
     {
         #region Properties
         /// <summary>
-        /// Whether this tower has attacked this turn or not.
+        /// Whether this tower type hits all of the units on a tile (true) or one at a time (false).
         /// </summary>
-        public bool Attacked { get; protected set; }
+        public bool AllUnits { get; protected set; }
 
         /// <summary>
-        /// How much remaining health this tower has.
+        /// The amount of damage this type does per attack.
+        /// </summary>
+        public int Damage { get; protected set; }
+
+        /// <summary>
+        /// How much does this type cost in gold.
+        /// </summary>
+        public int GoldCost { get; protected set; }
+
+        /// <summary>
+        /// The amount of starting health this type has.
         /// </summary>
         public int Health { get; protected set; }
 
         /// <summary>
-        /// What type of tower this is (it's job).
+        /// How much does this type cost in mana.
         /// </summary>
-        public Necrowar.TowerJob Job { get; protected set; }
+        public int ManaCost { get; protected set; }
 
         /// <summary>
-        /// The player that built / owns this tower.
+        /// The number of tiles this type can attack from.
         /// </summary>
-        public Necrowar.Player Owner { get; protected set; }
+        public int Range { get; protected set; }
 
         /// <summary>
-        /// The Tile this Tower is on.
+        /// The type title. 'arrow', 'aoe', 'ballista', or 'cleansing'.
         /// </summary>
-        public Necrowar.Tile Tile { get; protected set; }
+        public string Title { get; protected set; }
+
+        /// <summary>
+        /// How many turns have to take place between this type's attacks.
+        /// </summary>
+        public int TurnsBetweenAttacks { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
@@ -54,22 +69,10 @@ namespace Joueur.cs.Games.Necrowar
 
         #region Methods
         /// <summary>
-        /// Creates a new instance of Tower. Used during game initialization, do not call directly.
+        /// Creates a new instance of TowerJob. Used during game initialization, do not call directly.
         /// </summary>
-        protected Tower() : base()
+        protected TowerJob() : base()
         {
-        }
-
-        /// <summary>
-        /// Attacks an enemy unit on an tile within it's range.
-        /// </summary>
-        /// <param name="tile">The Tile to attack.</param>
-        /// <returns>True if successfully attacked, false otherwise.</returns>
-        public bool Attack(Necrowar.Tile tile)
-        {
-            return this.RunOnServer<bool>("attack", new Dictionary<string, object> {
-                {"tile", tile}
-            });
         }
 
 

@@ -24,6 +24,16 @@ namespace Joueur.cs.Games.Necrowar
     {
         #region Properties
         /// <summary>
+        /// A list of every tower type / job.
+        /// </summary>
+        public IList<Necrowar.TowerJob> TowerJobs { get; protected set; }
+
+        /// <summary>
+        /// A list of every unit type / job.
+        /// </summary>
+        public IList<Necrowar.UnitJob> UnitJobs { get; protected set; }
+
+        /// <summary>
         /// The player whose turn it is currently. That player can send commands. Other players cannot.
         /// </summary>
         public Necrowar.Player CurrentPlayer { get; protected set; }
@@ -79,11 +89,6 @@ namespace Joueur.cs.Games.Necrowar
         public string Session { get; protected set; }
 
         /// <summary>
-        /// A list of every tower type / job.
-        /// </summary>
-        public IList<Necrowar.tJob> TJobs { get; protected set; }
-
-        /// <summary>
         /// All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
         /// </summary>
         public IList<Necrowar.Tile> Tiles { get; protected set; }
@@ -97,11 +102,6 @@ namespace Joueur.cs.Games.Necrowar
         /// Every Tower in the game.
         /// </summary>
         public IList<Necrowar.Tower> Towers { get; protected set; }
-
-        /// <summary>
-        /// A list of every unit type / job.
-        /// </summary>
-        public IList<Necrowar.uJob> UJobs { get; protected set; }
 
         /// <summary>
         /// Every Unit in the game.
@@ -123,11 +123,11 @@ namespace Joueur.cs.Games.Necrowar
         {
             this.Name = "Necrowar";
 
+            this.TowerJobs = new List<Necrowar.TowerJob>();
+            this.UnitJobs = new List<Necrowar.UnitJob>();
             this.Players = new List<Necrowar.Player>();
-            this.TJobs = new List<Necrowar.tJob>();
             this.Tiles = new List<Necrowar.Tile>();
             this.Towers = new List<Necrowar.Tower>();
-            this.UJobs = new List<Necrowar.uJob>();
             this.Units = new List<Necrowar.Unit>();
         }
 

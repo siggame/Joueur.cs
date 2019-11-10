@@ -31,6 +31,11 @@ namespace Joueur.cs.Games.Necrowar
         public int Health { get; protected set; }
 
         /// <summary>
+        /// The type of unit this is.
+        /// </summary>
+        public Necrowar.UnitJob Job { get; protected set; }
+
+        /// <summary>
         /// The number of moves this unit has left this turn.
         /// </summary>
         public int Moves { get; protected set; }
@@ -44,11 +49,6 @@ namespace Joueur.cs.Games.Necrowar
         /// The Tile this Unit is on.
         /// </summary>
         public Necrowar.Tile Tile { get; protected set; }
-
-        /// <summary>
-        /// The type of unit this is.
-        /// </summary>
-        public Necrowar.uJob UJob { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
