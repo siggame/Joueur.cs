@@ -51,7 +51,7 @@ namespace Joueur.cs.Games.Necrowar
         public int Range { get; protected set; }
 
         /// <summary>
-        /// The type title. 'arrow', 'aoe', 'ballista', or 'cleansing'.
+        /// The type title. 'arrow', 'aoe', 'ballista', 'cleansing', or 'castle'.
         /// </summary>
         public string Title { get; protected set; }
 
