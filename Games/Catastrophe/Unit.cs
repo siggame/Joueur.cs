@@ -162,7 +162,7 @@ namespace Joueur.cs.Games.Catastrophe
         /// Drops some of the given resource on or adjacent to the Unit's Tile. Does not count as an action.
         /// </summary>
         /// <param name="tile">The Tile to drop materials/food on.</param>
-        /// <param name="resource">The type of resource to drop ('material' or 'food').</param>
+        /// <param name="resource">The type of resource to drop ('materials' or 'food').</param>
         /// <param name="amount">The amount of the resource to drop. Amounts &lt;= 0 will drop as much as possible.</param>
         /// <returns>True if successfully dropped the resource, false otherwise.</returns>
         public bool Drop(Catastrophe.Tile tile, string resource, int amount=0)
@@ -202,7 +202,7 @@ namespace Joueur.cs.Games.Catastrophe
         /// Picks up some materials or food on or adjacent to the Unit's Tile. Does not count as an action.
         /// </summary>
         /// <param name="tile">The Tile to pickup materials/food from.</param>
-        /// <param name="resource">The type of resource to pickup ('material' or 'food').</param>
+        /// <param name="resource">The type of resource to pickup ('materials' or 'food').</param>
         /// <param name="amount">The amount of the resource to pickup. Amounts &lt;= 0 will pickup as much as possible.</param>
         /// <returns>True if successfully picked up a resource, false otherwise.</returns>
         public bool Pickup(Catastrophe.Tile tile, string resource, int amount=0)

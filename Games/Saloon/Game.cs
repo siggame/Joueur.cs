@@ -22,6 +22,11 @@ namespace Joueur.cs.Games.Saloon
     /// </summary>
     public class Game : BaseGame
     {
+        /// <summary>
+        /// The game version hash, used to compare if we are playing the same version on the server.
+        /// </summary>
+        new protected static string GameVersion = "fbaeac2bae9020bdd5a8816cb9ae38215c277e4bf7874a2f70c3995cd8eee8d3";
+
         #region Properties
         /// <summary>
         /// How many turns a Bartender will be busy for after throwing a Bottle.
@@ -112,6 +117,11 @@ namespace Joueur.cs.Games.Saloon
         /// All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
         /// </summary>
         public IList<Saloon.Tile> Tiles { get; protected set; }
+
+        /// <summary>
+        /// The amount of time (in nano-seconds) added after each player performs a turn.
+        /// </summary>
+        public int TimeAddedPerTurn { get; protected set; }
 
         /// <summary>
         /// How many turns a Cowboy will be drunk for if a bottle breaks on it.

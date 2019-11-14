@@ -22,6 +22,11 @@ namespace Joueur.cs.Games.Catastrophe
     /// </summary>
     public class Game : BaseGame
     {
+        /// <summary>
+        /// The game version hash, used to compare if we are playing the same version on the server.
+        /// </summary>
+        new protected static string GameVersion = "ede84ab86376b00287c09558f05e8f2a61b92109d93aad9ebd3379ff4215fb53";
+
         #region Properties
         /// <summary>
         /// The multiplier for the amount of energy regenerated when resting in a shelter with the cat overlord.
@@ -99,6 +104,11 @@ namespace Joueur.cs.Games.Catastrophe
         public int ShelterMaterials { get; protected set; }
 
         /// <summary>
+        /// The amount of food Players start with.
+        /// </summary>
+        public int StartingFood { get; protected set; }
+
+        /// <summary>
         /// The multiplier for the amount of energy regenerated when resting while starving.
         /// </summary>
         public double StarvingEnergyMult { get; protected set; }
@@ -112,6 +122,11 @@ namespace Joueur.cs.Games.Catastrophe
         /// All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
         /// </summary>
         public IList<Catastrophe.Tile> Tiles { get; protected set; }
+
+        /// <summary>
+        /// The amount of time (in nano-seconds) added after each player performs a turn.
+        /// </summary>
+        public int TimeAddedPerTurn { get; protected set; }
 
         /// <summary>
         /// After a food tile is harvested, the number of turns before it can be harvested again.

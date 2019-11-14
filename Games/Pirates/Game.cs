@@ -22,6 +22,11 @@ namespace Joueur.cs.Games.Pirates
     /// </summary>
     public class Game : BaseGame
     {
+        /// <summary>
+        /// The game version hash, used to compare if we are playing the same version on the server.
+        /// </summary>
+        new protected static string GameVersion = "d51fca49d06cb7164f9dbf9c3515ab0f9b5a17113a5946bddcc75aaba125967f";
+
         #region Properties
         /// <summary>
         /// The rate buried gold increases each turn.
@@ -147,6 +152,11 @@ namespace Joueur.cs.Games.Pirates
         /// All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
         /// </summary>
         public IList<Pirates.Tile> Tiles { get; protected set; }
+
+        /// <summary>
+        /// The amount of time (in nano-seconds) added after each player performs a turn.
+        /// </summary>
+        public int TimeAddedPerTurn { get; protected set; }
 
         /// <summary>
         /// Every Unit in the game. Merchant units have targetPort set to a port.

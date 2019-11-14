@@ -22,6 +22,11 @@ namespace Joueur.cs.Games.Stardash
     /// </summary>
     public class Game : BaseGame
     {
+        /// <summary>
+        /// The game version hash, used to compare if we are playing the same version on the server.
+        /// </summary>
+        new protected static string GameVersion = "0fa378e83ac567ebdf3e9805d3f130023f936e2740acda173d238b37f2b5d541";
+
         #region Properties
         /// <summary>
         /// All the celestial bodies in the game. The first two are planets and the third is the sun. The fourth is the VP asteroid. Everything else is normal asteroids.

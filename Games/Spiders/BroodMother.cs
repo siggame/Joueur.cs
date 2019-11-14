@@ -23,7 +23,7 @@ namespace Joueur.cs.Games.Spiders
         /// <summary>
         /// How many eggs the BroodMother has to spawn Spiderlings this turn.
         /// </summary>
-        public double Eggs { get; protected set; }
+        public int Eggs { get; protected set; }
 
         /// <summary>
         /// How much health this BroodMother has left. When it reaches 0, she dies and her owner loses.

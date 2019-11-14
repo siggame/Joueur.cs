@@ -22,6 +22,11 @@ namespace Joueur.cs.Games.Stumped
     /// </summary>
     public class Game : BaseGame
     {
+        /// <summary>
+        /// The game version hash, used to compare if we are playing the same version on the server.
+        /// </summary>
+        new protected static string GameVersion = "7de307cae4a9a163a9b3600cb20c4b376b9f9cc42f1b990852878fea0127eed3";
+
         #region Properties
         /// <summary>
         /// Every Beaver in the game.
@@ -102,6 +107,11 @@ namespace Joueur.cs.Games.Stumped
         /// All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
         /// </summary>
         public IList<Stumped.Tile> Tiles { get; protected set; }
+
+        /// <summary>
+        /// The amount of time (in nano-seconds) added after each player performs a turn.
+        /// </summary>
+        public int TimeAddedPerTurn { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

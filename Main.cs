@@ -57,10 +57,12 @@ namespace Joueur.cs
             string gameName = client.WaitForEvent("named").ToString();
 
             BaseGame game;
+            string gameVersion;
             try
             {
                 Type gameType = Type.GetType("Joueur.cs.Games." + gameName + ".Game");
                 game = (BaseGame)Activator.CreateInstance(gameType, true);
+                gameVersion = gameType.GetField("GameVersion", BindingFlags.NonPublic | BindingFlags.Static).GetValue(game).ToString();
             }
             catch (Exception exception)
             {
@@ -105,6 +107,19 @@ namespace Joueur.cs
             );
 
             var lobbiedData = (ServerMessages.LobbiedData)client.WaitForEvent("lobbied");
+
+            if (gameVersion != lobbiedData.gameVersion) {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(
+                    String.Format(@"WARNING: Game versions do not match.
+-> Your local game version is:     {0}
+-> Game Server's game version is:  {1}
+Version mismatch means that unexpected crashes may happen due to differing game structures!",
+                    lobbiedData.gameVersion.Substring(0, 8),
+                    gameVersion.Substring(0, 8))
+                );
+                Console.ResetColor();
+            }
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("In lobby for game '" + lobbiedData.gameName + "' in session '" + lobbiedData.gameSession + "'.");
