@@ -22,6 +22,11 @@ namespace Joueur.cs.Games.Spiders
     /// </summary>
     public class Game : BaseGame
     {
+        /// <summary>
+        /// The game version hash, used to compare if we are playing the same version on the server.
+        /// </summary>
+        new protected static string GameVersion = "a8df6038306b6855bb35959d7698f8dcbf98f48e7e148de59fef940ccb241bdf";
+
         #region Properties
         /// <summary>
         /// The player whose turn it is currently. That player can send commands. Other players cannot.
@@ -54,6 +59,11 @@ namespace Joueur.cs.Games.Spiders
         public int MaxTurns { get; protected set; }
 
         /// <summary>
+        /// The maximum strength a web can be strengthened to.
+        /// </summary>
+        public int MaxWebStrength { get; protected set; }
+
+        /// <summary>
         /// The speed at which Spiderlings move on Webs.
         /// </summary>
         public int MovementSpeed { get; protected set; }
@@ -77,6 +87,11 @@ namespace Joueur.cs.Games.Spiders
         /// The speed at which Spitters work to spit new Webs.
         /// </summary>
         public int SpitSpeed { get; protected set; }
+
+        /// <summary>
+        /// The amount of time (in nano-seconds) added after each player performs a turn.
+        /// </summary>
+        public int TimeAddedPerTurn { get; protected set; }
 
         /// <summary>
         /// How much web strength is added or removed from Webs when they are weaved.

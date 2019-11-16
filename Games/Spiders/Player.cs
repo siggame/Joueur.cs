@@ -46,6 +46,11 @@ namespace Joueur.cs.Games.Spiders
         public string Name { get; protected set; }
 
         /// <summary>
+        /// The number of nests this player controls.
+        /// </summary>
+        public int NumberOfNestsControlled { get; protected set; }
+
+        /// <summary>
         /// This player's opponent in the game.
         /// </summary>
         public Spiders.Player Opponent { get; protected set; }

@@ -22,12 +22,12 @@ namespace Joueur.cs.Games.Newtonian
     /// </summary>
     public class Game : BaseGame
     {
-        #region Properties
         /// <summary>
-        /// The percent of max HP regained when a unit end their turn on a tile owned by their player.
+        /// The game version hash, used to compare if we are playing the same version on the server.
         /// </summary>
-        public double RegenerateRate { get; protected set; }
+        new protected static string GameVersion = "7c19f909ee5faa0ac3faf4e989032b5a37ba94aeb5d6ae7654a15a2bb1401bbe";
 
+        #region Properties
         /// <summary>
         /// The player whose turn it is currently. That player can send commands. Other players cannot.
         /// </summary>
@@ -92,6 +92,11 @@ namespace Joueur.cs.Games.Newtonian
         /// The amount of victory points added when a refined ore is consumed by the generator.
         /// </summary>
         public int RefinedValue { get; protected set; }
+
+        /// <summary>
+        /// The percent of max HP regained when a unit end their turn on a tile owned by their player.
+        /// </summary>
+        public double RegenerateRate { get; protected set; }
 
         /// <summary>
         /// A unique identifier for the game instance that is being played.

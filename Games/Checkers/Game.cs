@@ -22,6 +22,11 @@ namespace Joueur.cs.Games.Checkers
     /// </summary>
     public class Game : BaseGame
     {
+        /// <summary>
+        /// The game version hash, used to compare if we are playing the same version on the server.
+        /// </summary>
+        new protected static string GameVersion = "49f1e5586cc4c62b6f74081e803d8edf9f54e8315f221c62c638f963cea8ab31";
+
         #region Properties
         /// <summary>
         /// The height of the board for the Y component of a checker.
@@ -72,6 +77,11 @@ namespace Joueur.cs.Games.Checkers
         /// A unique identifier for the game instance that is being played.
         /// </summary>
         public string Session { get; protected set; }
+
+        /// <summary>
+        /// The amount of time (in nano-seconds) added after each player performs a turn.
+        /// </summary>
+        public int TimeAddedPerTurn { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

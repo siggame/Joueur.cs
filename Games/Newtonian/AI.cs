@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 // <<-- Creer-Merge: usings -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
 // you can add additional using(s) here
-using System.Runtime.CompilerServices;
 // <<-- /Creer-Merge: usings -->>
 
 namespace Joueur.cs.Games.Newtonian
@@ -58,8 +57,6 @@ namespace Joueur.cs.Games.Newtonian
         {
             // <<-- Creer-Merge: start -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             base.Start();
-
-            Console.Clear();
             // <<-- /Creer-Merge: start -->>
         }
 

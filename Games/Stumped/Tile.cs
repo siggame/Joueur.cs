@@ -71,7 +71,7 @@ namespace Joueur.cs.Games.Stumped
         public Stumped.Tile TileWest { get; protected set; }
 
         /// <summary>
-        /// What type of Tile this is, either 'Water' or 'Land'.
+        /// What type of Tile this is, either 'water' or 'land'.
         /// </summary>
         public string Type { get; protected set; }
 

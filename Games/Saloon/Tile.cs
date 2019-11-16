@@ -21,7 +21,7 @@ namespace Joueur.cs.Games.Saloon
     {
         #region Properties
         /// <summary>
-        /// The beer Bottle currently flying over this Tile.
+        /// The beer Bottle currently flying over this Tile, null otherwise.
         /// </summary>
         public Saloon.Bottle Bottle { get; protected set; }
 

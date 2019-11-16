@@ -7,9 +7,10 @@ using System.Text;
 namespace Joueur.cs.ServerMessages
 {
     class LobbiedData : ReceivedData
-    {        
+    {
         public string gameName;
         public string gameSession;
+        public string gameVersion;
         public Dictionary<string, string> constants; // TODO: could be more dynamic than this, just so happens all keys and values are strings at the moment.
     }
 }

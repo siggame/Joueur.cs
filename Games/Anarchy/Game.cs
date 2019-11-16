@@ -22,6 +22,11 @@ namespace Joueur.cs.Games.Anarchy
     /// </summary>
     public class Game : BaseGame
     {
+        /// <summary>
+        /// The game version hash, used to compare if we are playing the same version on the server.
+        /// </summary>
+        new protected static string GameVersion = "2bc66f9a5d7babd553079e149c7466feb6f553935b608ff722872e195fbadab8";
+
         #region Properties
         /// <summary>
         /// How many bribes players get at the beginning of their turn, not counting their burned down Buildings.
@@ -92,6 +97,11 @@ namespace Joueur.cs.Games.Anarchy
         /// A unique identifier for the game instance that is being played.
         /// </summary>
         public string Session { get; protected set; }
+
+        /// <summary>
+        /// The amount of time (in nano-seconds) added after each player performs a turn.
+        /// </summary>
+        public int TimeAddedPerTurn { get; protected set; }
 
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.

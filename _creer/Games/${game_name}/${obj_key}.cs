@@ -34,6 +34,13 @@ ${"""/// <summary>
     /// </summary>
     public class ${obj_key} : ${inherit_str}
     {
+% if obj_key == 'Game':
+        /// <summary>
+        /// The game version hash, used to compare if we are playing the same version on the server.
+        /// </summary>
+        new protected static string GameVersion = "${game_version}";
+
+% endif
         #region Properties
 % for attr_name in obj['attribute_names']:
 <% attr_parms = obj['attributes'][attr_name]

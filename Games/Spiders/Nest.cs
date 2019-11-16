@@ -21,6 +21,11 @@ namespace Joueur.cs.Games.Spiders
     {
         #region Properties
         /// <summary>
+        /// The Player that 'controls' this Nest as they have the most Spiders on this nest.
+        /// </summary>
+        public Spiders.Player ControllingPlayer { get; protected set; }
+
+        /// <summary>
         /// All the Spiders currently located on this Nest.
         /// </summary>
         public IList<Spiders.Spider> Spiders { get; protected set; }
