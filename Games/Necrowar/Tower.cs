@@ -26,6 +26,11 @@ namespace Joueur.cs.Games.Necrowar
         public bool Attacked { get; protected set; }
 
         /// <summary>
+        /// How many turns are left before it can fire again.
+        /// </summary>
+        public int Cooldown { get; protected set; }
+
+        /// <summary>
         /// How much remaining health this tower has.
         /// </summary>
         public int Health { get; protected set; }
