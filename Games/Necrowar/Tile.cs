@@ -223,7 +223,10 @@ namespace Joueur.cs.Games.Necrowar
         public bool IsPathable()
         {
             // <<-- Creer-Merge: is_pathable_builtin -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-            return false; // DEVELOPER ADD LOGIC HERE
+            // DEVELOPER ADD LOGIC HERE
+            if (this.IsPath && this.Unit == null && !this.IsTower)
+                return true;
+            return false;
             // <<-- /Creer-Merge: is_pathable_builtin -->>
         }
 
@@ -244,6 +247,10 @@ namespace Joueur.cs.Games.Necrowar
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional method(s) here.
+        public bool IsPathableWorker()
+        {
+            return !(this.IsRiver || this.IsUnitSpawn || this.IsWall || this.Unit != null);
+        }
         // <<-- /Creer-Merge: methods -->>
         #endregion
     }
