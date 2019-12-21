@@ -18,9 +18,9 @@
     "content": [
       {
         "files": [
+          "toc.yml",
           "games/**.yml",
           "games/index.md",
-          "toc.yml",
           "*.md"
         ]
       }

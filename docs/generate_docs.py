@@ -17,13 +17,11 @@ if os.path.isdir("./output/"):
     shutil.rmtree("./output/")
 
 if not os.path.isdir("./docfx"):
-    run(["wget https://github.com/dotnet/docfx/releases/download/v2.41/docfx.zip"], shell=True)
-    # run(["unzip docfx.zip -d docfx"], shell=True)
+    run(["wget https://github.com/dotnet/docfx/releases/download/v2.48/docfx.zip"], shell=True)
     with zipfile.ZipFile("./docfx.zip","r") as zip_ref:
         zip_ref.extractall("./docfx")
     os.remove("./docfx.zip")
     os.chmod("./docfx/docfx.exe", 0o777)
-    # run(["chmod 777 ./docfx/docfx.exe"])
 
 shutil.copyfile("../README.md", "./index.md")
 
@@ -35,7 +33,7 @@ if os.path.isdir("./games"):
     shutil.rmtree("./games")
 os.makedirs("./games")
 
-game_names = [f for f in os.listdir("../Games") if os.path.isdir(os.path.join("../Games", f))]
+game_names = list(sorted([f for f in os.listdir("../Games") if os.path.isdir(os.path.join("../Games", f))]))
 
 summaries = {}
 for game_name in game_names:
@@ -77,7 +75,7 @@ with open("./games/index.md", "w+") as file:
 
 These are the games that are available to play via the C# Joueur Client. Their source code is stored in the directory: `Games/GAME_NAME/`, where `GAME_NAME` is the name of the game (with the first letter capitalized).
 
-""" + ("\n".join('#### [**{n}**](Joueur.cs.Games.{n}.html)\n{s}'.format(n=n, s=summaries[n]) for n in game_names)) + """
+""" + ("\n".join('#### [**{n}**](Joueur.cs.Games.{n}.html)\n{s}\n\n'.format(n=n, s=summaries[n]) for n in game_names)) + """
 
 ## Other Notes
 
@@ -101,19 +99,20 @@ Its directory structure is similar to most clients (such as this one).
 run(["mono ./docfx/docfx.exe metadata ./docfx.json"], shell=True)
 run(["mono ./docfx/docfx.exe build ./docfx.json"], shell=True)
 
-with open("./output/games/toc.html", "r+") as file:
-    contents = file.read()
-    contents = contents.replace(">Joueur.cs.Games.", ">")
+if False:
+    with open("./output/games/toc.html", "r+") as file:
+        contents = file.read()
+        contents = contents.replace(">Joueur.cs.Games.", ">")
 
-    START_STR = "<li>"
-    start = contents.find(START_STR)
+        START_STR = "<li>"
+        start = contents.find(START_STR)
 
-    END_STR = "</ul>  </li>"
-    end = contents.find(END_STR)
+        END_STR = "</ul>  </li>"
+        end = contents.find(END_STR)
 
-    contents = contents[:(start + len(START_STR))] + contents[(end + len(END_STR)):]
-    file.seek(0)
-    file.write(contents)
-    file.truncate()
+        contents = contents[:(start + len(START_STR))] + contents[(end + len(END_STR)):]
+        file.seek(0)
+        file.write(contents)
+        file.truncate()
 
 print("Done generating C# docs")
