@@ -1,13 +1,19 @@
-
 all:
 	make dependencies
-	make core
+	make build-debug
 
-dependencies: ;
+release:
+	make dependencies
+	make build-release
 
-core:
+dependencies:
 	dotnet restore
-	dotnet build -o build
+
+build-debug:
+	dotnet build -o build --configuration Debug
+
+build-release:
+	dotnet build -o build --configuration Release
 
 clean:
 	rm -rf build/ obj/ packages/ bin/
