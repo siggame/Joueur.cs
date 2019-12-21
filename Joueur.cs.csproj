@@ -16,7 +16,7 @@
     <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="_creer\**"/>
+    <Compile Remove=".creer\**"/>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ILLink.Tasks" Version="0.1.4-preview-906439" />
