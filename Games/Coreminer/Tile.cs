@@ -86,6 +86,11 @@ namespace Joueur.cs.Games.Coreminer
         public Coreminer.Tile TileWest { get; protected set; }
 
         /// <summary>
+        /// An array of the Units on this Tile.
+        /// </summary>
+        public IList<Coreminer.Unit> Units { get; protected set; }
+
+        /// <summary>
         /// The x (horizontal) position of this Tile.
         /// </summary>
         public int X { get; protected set; }
@@ -108,6 +113,17 @@ namespace Joueur.cs.Games.Coreminer
         /// </summary>
         protected Tile() : base()
         {
+            this.Units = new List<Coreminer.Unit>();
+        }
+
+        /// <summary>
+        /// Spawns a Miner Unit on this Tile - Must be on the surface on their side of the map.
+        /// </summary>
+        /// <returns>True if successfully spawned, false otherwise.</returns>
+        public bool SpawnMiner()
+        {
+            return this.RunOnServer<bool>("spawnMiner", new Dictionary<string, object> {
+            });
         }
 
 

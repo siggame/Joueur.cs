@@ -97,16 +97,6 @@ namespace Joueur.cs.Games.Coreminer
             this.Units = new List<Coreminer.Unit>();
         }
 
-        /// <summary>
-        /// Spawns a Miner Unit on this Player's Base Tile.
-        /// </summary>
-        /// <returns>True if successfully spawned, false otherwise.</returns>
-        public bool SpawnMiner()
-        {
-            return this.RunOnServer<bool>("spawnMiner", new Dictionary<string, object> {
-            });
-        }
-
 
 
         // <<-- Creer-Merge: methods -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
