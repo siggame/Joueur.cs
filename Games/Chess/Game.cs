@@ -20,6 +20,11 @@ namespace Joueur.cs.Games.Chess
     /// </summary>
     public class Game : BaseGame
     {
+        /// <summary>
+        /// The game version hash, used to compare if we are playing the same version on the server.
+        /// </summary>
+        new protected static string GameVersion = "cfa5f5c1685087ce2899229c04c26e39f231e897ecc8fe036b44bc22103ef801";
+
         #region Properties
         /// <summary>
         /// Forsyth-Edwards Notation (fen), a notation that describes the game board state.
@@ -27,7 +32,7 @@ namespace Joueur.cs.Games.Chess
         public string Fen { get; protected set; }
 
         /// <summary>
-        /// The list of [known] moves that have occured in the game, in Standard Algebriac Notation (SAN) format. The first element is the first move, with the last being the most recent.
+        /// The list of [known] moves that have occurred in the game, in Universal Chess Inferface (UCI) format. The first element is the first move, with the last element being the most recent.
         /// </summary>
         public IList<string> History { get; protected set; }
 

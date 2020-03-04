@@ -79,15 +79,15 @@ namespace Joueur.cs.Games.Chess
         /// <summary>
         /// This is called every time it is this AI.player's turn to make a move.
         /// </summary>
-        /// <returns>A string in Standard Algebriac Notation (SAN) for the move you want to make. If the move is invalid or not properly formatted you will lose the game.</returns>
+        /// <returns>A string in Universal Chess Inferface (UCI) or Standard Algebraic Notation (SAN) formatting for the move you want to make. If the move is invalid or not properly formatted you will lose the game.</returns>
         public string MakeMove()
         {
             Console.WriteLine(this.PrettyFEN(this.Game.Fen, this.Player.Color));
 
             // This will only work if we are black move the pawn at b2 to b3.
             // Otherwise we will lose.
-            // Your job is to code SOMETHING to parse the FEN string in some way to determine a valid move, in SAN format.
-            return "b3";
+            // Your job is to code SOMETHING to parse the FEN string in some way to determine a valid move, in UCI format.
+            return "b2b3";
         }
 
         /// <summary>
