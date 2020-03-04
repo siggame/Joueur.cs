@@ -25,7 +25,7 @@ namespace Joueur.cs.Games.Coreminer
         /// <summary>
         /// The game version hash, used to compare if we are playing the same version on the server.
         /// </summary>
-        new protected static string GameVersion = "7c106e1dbcbba7626801ee73d719a2234967d6da0919b290713def4c6954cb84";
+        new protected static string GameVersion = "4d15edfc10c5fd1f260c1dd405d853c00f3622e802551d1375a983ee73ec6f0c";
 
         #region Properties
         /// <summary>

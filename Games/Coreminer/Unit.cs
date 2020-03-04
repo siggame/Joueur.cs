@@ -86,10 +86,10 @@ namespace Joueur.cs.Games.Coreminer
         }
 
         /// <summary>
-        /// Builds a support, shield, ladder, or bomb on Unit's tile, or an adjacent Tile.
+        /// Builds a support, shield, or ladder on Unit's tile, or an adjacent Tile.
         /// </summary>
         /// <param name="tile">The Tile to build on.</param>
-        /// <param name="type">The structure to build (support, ladder, shield, or bomb).</param>
+        /// <param name="type">The structure to build (support, ladder, or shield).</param>
         /// <returns>True if successfully built, False otherwise.</returns>
         public bool Build(Coreminer.Tile tile, string type)
         {
@@ -103,7 +103,7 @@ namespace Joueur.cs.Games.Coreminer
         /// Dumps materials from cargo to an adjacent tile.
         /// </summary>
         /// <param name="tile">The tile the materials will be dumped on.</param>
-        /// <param name="material">The material the Unit will drop. 'dirt' or 'ore'.</param>
+        /// <param name="material">The material the Unit will drop. 'dirt', 'ore', or 'bomb'.</param>
         /// <param name="amount">The number of materials to drop. Amounts &lt;= 0 will drop all the materials.</param>
         /// <returns>True if successfully dumped materials, false otherwise.</returns>
         public bool Dump(Coreminer.Tile tile, string material, int amount)
