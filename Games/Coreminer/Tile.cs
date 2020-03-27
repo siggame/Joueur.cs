@@ -36,7 +36,7 @@ namespace Joueur.cs.Games.Coreminer
         public bool IsFalling { get; protected set; }
 
         /// <summary>
-        /// Whether or not a hopper is placed on this Tile.
+        /// Whether or not a hopper is on this Tile.
         /// </summary>
         public bool IsHopper { get; protected set; }
 
@@ -56,7 +56,7 @@ namespace Joueur.cs.Games.Coreminer
         public int Ore { get; protected set; }
 
         /// <summary>
-        /// The owner of this Tile, or null if owned by no-one. Only for bases and hoppers.
+        /// The owner of this Tile, or undefined if owned by no-one. Only for bases and hoppers.
         /// </summary>
         public Coreminer.Player Owner { get; protected set; }
 

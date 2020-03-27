@@ -25,7 +25,7 @@ namespace Joueur.cs.Games.Coreminer
         /// <summary>
         /// The game version hash, used to compare if we are playing the same version on the server.
         /// </summary>
-        new protected static string GameVersion = "4d15edfc10c5fd1f260c1dd405d853c00f3622e802551d1375a983ee73ec6f0c";
+        new protected static string GameVersion = "8d537ee0d9bd5cd575dca2f2f08f184157cd9dce66a015e5598b3ee0e70e7ef6";
 
         #region Properties
         /// <summary>
@@ -47,6 +47,11 @@ namespace Joueur.cs.Games.Coreminer
         /// A list of all jobs.
         /// </summary>
         public IList<Coreminer.Job> Jobs { get; protected set; }
+
+        /// <summary>
+        /// The amount of building material required to build a ladder.
+        /// </summary>
+        public int LadderCost { get; protected set; }
 
         /// <summary>
         /// The number of Tiles in the map along the y (vertical) axis.
@@ -77,6 +82,16 @@ namespace Joueur.cs.Games.Coreminer
         /// A unique identifier for the game instance that is being played.
         /// </summary>
         public string Session { get; protected set; }
+
+        /// <summary>
+        /// The amount of building material required to shield a Tile.
+        /// </summary>
+        public int ShieldCost { get; protected set; }
+
+        /// <summary>
+        /// The amount of building material required to build a support.
+        /// </summary>
+        public int SupportCost { get; protected set; }
 
         /// <summary>
         /// All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.

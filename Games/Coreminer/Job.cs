@@ -21,44 +21,29 @@ namespace Joueur.cs.Games.Coreminer
     {
         #region Properties
         /// <summary>
-        /// The amount of cargo capacity this Unit starts with.
+        /// The amount of cargo capacity this Unit starts with per level.
         /// </summary>
-        public int CargoCapacity { get; protected set; }
+        public IList<int> CargoCapacity { get; protected set; }
 
         /// <summary>
-        /// The amount of starting health this Job has.
+        /// The cost of spawning a Unit with this Job.
         /// </summary>
-        public int Health { get; protected set; }
+        public int Cost { get; protected set; }
 
         /// <summary>
-        /// The maximum amount of cargo capacity this Unit can have.
+        /// The amount of starting health this Job has per level.
         /// </summary>
-        public int MaxCargoCapacity { get; protected set; }
+        public IList<int> Health { get; protected set; }
 
         /// <summary>
-        /// The maximum amount of health this Job can have.
+        /// The amount of mining power this Unit has per turn per level.
         /// </summary>
-        public int MaxHealth { get; protected set; }
+        public IList<int> MiningPower { get; protected set; }
 
         /// <summary>
-        /// The maximum amount of mining power this Unit can have.
+        /// The number of moves this Job can make per turn per level.
         /// </summary>
-        public int MaxMiningPower { get; protected set; }
-
-        /// <summary>
-        /// The maximum number of moves this Job can have.
-        /// </summary>
-        public int MaxMoves { get; protected set; }
-
-        /// <summary>
-        /// The amount of mining power this Unit has per turn.
-        /// </summary>
-        public int MiningPower { get; protected set; }
-
-        /// <summary>
-        /// The number of moves this Job can make per turn.
-        /// </summary>
-        public int Moves { get; protected set; }
+        public IList<int> Moves { get; protected set; }
 
         /// <summary>
         /// The Job title. 'miner' or 'bomb'.
@@ -78,6 +63,10 @@ namespace Joueur.cs.Games.Coreminer
         /// </summary>
         protected Job() : base()
         {
+            this.CargoCapacity = new List<int>();
+            this.Health = new List<int>();
+            this.MiningPower = new List<int>();
+            this.Moves = new List<int>();
         }
 
 

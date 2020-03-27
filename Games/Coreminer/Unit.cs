@@ -46,6 +46,26 @@ namespace Joueur.cs.Games.Coreminer
         public Coreminer.Job Job { get; protected set; }
 
         /// <summary>
+        /// The maximum amount of cargo this Unit can carry.
+        /// </summary>
+        public int MaxCargoCapacity { get; protected set; }
+
+        /// <summary>
+        /// The maximum health of this Unit.
+        /// </summary>
+        public int MaxHealth { get; protected set; }
+
+        /// <summary>
+        /// The maximum mining power of this Unit.
+        /// </summary>
+        public int MaxMiningPower { get; protected set; }
+
+        /// <summary>
+        /// The maximum moves this Unit can have.
+        /// </summary>
+        public int MaxMoves { get; protected set; }
+
+        /// <summary>
         /// The remaining mining power this Unit has this turn.
         /// </summary>
         public int MiningPower { get; protected set; }

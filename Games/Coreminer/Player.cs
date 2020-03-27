@@ -26,6 +26,11 @@ namespace Joueur.cs.Games.Coreminer
         public Coreminer.Tile BaseTile { get; protected set; }
 
         /// <summary>
+        /// The bombs stored in the Player's supply.
+        /// </summary>
+        public int Bombs { get; protected set; }
+
+        /// <summary>
         /// What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
         /// </summary>
         public string ClientType { get; protected set; }
@@ -39,6 +44,11 @@ namespace Joueur.cs.Games.Coreminer
         /// If the player lost the game or not.
         /// </summary>
         public bool Lost { get; protected set; }
+
+        /// <summary>
+        /// The amount of money this Player currently has.
+        /// </summary>
+        public int Money { get; protected set; }
 
         /// <summary>
         /// The name of the player.
@@ -59,6 +69,16 @@ namespace Joueur.cs.Games.Coreminer
         /// The reason why the player won the game.
         /// </summary>
         public string ReasonWon { get; protected set; }
+
+        /// <summary>
+        /// The Tiles on this Player's side of the map.
+        /// </summary>
+        public IList<Coreminer.Tile> Side { get; protected set; }
+
+        /// <summary>
+        /// The Tiles this Player may spawn Units on.
+        /// </summary>
+        public IList<Coreminer.Tile> SpawnTiles { get; protected set; }
 
         /// <summary>
         /// The amount of time (in ns) remaining for this AI to send commands.
@@ -94,6 +114,8 @@ namespace Joueur.cs.Games.Coreminer
         protected Player() : base()
         {
             this.HopperTiles = new List<Coreminer.Tile>();
+            this.Side = new List<Coreminer.Tile>();
+            this.SpawnTiles = new List<Coreminer.Tile>();
             this.Units = new List<Coreminer.Unit>();
         }
 
