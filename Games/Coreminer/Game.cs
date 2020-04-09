@@ -25,9 +25,19 @@ namespace Joueur.cs.Games.Coreminer
         /// <summary>
         /// The game version hash, used to compare if we are playing the same version on the server.
         /// </summary>
-        new protected static string GameVersion = "7c7df3c25ba9e82d546825d64e398fc8c07b58e868e7501736a1637ce00e0681";
+        new protected static string GameVersion = "397e64cb9b2f8d76a04e0f32823456fad3d0dd8902b39c6f4d3bc3d636ec2bfd";
 
         #region Properties
+        /// <summary>
+        /// The price of buying a bomb.
+        /// </summary>
+        public int BombCost { get; protected set; }
+
+        /// <summary>
+        /// The price of buying building materials.
+        /// </summary>
+        public int BuildingMaterialCost { get; protected set; }
+
         /// <summary>
         /// The player whose turn it is currently. That player can send commands. Other players cannot.
         /// </summary>
