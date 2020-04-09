@@ -25,13 +25,18 @@ namespace Joueur.cs.Games.Coreminer
         /// <summary>
         /// The game version hash, used to compare if we are playing the same version on the server.
         /// </summary>
-        new protected static string GameVersion = "397e64cb9b2f8d76a04e0f32823456fad3d0dd8902b39c6f4d3bc3d636ec2bfd";
+        new protected static string GameVersion = "6414fff3d6e5957603f07cc0e7e14897d16437e4af5bbc05940fdc81df44c032";
 
         #region Properties
         /// <summary>
         /// The price of buying a bomb.
         /// </summary>
         public int BombCost { get; protected set; }
+
+        /// <summary>
+        /// The amount of cargo space taken up by a bomb.
+        /// </summary>
+        public int BombSize { get; protected set; }
 
         /// <summary>
         /// The price of buying building materials.
