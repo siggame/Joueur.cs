@@ -25,7 +25,7 @@ namespace Joueur.cs.Games.Coreminer
         /// <summary>
         /// The game version hash, used to compare if we are playing the same version on the server.
         /// </summary>
-        new protected static string GameVersion = "6414fff3d6e5957603f07cc0e7e14897d16437e4af5bbc05940fdc81df44c032";
+        new protected static string GameVersion = "46abaae0c6f41ba8536de3714cb964013777223bc6d6753f838182f9673db93e";
 
         #region Properties
         /// <summary>
@@ -122,6 +122,26 @@ namespace Joueur.cs.Games.Coreminer
         /// Every Unit in the game.
         /// </summary>
         public IList<Coreminer.Unit> Units { get; protected set; }
+
+        /// <summary>
+        /// The cost to upgrade a Unit's cargo capacity.
+        /// </summary>
+        public int UpgradeCargoCapacityCost { get; protected set; }
+
+        /// <summary>
+        /// The cost to upgrade a Unit's health.
+        /// </summary>
+        public int UpgradeHealthCost { get; protected set; }
+
+        /// <summary>
+        /// The cost to upgrade a Unit's mining power.
+        /// </summary>
+        public int UpgradeMiningPowerCost { get; protected set; }
+
+        /// <summary>
+        /// The cost to upgrade a Unit's movement speed.
+        /// </summary>
+        public int UpgradeMovesCost { get; protected set; }
 
         /// <summary>
         /// The amount of victory points required to win.
