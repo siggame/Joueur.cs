@@ -1,4 +1,4 @@
-// Mine resources to obtain more wealth than your opponent.
+// Mine resources to obtain more value than your opponent.
 
 // DO NOT MODIFY THIS FILE
 // Never try to directly create an instance of this class, or modify its member variables.
@@ -13,25 +13,25 @@ using System.Text;
 // <<-- /Creer-Merge: usings -->>
 
 /// <summary>
-/// Mine resources to obtain more wealth than your opponent.
+/// Mine resources to obtain more value than your opponent.
 /// </summary>
 namespace Joueur.cs.Games.Coreminer
 {
     /// <summary>
-    /// Mine resources to obtain more wealth than your opponent.
+    /// Mine resources to obtain more value than your opponent.
     /// </summary>
     public class Game : BaseGame
     {
         /// <summary>
         /// The game version hash, used to compare if we are playing the same version on the server.
         /// </summary>
-        new protected static string GameVersion = "46abaae0c6f41ba8536de3714cb964013777223bc6d6753f838182f9673db93e";
+        new protected static string GameVersion = "230d41da5f9e95a58b66fbaa7d6d61f4853e459517e93b553d829607b0286082";
 
         #region Properties
         /// <summary>
-        /// The price of buying a bomb.
+        /// The monetary price of a bomb when bought or sold.
         /// </summary>
-        public int BombCost { get; protected set; }
+        public int BombPrice { get; protected set; }
 
         /// <summary>
         /// The amount of cargo space taken up by a bomb.
@@ -39,9 +39,9 @@ namespace Joueur.cs.Games.Coreminer
         public int BombSize { get; protected set; }
 
         /// <summary>
-        /// The price of buying building materials.
+        /// The monetary price of building materials when bought.
         /// </summary>
-        public int BuildingMaterialCost { get; protected set; }
+        public int BuildingMaterialPrice { get; protected set; }
 
         /// <summary>
         /// The player whose turn it is currently. That player can send commands. Other players cannot.
@@ -54,9 +54,9 @@ namespace Joueur.cs.Games.Coreminer
         public int CurrentTurn { get; protected set; }
 
         /// <summary>
-        /// The amount of turns it takes to gain a free Bomb.
+        /// The monetary price of dirt when bought or sold.
         /// </summary>
-        public int FreeBombInterval { get; protected set; }
+        public int DirtPrice { get; protected set; }
 
         /// <summary>
         /// A list of all jobs.
@@ -84,7 +84,12 @@ namespace Joueur.cs.Games.Coreminer
         public int MaxTurns { get; protected set; }
 
         /// <summary>
-        /// The amount of victory points awarded when ore is deposited in the base.
+        /// The amount of money awarded when ore is dumped in the base and sold.
+        /// </summary>
+        public int OrePrice { get; protected set; }
+
+        /// <summary>
+        /// The amount of victory points awarded when ore is dumped in the base and sold.
         /// </summary>
         public int OreValue { get; protected set; }
 
@@ -102,6 +107,11 @@ namespace Joueur.cs.Games.Coreminer
         /// The amount of building material required to shield a Tile.
         /// </summary>
         public int ShieldCost { get; protected set; }
+
+        /// <summary>
+        /// The monetary price of spawning a Miner.
+        /// </summary>
+        public int SpawnPrice { get; protected set; }
 
         /// <summary>
         /// The amount of building material required to build a support.
@@ -124,24 +134,9 @@ namespace Joueur.cs.Games.Coreminer
         public IList<Coreminer.Unit> Units { get; protected set; }
 
         /// <summary>
-        /// The cost to upgrade a Unit's cargo capacity.
+        /// The cost to upgrade a Unit at each level.
         /// </summary>
-        public int UpgradeCargoCapacityCost { get; protected set; }
-
-        /// <summary>
-        /// The cost to upgrade a Unit's health.
-        /// </summary>
-        public int UpgradeHealthCost { get; protected set; }
-
-        /// <summary>
-        /// The cost to upgrade a Unit's mining power.
-        /// </summary>
-        public int UpgradeMiningPowerCost { get; protected set; }
-
-        /// <summary>
-        /// The cost to upgrade a Unit's movement speed.
-        /// </summary>
-        public int UpgradeMovesCost { get; protected set; }
+        public IList<int> UpgradePrice { get; protected set; }
 
         /// <summary>
         /// The amount of victory points required to win.
@@ -167,6 +162,7 @@ namespace Joueur.cs.Games.Coreminer
             this.Players = new List<Coreminer.Player>();
             this.Tiles = new List<Coreminer.Tile>();
             this.Units = new List<Coreminer.Unit>();
+            this.UpgradePrice = new List<int>();
         }
 
 

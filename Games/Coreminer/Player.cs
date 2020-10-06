@@ -26,24 +26,9 @@ namespace Joueur.cs.Games.Coreminer
         public Coreminer.Tile BaseTile { get; protected set; }
 
         /// <summary>
-        /// The bombs stored in the Player's supply.
-        /// </summary>
-        public int Bombs { get; protected set; }
-
-        /// <summary>
-        /// The building material stored in the Player's supply.
-        /// </summary>
-        public int BuildingMaterials { get; protected set; }
-
-        /// <summary>
         /// What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
         /// </summary>
         public string ClientType { get; protected set; }
-
-        /// <summary>
-        /// The dirt stored in the Player's supply.
-        /// </summary>
-        public int Dirt { get; protected set; }
 
         /// <summary>
         /// The Tiles this Player's hoppers are on.
@@ -130,32 +115,12 @@ namespace Joueur.cs.Games.Coreminer
         }
 
         /// <summary>
-        /// Purchases a resource and adds it to the Player's supply.
+        /// Spawns a Miner Unit on this Player's base tile.
         /// </summary>
-        /// <param name="resource">The type of resource to buy.</param>
-        /// <param name="amount">The amount of resource to buy.</param>
-        /// <returns>True if successfully purchased, false otherwise.</returns>
-        public bool Buy(string resource, int amount)
+        /// <returns>True if successfully spawned, false otherwise.</returns>
+        public bool SpawnMiner()
         {
-            return this.RunOnServer<bool>("buy", new Dictionary<string, object> {
-                {"resource", resource},
-                {"amount", amount}
-            });
-        }
-
-        /// <summary>
-        /// Transfers a resource from the Player's supply to a Unit.
-        /// </summary>
-        /// <param name="unit">The Unit to transfer materials to.</param>
-        /// <param name="resource">The type of resource to transfer.</param>
-        /// <param name="amount">The amount of resource to transfer.</param>
-        /// <returns>True if successfully transfered, false otherwise.</returns>
-        public bool Transfer(Coreminer.Unit unit, string resource, int amount)
-        {
-            return this.RunOnServer<bool>("transfer", new Dictionary<string, object> {
-                {"unit", unit},
-                {"resource", resource},
-                {"amount", amount}
+            return this.RunOnServer<bool>("spawnMiner", new Dictionary<string, object> {
             });
         }
 

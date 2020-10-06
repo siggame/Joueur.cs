@@ -26,7 +26,7 @@ namespace Joueur.cs.Games.Coreminer
         public int Dirt { get; protected set; }
 
         /// <summary>
-        /// Whether or not the tile is an indestructible base Tile.
+        /// Whether or not the tile is a base Tile.
         /// </summary>
         public bool IsBase { get; protected set; }
 
@@ -56,7 +56,7 @@ namespace Joueur.cs.Games.Coreminer
         public int Ore { get; protected set; }
 
         /// <summary>
-        /// The owner of this Tile, or undefined if owned by no-one. Only for bases and hoppers.
+        /// The owner of this Tile, or undefined if owned by no-one.
         /// </summary>
         public Coreminer.Player Owner { get; protected set; }
 
@@ -114,16 +114,6 @@ namespace Joueur.cs.Games.Coreminer
         protected Tile() : base()
         {
             this.Units = new List<Coreminer.Unit>();
-        }
-
-        /// <summary>
-        /// Spawns a Miner Unit on this Tile - Must be on the surface on their side of the map.
-        /// </summary>
-        /// <returns>True if successfully spawned, false otherwise.</returns>
-        public bool SpawnMiner()
-        {
-            return this.RunOnServer<bool>("spawnMiner", new Dictionary<string, object> {
-            });
         }
 
 

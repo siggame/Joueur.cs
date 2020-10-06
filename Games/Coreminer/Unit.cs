@@ -90,6 +90,11 @@ namespace Joueur.cs.Games.Coreminer
         /// </summary>
         public Coreminer.Tile Tile { get; protected set; }
 
+        /// <summary>
+        /// The upgrade level of this unit. Starts at 0.
+        /// </summary>
+        public int UpgradeLevel { get; protected set; }
+
 
         // <<-- Creer-Merge: properties -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
         // you can add additional properties(s) here. None of them will be tracked or updated by the server.
@@ -120,7 +125,7 @@ namespace Joueur.cs.Games.Coreminer
         }
 
         /// <summary>
-        /// Dumps materials from cargo to an adjacent tile.
+        /// Dumps materials from cargo to an adjacent tile. If the tile is a base or hopper tile, materials are sold instead of placed.
         /// </summary>
         /// <param name="tile">The tile the materials will be dumped on.</param>
         /// <param name="material">The material the Unit will drop. 'dirt', 'ore', or 'bomb'.</param>
@@ -162,14 +167,28 @@ namespace Joueur.cs.Games.Coreminer
         }
 
         /// <summary>
-        /// Upgrade an attribute of this Unit. "health", "miningPower", "moves", or "capacity".
+        /// Transfers a resource from the one Unit to another.
         /// </summary>
-        /// <param name="attribute">The attribute of the Unit to be upgraded.</param>
+        /// <param name="unit">The Unit to transfer materials to.</param>
+        /// <param name="resource">The type of resource to transfer.</param>
+        /// <param name="amount">The amount of resource to transfer.</param>
+        /// <returns>True if successfully transfered, false otherwise.</returns>
+        public bool Transfer(Coreminer.Unit unit, string resource, int amount)
+        {
+            return this.RunOnServer<bool>("transfer", new Dictionary<string, object> {
+                {"unit", unit},
+                {"resource", resource},
+                {"amount", amount}
+            });
+        }
+
+        /// <summary>
+        /// Upgrade this Unit.
+        /// </summary>
         /// <returns>True if successfully upgraded, False otherwise.</returns>
-        public bool Upgrade(string attribute)
+        public bool Upgrade()
         {
             return this.RunOnServer<bool>("upgrade", new Dictionary<string, object> {
-                {"attribute", attribute}
             });
         }
 
