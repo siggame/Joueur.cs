@@ -25,7 +25,7 @@ namespace Joueur.cs.Games.Coreminer
         /// <summary>
         /// The game version hash, used to compare if we are playing the same version on the server.
         /// </summary>
-        new protected static string GameVersion = "230d41da5f9e95a58b66fbaa7d6d61f4853e459517e93b553d829607b0286082";
+        new protected static string GameVersion = "cf0da2dd981969e39b8de1dd6332be0ea8f725b9b62baa0cb102a1d12a7179bf";
 
         #region Properties
         /// <summary>
@@ -134,9 +134,9 @@ namespace Joueur.cs.Games.Coreminer
         public IList<Coreminer.Unit> Units { get; protected set; }
 
         /// <summary>
-        /// The cost to upgrade a Unit at each level.
+        /// The cost to upgrade a Unit.
         /// </summary>
-        public IList<int> UpgradePrice { get; protected set; }
+        public int UpgradePrice { get; protected set; }
 
         /// <summary>
         /// The amount of victory points required to win.
@@ -162,7 +162,6 @@ namespace Joueur.cs.Games.Coreminer
             this.Players = new List<Coreminer.Player>();
             this.Tiles = new List<Coreminer.Tile>();
             this.Units = new List<Coreminer.Unit>();
-            this.UpgradePrice = new List<int>();
         }
 
 

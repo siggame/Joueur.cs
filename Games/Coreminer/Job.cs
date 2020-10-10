@@ -26,11 +26,6 @@ namespace Joueur.cs.Games.Coreminer
         public IList<int> CargoCapacity { get; protected set; }
 
         /// <summary>
-        /// The cost of spawning a Unit with this Job.
-        /// </summary>
-        public int Cost { get; protected set; }
-
-        /// <summary>
         /// The amount of starting health this Job has per level.
         /// </summary>
         public IList<int> Health { get; protected set; }
