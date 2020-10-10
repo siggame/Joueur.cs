@@ -71,11 +71,6 @@ namespace Joueur.cs.Games.Coreminer
         public IList<Coreminer.Tile> Side { get; protected set; }
 
         /// <summary>
-        /// The Tiles this Player may spawn Units on.
-        /// </summary>
-        public IList<Coreminer.Tile> SpawnTiles { get; protected set; }
-
-        /// <summary>
         /// The amount of time (in ns) remaining for this AI to send commands.
         /// </summary>
         public double TimeRemaining { get; protected set; }
@@ -110,7 +105,6 @@ namespace Joueur.cs.Games.Coreminer
         {
             this.HopperTiles = new List<Coreminer.Tile>();
             this.Side = new List<Coreminer.Tile>();
-            this.SpawnTiles = new List<Coreminer.Tile>();
             this.Units = new List<Coreminer.Unit>();
         }
 

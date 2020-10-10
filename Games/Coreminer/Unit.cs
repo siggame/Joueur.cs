@@ -125,6 +125,20 @@ namespace Joueur.cs.Games.Coreminer
         }
 
         /// <summary>
+        /// Purchase a resource from the player's base or hopper.
+        /// </summary>
+        /// <param name="resource">The type of resource to buy.</param>
+        /// <param name="amount">The amount of resource to buy.</param>
+        /// <returns>True if successfully purchased, false otherwise.</returns>
+        public bool Buy(string resource, int amount)
+        {
+            return this.RunOnServer<bool>("buy", new Dictionary<string, object> {
+                {"resource", resource},
+                {"amount", amount}
+            });
+        }
+
+        /// <summary>
         /// Dumps materials from cargo to an adjacent tile. If the tile is a base or hopper tile, materials are sold instead of placed.
         /// </summary>
         /// <param name="tile">The tile the materials will be dumped on.</param>
