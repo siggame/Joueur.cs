@@ -25,7 +25,7 @@ namespace Joueur.cs.Games.Coreminer
         /// <summary>
         /// The game version hash, used to compare if we are playing the same version on the server.
         /// </summary>
-        new protected static string GameVersion = "d9d8a113b95637751dbb349edb0a873d53ebb6df7c375956772b72fba4dff9f3";
+        new protected static string GameVersion = "3418447660e65ea28b97e2a74d8d95ebd694f36bbb0b6f4bd8d43fc97a3ecd9e";
 
         #region Properties
         /// <summary>
@@ -34,9 +34,14 @@ namespace Joueur.cs.Games.Coreminer
         public int BombPrice { get; protected set; }
 
         /// <summary>
-        /// The amount of cargo space taken up by a bomb.
+        /// The amount of cargo space taken up by a Bomb.
         /// </summary>
         public int BombSize { get; protected set; }
+
+        /// <summary>
+        /// Every Bomb in the game.
+        /// </summary>
+        public IList<Coreminer.Bomb> Bombs { get; protected set; }
 
         /// <summary>
         /// The monetary price of building materials when bought.
@@ -59,14 +64,34 @@ namespace Joueur.cs.Games.Coreminer
         public int DirtPrice { get; protected set; }
 
         /// <summary>
-        /// A list of all jobs.
+        /// The amount of damage taken per Tile fallen.
         /// </summary>
-        public IList<Coreminer.Job> Jobs { get; protected set; }
+        public int FallDamage { get; protected set; }
+
+        /// <summary>
+        /// The amount of extra damage taken for falling while carrying a large amount of cargo.
+        /// </summary>
+        public int FallWeightDamage { get; protected set; }
 
         /// <summary>
         /// The amount of building material required to build a ladder.
         /// </summary>
         public int LadderCost { get; protected set; }
+
+        /// <summary>
+        /// The amount of mining power needed to remove a ladder from a Tile.
+        /// </summary>
+        public int LadderHealth { get; protected set; }
+
+        /// <summary>
+        /// The amount deemed as a large amount of cargo.
+        /// </summary>
+        public int LargeCargoSize { get; protected set; }
+
+        /// <summary>
+        /// The amount deemed as a large amount of material.
+        /// </summary>
+        public int LargeMaterialSize { get; protected set; }
 
         /// <summary>
         /// The number of Tiles in the map along the y (vertical) axis.
@@ -79,9 +104,24 @@ namespace Joueur.cs.Games.Coreminer
         public int MapWidth { get; protected set; }
 
         /// <summary>
+        /// The maximum amount of shielding possible on a Tile.
+        /// </summary>
+        public int MaxShielding { get; protected set; }
+
+        /// <summary>
         /// The maximum number of turns before the game will automatically end.
         /// </summary>
         public int MaxTurns { get; protected set; }
+
+        /// <summary>
+        /// The highest upgrade level allowed on a Miner.
+        /// </summary>
+        public int MaxUpgradeLevel { get; protected set; }
+
+        /// <summary>
+        /// Every Miner in the game.
+        /// </summary>
+        public IList<Coreminer.Miner> Miners { get; protected set; }
 
         /// <summary>
         /// The amount of money awarded when ore is dumped in the base and sold.
@@ -89,7 +129,7 @@ namespace Joueur.cs.Games.Coreminer
         public int OrePrice { get; protected set; }
 
         /// <summary>
-        /// The amount of victory points awarded when ore is dumped in the base and sold.
+        /// The amount of value awarded when ore is dumped in the base and sold.
         /// </summary>
         public int OreValue { get; protected set; }
 
@@ -109,14 +149,34 @@ namespace Joueur.cs.Games.Coreminer
         public int ShieldCost { get; protected set; }
 
         /// <summary>
+        /// The amount of mining power needed to remove one unit of shielding off a Tile.
+        /// </summary>
+        public int ShieldHealth { get; protected set; }
+
+        /// <summary>
         /// The monetary price of spawning a Miner.
         /// </summary>
         public int SpawnPrice { get; protected set; }
 
         /// <summary>
+        /// The amount of damage taken when suffocating inside a filled Tile.
+        /// </summary>
+        public int SuffocationDamage { get; protected set; }
+
+        /// <summary>
+        /// The amount of extra damage taken for suffocating under a large amount of material.
+        /// </summary>
+        public int SuffocationWeightDamage { get; protected set; }
+
+        /// <summary>
         /// The amount of building material required to build a support.
         /// </summary>
         public int SupportCost { get; protected set; }
+
+        /// <summary>
+        /// The amount of mining power needed to remove a support from a Tile.
+        /// </summary>
+        public int SupportHealth { get; protected set; }
 
         /// <summary>
         /// All the tiles in the map, stored in Row-major order. Use `x + y * mapWidth` to access the correct index.
@@ -129,17 +189,17 @@ namespace Joueur.cs.Games.Coreminer
         public int TimeAddedPerTurn { get; protected set; }
 
         /// <summary>
-        /// Every Unit in the game.
-        /// </summary>
-        public IList<Coreminer.Unit> Units { get; protected set; }
-
-        /// <summary>
-        /// The cost to upgrade a Unit.
+        /// The cost to upgrade a Miner.
         /// </summary>
         public int UpgradePrice { get; protected set; }
 
         /// <summary>
-        /// The amount of victory points required to win.
+        /// Every Upgrade for a Miner in the game.
+        /// </summary>
+        public IList<Coreminer.Upgrade> Upgrades { get; protected set; }
+
+        /// <summary>
+        /// The amount of victory points (value) required to win.
         /// </summary>
         public int VictoryAmount { get; protected set; }
 
@@ -158,10 +218,11 @@ namespace Joueur.cs.Games.Coreminer
         {
             this.Name = "Coreminer";
 
-            this.Jobs = new List<Coreminer.Job>();
+            this.Bombs = new List<Coreminer.Bomb>();
+            this.Miners = new List<Coreminer.Miner>();
             this.Players = new List<Coreminer.Player>();
             this.Tiles = new List<Coreminer.Tile>();
-            this.Units = new List<Coreminer.Unit>();
+            this.Upgrades = new List<Coreminer.Upgrade>();
         }
 
 

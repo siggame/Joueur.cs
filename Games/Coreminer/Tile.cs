@@ -21,17 +21,22 @@ namespace Joueur.cs.Games.Coreminer
     {
         #region Properties
         /// <summary>
+        /// An array of Bombs on this Tile.
+        /// </summary>
+        public IList<Coreminer.Bomb> Bombs { get; protected set; }
+
+        /// <summary>
         /// The amount of dirt on this Tile.
         /// </summary>
         public int Dirt { get; protected set; }
 
         /// <summary>
-        /// Whether or not the tile is a base Tile.
+        /// Whether or not the Tile is a base Tile.
         /// </summary>
         public bool IsBase { get; protected set; }
 
         /// <summary>
-        /// Whether or not this tile is about to fall.
+        /// Whether or not this Tile is about to fall after this turn.
         /// </summary>
         public bool IsFalling { get; protected set; }
 
@@ -49,6 +54,11 @@ namespace Joueur.cs.Games.Coreminer
         /// Whether or not a support is built on this Tile.
         /// </summary>
         public bool IsSupport { get; protected set; }
+
+        /// <summary>
+        /// An array of the Miners on this Tile.
+        /// </summary>
+        public IList<Coreminer.Miner> Miners { get; protected set; }
 
         /// <summary>
         /// The amount of ore on this Tile.
@@ -86,11 +96,6 @@ namespace Joueur.cs.Games.Coreminer
         public Coreminer.Tile TileWest { get; protected set; }
 
         /// <summary>
-        /// An array of the Units on this Tile.
-        /// </summary>
-        public IList<Coreminer.Unit> Units { get; protected set; }
-
-        /// <summary>
         /// The x (horizontal) position of this Tile.
         /// </summary>
         public int X { get; protected set; }
@@ -113,7 +118,8 @@ namespace Joueur.cs.Games.Coreminer
         /// </summary>
         protected Tile() : base()
         {
-            this.Units = new List<Coreminer.Unit>();
+            this.Bombs = new List<Coreminer.Bomb>();
+            this.Miners = new List<Coreminer.Miner>();
         }
 
 

@@ -26,6 +26,11 @@ namespace Joueur.cs.Games.Coreminer
         public Coreminer.Tile BaseTile { get; protected set; }
 
         /// <summary>
+        /// Every Bomb owned by this Player.
+        /// </summary>
+        public IList<Coreminer.Bomb> Bombs { get; protected set; }
+
+        /// <summary>
         /// What type of client this is, e.g. 'Python', 'JavaScript', or some other language. For potential data mining purposes.
         /// </summary>
         public string ClientType { get; protected set; }
@@ -39,6 +44,11 @@ namespace Joueur.cs.Games.Coreminer
         /// If the player lost the game or not.
         /// </summary>
         public bool Lost { get; protected set; }
+
+        /// <summary>
+        /// Every Miner owned by this Player.
+        /// </summary>
+        public IList<Coreminer.Miner> Miners { get; protected set; }
 
         /// <summary>
         /// The amount of money this Player currently has.
@@ -66,19 +76,9 @@ namespace Joueur.cs.Games.Coreminer
         public string ReasonWon { get; protected set; }
 
         /// <summary>
-        /// The Tiles on this Player's side of the map.
-        /// </summary>
-        public IList<Coreminer.Tile> Side { get; protected set; }
-
-        /// <summary>
         /// The amount of time (in ns) remaining for this AI to send commands.
         /// </summary>
         public double TimeRemaining { get; protected set; }
-
-        /// <summary>
-        /// Every Unit owned by this Player.
-        /// </summary>
-        public IList<Coreminer.Unit> Units { get; protected set; }
 
         /// <summary>
         /// The amount of value (victory points) this Player has gained.
@@ -103,13 +103,13 @@ namespace Joueur.cs.Games.Coreminer
         /// </summary>
         protected Player() : base()
         {
+            this.Bombs = new List<Coreminer.Bomb>();
             this.HopperTiles = new List<Coreminer.Tile>();
-            this.Side = new List<Coreminer.Tile>();
-            this.Units = new List<Coreminer.Unit>();
+            this.Miners = new List<Coreminer.Miner>();
         }
 
         /// <summary>
-        /// Spawns a Miner Unit on this Player's base tile.
+        /// Spawns a Miner on this Player's base Tile.
         /// </summary>
         /// <returns>True if successfully spawned, false otherwise.</returns>
         public bool SpawnMiner()
