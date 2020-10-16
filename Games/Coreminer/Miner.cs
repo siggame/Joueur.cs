@@ -31,6 +31,11 @@ namespace Joueur.cs.Games.Coreminer
         public int BuildingMaterials { get; protected set; }
 
         /// <summary>
+        /// The Upgrade this Miner is on.
+        /// </summary>
+        public Coreminer.Upgrade CurrentUpgrade { get; protected set; }
+
+        /// <summary>
         /// The amount of dirt carried by this Miner.
         /// </summary>
         public int Dirt { get; protected set; }
@@ -64,11 +69,6 @@ namespace Joueur.cs.Games.Coreminer
         /// The Tile this Miner is on.
         /// </summary>
         public Coreminer.Tile Tile { get; protected set; }
-
-        /// <summary>
-        /// The Upgrade this Miner is on.
-        /// </summary>
-        public Coreminer.Upgrade Upgrade { get; protected set; }
 
         /// <summary>
         /// The upgrade level of this Miner. Starts at 0.
