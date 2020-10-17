@@ -1,4 +1,4 @@
-// A typical abandoned warehouse... that anarchists hang out in and can be bribed to burn down Buildings.
+// A typical abandoned warehouse that anarchists hang out in and can be bribed to burn down Buildings.
 
 // DO NOT MODIFY THIS FILE
 // Never try to directly create an instance of this class, or modify its member variables.
@@ -15,7 +15,7 @@ using System.Text;
 namespace Joueur.cs.Games.Anarchy
 {
     /// <summary>
-    /// A typical abandoned warehouse... that anarchists hang out in and can be bribed to burn down Buildings.
+    /// A typical abandoned warehouse that anarchists hang out in and can be bribed to burn down Buildings.
     /// </summary>
     public class Warehouse : Anarchy.Building
     {
@@ -46,7 +46,7 @@ namespace Joueur.cs.Games.Anarchy
         }
 
         /// <summary>
-        /// Bribes the Warehouse to light a Building on fire. This adds this building's fireAdded to their fire, and then this building's exposure is increased based on the Manhatten distance between the two buildings.
+        /// Bribes the Warehouse to light a Building on fire. This adds this building's fireAdded to their fire, and then this building's exposure is increased based on the Manhattan distance between the two buildings.
         /// </summary>
         /// <param name="building">The Building you want to light on fire.</param>
         /// <returns>The exposure added to this Building's exposure. -1 is returned if there was an error.</returns>

@@ -61,7 +61,7 @@ namespace Joueur.cs.Games.Spiders
         /// Spawns a new Spiderling on the same Nest as this BroodMother, consuming an egg.
         /// </summary>
         /// <param name="spiderlingType">The string name of the Spiderling class you want to Spawn. Must be 'Spitter', 'Weaver', or 'Cutter'.</param>
-        /// <returns>The newly spwaned Spiderling if successful. Null otherwise.</returns>
+        /// <returns>The newly spawned Spiderling if successful. Null otherwise.</returns>
         public Spiders.Spiderling Spawn(string spiderlingType)
         {
             return this.RunOnServer<Spiders.Spiderling>("spawn", new Dictionary<string, object> {

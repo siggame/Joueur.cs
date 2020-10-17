@@ -46,7 +46,7 @@ namespace Joueur.cs.Games.Stardash
         public int Genarium { get; protected set; }
 
         /// <summary>
-        /// Tracks wheither or not the ship is dashing or Mining. If true, it cannot do anything else.
+        /// Tracks whether or not the ship is dashing or Mining. If true, it cannot do anything else.
         /// </summary>
         public bool IsBusy { get; protected set; }
 
@@ -86,7 +86,7 @@ namespace Joueur.cs.Games.Stardash
         public int Rarium { get; protected set; }
 
         /// <summary>
-        /// The sheild that a martyr ship has.
+        /// The shield that a martyr ship has.
         /// </summary>
         public int Shield { get; protected set; }
 
@@ -142,7 +142,7 @@ namespace Joueur.cs.Games.Stardash
         }
 
         /// <summary>
-        /// allows a miner to mine a asteroid
+        /// Allows a miner to mine a asteroid.
         /// </summary>
         /// <param name="body">The object to be mined.</param>
         /// <returns>True if successfully acted, false otherwise.</returns>
@@ -168,7 +168,7 @@ namespace Joueur.cs.Games.Stardash
         }
 
         /// <summary>
-        /// tells you if your ship can move to that location from were it is without clipping the sun.
+        /// Tells you if your ship can move to that location from were it is without clipping the sun.
         /// </summary>
         /// <param name="x">The x position of the location you wish to arrive.</param>
         /// <param name="y">The y position of the location you wish to arrive.</param>

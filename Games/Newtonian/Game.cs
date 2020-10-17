@@ -44,7 +44,7 @@ namespace Joueur.cs.Games.Newtonian
         public int InternCap { get; protected set; }
 
         /// <summary>
-        /// A list of all jobs. first item is intern, second is physicists, and third is manager.
+        /// A list of all jobs. The first element is intern, second is physicists, and third is manager.
         /// </summary>
         public IList<Newtonian.Job> Jobs { get; protected set; }
 

@@ -70,7 +70,7 @@ namespace Joueur.cs.Games.Checkers
         /// </summary>
         /// <param name="x">The x coordinate to move to.</param>
         /// <param name="y">The y coordinate to move to.</param>
-        /// <returns>Returns the same checker that moved if the move was successful. null otherwise.</returns>
+        /// <returns>Returns the same checker that moved if the move was successful. Otherwise null.</returns>
         public Checkers.Checker Move(int x, int y)
         {
             return this.RunOnServer<Checkers.Checker>("move", new Dictionary<string, object> {

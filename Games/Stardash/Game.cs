@@ -1,4 +1,4 @@
-// Collect of the most of the rarest mineral orbiting aroung the sun and outcompete your competetor.
+// Collect of the most of the rarest mineral orbiting around the sun and out-compete your competitor.
 
 // DO NOT MODIFY THIS FILE
 // Never try to directly create an instance of this class, or modify its member variables.
@@ -13,12 +13,12 @@ using System.Text;
 // <<-- /Creer-Merge: usings -->>
 
 /// <summary>
-/// Collect of the most of the rarest mineral orbiting aroung the sun and outcompete your competetor.
+/// Collect of the most of the rarest mineral orbiting around the sun and out-compete your competitor.
 /// </summary>
 namespace Joueur.cs.Games.Stardash
 {
     /// <summary>
-    /// Collect of the most of the rarest mineral orbiting aroung the sun and outcompete your competetor.
+    /// Collect of the most of the rarest mineral orbiting around the sun and out-compete your competitor.
     /// </summary>
     public class Game : BaseGame
     {
@@ -59,7 +59,7 @@ namespace Joueur.cs.Games.Stardash
         public double GenariumValue { get; protected set; }
 
         /// <summary>
-        /// A list of all jobs. first item is corvette, second is missileboat, third is martyr, fourth is transport, and fifth is miner.
+        /// A list of all jobs. The first element is corvette, second is missileboat, third is martyr, fourth is transport, and fifth is miner.
         /// </summary>
         public IList<Stardash.Job> Jobs { get; protected set; }
 
