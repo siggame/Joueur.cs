@@ -21,6 +21,11 @@ namespace Joueur.cs.Games.Coreminer
     {
         #region Properties
         /// <summary>
+        /// The Tile this Miner is on.
+        /// </summary>
+        public Coreminer.Tile Tile { get; protected set; }
+
+        /// <summary>
         /// The number of turns before this Bomb explodes. Zero means it will explode after the current turn.
         /// </summary>
         public int Timer { get; protected set; }
