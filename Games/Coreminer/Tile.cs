@@ -161,7 +161,7 @@ namespace Joueur.cs.Games.Coreminer
         public bool IsPathable()
         {
             // <<-- Creer-Merge: is_pathable_builtin -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
-            return false; // DEVELOPER ADD LOGIC HERE
+            return (this.ore + this.dirt <= 0);
             // <<-- /Creer-Merge: is_pathable_builtin -->>
         }
 
