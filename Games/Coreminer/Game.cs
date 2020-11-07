@@ -186,7 +186,7 @@ namespace Joueur.cs.Games.Coreminer
         /// <summary>
         /// The amount of time (in nano-seconds) added after each player performs a turn.
         /// </summary>
-        public int TimeAddedPerTurn { get; protected set; }
+        public float TimeAddedPerTurn { get; protected set; }
 
         /// <summary>
         /// The cost to upgrade a Miner.
