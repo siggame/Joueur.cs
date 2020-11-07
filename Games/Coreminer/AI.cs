@@ -97,6 +97,52 @@ namespace Joueur.cs.Games.Coreminer
         {
             // <<-- Creer-Merge: runTurn -->> - Code you add between this comment and the end comment will be preserved between Creer re-runs.
             // Put your game logic here for runTurn
+
+            // If we have no miners and can afford one, spawn one
+            if (Player.Miners.Count < 1 && Player.Money >= Game.SpawnPrice)
+                Player.SpawnMiner();
+
+            // for each of our miners
+            foreach (var miner in Player.Miners)
+            {
+                // Move to tile next to base
+                if (miner.Tile.IsBase)
+                {
+                    if (miner.Tile.TileEast != null)
+                        miner.Move(miner.Tile.TileEast);
+                    else miner.Move(miner.Tile.TileWest);
+                }
+
+                // sell all materials
+                var sellTile = Game.GetTileAt(Player.BaseTile.X, miner.Tile.Y);
+                if (sellTile != null && sellTile.Owner == Player)
+                {
+                    miner.Dump(sellTile, "dirt", -1);
+                    miner.Dump(sellTile, "ore", -1);
+                }
+
+                var eastTile = miner.Tile.TileEast;
+                var westTile = miner.Tile.TileWest;
+
+                // Mine east and west tiles, hopper side first
+                if (eastTile.X == Player.BaseTile.X)
+                {
+                    miner.Mine(eastTile, -1);
+                    miner.Mine(westTile, -1);
+                }
+                else 
+                {
+                    miner.Mine(westTile, -1);
+                    miner.Mine(eastTile, -1);
+                }
+
+                // Check to make sure east and west tiles are mined
+                if ((eastTile != null && eastTile.Ore + eastTile.Dirt == 0) &&
+                    (westTile != null && westTile.Ore + westTile.Dirt == 0))
+                {
+                    miner.Mine(miner.Tile.TileSouth, -1);
+                }
+            }
             return true;
             // <<-- /Creer-Merge: runTurn -->>
         }
