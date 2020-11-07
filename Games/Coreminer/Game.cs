@@ -25,7 +25,7 @@ namespace Joueur.cs.Games.Coreminer
         /// <summary>
         /// The game version hash, used to compare if we are playing the same version on the server.
         /// </summary>
-        new protected static string GameVersion = "a4592bb5acb0415146605769f439a09baf3768f41cdb3c7ad9dc971f42c4d96e";
+        new protected static string GameVersion = "b559778acd8e4c689b8d028ca6cc154714ce79c39b09cd6d171b50faf88ef747";
 
         #region Properties
         /// <summary>
@@ -186,7 +186,7 @@ namespace Joueur.cs.Games.Coreminer
         /// <summary>
         /// The amount of time (in nano-seconds) added after each player performs a turn.
         /// </summary>
-        public float TimeAddedPerTurn { get; protected set; }
+        public double TimeAddedPerTurn { get; protected set; }
 
         /// <summary>
         /// The cost to upgrade a Miner.
