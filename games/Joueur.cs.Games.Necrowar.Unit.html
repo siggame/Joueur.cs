@@ -1,0 +1,543 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Unit
+   | C# Joueur Client </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Unit
+   | C# Joueur Client ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Joueur.cs.Games.Necrowar.Unit">
+  
+  
+  <h1 id="Joueur_cs_Games_Necrowar_Unit" data-uid="Joueur.cs.Games.Necrowar.Unit" class="text-break">Class Unit
+  </h1>
+  <div class="markdown level0 summary"><p>A unit in the game. May be a worker, zombie, ghoul, hound, abomination, wraith or horseman.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Joueur.cs.BaseGameObject.html">BaseGameObject</a></div>
+    <div class="level2"><a class="xref" href="Joueur.cs.Games.Necrowar.GameObject.html">GameObject</a></div>
+    <div class="level3"><span class="xref">Unit</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Joueur.cs.Games.Necrowar.GameObject.html#Joueur_cs_Games_Necrowar_GameObject_Logs">GameObject.Logs</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.Games.Necrowar.GameObject.html#Joueur_cs_Games_Necrowar_GameObject_Log_System_String_">GameObject.Log(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_Id">BaseGameObject.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_GameObjectName">BaseGameObject.GameObjectName</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_ToString">BaseGameObject.ToString()</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Joueur.cs.Games.Necrowar.html">Joueur.cs.Games.Necrowar</a></h6>
+  <h6><strong>Assembly</strong>: joueur-cs.dll</h6>
+  <h5 id="Joueur_cs_Games_Necrowar_Unit_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Unit : GameObject</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Joueur_cs_Games_Necrowar_Unit__ctor_" data-uid="Joueur.cs.Games.Necrowar.Unit.#ctor*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Unit__ctor" data-uid="Joueur.cs.Games.Necrowar.Unit.#ctor">Unit()</h4>
+  <div class="markdown level1 summary"><p>Creates a new instance of Unit. Used during game initialization, do not call directly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Unit()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Joueur_cs_Games_Necrowar_Unit_Acted_" data-uid="Joueur.cs.Games.Necrowar.Unit.Acted*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Unit_Acted" data-uid="Joueur.cs.Games.Necrowar.Unit.Acted">Acted</h4>
+  <div class="markdown level1 summary"><p>Whether or not this Unit has performed its action this turn (attack or build).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Acted { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Unit_Health_" data-uid="Joueur.cs.Games.Necrowar.Unit.Health*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Unit_Health" data-uid="Joueur.cs.Games.Necrowar.Unit.Health">Health</h4>
+  <div class="markdown level1 summary"><p>The remaining health of a unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Health { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Unit_Job_" data-uid="Joueur.cs.Games.Necrowar.Unit.Job*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Unit_Job" data-uid="Joueur.cs.Games.Necrowar.Unit.Job">Job</h4>
+  <div class="markdown level1 summary"><p>The type of unit this is.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UnitJob Job { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Necrowar.UnitJob.html">UnitJob</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Unit_Moves_" data-uid="Joueur.cs.Games.Necrowar.Unit.Moves*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Unit_Moves" data-uid="Joueur.cs.Games.Necrowar.Unit.Moves">Moves</h4>
+  <div class="markdown level1 summary"><p>The number of moves this unit has left this turn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Moves { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Unit_Owner_" data-uid="Joueur.cs.Games.Necrowar.Unit.Owner*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Unit_Owner" data-uid="Joueur.cs.Games.Necrowar.Unit.Owner">Owner</h4>
+  <div class="markdown level1 summary"><p>The Player that owns and can control this Unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Player Owner { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Necrowar.Player.html">Player</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Unit_Tile_" data-uid="Joueur.cs.Games.Necrowar.Unit.Tile*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Unit_Tile" data-uid="Joueur.cs.Games.Necrowar.Unit.Tile">Tile</h4>
+  <div class="markdown level1 summary"><p>The Tile this Unit is on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tile Tile { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Necrowar.Tile.html">Tile</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Joueur_cs_Games_Necrowar_Unit_Attack_" data-uid="Joueur.cs.Games.Necrowar.Unit.Attack*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Unit_Attack_Joueur_cs_Games_Necrowar_Tile_" data-uid="Joueur.cs.Games.Necrowar.Unit.Attack(Joueur.cs.Games.Necrowar.Tile)">Attack(Tile)</h4>
+  <div class="markdown level1 summary"><p>Attacks an enemy tower on an adjacent tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Attack(Tile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Necrowar.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile to attack.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully attacked, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Unit_Build_" data-uid="Joueur.cs.Games.Necrowar.Unit.Build*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Unit_Build_System_String_" data-uid="Joueur.cs.Games.Necrowar.Unit.Build(System.String)">Build(String)</h4>
+  <div class="markdown level1 summary"><p>Unit, if it is a worker, builds a tower on the tile it is on, only workers can do this.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Build(string title)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>The tower type to build, as a string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully built, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Unit_Fish_" data-uid="Joueur.cs.Games.Necrowar.Unit.Fish*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Unit_Fish_Joueur_cs_Games_Necrowar_Tile_" data-uid="Joueur.cs.Games.Necrowar.Unit.Fish(Joueur.cs.Games.Necrowar.Tile)">Fish(Tile)</h4>
+  <div class="markdown level1 summary"><p>Stops adjacent to a river tile and begins fishing for mana.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Fish(Tile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Necrowar.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The tile the unit will stand on as it fishes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully began fishing for mana, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Unit_Mine_" data-uid="Joueur.cs.Games.Necrowar.Unit.Mine*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Unit_Mine_Joueur_cs_Games_Necrowar_Tile_" data-uid="Joueur.cs.Games.Necrowar.Unit.Mine(Joueur.cs.Games.Necrowar.Tile)">Mine(Tile)</h4>
+  <div class="markdown level1 summary"><p>Enters a mine and is put to work gathering resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Mine(Tile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Necrowar.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The tile the mine is located on.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully entered mine and began mining, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Unit_Move_" data-uid="Joueur.cs.Games.Necrowar.Unit.Move*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Unit_Move_Joueur_cs_Games_Necrowar_Tile_" data-uid="Joueur.cs.Games.Necrowar.Unit.Move(Joueur.cs.Games.Necrowar.Tile)">Move(Tile)</h4>
+  <div class="markdown level1 summary"><p>Moves this Unit from its current Tile to an adjacent Tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Move(Tile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Necrowar.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile this Unit should move to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it moved, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

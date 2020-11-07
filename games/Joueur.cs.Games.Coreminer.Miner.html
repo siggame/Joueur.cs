@@ -1,0 +1,773 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Miner
+   | C# Joueur Client </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Miner
+   | C# Joueur Client ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Joueur.cs.Games.Coreminer.Miner">
+  
+  
+  <h1 id="Joueur_cs_Games_Coreminer_Miner" data-uid="Joueur.cs.Games.Coreminer.Miner" class="text-break">Class Miner
+  </h1>
+  <div class="markdown level0 summary"><p>A Miner in the game.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Joueur.cs.BaseGameObject.html">BaseGameObject</a></div>
+    <div class="level2"><a class="xref" href="Joueur.cs.Games.Coreminer.GameObject.html">GameObject</a></div>
+    <div class="level3"><span class="xref">Miner</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Joueur.cs.Games.Coreminer.GameObject.html#Joueur_cs_Games_Coreminer_GameObject_Logs">GameObject.Logs</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.Games.Coreminer.GameObject.html#Joueur_cs_Games_Coreminer_GameObject_Log_System_String_">GameObject.Log(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_Id">BaseGameObject.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_GameObjectName">BaseGameObject.GameObjectName</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_ToString">BaseGameObject.ToString()</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Joueur.cs.Games.Coreminer.html">Joueur.cs.Games.Coreminer</a></h6>
+  <h6><strong>Assembly</strong>: joueur-cs.dll</h6>
+  <h5 id="Joueur_cs_Games_Coreminer_Miner_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Miner : GameObject</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Joueur_cs_Games_Coreminer_Miner__ctor_" data-uid="Joueur.cs.Games.Coreminer.Miner.#ctor*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner__ctor" data-uid="Joueur.cs.Games.Coreminer.Miner.#ctor">Miner()</h4>
+  <div class="markdown level1 summary"><p>Creates a new instance of Miner. Used during game initialization, do not call directly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Miner()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Bombs_" data-uid="Joueur.cs.Games.Coreminer.Miner.Bombs*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Bombs" data-uid="Joueur.cs.Games.Coreminer.Miner.Bombs">Bombs</h4>
+  <div class="markdown level1 summary"><p>The number of bombs being carried by this Miner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Bombs { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_BuildingMaterials_" data-uid="Joueur.cs.Games.Coreminer.Miner.BuildingMaterials*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_BuildingMaterials" data-uid="Joueur.cs.Games.Coreminer.Miner.BuildingMaterials">BuildingMaterials</h4>
+  <div class="markdown level1 summary"><p>The number of building materials carried by this Miner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BuildingMaterials { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_CurrentUpgrade_" data-uid="Joueur.cs.Games.Coreminer.Miner.CurrentUpgrade*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_CurrentUpgrade" data-uid="Joueur.cs.Games.Coreminer.Miner.CurrentUpgrade">CurrentUpgrade</h4>
+  <div class="markdown level1 summary"><p>The Upgrade this Miner is on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Upgrade CurrentUpgrade { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Coreminer.Upgrade.html">Upgrade</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Dirt_" data-uid="Joueur.cs.Games.Coreminer.Miner.Dirt*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Dirt" data-uid="Joueur.cs.Games.Coreminer.Miner.Dirt">Dirt</h4>
+  <div class="markdown level1 summary"><p>The amount of dirt carried by this Miner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Dirt { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Health_" data-uid="Joueur.cs.Games.Coreminer.Miner.Health*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Health" data-uid="Joueur.cs.Games.Coreminer.Miner.Health">Health</h4>
+  <div class="markdown level1 summary"><p>The remaining health of this Miner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Health { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_MiningPower_" data-uid="Joueur.cs.Games.Coreminer.Miner.MiningPower*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_MiningPower" data-uid="Joueur.cs.Games.Coreminer.Miner.MiningPower">MiningPower</h4>
+  <div class="markdown level1 summary"><p>The remaining mining power this Miner has this turn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MiningPower { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Moves_" data-uid="Joueur.cs.Games.Coreminer.Miner.Moves*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Moves" data-uid="Joueur.cs.Games.Coreminer.Miner.Moves">Moves</h4>
+  <div class="markdown level1 summary"><p>The number of moves this Miner has left this turn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Moves { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Ore_" data-uid="Joueur.cs.Games.Coreminer.Miner.Ore*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Ore" data-uid="Joueur.cs.Games.Coreminer.Miner.Ore">Ore</h4>
+  <div class="markdown level1 summary"><p>The amount of ore carried by this Miner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Ore { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Owner_" data-uid="Joueur.cs.Games.Coreminer.Miner.Owner*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Owner" data-uid="Joueur.cs.Games.Coreminer.Miner.Owner">Owner</h4>
+  <div class="markdown level1 summary"><p>The Player that owns and can control this Miner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Player Owner { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Coreminer.Player.html">Player</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Tile_" data-uid="Joueur.cs.Games.Coreminer.Miner.Tile*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Tile" data-uid="Joueur.cs.Games.Coreminer.Miner.Tile">Tile</h4>
+  <div class="markdown level1 summary"><p>The Tile this Miner is on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tile Tile { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Coreminer.Tile.html">Tile</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_UpgradeLevel_" data-uid="Joueur.cs.Games.Coreminer.Miner.UpgradeLevel*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_UpgradeLevel" data-uid="Joueur.cs.Games.Coreminer.Miner.UpgradeLevel">UpgradeLevel</h4>
+  <div class="markdown level1 summary"><p>The upgrade level of this Miner. Starts at 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int UpgradeLevel { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Build_" data-uid="Joueur.cs.Games.Coreminer.Miner.Build*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Build_Joueur_cs_Games_Coreminer_Tile_System_String_" data-uid="Joueur.cs.Games.Coreminer.Miner.Build(Joueur.cs.Games.Coreminer.Tile,System.String)">Build(Tile, String)</h4>
+  <div class="markdown level1 summary"><p>Builds a support, shield, or ladder on Miner&apos;s Tile, or an adjacent Tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Build(Tile tile, string type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Coreminer.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile to build on.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The structure to build (support, ladder, or shield).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully built, False otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Buy_" data-uid="Joueur.cs.Games.Coreminer.Miner.Buy*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Buy_System_String_System_Int32_" data-uid="Joueur.cs.Games.Coreminer.Miner.Buy(System.String,System.Int32)">Buy(String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Purchase a resource from the Player&apos;s base or hopper.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Buy(string resource, int amount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The type of resource to buy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>The amount of resource to buy. Amounts &lt;= 0 will buy all of that material Player can.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully purchased, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Dump_" data-uid="Joueur.cs.Games.Coreminer.Miner.Dump*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Dump_Joueur_cs_Games_Coreminer_Tile_System_String_System_Int32_" data-uid="Joueur.cs.Games.Coreminer.Miner.Dump(Joueur.cs.Games.Coreminer.Tile,System.String,System.Int32)">Dump(Tile, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Dumps materials from cargo to an adjacent Tile. If the Tile is a base or a hopper Tile, materials are sold instead of placed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Dump(Tile tile, string material, int amount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Coreminer.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile the materials will be dumped on.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">material</span></td>
+        <td><p>The material the Miner will drop. &apos;dirt&apos;, &apos;ore&apos;, or &apos;bomb&apos;.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>The number of materials to drop. Amounts &lt;= 0 will drop all of the material.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully dumped materials, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Mine_" data-uid="Joueur.cs.Games.Coreminer.Miner.Mine*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Mine_Joueur_cs_Games_Coreminer_Tile_System_Int32_" data-uid="Joueur.cs.Games.Coreminer.Miner.Mine(Joueur.cs.Games.Coreminer.Tile,System.Int32)">Mine(Tile, Int32)</h4>
+  <div class="markdown level1 summary"><p>Mines the Tile the Miner is on or an adjacent Tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Mine(Tile tile, int amount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Coreminer.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile the materials will be mined from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>The amount of material to mine up. Amounts &lt;= 0 will mine all the materials that the Miner can.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully mined, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Move_" data-uid="Joueur.cs.Games.Coreminer.Miner.Move*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Move_Joueur_cs_Games_Coreminer_Tile_" data-uid="Joueur.cs.Games.Coreminer.Miner.Move(Joueur.cs.Games.Coreminer.Tile)">Move(Tile)</h4>
+  <div class="markdown level1 summary"><p>Moves this Miner from its current Tile to an adjacent Tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Move(Tile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Coreminer.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile this Miner should move to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it moved, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Transfer_" data-uid="Joueur.cs.Games.Coreminer.Miner.Transfer*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Transfer_Joueur_cs_Games_Coreminer_Miner_System_String_System_Int32_" data-uid="Joueur.cs.Games.Coreminer.Miner.Transfer(Joueur.cs.Games.Coreminer.Miner,System.String,System.Int32)">Transfer(Miner, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Transfers a resource from the one Miner to another.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Transfer(Miner miner, string resource, int amount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Coreminer.Miner.html">Miner</a></td>
+        <td><span class="parametername">miner</span></td>
+        <td><p>The Miner to transfer materials to.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The type of resource to transfer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>The amount of resource to transfer. Amounts &lt;= 0 will transfer all the of the material.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully transferred, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Coreminer_Miner_Upgrade_" data-uid="Joueur.cs.Games.Coreminer.Miner.Upgrade*"></a>
+  <h4 id="Joueur_cs_Games_Coreminer_Miner_Upgrade" data-uid="Joueur.cs.Games.Coreminer.Miner.Upgrade">Upgrade()</h4>
+  <div class="markdown level1 summary"><p>Upgrade this Miner by installing an upgrade module.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Upgrade()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully upgraded, False otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

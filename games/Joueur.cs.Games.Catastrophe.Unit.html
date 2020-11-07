@@ -1,0 +1,914 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Unit
+   | C# Joueur Client </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Unit
+   | C# Joueur Client ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Joueur.cs.Games.Catastrophe.Unit">
+  
+  
+  <h1 id="Joueur_cs_Games_Catastrophe_Unit" data-uid="Joueur.cs.Games.Catastrophe.Unit" class="text-break">Class Unit
+  </h1>
+  <div class="markdown level0 summary"><p>A unit in the game.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Joueur.cs.BaseGameObject.html">BaseGameObject</a></div>
+    <div class="level2"><a class="xref" href="Joueur.cs.Games.Catastrophe.GameObject.html">GameObject</a></div>
+    <div class="level3"><span class="xref">Unit</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Joueur.cs.Games.Catastrophe.GameObject.html#Joueur_cs_Games_Catastrophe_GameObject_Logs">GameObject.Logs</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.Games.Catastrophe.GameObject.html#Joueur_cs_Games_Catastrophe_GameObject_Log_System_String_">GameObject.Log(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_Id">BaseGameObject.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_GameObjectName">BaseGameObject.GameObjectName</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_ToString">BaseGameObject.ToString()</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Joueur.cs.Games.Catastrophe.html">Joueur.cs.Games.Catastrophe</a></h6>
+  <h6><strong>Assembly</strong>: joueur-cs.dll</h6>
+  <h5 id="Joueur_cs_Games_Catastrophe_Unit_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Unit : GameObject</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Joueur_cs_Games_Catastrophe_Unit__ctor_" data-uid="Joueur.cs.Games.Catastrophe.Unit.#ctor*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit__ctor" data-uid="Joueur.cs.Games.Catastrophe.Unit.#ctor">Unit()</h4>
+  <div class="markdown level1 summary"><p>Creates a new instance of Unit. Used during game initialization, do not call directly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Unit()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Acted_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Acted*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Acted" data-uid="Joueur.cs.Games.Catastrophe.Unit.Acted">Acted</h4>
+  <div class="markdown level1 summary"><p>Whether this Unit has performed its action this turn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Acted { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Energy_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Energy*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Energy" data-uid="Joueur.cs.Games.Catastrophe.Unit.Energy">Energy</h4>
+  <div class="markdown level1 summary"><p>The amount of energy this Unit has (from 0.0 to 100.0).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Energy { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Food_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Food*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Food" data-uid="Joueur.cs.Games.Catastrophe.Unit.Food">Food</h4>
+  <div class="markdown level1 summary"><p>The amount of food this Unit is holding.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Food { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Job_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Job*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Job" data-uid="Joueur.cs.Games.Catastrophe.Unit.Job">Job</h4>
+  <div class="markdown level1 summary"><p>The Job this Unit was recruited to do.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Job Job { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Catastrophe.Job.html">Job</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Materials_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Materials*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Materials" data-uid="Joueur.cs.Games.Catastrophe.Unit.Materials">Materials</h4>
+  <div class="markdown level1 summary"><p>The amount of materials this Unit is holding.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Materials { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_MovementTarget_" data-uid="Joueur.cs.Games.Catastrophe.Unit.MovementTarget*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_MovementTarget" data-uid="Joueur.cs.Games.Catastrophe.Unit.MovementTarget">MovementTarget</h4>
+  <div class="markdown level1 summary"><p>The tile this Unit is moving to. This only applies to neutral fresh humans spawned on the road. Otherwise, the tile this Unit is on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tile MovementTarget { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Catastrophe.Tile.html">Tile</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Moves_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Moves*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Moves" data-uid="Joueur.cs.Games.Catastrophe.Unit.Moves">Moves</h4>
+  <div class="markdown level1 summary"><p>How many moves this Unit has left this turn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Moves { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Owner_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Owner*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Owner" data-uid="Joueur.cs.Games.Catastrophe.Unit.Owner">Owner</h4>
+  <div class="markdown level1 summary"><p>The Player that owns and can control this Unit, or null if the Unit is neutral.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Player Owner { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Catastrophe.Player.html">Player</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Squad_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Squad*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Squad" data-uid="Joueur.cs.Games.Catastrophe.Unit.Squad">Squad</h4>
+  <div class="markdown level1 summary"><p>The Units in the same squad as this Unit. Units in the same squad attack and defend together.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;Unit&gt; Squad { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Joueur.cs.Games.Catastrophe.Unit.html">Unit</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Starving_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Starving*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Starving" data-uid="Joueur.cs.Games.Catastrophe.Unit.Starving">Starving</h4>
+  <div class="markdown level1 summary"><p>Whether this Unit is starving. Starving Units regenerate energy at half the rate they normally would while resting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Starving { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Tile_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Tile*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Tile" data-uid="Joueur.cs.Games.Catastrophe.Unit.Tile">Tile</h4>
+  <div class="markdown level1 summary"><p>The Tile this Unit is on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tile Tile { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Catastrophe.Tile.html">Tile</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_TurnsToDie_" data-uid="Joueur.cs.Games.Catastrophe.Unit.TurnsToDie*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_TurnsToDie" data-uid="Joueur.cs.Games.Catastrophe.Unit.TurnsToDie">TurnsToDie</h4>
+  <div class="markdown level1 summary"><p>The number of turns before this Unit dies. This only applies to neutral fresh humans created from combat. Otherwise, 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TurnsToDie { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Attack_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Attack*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Attack_Joueur_cs_Games_Catastrophe_Tile_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Attack(Joueur.cs.Games.Catastrophe.Tile)">Attack(Tile)</h4>
+  <div class="markdown level1 summary"><p>Attacks an adjacent Tile. Costs an action for each Unit in this Unit&apos;s squad. Units in the squad without an action don&apos;t participate in combat. Units in combat cannot move afterwards. Attacking structures will not give materials.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Attack(Tile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Catastrophe.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile to attack.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully attacked, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_ChangeJob_" data-uid="Joueur.cs.Games.Catastrophe.Unit.ChangeJob*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_ChangeJob_System_String_" data-uid="Joueur.cs.Games.Catastrophe.Unit.ChangeJob(System.String)">ChangeJob(String)</h4>
+  <div class="markdown level1 summary"><p>Changes this Unit&apos;s Job. Must be at max energy (100) to change Jobs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ChangeJob(string job)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">job</span></td>
+        <td><p>The name of the Job to change to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully changed Jobs, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Construct_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Construct*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Construct_Joueur_cs_Games_Catastrophe_Tile_System_String_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Construct(Joueur.cs.Games.Catastrophe.Tile,System.String)">Construct(Tile, String)</h4>
+  <div class="markdown level1 summary"><p>Constructs a Structure on an adjacent Tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Construct(Tile tile, string type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Catastrophe.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile to construct the Structure on. It must have enough materials on it for a Structure to be constructed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type of Structure to construct on that Tile.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully constructed a structure, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Convert_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Convert*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Convert_Joueur_cs_Games_Catastrophe_Tile_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Convert(Joueur.cs.Games.Catastrophe.Tile)">Convert(Tile)</h4>
+  <div class="markdown level1 summary"><p>Converts an adjacent Unit to your side.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Convert(Tile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Catastrophe.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile with the Unit to convert.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully converted, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Deconstruct_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Deconstruct*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Deconstruct_Joueur_cs_Games_Catastrophe_Tile_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Deconstruct(Joueur.cs.Games.Catastrophe.Tile)">Deconstruct(Tile)</h4>
+  <div class="markdown level1 summary"><p>Removes materials from an adjacent Tile&apos;s Structure. You cannot deconstruct friendly structures (see <code>Unit.attack</code>).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Deconstruct(Tile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Catastrophe.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile to deconstruct. It must have a Structure on it.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully deconstructed, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Drop_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Drop*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Drop_Joueur_cs_Games_Catastrophe_Tile_System_String_System_Int32_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Drop(Joueur.cs.Games.Catastrophe.Tile,System.String,System.Int32)">Drop(Tile, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Drops some of the given resource on or adjacent to the Unit&apos;s Tile. Does not count as an action.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Drop(Tile tile, string resource, int amount = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Catastrophe.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile to drop materials/food on.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The type of resource to drop (&apos;materials&apos; or &apos;food&apos;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>The amount of the resource to drop. Amounts &lt;= 0 will drop as much as possible.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully dropped the resource, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Harvest_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Harvest*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Harvest_Joueur_cs_Games_Catastrophe_Tile_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Harvest(Joueur.cs.Games.Catastrophe.Tile)">Harvest(Tile)</h4>
+  <div class="markdown level1 summary"><p>Harvests the food on an adjacent Tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Harvest(Tile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Catastrophe.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile you want to harvest.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully harvested, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Move_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Move*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Move_Joueur_cs_Games_Catastrophe_Tile_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Move(Joueur.cs.Games.Catastrophe.Tile)">Move(Tile)</h4>
+  <div class="markdown level1 summary"><p>Moves this Unit from its current Tile to an adjacent Tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Move(Tile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Catastrophe.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile this Unit should move to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it moved, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Pickup_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Pickup*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Pickup_Joueur_cs_Games_Catastrophe_Tile_System_String_System_Int32_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Pickup(Joueur.cs.Games.Catastrophe.Tile,System.String,System.Int32)">Pickup(Tile, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Picks up some materials or food on or adjacent to the Unit&apos;s Tile. Does not count as an action.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Pickup(Tile tile, string resource, int amount = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Catastrophe.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile to pickup materials/food from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The type of resource to pickup (&apos;materials&apos; or &apos;food&apos;).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>The amount of the resource to pickup. Amounts &lt;= 0 will pickup as much as possible.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully picked up a resource, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Catastrophe_Unit_Rest_" data-uid="Joueur.cs.Games.Catastrophe.Unit.Rest*"></a>
+  <h4 id="Joueur_cs_Games_Catastrophe_Unit_Rest" data-uid="Joueur.cs.Games.Catastrophe.Unit.Rest">Rest()</h4>
+  <div class="markdown level1 summary"><p>Regenerates energy. Must be in range of a friendly shelter to rest. Costs an action. Units cannot move after resting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Rest()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully rested, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,542 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Player
+   | C# Joueur Client </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Player
+   | C# Joueur Client ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Joueur.cs.Games.Necrowar.Player">
+  
+  
+  <h1 id="Joueur_cs_Games_Necrowar_Player" data-uid="Joueur.cs.Games.Necrowar.Player" class="text-break">Class Player
+  </h1>
+  <div class="markdown level0 summary"><p>A player in this game. Every AI controls one player.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Joueur.cs.BaseGameObject.html">BaseGameObject</a></div>
+    <div class="level2"><a class="xref" href="Joueur.cs.Games.Necrowar.GameObject.html">GameObject</a></div>
+    <div class="level3"><span class="xref">Player</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Joueur.cs.Games.Necrowar.GameObject.html#Joueur_cs_Games_Necrowar_GameObject_Logs">GameObject.Logs</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.Games.Necrowar.GameObject.html#Joueur_cs_Games_Necrowar_GameObject_Log_System_String_">GameObject.Log(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_Id">BaseGameObject.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_GameObjectName">BaseGameObject.GameObjectName</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_ToString">BaseGameObject.ToString()</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Joueur.cs.Games.Necrowar.html">Joueur.cs.Games.Necrowar</a></h6>
+  <h6><strong>Assembly</strong>: joueur-cs.dll</h6>
+  <h5 id="Joueur_cs_Games_Necrowar_Player_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Player : GameObject</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Joueur_cs_Games_Necrowar_Player__ctor_" data-uid="Joueur.cs.Games.Necrowar.Player.#ctor*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player__ctor" data-uid="Joueur.cs.Games.Necrowar.Player.#ctor">Player()</h4>
+  <div class="markdown level1 summary"><p>Creates a new instance of Player. Used during game initialization, do not call directly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Player()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Joueur_cs_Games_Necrowar_Player_ClientType_" data-uid="Joueur.cs.Games.Necrowar.Player.ClientType*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_ClientType" data-uid="Joueur.cs.Games.Necrowar.Player.ClientType">ClientType</h4>
+  <div class="markdown level1 summary"><p>What type of client this is, e.g. &apos;Python&apos;, &apos;JavaScript&apos;, or some other language. For potential data mining purposes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ClientType { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_Gold_" data-uid="Joueur.cs.Games.Necrowar.Player.Gold*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_Gold" data-uid="Joueur.cs.Games.Necrowar.Player.Gold">Gold</h4>
+  <div class="markdown level1 summary"><p>The amount of gold this Player has.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Gold { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_Health_" data-uid="Joueur.cs.Games.Necrowar.Player.Health*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_Health" data-uid="Joueur.cs.Games.Necrowar.Player.Health">Health</h4>
+  <div class="markdown level1 summary"><p>The amount of health remaining for this player&apos;s main unit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Health { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_HomeBase_" data-uid="Joueur.cs.Games.Necrowar.Player.HomeBase*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_HomeBase" data-uid="Joueur.cs.Games.Necrowar.Player.HomeBase">HomeBase</h4>
+  <div class="markdown level1 summary"><p>The tile that the home base is located on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;Tile&gt; HomeBase { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Joueur.cs.Games.Necrowar.Tile.html">Tile</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_Lost_" data-uid="Joueur.cs.Games.Necrowar.Player.Lost*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_Lost" data-uid="Joueur.cs.Games.Necrowar.Player.Lost">Lost</h4>
+  <div class="markdown level1 summary"><p>If the player lost the game or not.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Lost { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_Mana_" data-uid="Joueur.cs.Games.Necrowar.Player.Mana*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_Mana" data-uid="Joueur.cs.Games.Necrowar.Player.Mana">Mana</h4>
+  <div class="markdown level1 summary"><p>The amount of mana this player has.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Mana { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_Name_" data-uid="Joueur.cs.Games.Necrowar.Player.Name*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_Name" data-uid="Joueur.cs.Games.Necrowar.Player.Name">Name</h4>
+  <div class="markdown level1 summary"><p>The name of the player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_Opponent_" data-uid="Joueur.cs.Games.Necrowar.Player.Opponent*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_Opponent" data-uid="Joueur.cs.Games.Necrowar.Player.Opponent">Opponent</h4>
+  <div class="markdown level1 summary"><p>This player&apos;s opponent in the game.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Player Opponent { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Necrowar.Player.html">Player</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_ReasonLost_" data-uid="Joueur.cs.Games.Necrowar.Player.ReasonLost*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_ReasonLost" data-uid="Joueur.cs.Games.Necrowar.Player.ReasonLost">ReasonLost</h4>
+  <div class="markdown level1 summary"><p>The reason why the player lost the game.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ReasonLost { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_ReasonWon_" data-uid="Joueur.cs.Games.Necrowar.Player.ReasonWon*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_ReasonWon" data-uid="Joueur.cs.Games.Necrowar.Player.ReasonWon">ReasonWon</h4>
+  <div class="markdown level1 summary"><p>The reason why the player won the game.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ReasonWon { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_Side_" data-uid="Joueur.cs.Games.Necrowar.Player.Side*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_Side" data-uid="Joueur.cs.Games.Necrowar.Player.Side">Side</h4>
+  <div class="markdown level1 summary"><p>All tiles that this player can build on and move workers on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;Tile&gt; Side { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Joueur.cs.Games.Necrowar.Tile.html">Tile</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_TimeRemaining_" data-uid="Joueur.cs.Games.Necrowar.Player.TimeRemaining*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_TimeRemaining" data-uid="Joueur.cs.Games.Necrowar.Player.TimeRemaining">TimeRemaining</h4>
+  <div class="markdown level1 summary"><p>The amount of time (in ns) remaining for this AI to send commands.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double TimeRemaining { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_Towers_" data-uid="Joueur.cs.Games.Necrowar.Player.Towers*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_Towers" data-uid="Joueur.cs.Games.Necrowar.Player.Towers">Towers</h4>
+  <div class="markdown level1 summary"><p>Every Tower owned by this player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;Tower&gt; Towers { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Joueur.cs.Games.Necrowar.Tower.html">Tower</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_Units_" data-uid="Joueur.cs.Games.Necrowar.Player.Units*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_Units" data-uid="Joueur.cs.Games.Necrowar.Player.Units">Units</h4>
+  <div class="markdown level1 summary"><p>Every Unit owned by this Player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;Unit&gt; Units { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Joueur.cs.Games.Necrowar.Unit.html">Unit</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Necrowar_Player_Won_" data-uid="Joueur.cs.Games.Necrowar.Player.Won*"></a>
+  <h4 id="Joueur_cs_Games_Necrowar_Player_Won" data-uid="Joueur.cs.Games.Necrowar.Player.Won">Won</h4>
+  <div class="markdown level1 summary"><p>If the player won the game or not.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Won { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

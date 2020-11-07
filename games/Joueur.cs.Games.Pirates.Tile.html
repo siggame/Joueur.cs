@@ -1,0 +1,541 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Tile
+   | C# Joueur Client </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Tile
+   | C# Joueur Client ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Joueur.cs.Games.Pirates.Tile">
+  
+  
+  <h1 id="Joueur_cs_Games_Pirates_Tile" data-uid="Joueur.cs.Games.Pirates.Tile" class="text-break">Class Tile
+  </h1>
+  <div class="markdown level0 summary"><p>A Tile in the game that makes up the 2D map grid.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Joueur.cs.BaseGameObject.html">BaseGameObject</a></div>
+    <div class="level2"><a class="xref" href="Joueur.cs.Games.Pirates.GameObject.html">GameObject</a></div>
+    <div class="level3"><span class="xref">Tile</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Joueur.cs.Games.Pirates.GameObject.html#Joueur_cs_Games_Pirates_GameObject_Logs">GameObject.Logs</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.Games.Pirates.GameObject.html#Joueur_cs_Games_Pirates_GameObject_Log_System_String_">GameObject.Log(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_Id">BaseGameObject.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_GameObjectName">BaseGameObject.GameObjectName</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_ToString">BaseGameObject.ToString()</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Joueur.cs.Games.Pirates.html">Joueur.cs.Games.Pirates</a></h6>
+  <h6><strong>Assembly</strong>: joueur-cs.dll</h6>
+  <h5 id="Joueur_cs_Games_Pirates_Tile_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Tile : GameObject</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Joueur_cs_Games_Pirates_Tile__ctor_" data-uid="Joueur.cs.Games.Pirates.Tile.#ctor*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile__ctor" data-uid="Joueur.cs.Games.Pirates.Tile.#ctor">Tile()</h4>
+  <div class="markdown level1 summary"><p>Creates a new instance of Tile. Used during game initialization, do not call directly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Tile()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Joueur_cs_Games_Pirates_Tile_Decoration_" data-uid="Joueur.cs.Games.Pirates.Tile.Decoration*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_Decoration" data-uid="Joueur.cs.Games.Pirates.Tile.Decoration">Decoration</h4>
+  <div class="markdown level1 summary"><p>(Visualizer only) Whether this tile is deep sea or grassy. This has no effect on gameplay, but feel free to use it if you want.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Decoration { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Tile_Gold_" data-uid="Joueur.cs.Games.Pirates.Tile.Gold*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_Gold" data-uid="Joueur.cs.Games.Pirates.Tile.Gold">Gold</h4>
+  <div class="markdown level1 summary"><p>The amount of gold buried on this tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Gold { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Tile_Port_" data-uid="Joueur.cs.Games.Pirates.Tile.Port*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_Port" data-uid="Joueur.cs.Games.Pirates.Tile.Port">Port</h4>
+  <div class="markdown level1 summary"><p>The Port on this Tile if present, otherwise null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Port Port { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Port.html">Port</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Tile_TileEast_" data-uid="Joueur.cs.Games.Pirates.Tile.TileEast*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_TileEast" data-uid="Joueur.cs.Games.Pirates.Tile.TileEast">TileEast</h4>
+  <div class="markdown level1 summary"><p>The Tile to the &apos;East&apos; of this one (x+1, y). Null if out of bounds of the map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tile TileEast { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Tile.html">Tile</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Tile_TileNorth_" data-uid="Joueur.cs.Games.Pirates.Tile.TileNorth*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_TileNorth" data-uid="Joueur.cs.Games.Pirates.Tile.TileNorth">TileNorth</h4>
+  <div class="markdown level1 summary"><p>The Tile to the &apos;North&apos; of this one (x, y-1). Null if out of bounds of the map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tile TileNorth { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Tile.html">Tile</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Tile_TileSouth_" data-uid="Joueur.cs.Games.Pirates.Tile.TileSouth*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_TileSouth" data-uid="Joueur.cs.Games.Pirates.Tile.TileSouth">TileSouth</h4>
+  <div class="markdown level1 summary"><p>The Tile to the &apos;South&apos; of this one (x, y+1). Null if out of bounds of the map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tile TileSouth { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Tile.html">Tile</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Tile_TileWest_" data-uid="Joueur.cs.Games.Pirates.Tile.TileWest*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_TileWest" data-uid="Joueur.cs.Games.Pirates.Tile.TileWest">TileWest</h4>
+  <div class="markdown level1 summary"><p>The Tile to the &apos;West&apos; of this one (x-1, y). Null if out of bounds of the map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tile TileWest { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Tile.html">Tile</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Tile_Type_" data-uid="Joueur.cs.Games.Pirates.Tile.Type*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_Type" data-uid="Joueur.cs.Games.Pirates.Tile.Type">Type</h4>
+  <div class="markdown level1 summary"><p>The type of Tile this is (&apos;water&apos; or &apos;land&apos;).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Type { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Tile_Unit_" data-uid="Joueur.cs.Games.Pirates.Tile.Unit*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_Unit" data-uid="Joueur.cs.Games.Pirates.Tile.Unit">Unit</h4>
+  <div class="markdown level1 summary"><p>The Unit on this Tile if present, otherwise null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Unit Unit { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Unit.html">Unit</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Tile_X_" data-uid="Joueur.cs.Games.Pirates.Tile.X*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_X" data-uid="Joueur.cs.Games.Pirates.Tile.X">X</h4>
+  <div class="markdown level1 summary"><p>The x (horizontal) position of this Tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int X { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Tile_Y_" data-uid="Joueur.cs.Games.Pirates.Tile.Y*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_Y" data-uid="Joueur.cs.Games.Pirates.Tile.Y">Y</h4>
+  <div class="markdown level1 summary"><p>The y (vertical) position of this Tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Y { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Joueur_cs_Games_Pirates_Tile_GetNeighbors_" data-uid="Joueur.cs.Games.Pirates.Tile.GetNeighbors*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_GetNeighbors" data-uid="Joueur.cs.Games.Pirates.Tile.GetNeighbors">GetNeighbors()</h4>
+  <div class="markdown level1 summary"><p>Gets the neighbors of this Tile</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Tile&gt; GetNeighbors()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Joueur.cs.Games.Pirates.Tile.html">Tile</a>&gt;</td>
+        <td><p>The neighboring (adjacent) Tiles to this tile</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Tile_HasNeighbor_" data-uid="Joueur.cs.Games.Pirates.Tile.HasNeighbor*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_HasNeighbor_Joueur_cs_Games_Pirates_Tile_" data-uid="Joueur.cs.Games.Pirates.Tile.HasNeighbor(Joueur.cs.Games.Pirates.Tile)">HasNeighbor(Tile)</h4>
+  <div class="markdown level1 summary"><p>Checks if this Tile has a specific neighboring Tile</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasNeighbor(Tile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>Tile to check against</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the tile is a neighbor of this Tile, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Tile_IsPathable_" data-uid="Joueur.cs.Games.Pirates.Tile.IsPathable*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Tile_IsPathable" data-uid="Joueur.cs.Games.Pirates.Tile.IsPathable">IsPathable()</h4>
+  <div class="markdown level1 summary"><p>Checks if a Tile is pathable to units</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsPathable()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if pathable, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

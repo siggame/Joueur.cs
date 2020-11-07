@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class AI
+   | C# Joueur Client </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class AI
+   | C# Joueur Client ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Joueur.cs.Games.Newtonian.AI">
+  
+  
+  <h1 id="Joueur_cs_Games_Newtonian_AI" data-uid="Joueur.cs.Games.Newtonian.AI" class="text-break">Class AI
+  </h1>
+  <div class="markdown level0 summary"><p>This is where you build your AI for Newtonian.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Joueur.cs.BaseAI.html">BaseAI</a></div>
+    <div class="level2"><span class="xref">AI</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseAI.html#Joueur_cs_BaseAI_Invalid_System_String_">BaseAI.Invalid(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseAI.html#Joueur_cs_BaseAI_GetSetting_System_String_">BaseAI.GetSetting(String)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Joueur.cs.Games.Newtonian.html">Joueur.cs.Games.Newtonian</a></h6>
+  <h6><strong>Assembly</strong>: joueur-cs.dll</h6>
+  <h5 id="Joueur_cs_Games_Newtonian_AI_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AI : BaseAI</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <h4 id="Joueur_cs_Games_Newtonian_AI_Game" data-uid="Joueur.cs.Games.Newtonian.AI.Game">Game</h4>
+  <div class="markdown level1 summary"><p>This is the Game object itself. It contains all the information about the current game.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly Game Game</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Newtonian.Game.html">Game</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="Joueur_cs_Games_Newtonian_AI_Player" data-uid="Joueur.cs.Games.Newtonian.AI.Player">Player</h4>
+  <div class="markdown level1 summary"><p>This is your AI&apos;s player. It contains all the information about your player&apos;s state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly Player Player</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Newtonian.Player.html">Player</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Joueur_cs_Games_Newtonian_AI_Ended_" data-uid="Joueur.cs.Games.Newtonian.AI.Ended*"></a>
+  <h4 id="Joueur_cs_Games_Newtonian_AI_Ended_System_Boolean_System_String_" data-uid="Joueur.cs.Games.Newtonian.AI.Ended(System.Boolean,System.String)">Ended(Boolean, String)</h4>
+  <div class="markdown level1 summary"><p>This is automatically called when the game ends.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Ended(bool won, string reason)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">won</span></td>
+        <td><p>True if your player won, false otherwise</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">reason</span></td>
+        <td><p>A string explaining why you won or lost</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Joueur.cs.BaseAI.html#Joueur_cs_BaseAI_Ended_System_Boolean_System_String_">BaseAI.Ended(Boolean, String)</a></div>
+  <h5 id="Joueur_cs_Games_Newtonian_AI_Ended_System_Boolean_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>You can do any cleanup of you AI here, or do custom logging. After this function returns, the application will close.</p>
+</div>
+  <a id="Joueur_cs_Games_Newtonian_AI_GameUpdated_" data-uid="Joueur.cs.Games.Newtonian.AI.GameUpdated*"></a>
+  <h4 id="Joueur_cs_Games_Newtonian_AI_GameUpdated" data-uid="Joueur.cs.Games.Newtonian.AI.GameUpdated">GameUpdated()</h4>
+  <div class="markdown level1 summary"><p>This is automatically called every time the game (or anything in it) updates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void GameUpdated()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Joueur.cs.BaseAI.html#Joueur_cs_BaseAI_GameUpdated">BaseAI.GameUpdated()</a></div>
+  <h5 id="Joueur_cs_Games_Newtonian_AI_GameUpdated_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If a function you call triggers an update, this will be called before that function returns.</p>
+</div>
+  <a id="Joueur_cs_Games_Newtonian_AI_GetName_" data-uid="Joueur.cs.Games.Newtonian.AI.GetName*"></a>
+  <h4 id="Joueur_cs_Games_Newtonian_AI_GetName" data-uid="Joueur.cs.Games.Newtonian.AI.GetName">GetName()</h4>
+  <div class="markdown level1 summary"><p>This returns your AI&apos;s name to the game server. Just replace the string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string GetName()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Your AI&apos;s name</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Joueur.cs.BaseAI.html#Joueur_cs_BaseAI_GetName">BaseAI.GetName()</a></div>
+  <a id="Joueur_cs_Games_Newtonian_AI_RunTurn_" data-uid="Joueur.cs.Games.Newtonian.AI.RunTurn*"></a>
+  <h4 id="Joueur_cs_Games_Newtonian_AI_RunTurn" data-uid="Joueur.cs.Games.Newtonian.AI.RunTurn">RunTurn()</h4>
+  <div class="markdown level1 summary"><p>This is called every time it is this AI.player&apos;s turn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RunTurn()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Represents if you want to end your turn. True means end your turn, False means to keep your turn going and re-call this function.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Newtonian_AI_Start_" data-uid="Joueur.cs.Games.Newtonian.AI.Start*"></a>
+  <h4 id="Joueur_cs_Games_Newtonian_AI_Start" data-uid="Joueur.cs.Games.Newtonian.AI.Start">Start()</h4>
+  <div class="markdown level1 summary"><p>This is automatically called when the game first starts, once the Game and all GameObjects have been initialized, but before any players do anything.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Start()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Joueur.cs.BaseAI.html#Joueur_cs_BaseAI_Start">BaseAI.Start()</a></div>
+  <h5 id="Joueur_cs_Games_Newtonian_AI_Start_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This is a good place to initialize any variables you add to your AI or start tracking game objects.</p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

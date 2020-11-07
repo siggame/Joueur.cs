@@ -1,0 +1,792 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Unit
+   | C# Joueur Client </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Unit
+   | C# Joueur Client ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Joueur.cs.Games.Pirates.Unit">
+  
+  
+  <h1 id="Joueur_cs_Games_Pirates_Unit" data-uid="Joueur.cs.Games.Pirates.Unit" class="text-break">Class Unit
+  </h1>
+  <div class="markdown level0 summary"><p>A unit group in the game. This may consist of a ship and any number of crew.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Joueur.cs.BaseGameObject.html">BaseGameObject</a></div>
+    <div class="level2"><a class="xref" href="Joueur.cs.Games.Pirates.GameObject.html">GameObject</a></div>
+    <div class="level3"><span class="xref">Unit</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Joueur.cs.Games.Pirates.GameObject.html#Joueur_cs_Games_Pirates_GameObject_Logs">GameObject.Logs</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.Games.Pirates.GameObject.html#Joueur_cs_Games_Pirates_GameObject_Log_System_String_">GameObject.Log(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_Id">BaseGameObject.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_GameObjectName">BaseGameObject.GameObjectName</a>
+    </div>
+    <div>
+      <a class="xref" href="Joueur.cs.BaseGameObject.html#Joueur_cs_BaseGameObject_ToString">BaseGameObject.ToString()</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Joueur.cs.Games.Pirates.html">Joueur.cs.Games.Pirates</a></h6>
+  <h6><strong>Assembly</strong>: joueur-cs.dll</h6>
+  <h5 id="Joueur_cs_Games_Pirates_Unit_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Unit : GameObject</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Joueur_cs_Games_Pirates_Unit__ctor_" data-uid="Joueur.cs.Games.Pirates.Unit.#ctor*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit__ctor" data-uid="Joueur.cs.Games.Pirates.Unit.#ctor">Unit()</h4>
+  <div class="markdown level1 summary"><p>Creates a new instance of Unit. Used during game initialization, do not call directly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Unit()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Joueur_cs_Games_Pirates_Unit_Acted_" data-uid="Joueur.cs.Games.Pirates.Unit.Acted*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Acted" data-uid="Joueur.cs.Games.Pirates.Unit.Acted">Acted</h4>
+  <div class="markdown level1 summary"><p>Whether this Unit has performed its action this turn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Acted { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Crew_" data-uid="Joueur.cs.Games.Pirates.Unit.Crew*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Crew" data-uid="Joueur.cs.Games.Pirates.Unit.Crew">Crew</h4>
+  <div class="markdown level1 summary"><p>How many crew are on this Tile. This number will always be &lt;= crewHealth.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Crew { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_CrewHealth_" data-uid="Joueur.cs.Games.Pirates.Unit.CrewHealth*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_CrewHealth" data-uid="Joueur.cs.Games.Pirates.Unit.CrewHealth">CrewHealth</h4>
+  <div class="markdown level1 summary"><p>How much total health the crew on this Tile have.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CrewHealth { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Gold_" data-uid="Joueur.cs.Games.Pirates.Unit.Gold*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Gold" data-uid="Joueur.cs.Games.Pirates.Unit.Gold">Gold</h4>
+  <div class="markdown level1 summary"><p>How much gold this Unit is carrying.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Gold { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Moves_" data-uid="Joueur.cs.Games.Pirates.Unit.Moves*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Moves" data-uid="Joueur.cs.Games.Pirates.Unit.Moves">Moves</h4>
+  <div class="markdown level1 summary"><p>How many more times this Unit may move this turn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Moves { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Owner_" data-uid="Joueur.cs.Games.Pirates.Unit.Owner*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Owner" data-uid="Joueur.cs.Games.Pirates.Unit.Owner">Owner</h4>
+  <div class="markdown level1 summary"><p>The Player that owns and can control this Unit, or null if the Unit is neutral.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Player Owner { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Player.html">Player</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Path_" data-uid="Joueur.cs.Games.Pirates.Unit.Path*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Path" data-uid="Joueur.cs.Games.Pirates.Unit.Path">Path</h4>
+  <div class="markdown level1 summary"><p>(Merchants only) The path this Unit will follow. The first element is the Tile this Unit will move to next.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IList&lt;Tile&gt; Path { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Joueur.cs.Games.Pirates.Tile.html">Tile</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_ShipHealth_" data-uid="Joueur.cs.Games.Pirates.Unit.ShipHealth*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_ShipHealth" data-uid="Joueur.cs.Games.Pirates.Unit.ShipHealth">ShipHealth</h4>
+  <div class="markdown level1 summary"><p>If a ship is on this Tile, how much health it has remaining. 0 for no ship.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ShipHealth { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_StunTurns_" data-uid="Joueur.cs.Games.Pirates.Unit.StunTurns*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_StunTurns" data-uid="Joueur.cs.Games.Pirates.Unit.StunTurns">StunTurns</h4>
+  <div class="markdown level1 summary"><p>(Merchants only) The number of turns this merchant ship won&apos;t be able to move. They will still attack. Merchant ships are stunned when they&apos;re attacked.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int StunTurns { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_TargetPort_" data-uid="Joueur.cs.Games.Pirates.Unit.TargetPort*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_TargetPort" data-uid="Joueur.cs.Games.Pirates.Unit.TargetPort">TargetPort</h4>
+  <div class="markdown level1 summary"><p>(Merchants only) The Port this Unit is moving to.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Port TargetPort { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Port.html">Port</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Tile_" data-uid="Joueur.cs.Games.Pirates.Unit.Tile*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Tile" data-uid="Joueur.cs.Games.Pirates.Unit.Tile">Tile</h4>
+  <div class="markdown level1 summary"><p>The Tile this Unit is on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tile Tile { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Tile.html">Tile</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Joueur_cs_Games_Pirates_Unit_Attack_" data-uid="Joueur.cs.Games.Pirates.Unit.Attack*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Attack_Joueur_cs_Games_Pirates_Tile_System_String_" data-uid="Joueur.cs.Games.Pirates.Unit.Attack(Joueur.cs.Games.Pirates.Tile,System.String)">Attack(Tile, String)</h4>
+  <div class="markdown level1 summary"><p>Attacks either the &apos;crew&apos; or &apos;ship&apos; on a Tile in range.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Attack(Tile tile, string target)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile to attack.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">target</span></td>
+        <td><p>Whether to attack &apos;crew&apos; or &apos;ship&apos;. Crew deal damage to crew and ships deal damage to ships. Consumes any remaining moves.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully attacked, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Bury_" data-uid="Joueur.cs.Games.Pirates.Unit.Bury*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Bury_System_Int32_" data-uid="Joueur.cs.Games.Pirates.Unit.Bury(System.Int32)">Bury(Int32)</h4>
+  <div class="markdown level1 summary"><p>Buries gold on this Unit&apos;s Tile. Gold must be a certain distance away for it to get interest (Game.minInterestDistance).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Bury(int amount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>How much gold this Unit should bury. Amounts &lt;= 0 will bury as much as possible.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully buried, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Deposit_" data-uid="Joueur.cs.Games.Pirates.Unit.Deposit*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Deposit_System_Int32_" data-uid="Joueur.cs.Games.Pirates.Unit.Deposit(System.Int32)">Deposit(Int32)</h4>
+  <div class="markdown level1 summary"><p>Puts gold into an adjacent Port. If that Port is the Player&apos;s port, the gold is added to that Player. If that Port is owned by merchants, it adds to that Port&apos;s investment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Deposit(int amount = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>The amount of gold to deposit. Amounts &lt;= 0 will deposit all the gold on this Unit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully deposited, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Dig_" data-uid="Joueur.cs.Games.Pirates.Unit.Dig*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Dig_System_Int32_" data-uid="Joueur.cs.Games.Pirates.Unit.Dig(System.Int32)">Dig(Int32)</h4>
+  <div class="markdown level1 summary"><p>Digs up gold on this Unit&apos;s Tile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Dig(int amount = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>How much gold this Unit should take. Amounts &lt;= 0 will dig up as much as possible.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully dug up, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Move_" data-uid="Joueur.cs.Games.Pirates.Unit.Move*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Move_Joueur_cs_Games_Pirates_Tile_" data-uid="Joueur.cs.Games.Pirates.Unit.Move(Joueur.cs.Games.Pirates.Tile)">Move(Tile)</h4>
+  <div class="markdown level1 summary"><p>Moves this Unit from its current Tile to an adjacent Tile. If this Unit merges with another one, the other Unit will be destroyed and its tile will be set to null. Make sure to check that your Unit&apos;s tile is not null before doing things with it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Move(Tile tile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile this Unit should move to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if it moved, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Rest_" data-uid="Joueur.cs.Games.Pirates.Unit.Rest*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Rest" data-uid="Joueur.cs.Games.Pirates.Unit.Rest">Rest()</h4>
+  <div class="markdown level1 summary"><p>Regenerates this Unit&apos;s health. Must be used in range of a port.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Rest()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully rested, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Split_" data-uid="Joueur.cs.Games.Pirates.Unit.Split*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Split_Joueur_cs_Games_Pirates_Tile_System_Int32_System_Int32_" data-uid="Joueur.cs.Games.Pirates.Unit.Split(Joueur.cs.Games.Pirates.Tile,System.Int32,System.Int32)">Split(Tile, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Moves a number of crew from this Unit to the given Tile. This will consume a move from those crew.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Split(Tile tile, int amount = 1, int gold = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Joueur.cs.Games.Pirates.Tile.html">Tile</a></td>
+        <td><span class="parametername">tile</span></td>
+        <td><p>The Tile to move the crew to.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>The number of crew to move onto that Tile. Amount &lt;= 0 will move all the crew to that Tile.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">gold</span></td>
+        <td><p>The amount of gold the crew should take with them. Gold &lt; 0 will move all the gold to that Tile.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully split, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Joueur_cs_Games_Pirates_Unit_Withdraw_" data-uid="Joueur.cs.Games.Pirates.Unit.Withdraw*"></a>
+  <h4 id="Joueur_cs_Games_Pirates_Unit_Withdraw_System_Int32_" data-uid="Joueur.cs.Games.Pirates.Unit.Withdraw(System.Int32)">Withdraw(Int32)</h4>
+  <div class="markdown level1 summary"><p>Takes gold from the Player. You can only withdraw from your own Port.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Withdraw(int amount = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">amount</span></td>
+        <td><p>The amount of gold to withdraw. Amounts &lt;= 0 will withdraw everything.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if successfully withdrawn, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
