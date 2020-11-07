@@ -22,17 +22,12 @@ namespace Joueur.cs.Games.Necrowar
     /// </summary>
     public class Game : BaseGame
     {
+        /// <summary>
+        /// The game version hash, used to compare if we are playing the same version on the server.
+        /// </summary>
+        new protected static string GameVersion = "935f0e64ba290cdce31688a40bd90d1eb5375f36aeebd67482238fc0da25ef86";
+
         #region Properties
-        /// <summary>
-        /// A list of every tower type / job.
-        /// </summary>
-        public IList<Necrowar.TowerJob> TowerJobs { get; protected set; }
-
-        /// <summary>
-        /// A list of every unit type / job.
-        /// </summary>
-        public IList<Necrowar.UnitJob> UnitJobs { get; protected set; }
-
         /// <summary>
         /// The player whose turn it is currently. That player can send commands. Other players cannot.
         /// </summary>
@@ -99,9 +94,19 @@ namespace Joueur.cs.Games.Necrowar
         public int TimeAddedPerTurn { get; protected set; }
 
         /// <summary>
+        /// A list of every tower type / job.
+        /// </summary>
+        public IList<Necrowar.TowerJob> TowerJobs { get; protected set; }
+
+        /// <summary>
         /// Every Tower in the game.
         /// </summary>
         public IList<Necrowar.Tower> Towers { get; protected set; }
+
+        /// <summary>
+        /// A list of every unit type / job.
+        /// </summary>
+        public IList<Necrowar.UnitJob> UnitJobs { get; protected set; }
 
         /// <summary>
         /// Every Unit in the game.
@@ -123,11 +128,11 @@ namespace Joueur.cs.Games.Necrowar
         {
             this.Name = "Necrowar";
 
-            this.TowerJobs = new List<Necrowar.TowerJob>();
-            this.UnitJobs = new List<Necrowar.UnitJob>();
             this.Players = new List<Necrowar.Player>();
             this.Tiles = new List<Necrowar.Tile>();
+            this.TowerJobs = new List<Necrowar.TowerJob>();
             this.Towers = new List<Necrowar.Tower>();
+            this.UnitJobs = new List<Necrowar.UnitJob>();
             this.Units = new List<Necrowar.Unit>();
         }
 

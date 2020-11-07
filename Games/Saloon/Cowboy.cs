@@ -66,7 +66,7 @@ namespace Joueur.cs.Games.Saloon
         public Saloon.Tile Tile { get; protected set; }
 
         /// <summary>
-        /// How many times this unit has been drunk before taking their siesta and reseting this to 0.
+        /// How many times this unit has been drunk before taking their siesta and resetting this to 0.
         /// </summary>
         public int Tolerance { get; protected set; }
 

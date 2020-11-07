@@ -1,7 +1,7 @@
 .vscode/
 
 docs/
-_creer/
+.creer/
 packages/
 build/
 obj/

@@ -41,7 +41,7 @@ namespace Joueur.cs.Games.Spiders
         public int NumberOfCoworkers { get; protected set; }
 
         /// <summary>
-        /// How much work needs to be done for this Spiderling to finish being busy. See docs for the Work forumla.
+        /// How much work needs to be done for this Spiderling to finish being busy. See docs for the Work formula.
         /// </summary>
         public double WorkRemaining { get; protected set; }
 
@@ -61,7 +61,7 @@ namespace Joueur.cs.Games.Spiders
         }
 
         /// <summary>
-        /// Attacks another Spiderling
+        /// Attacks another Spiderling.
         /// </summary>
         /// <param name="spiderling">The Spiderling to attack.</param>
         /// <returns>True if the attack was successful, false otherwise.</returns>

@@ -109,7 +109,7 @@ namespace Joueur.cs.Games.Catastrophe
         }
 
         /// <summary>
-        /// Changes this Unit's Job. Must be at max energy (100.0) to change Jobs.
+        /// Changes this Unit's Job. Must be at max energy (100) to change Jobs.
         /// </summary>
         /// <param name="job">The name of the Job to change to.</param>
         /// <returns>True if successfully changed Jobs, false otherwise.</returns>
@@ -147,7 +147,7 @@ namespace Joueur.cs.Games.Catastrophe
         }
 
         /// <summary>
-        /// Removes materials from an adjacent Tile's Structure. You cannot deconstruct friendly structures (see Unit.attack).
+        /// Removes materials from an adjacent Tile's Structure. You cannot deconstruct friendly structures (see `Unit.attack`).
         /// </summary>
         /// <param name="tile">The Tile to deconstruct. It must have a Structure on it.</param>
         /// <returns>True if successfully deconstructed, false otherwise.</returns>
