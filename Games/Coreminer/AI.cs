@@ -105,6 +105,8 @@ namespace Joueur.cs.Games.Coreminer
             // for each of our miners
             foreach (var miner in Player.Miners)
             {
+                if(miner == null || miner.Tile == null)
+                    continue;
                 // Move to tile next to base
                 if (miner.Tile.IsBase)
                 {
@@ -127,20 +129,25 @@ namespace Joueur.cs.Games.Coreminer
                 // Mine east and west tiles, hopper side first
                 if (eastTile.X == Player.BaseTile.X)
                 {
-                    miner.Mine(eastTile, -1);
-                    miner.Mine(westTile, -1);
+                    if (eastTile != null)
+                        miner.Mine(eastTile, -1);
+                    if (westTile != null)
+                        miner.Mine(westTile, -1);
                 }
                 else 
                 {
-                    miner.Mine(westTile, -1);
-                    miner.Mine(eastTile, -1);
+                    if (westTile != null)
+                        miner.Mine(westTile, -1);
+                    if (eastTile != null)
+                        miner.Mine(eastTile, -1);
                 }
 
                 // Check to make sure east and west tiles are mined
                 if ((eastTile != null && eastTile.Ore + eastTile.Dirt == 0) &&
                     (westTile != null && westTile.Ore + westTile.Dirt == 0))
                 {
-                    miner.Mine(miner.Tile.TileSouth, -1);
+                    if (miner.Tile.TileSouth != null)
+                        miner.Mine(miner.Tile.TileSouth, -1);
                 }
             }
             return true;
